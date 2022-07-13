@@ -4,6 +4,8 @@ import * as s from './Main.style';
 import Banner from './Banner/Banner';
 import Nft from './Nft/Nft';
 import Story from './Story/Story';
+import Team from './Team/Team';
+import RaodMap from './RoadMap/RaodMap';
 
 const Main = () => {
     return (
@@ -16,6 +18,8 @@ const Main = () => {
             </s.MainSection>
             <Nft />
             <Story />
+            <Team />
+            <RaodMap />
         </>
     );
 };

@@ -5,7 +5,7 @@ export const Header = styled.header`
     width: 100vw;
     height: ${variouble.navHeight};
     background-color: lightgray;
-    position: relative;
+    position: absolute;
     z-index: 99;
 `;
 
