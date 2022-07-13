@@ -12,7 +12,8 @@ const Header = () => {
     useLayoutEffect(() => {
         const element = ref.current;
 
-        gsap.to(element, {
+        const tl = gsap.timeline();
+        tl.to(element, {
             position: 'fixed',
             top: '1rem',
             left: '50%',
@@ -30,7 +31,11 @@ const Header = () => {
                 scrub: true,
             },
         });
-    });
+
+        return () => {
+            tl.kill();
+        };
+    }, []);
     return (
         <s.Header ref={ref}>
             <s.Nav>
