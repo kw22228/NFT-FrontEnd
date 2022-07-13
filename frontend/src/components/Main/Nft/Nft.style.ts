@@ -40,3 +40,15 @@ export const SliderContainer = styled.div`
         align-items: center;
     }
 `;
+
+export const Item = styled.div`
+    background-color: #d9d9d9;
+    color: black;
+
+    padding: 6rem 0;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;

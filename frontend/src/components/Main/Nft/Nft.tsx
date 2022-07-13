@@ -1,29 +1,36 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import * as s from './Nft.style';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper';
+import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Autoplay } from 'swiper';
 import 'swiper/css';
 
 const Nft = () => {
+    const SwiperConfig: SwiperProps = {
+        speed: 3000,
+        autoplay: {
+            delay: 1,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+        },
+        loop: true,
+        slidesPerView: 7,
+        watchSlidesProgress: true,
+        spaceBetween: 27,
+        grabCursor: true,
+    };
+    SwiperCore.use([Autoplay]);
+
+    const swiperRef = useRef<SwiperCore>();
+    const onInit = (Swiper: SwiperCore): void => {
+        swiperRef.current = Swiper;
+    };
+
     return (
         <s.Section>
             <s.Title>NFT</s.Title>
             <s.SliderContainer>
-                <Swiper
-                    spaceBetween={10}
-                    centeredSlides={true}
-                    speed={3000}
-                    autoplay={{
-                        delay: 1,
-                        disableOnInteraction: false,
-                    }}
-                    loop={true}
-                    slidesPerView={7}
-                    allowTouchMove={false}
-                    modules={[Autoplay]}
-                    className="mySwiper"
-                >
+                <Swiper {...SwiperConfig} onInit={onInit}>
                     <SwiperSlide>Slide 1</SwiperSlide>
                     <SwiperSlide>Slide 2</SwiperSlide>
                     <SwiperSlide>Slide 3</SwiperSlide>
