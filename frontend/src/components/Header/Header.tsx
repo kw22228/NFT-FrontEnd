@@ -2,14 +2,37 @@ import React, { useLayoutEffect, useRef } from 'react';
 import * as s from './Header.style';
 
 import Logo from '../Logo/Logo';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
 const Header = () => {
+    const ref = useRef(null);
+    gsap.registerPlugin(ScrollTrigger);
+
+    useLayoutEffect(() => {
+        const element = ref.current;
+
+        gsap.to(element, {
+            position: 'fixed',
+            top: '1rem',
+            left: '50%',
+            width: '80%',
+            transform: 'translateX(-50%)',
+
+            padding: '',
+            borderRadius: '50px',
+            border: '3px solid white',
+
+            scrollTrigger: {
+                trigger: element,
+                start: 'bottom+=200 top',
+                end: '+=200',
+                scrub: true,
+            },
+        });
+    });
     return (
-        <s.Header //
-            data-scroll
-            data-scroll-sticky
-            data-scroll-target=".Main"
-        >
+        <s.Header ref={ref}>
             <s.Nav>
                 <Logo />
 
