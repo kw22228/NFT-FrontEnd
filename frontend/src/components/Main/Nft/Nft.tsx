@@ -8,6 +8,7 @@ import 'swiper/css';
 const Nft = () => {
     return (
         <s.Section>
+            <s.Title>NFT</s.Title>
             <s.SliderContainer>
                 <Swiper
                     spaceBetween={10}

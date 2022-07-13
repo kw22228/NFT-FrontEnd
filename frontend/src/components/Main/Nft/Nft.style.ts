@@ -2,13 +2,22 @@ import styled from 'styled-components';
 
 export const Section = styled.section`
     width: 100vw;
-    height: 50vh;
+    height: 60vh;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
     margin: 0 auto;
+`;
+
+export const Title = styled.h1`
+    color: black;
+    text-transform: uppercase;
+    margin: 0 auto;
+    border-bottom: 2px solid black;
+    width: fit-content;
 `;
 
 export const SliderContainer = styled.div`
@@ -31,14 +40,3 @@ export const SliderContainer = styled.div`
         align-items: center;
     }
 `;
-
-// export const SliderItem = styled.div`
-//     border: 2px solid gray;
-
-//     padding: 5rem;
-//     border-radius: 50%;
-//     margin-right: 1rem;
-
-//     white-space: nowrap;
-//     box-sizing: content-box;
-// `;
