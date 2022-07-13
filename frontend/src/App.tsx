@@ -1,18 +1,17 @@
-import React, { useRef } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
-import 'locomotive-scroll/dist/locomotive-scroll.css';
+// import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
+// import 'locomotive-scroll/dist/locomotive-scroll.css';
 
 import Header from './components/Header/Header';
 import MainPage from './page/MainPage';
-import ScrollTriggerProxy from './utils/animation/gsap/ScrollTriggerProxy';
+// import ScrollTriggerProxy from './utils/animation/gsap/ScrollTriggerProxy';
 
 function App() {
-    const containRef = useRef(null);
+    // const containRef = useRef(null);
 
     return (
         <BrowserRouter>
-            <LocomotiveScrollProvider //
+            {/* <LocomotiveScrollProvider //
                 options={{
                     smooth: true,
                     smartphone: {
@@ -30,13 +29,13 @@ function App() {
                 containerRef={containRef}
             >
                 <ScrollTriggerProxy />
-                <main className="Main" data-scroll-container ref={containRef}>
-                    <Header />
-                    <Routes>
-                        <Route path="/" element={<MainPage />} />
-                    </Routes>
-                </main>
-            </LocomotiveScrollProvider>
+                <main className="Main" data-scroll-container ref={containRef}> */}
+            <Header />
+            <Routes>
+                <Route path="/" element={<MainPage />} />
+            </Routes>
+            {/* </main> */}
+            {/* </LocomotiveScrollProvider> */}
         </BrowserRouter>
     );
 }
