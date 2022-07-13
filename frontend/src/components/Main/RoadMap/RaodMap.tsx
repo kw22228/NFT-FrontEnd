@@ -26,7 +26,7 @@ const RaodMap = () => {
         const element = ref.current;
         const length = element?.offsetHeight as number;
 
-        gsap.timeline({
+        const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: element,
                 start: 'top-=30% top',
@@ -39,6 +39,10 @@ const RaodMap = () => {
                 },
             },
         });
+
+        return () => {
+            tl.kill();
+        };
     }, []);
 
     return (
