@@ -37,7 +37,6 @@ const RaodMap = () => {
                         element.style.height = `${draw}px`;
                     }
                 },
-                markers: true,
             },
         });
     }, []);
@@ -59,6 +58,7 @@ const RaodMap = () => {
                     <RoadMapItem />
                 </s.Items>
             </s.Container>
+            <s.Ball />
         </s.Section>
     );
 };

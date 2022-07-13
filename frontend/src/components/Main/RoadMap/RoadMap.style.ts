@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const Section = styled.section`
     height: 200vh;
     width: 100vw;
+
+    position: relative;
 `;
 
 export const Title = styled.h1`
@@ -120,4 +122,15 @@ export const Triangle = styled.div`
     position: absolute;
     left: 50%;
     bottom: 100%;
+`;
+
+export const Ball = styled.div`
+    padding: 7rem;
+    background-color: #eaeaea;
+
+    border-radius: 50%;
+
+    position: absolute;
+    top: 0;
+    left: 5%;
 `;
