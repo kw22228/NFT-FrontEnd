@@ -4,6 +4,7 @@ import * as s from './Header.style';
 import Logo from '../Logo/Logo';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import connect from '../../lib/web3/connect';
 
 const Header = () => {
     const ref = useRef(null);
@@ -57,7 +58,7 @@ const Header = () => {
                     </s.SnsMenu>
                 </s.Menu>
 
-                <s.Button>Connect Wallet</s.Button>
+                <s.Button onClick={() => connect('Kaikas')}>Connect Wallet</s.Button>
             </s.Nav>
         </s.Header>
     );
