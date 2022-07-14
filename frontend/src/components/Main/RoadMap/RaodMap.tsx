@@ -3,9 +3,12 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import React, { useLayoutEffect, useRef } from 'react';
 import * as s from './RoadMap.style';
 
-const RoadMapItem = () => {
+interface IRoadMapItem {
+    addToRefs: (el: HTMLDivElement) => void;
+}
+const RoadMapItem = ({ addToRefs }: IRoadMapItem) => {
     return (
-        <s.Item>
+        <s.Item ref={addToRefs}>
             <s.ItemContainer>
                 <s.Box></s.Box>
                 <s.BallTop>
@@ -19,7 +22,12 @@ const RoadMapItem = () => {
 };
 const RaodMap = () => {
     const ref = useRef<HTMLDivElement>(null);
-
+    const revealRef = useRef<HTMLDivElement[]>([]);
+    const addToRefs = (el: HTMLDivElement) => {
+        if (el && !revealRef.current.includes(el)) {
+            revealRef?.current.push(el);
+        }
+    };
     gsap.registerPlugin(ScrollTrigger);
 
     useLayoutEffect(() => {
@@ -31,13 +39,34 @@ const RaodMap = () => {
                 trigger: element,
                 start: 'top-=30% top',
                 end: 'bottom bottom',
-                onUpdate: self => {
+                onUpdate: (self: any) => {
                     const draw = length * self.progress;
                     if (element !== null) {
                         element.style.height = `${draw}px`;
                     }
                 },
             },
+        });
+
+        revealRef.current.forEach((el, index) => {
+            tl.fromTo(
+                el,
+                {
+                    y: 300,
+                    opacity: 0,
+                },
+                {
+                    y: 0,
+                    opacity: 1,
+
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top-=450 center',
+                        end: 'bottom-=450 center',
+                        scrub: true,
+                    },
+                }
+            );
         });
 
         return () => {
@@ -52,14 +81,14 @@ const RaodMap = () => {
                 <s.Line ref={ref} />
                 <s.Items>
                     <s.Item>&nbsp;</s.Item>
-                    <RoadMapItem />
-                    <RoadMapItem />
-                    <RoadMapItem />
-                    <RoadMapItem />
-                    <RoadMapItem />
-                    <RoadMapItem />
-                    <RoadMapItem />
-                    <RoadMapItem />
+                    <RoadMapItem addToRefs={addToRefs} />
+                    <RoadMapItem addToRefs={addToRefs} />
+                    <RoadMapItem addToRefs={addToRefs} />
+                    <RoadMapItem addToRefs={addToRefs} />
+                    <RoadMapItem addToRefs={addToRefs} />
+                    <RoadMapItem addToRefs={addToRefs} />
+                    <RoadMapItem addToRefs={addToRefs} />
+                    <RoadMapItem addToRefs={addToRefs} />
                 </s.Items>
             </s.Container>
             <s.Ball />

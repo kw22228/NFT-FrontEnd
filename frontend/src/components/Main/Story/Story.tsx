@@ -49,7 +49,6 @@ const Story = () => {
                         start: 'top-=200 center',
                         end: 'bottom-=200 center',
                         scrub: true,
-                        markers: true,
                     },
                 }
             );
