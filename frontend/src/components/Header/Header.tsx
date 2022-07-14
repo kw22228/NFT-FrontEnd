@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useRef } from 'react';
 import * as s from './Header.style';
 
 import Logo from '../Logo/Logo';
-import gsap from 'gsap';
+import gsap from 'gsap/all';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import connect from '../../lib/web3/connect';
 
