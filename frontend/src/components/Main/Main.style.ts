@@ -9,15 +9,13 @@ export const MainSection = styled.section`
     justify-content: center;
     align-items: center;
 
-    margin-top: 10rem;
-
     position: relative;
 `;
 
 export const Img = styled.div`
-    background-color: #d9d9d9;
+    background-color: ${props => props.theme.body};
 
-    width: 60%;
+    width: 55%;
     height: 50%;
 
     display: flex;
@@ -26,23 +24,29 @@ export const Img = styled.div`
 `;
 
 export const TextBox = styled.div`
-    background-color: #d9d9d9;
-    width: 60%;
+    /* background-color: ${props => props.theme.body}; */
+    color: ${props => props.theme.body};
+    font-weight: 600;
+    width: 45%;
     height: 20%;
-
-    margin-top: 3rem;
+    text-align: center;
+    margin-top: 5rem;
+    line-height: 1.5;
 
     display: flex;
     justify-content: center;
     align-items: center;
 `;
 
-export const Ball = styled.div`
-    background-color: #d9d9d9;
+export const Ball = styled.div<{ bg: string }>`
+    /* background-color: #d9d9d9; */
     padding: 8rem;
     border-radius: 50%;
 
     position: absolute;
     left: 90%;
     bottom: 55%;
+
+    background-image: url(${props => props.bg});
+    background-image: cover;
 `;

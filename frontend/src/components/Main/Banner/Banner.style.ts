@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Section = styled.section`
-    min-height: 75vh;
+    min-height: 100vh;
     width: 100vw;
     color: black;
 
@@ -9,15 +9,34 @@ export const Section = styled.section`
     justify-content: center;
     align-items: center;
 
-    background-color: #d9d9d9;
+    background-color: ${props => props.theme.body};
     /* background-color: black; */
 
     position: relative;
+`;
+export const BannerContainer = styled.div<{ main: string }>`
+    width: 100%;
+    height: 100vh;
+    background-image: url(${props => props.main});
+    background-size: cover;
+
+    position: relative;
+`;
+
+export const Character = styled.img`
+    width: 25rem;
+    height: auto;
+
+    position: absolute;
+    top: 2rem;
+    right: 15%;
+
+    transform: scaleX(-1);
 `;
 
 export const Wave = styled.img`
     position: absolute;
     width: 100vw;
-    top: 95%;
+    bottom: 0;
     z-index: 1;
 `;

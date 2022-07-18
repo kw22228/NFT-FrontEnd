@@ -12,10 +12,11 @@ export const Section = styled.section`
 `;
 
 export const Title = styled.h1`
-    color: black;
+    color: ${props => props.theme.body};
+    font-weight: 800;
     text-transform: uppercase;
     margin: 2rem auto;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid ${props => props.theme.body};
     width: fit-content;
 `;
 
@@ -39,7 +40,7 @@ export const Container = styled.div<{ direction?: String }>`
 export const ImgBox = styled.div`
     width: 45%;
     height: 70%;
-    background-color: #d9d9d9;
+    background-color: ${props => props.theme.body};
 
     display: flex;
     justify-content: center;
@@ -49,15 +50,15 @@ export const ImgBox = styled.div`
 export const TextBox = styled.div`
     width: 45%;
     height: 40%;
-    background-color: #d9d9d9;
-
+    color: ${props => props.theme.body};
+    font-weight: 800;
     display: flex;
     justify-content: center;
     align-items: center;
 `;
 
-export const Ball = styled.div`
-    background-color: #f5f5f5;
+export const Ball = styled.div<{ bg: string }>`
+    /* background-color: #f5f5f5; */
 
     padding: 10rem;
     border-radius: 50%;
@@ -67,4 +68,8 @@ export const Ball = styled.div`
     left: 0%;
 
     z-index: -1;
+
+    background-image: url(${props => props.bg});
+    background-repeat: no-repeat;
+    background-size: cover;
 `;

@@ -1,23 +1,23 @@
 import styled from 'styled-components';
 
 export const Section = styled.section`
-    height: 200vh;
+    height: 220vh;
     width: 100vw;
 
     position: relative;
 `;
 
 export const Title = styled.h1`
-    color: black;
+    color: ${props => props.theme.body};
     text-transform: uppercase;
     margin: 2rem auto;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid ${props => props.theme.body};
     width: fit-content;
 `;
 
 export const Container = styled.div`
     width: 74%;
-    height: 100%;
+    height: 90%;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -28,7 +28,7 @@ export const Container = styled.div`
 export const Line = styled.div`
     width: 2px;
     height: 100%;
-    background-color: black;
+    background-color: ${props => props.theme.body};
 
     position: absolute;
     top: 0rem;
@@ -74,11 +74,16 @@ export const Box = styled.div`
     width: 100%;
     height: 100%;
 
-    background-color: #d9d9d9;
+    background-color: ${props => props.theme.body};
+    color: ${props => props.theme.accentColor};
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const BallTop = styled.div`
-    background-color: #c7c7c7;
+    background-color: #cbe586;
     padding: 1rem;
     border-radius: 50%;
 
@@ -86,6 +91,16 @@ export const BallTop = styled.div`
     bottom: 83%;
     left: 50%;
     transform: translateX(-50%);
+
+    img {
+        width: 3rem;
+        height: 3rem;
+
+        position: absolute;
+
+        bottom: 50%;
+        left: 12%;
+    }
 `;
 
 export const RowLine = styled.div`
@@ -124,13 +139,16 @@ export const Triangle = styled.div`
     bottom: 100%;
 `;
 
-export const Ball = styled.div`
+export const Ball = styled.div<{ bg: string }>`
     padding: 7rem;
-    background-color: #eaeaea;
 
     border-radius: 50%;
 
     position: absolute;
     top: 0;
     left: 5%;
+
+    background-image: url(${props => props.bg});
+    background-size: cover;
+    background-repeat: no-repeat;
 `;
