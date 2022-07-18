@@ -4,7 +4,7 @@ import variouble from '../../styles/variouble';
 export const Header = styled.header`
     width: 100vw;
     height: ${variouble.navHeight};
-    background-color: lightgray;
+    background-color: transparent;
     position: absolute;
     z-index: 99;
 `;
@@ -29,6 +29,12 @@ export const MenuItem = styled.li`
     text-transform: uppercase;
     margin: 0 1.2rem;
     cursor: pointer;
+`;
+export const MenuSpace = styled.li`
+    background-color: black;
+    margin-top: 5px;
+    width: 1px;
+    height: 1.2rem;
 `;
 
 export const Button = styled.button`
