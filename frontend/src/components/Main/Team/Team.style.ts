@@ -11,10 +11,10 @@ export const Section = styled.section`
 `;
 
 export const Title = styled.h1`
-    color: black;
+    color: ${props => props.theme.body};
     text-transform: uppercase;
     margin: 2rem auto;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid ${props => props.theme.body};
     width: fit-content;
 `;
 
@@ -29,7 +29,7 @@ export const Container = styled.div`
 `;
 
 export const Card = styled.div`
-    background-color: #d9d9d9;
+    background-color: ${props => props.theme.body};
     width: 100%;
     height: 70%;
     border-radius: 20px;
