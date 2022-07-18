@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Section = styled.section`
     width: 100vw;
-    height: 60vh;
+    height: 100vh;
 
     display: flex;
     flex-direction: column;
@@ -13,15 +13,16 @@ export const Section = styled.section`
 `;
 
 export const Title = styled.h1`
-    color: black;
+    color: ${props => props.theme.body};
+    font-weight: bold;
     text-transform: uppercase;
     margin: 0 auto;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid ${props => props.theme.body};
     width: fit-content;
 `;
 
 export const SliderContainer = styled.div`
-    height: 80%;
+    height: 70%;
     width: 100%;
 
     display: flex;
@@ -29,10 +30,10 @@ export const SliderContainer = styled.div`
     align-items: center;
 
     .swiper-slide {
-        background-color: #d9d9d9;
+        background-color: ${props => props.theme.body};
         color: black;
 
-        padding: 6rem 0;
+        padding: 8rem 0;
         border-radius: 50%;
 
         display: flex;
@@ -41,14 +42,23 @@ export const SliderContainer = styled.div`
     }
 `;
 
-export const Item = styled.div`
-    background-color: #d9d9d9;
-    color: black;
+export const OpenSea = styled.button`
+    padding: 0.6rem 2rem;
+    border-radius: 20px;
+    border: 0;
+    outline: 0;
+    font-weight: 800;
 
-    padding: 6rem 0;
-    border-radius: 50%;
+    cursor: pointer;
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    img {
+        width: 1.5rem;
+        height: 1.5rem;
+
+        margin-right: 0.5rem;
+    }
 `;

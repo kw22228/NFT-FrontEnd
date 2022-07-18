@@ -5,6 +5,8 @@ import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Autoplay } from 'swiper';
 import 'swiper/css';
 
+import openSea from '../../../assets/images/OpenSea-icon.svg';
+
 const Nft = () => {
     const SwiperConfig: SwiperProps = {
         speed: 3000,
@@ -14,7 +16,7 @@ const Nft = () => {
             pauseOnMouseEnter: true,
         },
         loop: true,
-        slidesPerView: 7,
+        slidesPerView: 5,
         watchSlidesProgress: true,
         spaceBetween: 27,
         grabCursor: true,
@@ -46,6 +48,10 @@ const Nft = () => {
                     <SwiperSlide>Slide 13</SwiperSlide>
                 </Swiper>
             </s.SliderContainer>
+            <s.OpenSea>
+                <img src={openSea} alt="openSea" />
+                <span>Buy on OpenSea</span>
+            </s.OpenSea>
         </s.Section>
     );
 };
