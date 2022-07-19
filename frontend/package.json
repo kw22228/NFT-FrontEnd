@@ -19,6 +19,9 @@
         "react-locomotive-scroll": "^0.2.0",
         "react-router-dom": "^6.3.0",
         "react-scripts": "5.0.1",
+        "react-scroll": "^1.8.7",
+        "react-use": "^17.4.0",
+        "recoil": "^0.7.4",
         "styled-components": "^5.3.5",
         "styled-normalize": "^8.0.7",
         "swiper": "^8.3.0",
@@ -51,6 +54,7 @@
     },
     "devDependencies": {
         "@types/gsap": "^3.0.0",
+        "@types/react-scroll": "^1.8.3",
         "@types/styled-components": "^5.1.25"
     }
 }
