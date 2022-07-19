@@ -10,8 +10,8 @@ const Banner = () => {
         <s.Section>
             <s.BannerContainer main={main}>
                 <s.Character src={character} alt={character} />
+                <s.Wave src={waves} alt="waves" />
             </s.BannerContainer>
-            <s.Wave src={waves} alt="waves" />
         </s.Section>
     );
 };

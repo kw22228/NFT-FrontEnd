@@ -6,6 +6,7 @@ import SwiperCore, { Autoplay } from 'swiper';
 import 'swiper/css';
 
 import openSea from '../../../assets/images/OpenSea-icon.svg';
+import useViewportState from '../../../lib/hooks/useViewportState';
 
 const Nft = () => {
     const SwiperConfig: SwiperProps = {
@@ -28,8 +29,10 @@ const Nft = () => {
         swiperRef.current = Swiper;
     };
 
+    const nftRef = useRef<HTMLElement>(null);
+    useViewportState(nftRef, 'nft');
     return (
-        <s.Section>
+        <s.Section id="nft" ref={nftRef}>
             <s.Title>NFT</s.Title>
             <s.SliderContainer>
                 <Swiper {...SwiperConfig} onInit={onInit}>

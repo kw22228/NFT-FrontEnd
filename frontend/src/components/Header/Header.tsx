@@ -4,12 +4,11 @@ import * as s from './Header.style';
 import Logo from '../Logo/Logo';
 import gsap from 'gsap/all';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import connect from '../../lib/web3/connect';
-import { useNavigate } from 'react-router-dom';
+import MenuLink from './MenuLink/MenuLink';
+import { useRecoilState } from 'recoil';
+import { navAtom } from '../../lib/recoil/atoms';
 
 const Header = () => {
-    const navigate = useNavigate();
-
     const ref = useRef(null);
     gsap.registerPlugin(ScrollTrigger);
 
@@ -40,22 +39,23 @@ const Header = () => {
     //         tl.kill();
     //     };
     // }, []);
+
     return (
         <s.Header ref={ref}>
             <s.Nav>
                 <Logo />
 
                 <s.Menu>
-                    <s.MenuItem>HOME</s.MenuItem>
-                    <s.MenuItem>NFT</s.MenuItem>
-                    <s.MenuItem>STORY</s.MenuItem>
-                    <s.MenuItem>TEAM</s.MenuItem>
-                    <s.MenuItem>ROADMAP</s.MenuItem>
+                    <MenuLink title="HOME" link="home" scroll={true} />
+                    <MenuLink title="NFT" link="nft" scroll={true} />
+                    <MenuLink title="STORY" link="story" scroll={true} />
+                    <MenuLink title="TEAM" link="team" scroll={true} />
+                    <MenuLink title="ROADMAP" link="roadmap" scroll={true} />
 
                     <s.MenuSpace />
 
-                    <s.MenuItem onClick={() => navigate('/gallary')}>GALLARY</s.MenuItem>
-                    <s.MenuItem onClick={() => navigate('/mint')}>MINT</s.MenuItem>
+                    <MenuLink title="GALLARY" link="gallary" />
+                    <MenuLink title="MINT" link="mint" />
                 </s.Menu>
                 <s.SnsMenu>
                     <a href="#">d</a>

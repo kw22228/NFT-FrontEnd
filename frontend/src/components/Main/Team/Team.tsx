@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import useViewportState from '../../../lib/hooks/useViewportState';
 import * as s from './Team.style';
 
 interface ICard {
@@ -9,14 +10,16 @@ const Card = ({ text }: ICard) => {
 };
 
 const Team = () => {
+    const teamRef = useRef<HTMLElement>(null);
+    useViewportState(teamRef, 'team');
+
     return (
-        <s.Section>
+        <s.Section id="team" ref={teamRef}>
             <s.Title>Team</s.Title>
             <s.Container>
                 <Card text="Team1" />
                 <Card text="Team2" />
                 <Card text="Team3" />
-                <Card text="Team4" />
             </s.Container>
         </s.Section>
     );

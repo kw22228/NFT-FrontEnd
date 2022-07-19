@@ -5,6 +5,7 @@ import { Ball } from '../Main.style';
 import * as s from './Story.style';
 
 import golfBall from '../../../assets/images/ball.svg';
+import useViewportState from '../../../lib/hooks/useViewportState';
 
 interface IStoryBoard {
     img: string;
@@ -62,8 +63,11 @@ const Story = () => {
     //     };
     // }, []);
 
+    const storyRef = useRef<HTMLElement>(null);
+    useViewportState(storyRef, 'story');
+
     return (
-        <s.Section>
+        <s.Section id="story" ref={storyRef}>
             <s.Title>STORY</s.Title>
             <StoryBoard
                 img="Image1"

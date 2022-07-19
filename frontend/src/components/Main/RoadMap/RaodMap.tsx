@@ -5,6 +5,7 @@ import * as s from './RoadMap.style';
 
 import flag from '../../../assets/images/flag.svg';
 import golfBall from '../../../assets/images/ball.svg';
+import useViewportState from '../../../lib/hooks/useViewportState';
 
 interface IRoadMapItem {
     addToRefs: (el: HTMLDivElement) => void;
@@ -79,8 +80,11 @@ const RaodMap = () => {
     //     };
     // }, []);
 
+    const roadmapRef = useRef<HTMLElement>(null);
+    useViewportState(roadmapRef, 'roadmap');
+
     return (
-        <s.Section>
+        <s.Section id="roadmap" ref={roadmapRef}>
             <s.Title>RoadMap</s.Title>
             <s.Container>
                 <s.Line ref={ref} />
