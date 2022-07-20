@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useMatch, useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { navAtom } from '../../../lib/recoil/atoms';
+import delay from '../../../lib/utils/delay';
 import * as s from './MenuLink.style';
 
 interface IProps {
@@ -15,28 +16,19 @@ const MenuLink = ({ title, link, scroll = false }: IProps) => {
     const matchRoute = useMatch(link);
     const match: boolean = scroll ? navState === link : !!matchRoute;
     const navigate = useNavigate();
-
     const handleClick = () => {
         const href = scroll ? '/' : `/${link}`;
         navigate(href);
-
-        if (scroll) {
-            const top = document.querySelector('body') as HTMLElement;
-            const element = document.querySelector('#' + link) as HTMLElement;
-            top.scrollIntoView({
-                behavior: 'auto',
-                block: 'start',
-                inline: 'nearest',
-            });
-
-            element.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start',
-                inline: 'nearest',
-            });
-        }
-
-        setNavState(link);
+        delay(() => {
+            if (scroll) {
+                const element = document.querySelector('#' + link) as HTMLElement;
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                    inline: 'nearest',
+                });
+            }
+        }, 0);
     };
     return (
         <>

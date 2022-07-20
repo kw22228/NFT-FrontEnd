@@ -6,6 +6,7 @@ import * as s from './Story.style';
 
 import golfBall from '../../../assets/images/ball.svg';
 import useViewportState from '../../../lib/hooks/useViewportState';
+import GsapStory from '../../../lib/animation/gsap/GsapStory';
 
 interface IStoryBoard {
     img: string;
@@ -24,44 +25,13 @@ const StoryBoard = ({ img, text, direction = 'row', addToRefs }: IStoryBoard) =>
 };
 
 const Story = () => {
-    const ref = useRef<HTMLDivElement[]>([]);
+    const revealRef = useRef<HTMLDivElement[]>([]);
     const addToRefs = (el: HTMLDivElement) => {
-        if (el && !ref.current.includes(el)) {
-            ref?.current.push(el);
+        if (el && !revealRef.current.includes(el)) {
+            revealRef?.current.push(el);
         }
     };
-
-    // gsap.registerPlugin(ScrollTrigger);
-
-    // useLayoutEffect(() => {
-    //     const tl = gsap.timeline();
-    //     ref.current.forEach((el, index) => {
-    //         const dir = el.attributes[0].value;
-
-    //         tl.fromTo(
-    //             el,
-    //             {
-    //                 x: dir === 'row' ? -300 : 300,
-    //                 opacity: 0,
-    //             },
-    //             {
-    //                 x: 0,
-    //                 opacity: 1,
-
-    //                 scrollTrigger: {
-    //                     trigger: el,
-    //                     start: 'top-=200 center',
-    //                     end: 'bottom-=200 center',
-    //                     scrub: true,
-    //                 },
-    //             }
-    //         );
-    //     });
-
-    //     return () => {
-    //         tl.kill();
-    //     };
-    // }, []);
+    // GsapStory({ revealRef });
 
     const storyRef = useRef<HTMLElement>(null);
     useViewportState(storyRef, 'story');

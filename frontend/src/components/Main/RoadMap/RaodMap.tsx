@@ -1,19 +1,18 @@
-import gsap from 'gsap/all';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import * as s from './RoadMap.style';
 
 import flag from '../../../assets/images/flag.svg';
 import golfBall from '../../../assets/images/ball.svg';
 import useViewportState from '../../../lib/hooks/useViewportState';
+import GsapRoadMap from '../../../lib/animation/gsap/GsapRoadMap';
 
 interface IRoadMapItem {
-    addToRefs: (el: HTMLDivElement) => void;
+    // addToRefs: (el: HTMLDivElement) => void;
     text: string;
 }
-const RoadMapItem = ({ addToRefs, text }: IRoadMapItem) => {
+const RoadMapItem = ({ text }: IRoadMapItem) => {
     return (
-        <s.Item ref={addToRefs}>
+        <s.Item>
             <s.ItemContainer>
                 <s.Box>{text}</s.Box>
                 <s.BallTop>
@@ -27,58 +26,9 @@ const RoadMapItem = ({ addToRefs, text }: IRoadMapItem) => {
     );
 };
 const RaodMap = () => {
-    const ref = useRef<HTMLDivElement>(null);
-    const revealRef = useRef<HTMLDivElement[]>([]);
-    const addToRefs = (el: HTMLDivElement) => {
-        if (el && !revealRef.current.includes(el)) {
-            revealRef?.current.push(el);
-        }
-    };
-    // gsap.registerPlugin(ScrollTrigger);
-
-    // useLayoutEffect(() => {
-    //     const element = ref.current;
-    //     const length = element?.offsetHeight as number;
-
-    //     const tl = gsap.timeline({
-    //         scrollTrigger: {
-    //             trigger: element,
-    //             start: 'top-=30% top',
-    //             end: 'bottom bottom',
-    //             onUpdate: (self: any) => {
-    //                 const draw = length * self.progress;
-    //                 if (element !== null) {
-    //                     element.style.height = `${draw}px`;
-    //                 }
-    //             },
-    //         },
-    //     });
-
-    //     revealRef.current.forEach((el, index) => {
-    //         tl.fromTo(
-    //             el,
-    //             {
-    //                 y: 300,
-    //                 opacity: 0,
-    //             },
-    //             {
-    //                 y: 0,
-    //                 opacity: 1,
-
-    //                 scrollTrigger: {
-    //                     trigger: el,
-    //                     start: 'top-=450 center',
-    //                     end: 'bottom-=450 center',
-    //                     scrub: true,
-    //                 },
-    //             }
-    //         );
-    //     });
-
-    //     return () => {
-    //         tl.kill();
-    //     };
-    // }, []);
+    const lineRef = useRef<HTMLDivElement>(null);
+    const ballRef = useRef<HTMLDivElement>(null);
+    GsapRoadMap({ lineRef, ballRef });
 
     const roadmapRef = useRef<HTMLElement>(null);
     useViewportState(roadmapRef, 'roadmap');
@@ -87,39 +37,42 @@ const RaodMap = () => {
         <s.Section id="roadmap" ref={roadmapRef}>
             <s.Title>RoadMap</s.Title>
             <s.Container>
-                <s.Line ref={ref} />
+                <s.Line ref={lineRef}>
+                    <s.LineBall ref={ballRef} />
+                </s.Line>
+
                 <s.Items>
                     <s.Item>&nbsp;</s.Item>
                     <RoadMapItem
-                        addToRefs={addToRefs}
+                        // addToRefs={addToRefs}
                         text="METAVERSE - OFFLINE PLACE 간의 경계를 허물며 "
                     />
                     <RoadMapItem
-                        addToRefs={addToRefs}
+                        // addToRefs={addToRefs}
                         text="METAVERSE - OFFLINE PLACE 간의 경계를 허물며 "
                     />
                     <RoadMapItem
-                        addToRefs={addToRefs}
+                        // addToRefs={addToRefs}
                         text="METAVERSE - OFFLINE PLACE 간의 경계를 허물며 "
                     />
                     <RoadMapItem
-                        addToRefs={addToRefs}
+                        // addToRefs={addToRefs}
                         text="METAVERSE - OFFLINE PLACE 간의 경계를 허물며 "
                     />
                     <RoadMapItem
-                        addToRefs={addToRefs}
+                        // addToRefs={addToRefs}
                         text="METAVERSE - OFFLINE PLACE 간의 경계를 허물며 "
                     />
                     <RoadMapItem
-                        addToRefs={addToRefs}
+                        // addToRefs={addToRefs}
                         text="METAVERSE - OFFLINE PLACE 간의 경계를 허물며 "
                     />
                     <RoadMapItem
-                        addToRefs={addToRefs}
+                        // addToRefs={addToRefs}
                         text="METAVERSE - OFFLINE PLACE 간의 경계를 허물며 "
                     />
                     <RoadMapItem
-                        addToRefs={addToRefs}
+                        // addToRefs={addToRefs}
                         text="METAVERSE - OFFLINE PLACE 간의 경계를 허물며 "
                     />
                 </s.Items>

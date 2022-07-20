@@ -6,72 +6,21 @@ import Nft from './Nft/Nft';
 import Story from './Story/Story';
 import Team from './Team/Team';
 import RaodMap from './RoadMap/RaodMap';
-import gsap from 'gsap/all';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 
 import glofBall from '../../assets/images/ball.svg';
-import useIsInViewport from '../../lib/hooks/useIsInViewport';
-import { useSetRecoilState } from 'recoil';
-import { navAtom } from '../../lib/recoil/atoms';
 import useViewportState from '../../lib/hooks/useViewportState';
+import GsapMain from '../../lib/animation/gsap/GsapMain';
 
 const Main = () => {
     const imgRef = useRef<HTMLDivElement>(null);
     const textBoxRef = useRef<HTMLDivElement>(null);
-
-    // gsap.registerPlugin(ScrollTrigger);
-
-    // useLayoutEffect(() => {
-    //     const imgEl = imgRef.current;
-
-    //     const tl = gsap.timeline();
-    //     tl.fromTo(
-    //         imgRef.current,
-    //         {
-    //             x: -300,
-    //             opacity: 0,
-    //         },
-    //         {
-    //             x: 0,
-    //             opacity: 1,
-
-    //             scrollTrigger: {
-    //                 trigger: imgEl,
-    //                 start: 'top-=200 center',
-    //                 end: 'bottom-=200 center',
-    //                 scrub: true,
-    //             },
-    //         }
-    //     );
-    //     tl.fromTo(
-    //         textBoxRef.current,
-    //         {
-    //             x: -300,
-    //             opacity: 0,
-    //         },
-    //         {
-    //             x: 0,
-    //             opacity: 1,
-
-    //             scrollTrigger: {
-    //                 trigger: textBoxRef.current,
-    //                 start: 'top-=200 center',
-    //                 end: 'bottom-=200 center',
-    //                 scrub: true,
-    //             },
-    //         }
-    //     );
-
-    //     return () => {
-    //         tl.kill();
-    //     };
-    // }, []);
+    // GsapMain({ imgRef, textBoxRef });
 
     const homeRef = useRef<HTMLElement>(null);
     useViewportState(homeRef, 'home');
     return (
         <>
-            <s.MainSection ref={homeRef}>
+            <s.MainSection ref={homeRef} id="home">
                 <Banner />
                 <s.MainContainer>
                     <s.Img ref={imgRef}>image</s.Img>

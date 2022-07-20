@@ -29,11 +29,24 @@ export const Line = styled.div`
     width: 2px;
     height: 100%;
     background-color: ${props => props.theme.body};
-
+    visibility: hidden;
     position: absolute;
     top: 0rem;
     left: 50%;
     transform: translateX(-50%);
+`;
+
+export const LineBall = styled.div`
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background-color: white;
+
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
 `;
 
 export const Items = styled.div`

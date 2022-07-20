@@ -7,38 +7,11 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import MenuLink from './MenuLink/MenuLink';
 import { useRecoilState } from 'recoil';
 import { navAtom } from '../../lib/recoil/atoms';
+import GsapHeader from '../../lib/animation/gsap/GsapHeader';
 
 const Header = () => {
     const ref = useRef(null);
-    gsap.registerPlugin(ScrollTrigger);
-
-    // useLayoutEffect(() => {
-    //     const element = ref.current;
-
-    //     const tl = gsap.timeline();
-    //     tl.to(element, {
-    //         position: 'fixed',
-    //         top: '1rem',
-    //         left: '50%',
-    //         width: '80%',
-    //         transform: 'translateX(-50%)',
-
-    //         padding: '',
-    //         borderRadius: '50px',
-    //         border: '3px solid white',
-
-    //         scrollTrigger: {
-    //             trigger: element,
-    //             start: 'bottom+=200 top',
-    //             end: '+=200',
-    //             scrub: true,
-    //         },
-    //     });
-
-    //     return () => {
-    //         tl.kill();
-    //     };
-    // }, []);
+    // GsapHeader({ ref });
 
     return (
         <s.Header ref={ref}>
