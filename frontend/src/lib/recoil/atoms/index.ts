@@ -1,8 +1,8 @@
 import { atom } from 'recoil';
 
-export const navAtom = atom<string>({
+export const navAtom = atom<string | null>({
     key: 'navState',
-    default: 'home',
+    default: null,
 });
 
 export const yPositionAtom = atom<number>({
