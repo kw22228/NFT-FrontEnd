@@ -5,7 +5,7 @@ export const Header = styled.header`
     width: 100vw;
     height: ${variouble.navHeight};
     background-color: transparent;
-    position: absolute;
+    position: fixed;
     z-index: 99;
 `;
 
@@ -25,11 +25,6 @@ export const Menu = styled.ul`
     list-style: none;
 `;
 
-export const MenuItem = styled.li`
-    text-transform: uppercase;
-    margin: 0 1.2rem;
-    cursor: pointer;
-`;
 export const MenuSpace = styled.li`
     background-color: black;
     margin-top: 5px;

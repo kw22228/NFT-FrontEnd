@@ -2,6 +2,18 @@ import styled from 'styled-components';
 
 export const MainSection = styled.section`
     width: 100vw;
+    min-height: 200vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+`;
+
+export const MainContainer = styled.div`
+    width: 100vw;
     height: 100vh;
 
     display: flex;

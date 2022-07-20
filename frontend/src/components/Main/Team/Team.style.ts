@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const Section = styled.section`
-    height: 60vh;
+    height: 100vh;
     width: 100vw;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
 `;
 
 export const Title = styled.h1`
@@ -20,7 +20,7 @@ export const Title = styled.h1`
 
 export const Container = styled.div`
     width: 74%;
-    height: 100%;
+    height: 70%;
     margin: 0 auto;
 
     display: flex;

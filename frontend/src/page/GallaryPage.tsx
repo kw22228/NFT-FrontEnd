@@ -1,7 +1,12 @@
 import React from 'react';
+import Gallary from '../components/Gallary/Gallary';
 
 const GallaryPage = () => {
-    return <div style={{ width: '100vw', height: '100vh' }}>GallaryPage</div>;
+    return (
+        <>
+            <Gallary />
+        </>
+    );
 };
 
 export default GallaryPage;
