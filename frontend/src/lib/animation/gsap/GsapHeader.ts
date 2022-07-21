@@ -7,10 +7,11 @@ const GsapHeader = ({ ref, navRef }: IGsapProps) => {
     gsap.registerPlugin(ScrollTrigger);
 
     useLayoutEffect(() => {
-        const element = ref.current;
-        const navElement = navRef.current;
+        let element = ref.current;
+        let navElement = navRef.current;
 
-        const tl = gsap.timeline();
+        let tl = gsap.timeline();
+
         tl.to(element, {
             position: 'fixed',
             top: '1rem',
@@ -28,6 +29,7 @@ const GsapHeader = ({ ref, navRef }: IGsapProps) => {
                 start: 'bottom+=200 top',
                 end: '+=200',
                 scrub: true,
+                // markers: true,
             },
         });
 
