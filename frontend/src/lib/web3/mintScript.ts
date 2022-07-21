@@ -1,4 +1,4 @@
-let account;
+let account: string;
 let mintIndexForSale = 0;
 let maxSaleAmount = 0;
 let mintPrice = 0;
@@ -12,7 +12,8 @@ function cntBlockNumber() {
     if (!blockCnt) {
         setInterval(function () {
             blockNumber += 1;
-            document.getElementById('blockNubmer').innerHTML = '현재 블록: #' + blockNumber;
+            //document.getElementById('blockNubmer').innerHTML = '현재 블록: #' + blockNumber;
+            console.log('현재 블록: #' + blockNumber);
         }, 1000);
         blockCnt = true;
     }
@@ -30,11 +31,10 @@ async function connect() {
     }
     account = accounts[0];
     caver.klay.getBalance(account).then(function (balance) {
-        document.getElementById('myWallet').innerHTML = `지갑주소: ${account}`;
-        document.getElementById('myKlay').innerHTML = `잔액: ${caver.utils.fromPeb(
-            balance,
-            'KLAY'
-        )} KLAY`;
+        //document.getElementById('myWallet').innerHTML = `지갑주소: ${account}`;
+        console.log('지갑 주소: #' + '${account}');
+        //document.getElementById('myKlay').innerHTML = `잔액: ${caver.utils.fromPeb(balance,'KLAY')} KLAY`;
+        console.log('잔액: #' + '${caver.utils.fromPeb}');
     });
     await check_status();
 }
@@ -51,26 +51,16 @@ async function check_status() {
             mintStartBlockNumber = parseInt(result[4]);
             maxSaleAmount = parseInt(result[5]);
             mintPrice = parseInt(result[6]);
-            document.getElementById('mintCnt').innerHTML = `${
-                mintIndexForSale - 1
-            } / ${maxSaleAmount}`;
-            document.getElementById(
-                'mintLimitPerBlock'
-            ).innerHTML = `트랜잭션당 최대 수량: ${mintLimitPerBlock}개`;
-            document.getElementById('amount').max = mintLimitPerBlock;
-            document.getElementById(
-                'mintStartBlockNumber'
-            ).innerHTML = `민팅 시작 블록: #${mintStartBlockNumber}`;
-            document.getElementById('mintPrice').innerHTML = `민팅 가격: ${caver.utils.fromPeb(
-                mintPrice,
-                'KLAY'
-            )} KLAY`;
+            console.log(`${mintIndexForSale - 1} / ${maxSaleAmount}`);
+            console.log(`트랜잭션당 최대 수량: ${mintLimitPerBlock}개`);
+            console.log(`민팅 시작 블록: #${mintStartBlockNumber}`);
+            console.log(`민팅 가격: ${caver.utils.fromPeb(mintPrice, 'KLAY')} KLAY`);
         })
         .catch(function (error) {
             console.log(error);
         });
     blockNumber = await caver.klay.getBlockNumber();
-    document.getElementById('blockNubmer').innerHTML = '현재 블록: #' + blockNumber;
+    console.log('현재 블록: #' + blockNumber);
     cntBlockNumber();
 }
 
@@ -120,3 +110,5 @@ async function publicMint() {
         alert('민팅에 실패하였습니다.');
     }
 }
+
+export default publicMint;
