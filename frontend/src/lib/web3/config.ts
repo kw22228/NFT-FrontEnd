@@ -1,5 +1,5 @@
-const CONTRACTADDRESS = '0x98fbEAD150c0aa7Fe595227D6fA9D612C969A510';
-const ABI = [
+export const CONTRACTADDRESS = '0x98fbEAD150c0aa7Fe595227D6fA9D612C969A510';
+export const ABI = [
 	{
 		"inputs": [
 			{
