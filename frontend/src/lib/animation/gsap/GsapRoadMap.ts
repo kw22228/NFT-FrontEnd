@@ -24,7 +24,7 @@ const GsapRoadMap = ({ lineRef, ballRef }: IGsapProps) => {
                 trigger: element,
                 start: 'top-=30% top',
                 end: 'bottom bottom',
-                markers: true,
+                // markers: true,
                 onUpdate: (self: any) => {
                     const draw = length * self.progress;
                     if (element !== null) {

@@ -3,11 +3,12 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import React, { useLayoutEffect } from 'react';
 import { IGsapProps } from '../../types/GsapTypes';
 
-const GsapHeader = ({ ref }: IGsapProps) => {
+const GsapHeader = ({ ref, navRef }: IGsapProps) => {
     gsap.registerPlugin(ScrollTrigger);
 
     useLayoutEffect(() => {
         const element = ref.current;
+        const navElement = navRef.current;
 
         const tl = gsap.timeline();
         tl.to(element, {
@@ -20,7 +21,18 @@ const GsapHeader = ({ ref }: IGsapProps) => {
             padding: '',
             borderRadius: '50px',
             border: '3px solid white',
+            backgroundColor: 'rgba(255,255,255,0.7)',
 
+            scrollTrigger: {
+                trigger: element,
+                start: 'bottom+=200 top',
+                end: '+=200',
+                scrub: true,
+            },
+        });
+
+        tl.to(navElement, {
+            width: '90%',
             scrollTrigger: {
                 trigger: element,
                 start: 'bottom+=200 top',
