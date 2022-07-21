@@ -11,6 +11,8 @@ import glofBall from '../../assets/images/ball.svg';
 import useViewportState from '../../lib/hooks/useViewportState';
 import GsapMain from '../../lib/animation/gsap/GsapMain';
 import { bottomToTop } from '../../lib/animation/variants/revealVariant';
+import { useViewportScroll } from 'framer-motion';
+import { useLocomotiveScroll } from 'react-locomotive-scroll';
 
 const Main = () => {
     const imgRef = useRef<HTMLDivElement>(null);
@@ -19,6 +21,8 @@ const Main = () => {
 
     const homeRef = useRef<HTMLElement>(null);
     useViewportState(homeRef, 'home');
+
+    console.log('render');
     return (
         <>
             <s.MainSection ref={homeRef} id="home">

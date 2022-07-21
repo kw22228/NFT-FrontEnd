@@ -16,11 +16,11 @@ const Header = () => {
                 <Logo />
 
                 <s.Menu>
-                    <MenuLink title="HOME" link="home" scroll={true} />
-                    <MenuLink title="NFT" link="nft" scroll={true} />
-                    <MenuLink title="STORY" link="story" scroll={true} />
-                    <MenuLink title="TEAM" link="team" scroll={true} />
-                    <MenuLink title="ROADMAP" link="roadmap" scroll={true} />
+                    <MenuLink title="HOME" link="home" isScroll={true} />
+                    <MenuLink title="NFT" link="nft" isScroll={true} />
+                    <MenuLink title="STORY" link="story" isScroll={true} />
+                    <MenuLink title="TEAM" link="team" isScroll={true} />
+                    <MenuLink title="ROADMAP" link="roadmap" isScroll={true} />
 
                     <s.MenuSpace />
 

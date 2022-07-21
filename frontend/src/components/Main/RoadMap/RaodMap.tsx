@@ -28,7 +28,7 @@ const RoadMapItem = ({ text }: IRoadMapItem) => {
 const RaodMap = () => {
     const lineRef = useRef<HTMLDivElement>(null);
     const ballRef = useRef<HTMLDivElement>(null);
-    GsapRoadMap({ lineRef, ballRef });
+    // GsapRoadMap({ lineRef, ballRef });
 
     const roadmapRef = useRef<HTMLElement>(null);
     useViewportState(roadmapRef, 'roadmap');
