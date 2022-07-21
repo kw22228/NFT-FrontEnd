@@ -1,21 +1,18 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import * as s from './Header.style';
 
 import Logo from '../Logo/Logo';
-import gsap from 'gsap/all';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 import MenuLink from './MenuLink/MenuLink';
-import { useRecoilState } from 'recoil';
-import { navAtom } from '../../lib/recoil/atoms';
 import GsapHeader from '../../lib/animation/gsap/GsapHeader';
 
 const Header = () => {
     const ref = useRef(null);
-    // GsapHeader({ ref });
+    const navRef = useRef(null);
+    GsapHeader({ ref, navRef });
 
     return (
         <s.Header ref={ref}>
-            <s.Nav>
+            <s.Nav ref={navRef}>
                 <Logo />
 
                 <s.Menu>

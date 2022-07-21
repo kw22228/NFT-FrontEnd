@@ -1,23 +1,36 @@
-import gsap from 'gsap/all';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { Ball } from '../Main.style';
 import * as s from './Story.style';
 
 import golfBall from '../../../assets/images/ball.svg';
 import useViewportState from '../../../lib/hooks/useViewportState';
 import GsapStory from '../../../lib/animation/gsap/GsapStory';
+import {
+    bottomToTop,
+    leftToRight,
+    rightToLeft,
+} from '../../../lib/animation/variants/revealVariant';
 
 interface IStoryBoard {
     img: string;
     text: string;
     direction?: string;
-    addToRefs: (el: HTMLDivElement) => void;
+    addToRefs?: (el: HTMLDivElement) => void;
 }
 
-const StoryBoard = ({ img, text, direction = 'row', addToRefs }: IStoryBoard) => {
+const StoryBoard = ({ img, text, direction = 'row' }: IStoryBoard) => {
     return (
-        <s.Container direction={direction} ref={addToRefs}>
+        <s.Container //
+            direction={direction}
+            // variants={direction === 'row' ? leftToRight : rightToLeft}
+            variants={bottomToTop}
+            initial="initial"
+            whileInView="onViewport"
+            viewport={{
+                once: true,
+                amount: 'some',
+            }}
+        >
             <s.ImgBox>{img}</s.ImgBox>
             <s.TextBox>{text}</s.TextBox>
         </s.Container>
@@ -44,7 +57,7 @@ const Story = () => {
                 text="METAVERSE - OFFLINE PLACE 간의 경계를 허물며 
 새로운 역사를 써갈 HAPPIER TOWN에서 
 새로운 경험과 특별한 혜택을 누려보세요!"
-                addToRefs={addToRefs}
+                // addToRefs={addToRefs}
             />
             <StoryBoard
                 img="Image2"
@@ -52,14 +65,14 @@ const Story = () => {
 새로운 역사를 써갈 HAPPIER TOWN에서 
 새로운 경험과 특별한 혜택을 누려보세요!"
                 direction="reverse"
-                addToRefs={addToRefs}
+                // addToRefs={addToRefs}
             />
             <StoryBoard
                 img="Image3"
                 text="METAVERSE - OFFLINE PLACE 간의 경계를 허물며 
 새로운 역사를 써갈 HAPPIER TOWN에서 
 새로운 경험과 특별한 혜택을 누려보세요!"
-                addToRefs={addToRefs}
+                // addToRefs={addToRefs}
             />
 
             <s.Ball bg={golfBall} />
