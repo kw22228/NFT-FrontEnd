@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
+import 'locomotive-scroll/dist/locomotive-scroll.css';
 
 import Header from './components/Header/Header';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
@@ -9,15 +10,14 @@ import MainPage from './page/MainPage';
 import MintPage from './page/MintPage';
 import { useRef } from 'react';
 import ScrollTriggerProxy from './lib/animation/gsap/ScrollTriggerProxy';
-import useLocoScroll from './lib/hooks/useLocoScroll';
 
 function App() {
     const containRef = useRef(null);
-    useLocoScroll(true);
+    // useLocoScroll(true);
 
     return (
         <BrowserRouter>
-            {/* <LocomotiveScrollProvider
+            <LocomotiveScrollProvider
                 options={{
                     smooth: true,
                     smartphone: {
@@ -35,21 +35,21 @@ function App() {
                     ]
                 }
                 containerRef={containRef}
-            > */}
-            {/* <ScrollTriggerProxy /> */}
-            <main className="App" id="App" data-scroll-container ref={containRef}>
-                <ScrollToTop>
-                    <Header />
-                    <Routes>
-                        <Route path="/" element={<MainPage />} />
+            >
+                <ScrollTriggerProxy />
+                <main className="App" id="App" data-scroll-container ref={containRef}>
+                    <ScrollToTop>
+                        <Header />
+                        <Routes>
+                            <Route path="/" element={<MainPage />} />
 
-                        <Route path="/gallary" element={<GallaryPage />} />
-                        <Route path="/mint" element={<MintPage />} />
-                    </Routes>
-                    <Footer />
-                </ScrollToTop>
-            </main>
-            {/* </LocomotiveScrollProvider> */}
+                            <Route path="/gallary" element={<GallaryPage />} />
+                            <Route path="/mint" element={<MintPage />} />
+                        </Routes>
+                        <Footer />
+                    </ScrollToTop>
+                </main>
+            </LocomotiveScrollProvider>
         </BrowserRouter>
     );
 }

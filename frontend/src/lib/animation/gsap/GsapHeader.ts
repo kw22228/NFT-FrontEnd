@@ -4,13 +4,14 @@ import React, { useLayoutEffect } from 'react';
 import { IGsapProps } from '../../types/GsapTypes';
 
 const GsapHeader = ({ ref, navRef }: IGsapProps) => {
-    // gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger);
 
     useLayoutEffect(() => {
         let element = ref.current;
         let navElement = navRef.current;
 
         let tl = gsap.timeline();
+
         setTimeout(() => {
             tl.to(element, {
                 position: 'fixed',
@@ -34,16 +35,16 @@ const GsapHeader = ({ ref, navRef }: IGsapProps) => {
                 },
             });
 
-            tl.to(navElement, {
-                width: '90%',
-                scrollTrigger: {
-                    trigger: element,
-                    start: 'bottom+=200 top',
-                    end: '+=200',
-                    scrub: true,
-                },
-            });
-            ScrollTrigger.refresh();
+            // tl.to(navElement, {
+            //     width: '90%',
+            //     scrollTrigger: {
+            //         trigger: element,
+            //         start: 'bottom+=200 top',
+            //         end: '+=200',
+            //         scrub: true,
+            //     },
+            // });
+            // ScrollTrigger.refresh();
         });
 
         return () => {
