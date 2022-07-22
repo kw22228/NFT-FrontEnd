@@ -26,10 +26,10 @@ function cntBlockNumber() {
 }
 
 async function connect() {
-    const accounts = await klaytn.enable();
-    if (klaytn.networkVersion === 8217) {
+    const accounts = await window.klaytn.enable();
+    if (window.klaytn.networkVersion === 8217) {
         console.log('메인넷');
-    } else if (klaytn.networkVersion === 1001) {
+    } else if (window.klaytn.networkVersion === 1001) {
         console.log('테스트넷');
     } else {
         alert('ERROR: 클레이튼 네트워크로 연결되지 않았습니다!');
@@ -71,9 +71,9 @@ async function check_status() {
 }
 
 async function publicMint() {
-    if (klaytn.networkVersion === 8217) {
+    if (window.klaytn.networkVersion === 8217) {
         console.log('메인넷');
-    } else if (klaytn.networkVersion === 1001) {
+    } else if (window.klaytn.networkVersion === 1001) {
         console.log('테스트넷');
     } else {
         alert('ERROR: 클레이튼 네트워크로 연결되지 않았습니다!');
