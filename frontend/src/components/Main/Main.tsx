@@ -25,7 +25,7 @@ const Main = () => {
     console.log('render');
     return (
         <>
-            <s.MainSection ref={homeRef} id="home">
+            <s.MainSection ref={homeRef} id="home" data-scroll-section>
                 <Banner />
                 <s.MainContainer>
                     <s.Img //

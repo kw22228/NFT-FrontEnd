@@ -34,7 +34,7 @@ const RaodMap = () => {
     useViewportState(roadmapRef, 'roadmap');
 
     return (
-        <s.Section id="roadmap" ref={roadmapRef}>
+        <s.Section id="roadmap" ref={roadmapRef} data-scroll-section>
             <s.Title>RoadMap</s.Title>
             <s.Container>
                 <s.Line ref={lineRef}>

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import * as s from './Mint.style';
 
-import connect from '../../lib/web3/connect';
 import { useSetRecoilState } from 'recoil';
 import { navAtom } from '../../lib/recoil/atoms';
 const Mint = () => {
@@ -10,9 +9,7 @@ const Mint = () => {
         setNavState('mint');
     });
 
-    const handleClick = () => {
-        connect();
-    };
+    const handleClick = () => {};
 
     return (
         <s.Section>

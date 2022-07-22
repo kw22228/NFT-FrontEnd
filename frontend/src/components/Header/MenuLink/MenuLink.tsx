@@ -25,7 +25,6 @@ const MenuLink = ({ title, link, isScroll = false }: IProps) => {
         delay(() => {
             if (isScroll) {
                 const element = document.querySelector('#' + link) as HTMLElement;
-                console.log(element);
                 // element.scrollIntoView({
                 //     behavior: 'smooth',
                 //     block: 'start',
@@ -35,6 +34,7 @@ const MenuLink = ({ title, link, isScroll = false }: IProps) => {
                     offset: '0',
                     duration: '1000',
                     easing: [0.25, 0.0, 0.35, 1.0],
+                    // disableLerp: false,
                 });
             }
         }, 150);

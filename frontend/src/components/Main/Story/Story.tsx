@@ -50,7 +50,7 @@ const Story = () => {
     useViewportState(storyRef, 'story');
 
     return (
-        <s.Section id="story" ref={storyRef}>
+        <s.Section id="story" ref={storyRef} data-scroll-section>
             <s.Title>STORY</s.Title>
             <StoryBoard
                 img="Image1"
