@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useLocomotiveScroll } from 'react-locomotive-scroll';
 import { useMatch, useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { navAtom } from '../../../lib/recoil/atoms';
@@ -8,27 +9,35 @@ import * as s from './MenuLink.style';
 interface IProps {
     title: string;
     link: string;
-    scroll?: boolean;
+    isScroll?: boolean;
     matchValue?: string;
 }
-const MenuLink = ({ title, link, scroll = false }: IProps) => {
+const MenuLink = ({ title, link, isScroll = false }: IProps) => {
     const [navState, setNavState] = useRecoilState(navAtom);
     const matchRoute = useMatch(link);
-    const match: boolean = scroll ? navState === link : !!matchRoute;
+    const match: boolean = isScroll ? navState === link : !!matchRoute;
     const navigate = useNavigate();
+    const { scroll } = useLocomotiveScroll();
+
     const handleClick = () => {
-        const href = scroll ? '/' : `/${link}`;
+        const href = isScroll ? '/' : `/${link}`;
         navigate(href);
         delay(() => {
-            if (scroll) {
+            if (isScroll) {
                 const element = document.querySelector('#' + link) as HTMLElement;
-                element.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start',
-                    inline: 'nearest',
+                // element.scrollIntoView({
+                //     behavior: 'smooth',
+                //     block: 'start',
+                //     inline: 'nearest',
+                // });
+                scroll.scrollTo(element, {
+                    offset: '0',
+                    duration: '1000',
+                    easing: [0.25, 0.0, 0.35, 1.0],
+                    // disableLerp: false,
                 });
             }
-        }, 0);
+        }, 150);
     };
     return (
         <>

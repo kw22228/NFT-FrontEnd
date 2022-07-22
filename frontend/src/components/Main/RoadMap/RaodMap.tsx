@@ -28,13 +28,13 @@ const RoadMapItem = ({ text }: IRoadMapItem) => {
 const RaodMap = () => {
     const lineRef = useRef<HTMLDivElement>(null);
     const ballRef = useRef<HTMLDivElement>(null);
-    GsapRoadMap({ lineRef, ballRef });
+    // GsapRoadMap({ lineRef, ballRef });
 
     const roadmapRef = useRef<HTMLElement>(null);
     useViewportState(roadmapRef, 'roadmap');
 
     return (
-        <s.Section id="roadmap" ref={roadmapRef}>
+        <s.Section id="roadmap" ref={roadmapRef} data-scroll-section>
             <s.Title>RoadMap</s.Title>
             <s.Container>
                 <s.Line ref={lineRef}>

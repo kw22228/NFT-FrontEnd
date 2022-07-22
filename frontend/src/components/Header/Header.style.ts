@@ -6,6 +6,8 @@ export const Header = styled.header`
     height: ${variouble.navHeight};
     background-color: transparent;
     position: fixed;
+    top: 0;
+    left: 0;
     z-index: 99;
 `;
 

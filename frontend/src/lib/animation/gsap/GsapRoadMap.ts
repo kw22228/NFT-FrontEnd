@@ -10,14 +10,14 @@ const GsapRoadMap = ({ lineRef, ballRef }: IGsapProps) => {
         const element = lineRef.current;
         const length = element?.offsetHeight as number;
 
-        const pulse = gsap.timeline({
-            defaults: {
-                scale: 2,
-                autoAlpha: 1,
-                transformOrigin: 'center',
-                ease: 'elastic(2.5, 1)',
-            },
-        });
+        // const pulse = gsap.timeline({
+        //     defaults: {
+        //         scale: 2,
+        //         autoAlpha: 1,
+        //         transformOrigin: 'center',
+        //         ease: 'elastic(2.5, 1)',
+        //     },
+        // });
 
         const tl = gsap.timeline({
             scrollTrigger: {

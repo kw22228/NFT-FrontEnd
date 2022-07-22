@@ -13,9 +13,13 @@ const Mint = () => {
         setNavState('mint');
     });
 
+<<<<<<< HEAD
+    const handleClick = () => {};
+=======
     const handleClick = () => {
         publicMint();
     };
+>>>>>>> root_origin/master
 
     return (
         <s.Section>

@@ -20,6 +20,15 @@ const GlobalStyle = createGlobalStyle`
         color: inherit;
         text-decoration: none;
     }
+
+    // locomotive scroll no flickering
+    .has-scroll-smooth {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
 `;
 
 export default GlobalStyle;
