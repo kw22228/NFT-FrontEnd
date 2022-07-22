@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 export const MainSection = styled.section`
     width: 100vw;
@@ -24,7 +25,7 @@ export const MainContainer = styled.div`
     position: relative;
 `;
 
-export const Img = styled.div`
+export const Img = styled(motion.div)`
     background-color: ${props => props.theme.body};
 
     width: 55%;
@@ -35,7 +36,7 @@ export const Img = styled.div`
     align-items: center;
 `;
 
-export const TextBox = styled.div`
+export const TextBox = styled(motion.div)`
     /* background-color: ${props => props.theme.body}; */
     color: ${props => props.theme.body};
     font-weight: 600;

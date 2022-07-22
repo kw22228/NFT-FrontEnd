@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { motion } from 'framer-motion';
 export const Section = styled.section`
     height: 200vh;
     width: 100vw;
@@ -20,7 +20,7 @@ export const Title = styled.h1`
     width: fit-content;
 `;
 
-export const Container = styled.div<{ direction?: String }>`
+export const Container = styled(motion.div)<{ direction?: String }>`
     display: flex;
     flex-direction: ${props => (props.direction === 'reverse' ? 'row-reverse' : 'row')};
     justify-content: center;

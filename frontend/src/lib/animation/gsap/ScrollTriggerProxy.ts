@@ -1,19 +1,18 @@
-import gsap from 'gsap/all';
+import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { useEffect } from 'react';
 import { useLocomotiveScroll } from 'react-locomotive-scroll';
 
 const ScrollTriggerProxy = () => {
-    // First let's get instance of locomotive scroll
     const { scroll } = useLocomotiveScroll();
 
-    // Register scroll trigger plugin
     gsap.registerPlugin(ScrollTrigger);
 
     useEffect(() => {
         if (scroll) {
             const element = scroll?.el; // locomotive scrolling element, in out it's app (main)
-            scroll.on('scroll', ScrollTrigger.update); // On scroll of locomotive, update scrolltrigger
+
+            scroll.on('scroll', () => ScrollTrigger.update); // On scroll of locomotive, update scrolltrigger
 
             // Let's use scroller proxy
             ScrollTrigger.scrollerProxy(element, {
@@ -21,7 +20,12 @@ const ScrollTriggerProxy = () => {
                     return arguments.length
                         ? scroll.scrollTo(value, 0, 0)
                         : scroll.scroll.instance.scroll.y;
-                }, // We don't have to define a scrollLeft because we're only scrolling vertically.
+                },
+                scrollLeft(value) {
+                    return arguments.length
+                        ? scroll.scrollTo(value, 0, 0)
+                        : scroll.scroll.instance.scroll.x;
+                },
 
                 getBoundingClientRect() {
                     return {
@@ -33,6 +37,9 @@ const ScrollTriggerProxy = () => {
                 },
                 //LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform
                 pinType: element.style.transform ? 'transform' : 'fixed',
+            });
+            ScrollTrigger.defaults({
+                scroller: element,
             });
 
             return () => {

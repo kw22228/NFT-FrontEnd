@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 export const Section = styled.section`
@@ -18,7 +19,7 @@ export const Title = styled.h1`
     width: fit-content;
 `;
 
-export const Container = styled.div`
+export const Container = styled(motion.div)`
     width: 74%;
     height: 70%;
     margin: 0 auto;
@@ -28,7 +29,7 @@ export const Container = styled.div`
     align-items: center;
 `;
 
-export const Card = styled.div`
+export const Card = styled(motion.div)`
     background-color: ${props => props.theme.body};
     width: 100%;
     height: 70%;

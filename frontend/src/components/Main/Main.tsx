@@ -10,6 +10,9 @@ import RaodMap from './RoadMap/RaodMap';
 import glofBall from '../../assets/images/ball.svg';
 import useViewportState from '../../lib/hooks/useViewportState';
 import GsapMain from '../../lib/animation/gsap/GsapMain';
+import { bottomToTop } from '../../lib/animation/variants/revealVariant';
+import { useViewportScroll } from 'framer-motion';
+import { useLocomotiveScroll } from 'react-locomotive-scroll';
 
 const Main = () => {
     const imgRef = useRef<HTMLDivElement>(null);
@@ -18,13 +21,37 @@ const Main = () => {
 
     const homeRef = useRef<HTMLElement>(null);
     useViewportState(homeRef, 'home');
+
+    console.log('render');
     return (
         <>
-            <s.MainSection ref={homeRef} id="home">
+            <s.MainSection ref={homeRef} id="home" data-scroll-section>
                 <Banner />
                 <s.MainContainer>
-                    <s.Img ref={imgRef}>image</s.Img>
-                    <s.TextBox ref={textBoxRef}>
+                    <s.Img //
+                        ref={imgRef}
+                        variants={bottomToTop}
+                        initial="initial"
+                        whileInView="onViewport"
+                        viewport={{
+                            margin: '300px',
+                            once: true,
+                            amount: 'some',
+                        }}
+                    >
+                        image
+                    </s.Img>
+                    <s.TextBox //
+                        ref={textBoxRef}
+                        variants={bottomToTop}
+                        initial="initial"
+                        whileInView="onViewport"
+                        viewport={{
+                            margin: '300px',
+                            once: true,
+                            amount: 0.2,
+                        }}
+                    >
                         10,000명의 못난이가 함께 만들어가는 행복한 메타버스 세계로 홀더분들을
                         초대합니다! 국내를 넘어 해외까지 #찐팬을 보유한 글로벌 캐릭터, 못난이와
                         함께하는 글로벌 NFT(PFP) 프로젝트!

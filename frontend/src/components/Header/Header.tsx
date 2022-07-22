@@ -1,29 +1,26 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import * as s from './Header.style';
 
 import Logo from '../Logo/Logo';
-import gsap from 'gsap/all';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 import MenuLink from './MenuLink/MenuLink';
-import { useRecoilState } from 'recoil';
-import { navAtom } from '../../lib/recoil/atoms';
 import GsapHeader from '../../lib/animation/gsap/GsapHeader';
 
 const Header = () => {
     const ref = useRef(null);
-    // GsapHeader({ ref });
+    const navRef = useRef(null);
+    GsapHeader({ ref, navRef });
 
     return (
-        <s.Header ref={ref}>
-            <s.Nav>
+        <s.Header ref={ref} data-scroll-section>
+            <s.Nav ref={navRef}>
                 <Logo />
 
                 <s.Menu>
-                    <MenuLink title="HOME" link="home" scroll={true} />
-                    <MenuLink title="NFT" link="nft" scroll={true} />
-                    <MenuLink title="STORY" link="story" scroll={true} />
-                    <MenuLink title="TEAM" link="team" scroll={true} />
-                    <MenuLink title="ROADMAP" link="roadmap" scroll={true} />
+                    <MenuLink title="HOME" link="home" isScroll={true} />
+                    <MenuLink title="NFT" link="nft" isScroll={true} />
+                    <MenuLink title="STORY" link="story" isScroll={true} />
+                    <MenuLink title="TEAM" link="team" isScroll={true} />
+                    <MenuLink title="ROADMAP" link="roadmap" isScroll={true} />
 
                     <s.MenuSpace />
 
