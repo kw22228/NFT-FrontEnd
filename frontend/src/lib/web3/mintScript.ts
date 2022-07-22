@@ -1,3 +1,9 @@
+import Caver from 'caver-js';
+const config = {
+    rpcURL: 'https://api.baobab.klaytn.net:8651',
+};
+const caver = new Caver(config.rpcURL);
+
 let account: string;
 let mintIndexForSale = 0;
 let maxSaleAmount = 0;
