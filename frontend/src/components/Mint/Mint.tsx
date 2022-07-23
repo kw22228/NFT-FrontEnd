@@ -5,7 +5,7 @@ import { useSetRecoilState } from 'recoil';
 import { navAtom } from '../../lib/recoil/atoms';
 import publicMint from '../../lib/web3/mintScript';
 
-//import { CONTRACTADDRESS, ABI } from '../../lib/web3/config';
+import { CONTRACTADDRESS, ABI } from '../../lib/web3/config';
 
 const Mint = () => {
     const setNavState = useSetRecoilState(navAtom);
@@ -13,13 +13,9 @@ const Mint = () => {
         setNavState('mint');
     });
 
-<<<<<<< HEAD
-    const handleClick = () => {};
-=======
     const handleClick = () => {
         publicMint();
     };
->>>>>>> root_origin/master
 
     return (
         <s.Section>

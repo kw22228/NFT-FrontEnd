@@ -1,7 +1,10 @@
 import Caver from 'caver-js';
+
+import { ABI, CONTRACTADDRESS } from '../../lib/web3/config';
 const config = {
     rpcURL: 'https://api.baobab.klaytn.net:8651',
 };
+
 const caver = new Caver(config.rpcURL);
 
 let account: string;
