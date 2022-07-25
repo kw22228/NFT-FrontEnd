@@ -15,7 +15,6 @@ let maxSaleAmount = 0;
 let mintPrice = 0;
 let mintStartBlockNumber = 0;
 let mintLimitPerBlock = 0;
-
 let blockNumber = 0;
 let blockCnt = false;
 
@@ -30,25 +29,25 @@ function cntBlockNumber() {
     }
 }
 
-async function connect() {
-    const accounts = await window.klaytn.enable();
-    if (window.klaytn.networkVersion === 8217) {
-        console.log('메인넷');
-    } else if (window.klaytn.networkVersion === 1001) {
-        console.log('테스트넷');
-    } else {
-        alert('ERROR: 클레이튼 네트워크로 연결되지 않았습니다!');
-        return;
-    }
-    account = accounts[0];
-    caver.klay.getBalance(account).then(function (balance) {
-        //document.getElementById('myWallet').innerHTML = `지갑주소: ${account}`;
-        console.log('지갑 주소: #' + '${account}');
-        //document.getElementById('myKlay').innerHTML = `잔액: ${caver.utils.fromPeb(balance,'KLAY')} KLAY`;
-        console.log('잔액: #' + '${caver.utils.fromPeb}');
-    });
-    await check_status();
-}
+// async function connect() {
+//     const accounts = await window.klaytn.enable();
+//     if (window.klaytn.networkVersion === 8217) {
+//         console.log('메인넷');
+//     } else if (window.klaytn.networkVersion === 1001) {
+//         console.log('테스트넷');
+//     } else {
+//         alert('ERROR: 클레이튼 네트워크로 연결되지 않았습니다!');
+//         return;
+//     }
+//     account = accounts[0];
+//     caver.klay.getBalance(account).then(function (balance) {
+//         //document.getElementById('myWallet').innerHTML = `지갑주소: ${account}`;
+//         console.log(`지갑 주소: ${account}`);
+//         //document.getElementById('myKlay').innerHTML = `잔액: ${caver.utils.fromPeb(balance,'KLAY')} KLAY`;
+//         console.log(`잔액: ${caver.utils.fromPeb(balance, 'KLAY')}`);
+//     });
+//    await check_status();
+//  }
 
 async function check_status() {
     const myContract = cABI;
@@ -122,4 +121,5 @@ async function publicMint() {
     }
 }
 
-export default publicMint;
+export { publicMint };
+export { check_status };
