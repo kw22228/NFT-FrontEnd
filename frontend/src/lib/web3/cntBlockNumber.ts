@@ -1,7 +1,15 @@
+import Caver from 'caver-js';
+
+const config = {
+    rpcURL: 'https://api.baobab.klaytn.net:8651',
+};
+const caver = new Caver(config.rpcURL);
+
 let blockNumber = 0;
 let blockCnt = false;
 
-function cntBlockNumber() {
+async function cntBlockNumber() {
+    blockNumber = await caver.klay.getBlockNumber();
     if (!blockCnt) {
         setInterval(function () {
             blockNumber += 1;
