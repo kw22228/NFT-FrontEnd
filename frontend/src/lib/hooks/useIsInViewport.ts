@@ -10,7 +10,8 @@ const useIsInViewport = (element: any) => {
                     setIntersecting(entry.isIntersecting);
                 },
                 {
-                    rootMargin: '-330px',
+                    rootMargin: '50px',
+                    threshold: 0.3,
                 }
             ),
 

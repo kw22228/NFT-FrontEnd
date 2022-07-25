@@ -64,7 +64,7 @@ export const Ball = styled.div<{ bg: string }>`
     border-radius: 50%;
 
     position: absolute;
-    top: 25%;
+    top: 35%;
     left: 0%;
 
     z-index: -1;
