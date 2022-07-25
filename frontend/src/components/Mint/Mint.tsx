@@ -3,7 +3,8 @@ import * as s from './Mint.style';
 
 import { useSetRecoilState } from 'recoil';
 import { navAtom } from '../../lib/recoil/atoms';
-// import publicMint from '../../lib/web3/mintScript';
+import { publicMint } from '../../lib/web3/mintScript';
+import { connect } from '../../lib/web3/connect';
 
 const Mint = () => {
     const setNavState = useSetRecoilState(navAtom);
@@ -16,9 +17,14 @@ const Mint = () => {
         console.log(window.klaytn);
     };
 
+    const handleConnectClick = () => {
+        connect();
+    };
+
     return (
         <s.Section>
             <s.Mint onClick={handleClick}>Minting</s.Mint>
+            <s.Mint onClick={handleConnectClick}>Connect Wallet</s.Mint>
         </s.Section>
     );
 };
