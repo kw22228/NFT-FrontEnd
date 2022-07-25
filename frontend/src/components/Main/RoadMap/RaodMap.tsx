@@ -77,7 +77,12 @@ const RaodMap = () => {
                     />
                 </s.Items>
             </s.Container>
-            <s.Ball bg={golfBall} />
+            <s.Ball
+                bg={golfBall}
+                data-scroll
+                data-scroll-speed="-3"
+                data-scroll-direction="horizontal"
+            />
         </s.Section>
     );
 };

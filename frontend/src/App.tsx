@@ -1,23 +1,22 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
+import 'locomotive-scroll/dist/locomotive-scroll.css';
 
 import Header from './components/Header/Header';
-import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import GallaryPage from './page/GallaryPage';
 import MainPage from './page/MainPage';
 import MintPage from './page/MintPage';
 import { useRef } from 'react';
 import ScrollTriggerProxy from './lib/animation/gsap/ScrollTriggerProxy';
-import useLocoScroll from './lib/hooks/useLocoScroll';
 
 function App() {
     const containRef = useRef(null);
-    useLocoScroll(true);
+    // useLocoScroll(true);
 
     return (
         <BrowserRouter>
-            {/* <LocomotiveScrollProvider
+            <LocomotiveScrollProvider
                 options={{
                     smooth: true,
                     smartphone: {
@@ -35,10 +34,10 @@ function App() {
                     ]
                 }
                 containerRef={containRef}
-            > */}
-            {/* <ScrollTriggerProxy /> */}
-            <main className="App" id="App" data-scroll-container ref={containRef}>
-                <ScrollToTop>
+                onUpdate={(scroll: any) => scroll.scrollTo(0, { duration: 0, disableLerp: true })}
+            >
+                <main className="App" id="App" data-scroll-container ref={containRef}>
+                    <ScrollTriggerProxy />
                     <Header />
                     <Routes>
                         <Route path="/" element={<MainPage />} />
@@ -47,9 +46,8 @@ function App() {
                         <Route path="/mint" element={<MintPage />} />
                     </Routes>
                     <Footer />
-                </ScrollToTop>
-            </main>
-            {/* </LocomotiveScrollProvider> */}
+                </main>
+            </LocomotiveScrollProvider>
         </BrowserRouter>
     );
 }

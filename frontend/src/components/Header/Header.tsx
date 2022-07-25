@@ -11,7 +11,7 @@ const Header = () => {
     GsapHeader({ ref, navRef });
 
     return (
-        <s.Header ref={ref} data-scroll-section>
+        <s.Header ref={ref} id="header">
             <s.Nav ref={navRef}>
                 <Logo />
 

@@ -9,4 +9,4 @@ export const Logo = styled.div`
     cursor: pointer;
 `;
 
-export const LogoLink = styled(Link)``;
+export const LogoLink = styled.div``;

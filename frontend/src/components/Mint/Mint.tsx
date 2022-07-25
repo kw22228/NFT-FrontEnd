@@ -13,7 +13,8 @@ const Mint = () => {
     });
 
     const handleClick = () => {
-        publicMint();
+        // publicMint();
+        console.log(window.klaytn);
     };
 
     const handleConnectClick = () => {

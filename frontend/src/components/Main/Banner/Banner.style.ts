@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Section = styled.section`
-    min-height: 100vh;
+    height: 100vh;
     width: 100vw;
     color: black;
 
