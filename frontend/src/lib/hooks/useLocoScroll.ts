@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import LocomotiveScroll from 'locomotive-scroll';
+import { Scroll } from 'react-locomotive-scroll';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
@@ -8,19 +9,17 @@ gsap.registerPlugin(ScrollTrigger);
 const useLocoScroll = (start: boolean) => {
     useEffect(() => {
         if (!start) return;
-        let locoScroll: any = null;
+        // let locoScroll: IScroll = null;
 
-        const scrollEl = document.querySelector('#App');
-        locoScroll = new LocomotiveScroll({
+        const scrollEl = document.querySelector('#App') as HTMLElement;
+        let locoScroll: any = new LocomotiveScroll({
             el: scrollEl,
             smooth: true,
             multiplier: 1,
-            class: 'is-reveal',
+            // class: 'is-reveal',
         });
 
-        locoScroll.on('scroll', () => {
-            ScrollTrigger.update();
-        });
+        locoScroll.on('scroll', () => ScrollTrigger.update()); // On scroll of locomotive, update scrolltrigger
 
         ScrollTrigger.scrollerProxy(scrollEl, {
             scrollTop(value) {
@@ -39,6 +38,15 @@ const useLocoScroll = (start: boolean) => {
                 }
                 return null;
             },
+            getBoundingClientRect() {
+                return {
+                    top: 0,
+                    left: 0,
+                    width: window.innerWidth,
+                    height: window.innerHeight,
+                };
+            },
+            pinType: scrollEl.style.transform ? 'transform' : 'fixed',
         });
 
         const lsUpdate = () => {
