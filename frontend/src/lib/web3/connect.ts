@@ -1,5 +1,5 @@
 import Caver from 'caver-js';
-import { check_status } from '../../lib/web3/mintScript';
+import { check_status } from '../../lib/web3/check_status';
 
 const config = {
     rpcURL: 'https://api.baobab.klaytn.net:8651',

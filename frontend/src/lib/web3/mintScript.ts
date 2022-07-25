@@ -1,5 +1,6 @@
 import BigNumber from 'bignumber.js';
 import Caver, { AbiItem } from 'caver-js';
+import { check_status } from './check_status';
 
 import { ABI, CONTRACTADDRESS } from '../../lib/web3/config';
 const config = {
@@ -14,65 +15,7 @@ let mintIndexForSale = 0;
 let maxSaleAmount = 0;
 let mintPrice = 0;
 let mintStartBlockNumber = 0;
-let mintLimitPerBlock = 0;
 let blockNumber = 0;
-let blockCnt = false;
-
-function cntBlockNumber() {
-    if (!blockCnt) {
-        setInterval(function () {
-            blockNumber += 1;
-            //document.getElementById('blockNubmer').innerHTML = '현재 블록: #' + blockNumber;
-            console.log('현재 블록: #' + blockNumber);
-        }, 1000);
-        blockCnt = true;
-    }
-}
-
-// async function connect() {
-//     const accounts = await window.klaytn.enable();
-//     if (window.klaytn.networkVersion === 8217) {
-//         console.log('메인넷');
-//     } else if (window.klaytn.networkVersion === 1001) {
-//         console.log('테스트넷');
-//     } else {
-//         alert('ERROR: 클레이튼 네트워크로 연결되지 않았습니다!');
-//         return;
-//     }
-//     account = accounts[0];
-//     caver.klay.getBalance(account).then(function (balance) {
-//         //document.getElementById('myWallet').innerHTML = `지갑주소: ${account}`;
-//         console.log(`지갑 주소: ${account}`);
-//         //document.getElementById('myKlay').innerHTML = `잔액: ${caver.utils.fromPeb(balance,'KLAY')} KLAY`;
-//         console.log(`잔액: ${caver.utils.fromPeb(balance, 'KLAY')}`);
-//     });
-//    await check_status();
-//  }
-
-async function check_status() {
-    const myContract = cABI;
-    await myContract.methods
-        .mintingInformation()
-        .call()
-        .then(function (result: string[]) {
-            console.log(result);
-            mintIndexForSale = parseInt(result[1]);
-            mintLimitPerBlock = parseInt(result[2]);
-            mintStartBlockNumber = parseInt(result[4]);
-            maxSaleAmount = parseInt(result[5]);
-            mintPrice = parseInt(result[6]);
-            console.log(`${mintIndexForSale - 1} / ${maxSaleAmount}`);
-            console.log(`트랜잭션당 최대 수량: ${mintLimitPerBlock}개`);
-            console.log(`민팅 시작 블록: #${mintStartBlockNumber}`);
-            console.log(`민팅 가격: ${caver.utils.fromPeb(mintPrice, 'KLAY')} KLAY`);
-        })
-        .catch((error: any) => {
-            console.log(error);
-        });
-    blockNumber = await caver.klay.getBlockNumber();
-    console.log('현재 블록: #' + blockNumber);
-    cntBlockNumber();
-}
 
 async function publicMint() {
     if (window.klaytn.networkVersion === 8217) {
@@ -122,4 +65,3 @@ async function publicMint() {
 }
 
 export { publicMint };
-export { check_status };
