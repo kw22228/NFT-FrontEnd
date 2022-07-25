@@ -1,4 +1,5 @@
-import Caver from 'caver-js';
+import BigNumber from 'bignumber.js';
+import Caver, { AbiItem } from 'caver-js';
 
 import { ABI, CONTRACTADDRESS } from '../../lib/web3/config';
 const config = {
@@ -6,6 +7,7 @@ const config = {
 };
 
 const caver = new Caver(config.rpcURL);
+const cABI = new caver.klay.Contract(ABI as AbiItem[], CONTRACTADDRESS);
 
 let account: string;
 let mintIndexForSale = 0;
@@ -49,11 +51,11 @@ async function connect() {
 }
 
 async function check_status() {
-    const myContract = new caver.klay.Contract(ABI, CONTRACTADDRESS);
+    const myContract = cABI;
     await myContract.methods
         .mintingInformation()
         .call()
-        .then(function (result) {
+        .then(function (result: string[]) {
             console.log(result);
             mintIndexForSale = parseInt(result[1]);
             mintLimitPerBlock = parseInt(result[2]);
@@ -65,7 +67,7 @@ async function check_status() {
             console.log(`민팅 시작 블록: #${mintStartBlockNumber}`);
             console.log(`민팅 가격: ${caver.utils.fromPeb(mintPrice, 'KLAY')} KLAY`);
         })
-        .catch(function (error) {
+        .catch((error: any) => {
             console.log(error);
         });
     blockNumber = await caver.klay.getBlockNumber();
@@ -87,8 +89,8 @@ async function publicMint() {
         return;
     }
 
-    const myContract = new caver.klay.Contract(ABI, CONTRACTADDRESS);
-    const amount = document.getElementById('amount').value;
+    const myContract = cABI;
+    const amount = console.log('${value}');
     await check_status();
     if (maxSaleAmount + 1 <= mintIndexForSale) {
         alert('모든 물량이 소진되었습니다.');
@@ -97,7 +99,7 @@ async function publicMint() {
         alert('아직 민팅이 시작되지 않았습니다.');
         return;
     }
-    const total_value = BigNumber(amount * mintPrice);
+    const total_value = new BigNumber(+amount * mintPrice);
 
     try {
         const gasAmount = await myContract.methods.publicMint(amount).estimateGas({

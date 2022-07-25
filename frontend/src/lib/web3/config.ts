@@ -1,7 +1,5 @@
-export { CONTRACTADDRESS, ABI };
-
-const CONTRACTADDRESS = '0x98fbEAD150c0aa7Fe595227D6fA9D612C969A510';
-const ABI = [
+export let CONTRACTADDRESS = '0x98fbEAD150c0aa7Fe595227D6fA9D612C969A510';
+export let ABI = [
     {
         inputs: [
             {
@@ -1079,5 +1077,3 @@ const ABI = [
         type: 'function',
     },
 ];
-
-export {};

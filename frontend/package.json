@@ -10,6 +10,7 @@
         "@types/node": "^16.11.43",
         "@types/react": "^18.0.15",
         "@types/react-dom": "^18.0.6",
+        "bignumber.js": "^9.0.2",
         "caver-js": "^1.9.0",
         "framer-motion": "^6.4.3",
         "gsap": "^3.10.4",
