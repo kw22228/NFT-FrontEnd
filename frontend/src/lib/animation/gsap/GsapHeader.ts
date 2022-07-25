@@ -23,28 +23,27 @@ const GsapHeader = ({ ref, navRef }: IGsapProps) => {
                 padding: '',
                 borderRadius: '50px',
                 border: '3px solid white',
-                backgroundColor: 'rgba(255,255,255,0.7)',
+                backgroundColor: 'rgba(255,255,255,0.6)',
 
                 scrollTrigger: {
                     trigger: element,
-                    start: 'bottom+=200 top',
+                    start: 'bottom top',
                     end: '+=200',
                     scrub: true,
-                    scroller: '#App',
-                    markers: true,
+                    // markers: true,
                 },
             });
 
-            // tl.to(navElement, {
-            //     width: '90%',
-            //     scrollTrigger: {
-            //         trigger: element,
-            //         start: 'bottom+=200 top',
-            //         end: '+=200',
-            //         scrub: true,
-            //     },
-            // });
-            // ScrollTrigger.refresh();
+            tl.to(navElement, {
+                width: '90%',
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'bottom top',
+                    end: '+=200',
+                    scrub: true,
+                },
+            });
+            ScrollTrigger.refresh();
         });
 
         return () => {
