@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export const MainSection = styled.section`
     width: 100vw;
-    min-height: 200vh;
+    height: 200vh;
 
     display: flex;
     flex-direction: column;
@@ -58,7 +58,7 @@ export const Ball = styled.div<{ bg: string }>`
 
     position: absolute;
     left: 90%;
-    bottom: 55%;
+    bottom: 35%;
 
     background-image: url(${props => props.bg});
     background-image: cover;

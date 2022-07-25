@@ -75,7 +75,7 @@ const Story = () => {
                 // addToRefs={addToRefs}
             />
 
-            <s.Ball bg={golfBall} />
+            <s.Ball bg={golfBall} data-scroll data-scroll-speed="3" />
         </s.Section>
     );
 };
