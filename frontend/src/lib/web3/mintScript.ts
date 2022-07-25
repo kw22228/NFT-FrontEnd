@@ -32,7 +32,9 @@ export async function publicMint() {
     }
 
     const myContract = cABI;
-    const amount = console.log('${value}');
+    const amount = document.getElementById('amount') as HTMLInputElement;
+    console.log(amount);
+
     await check_status();
     if (maxSaleAmount + 1 <= mintIndexForSale) {
         alert('모든 물량이 소진되었습니다.');
@@ -43,15 +45,23 @@ export async function publicMint() {
     }
     const total_value = new BigNumber(+amount * mintPrice);
 
-    //     const myContract = new caver.klay.Contract(ABI, CONTRACTADDRESS);
-    //     const amount = document.getElementById('amount').value;
-    //     await check_status();
-    //     if (maxSaleAmount + 1 <= mintIndexForSale) {
-    //         alert('모든 물량이 소진되었습니다.');
-    //         return;
-    //     } else if (blockNumber <= mintStartBlockNumber) {
-    //         alert('아직 민팅이 시작되지 않았습니다.');
-    //         return;
-    //     }
-    //     const total_value = BigNumber(amount * mintPrice);
+    try {
+        const gasAmount = await myContract.methods.publicMint(amount).estimateGas({
+            from: account,
+            gas: 6000000,
+            value: total_value,
+        });
+        const result = await myContract.methods.publicMint(amount).send({
+            from: account,
+            gas: gasAmount,
+            value: total_value,
+        });
+        if (result != null) {
+            console.log(result);
+            alert('민팅에 성공하였습니다.');
+        }
+    } catch (error) {
+        console.log(error);
+        alert('민팅에 실패하였습니다.');
+    }
 }
