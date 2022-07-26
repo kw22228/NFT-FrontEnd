@@ -5,7 +5,7 @@ import Banner from './Banner/Banner';
 import Nft from './Nft/Nft';
 import Story from './Story/Story';
 import Team from './Team/Team';
-import RaodMap from './RoadMap/RaodMap';
+import RaodMap2 from './RoadMap2/RaodMap2';
 
 import glofBall from '../../assets/images/ball.svg';
 import useViewportState from '../../lib/hooks/useViewportState';
@@ -70,7 +70,7 @@ const Main = () => {
             <Nft />
             <Story />
             <Team />
-            <RaodMap />
+            <RaodMap2 />
         </>
     );
 };
