@@ -1,13 +1,6 @@
-import Caver, { Unit } from 'caver-js';
 import check_status from '../../lib/web3/check_status';
 import { IWallet } from '../recoil/atoms/types';
-
-const config: { rpcURL: string; coin: Unit } = {
-    rpcURL: 'https://api.baobab.klaytn.net:8651',
-    coin: 'KLAY',
-};
-
-const caver = new Caver(config.rpcURL);
+import { config, caver } from './config';
 
 const connect = async (): Promise<IWallet | null> => {
     const accounts = await window.klaytn.enable();
@@ -28,10 +21,10 @@ const connect = async (): Promise<IWallet | null> => {
     //document.getElementById('myKlay').innerHTML = `잔액: ${caver.utils.fromPeb(balance,'KLAY')} KLAY`;
     // console.log(`잔액: ${caver.utils.fromPeb(balance, 'KLAY')}`);
 
-    // await check_status(); //옮기기
+    //await check_status(); //옮기기
     return {
         account,
-        balance: caver.utils.fromPeb(balance, config.coin),
+        balance: caver.utils.fromPeb(balance, config.token),
     };
 };
 

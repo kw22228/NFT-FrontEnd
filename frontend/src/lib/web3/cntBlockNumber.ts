@@ -1,9 +1,4 @@
-import Caver from 'caver-js';
-
-const config = {
-    rpcURL: 'https://api.baobab.klaytn.net:8651',
-};
-const caver = new Caver(config.rpcURL);
+import { caver } from './config';
 
 let blockNumber = 0;
 let blockCnt = false;
