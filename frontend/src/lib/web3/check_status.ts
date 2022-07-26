@@ -16,7 +16,7 @@ let mintStartBlockNumber = 0;
 let mintLimitPerBlock = 0;
 let blockNumber = 0;
 
-async function check_status() {
+export default async function check_status() {
     const myContract = cABI;
     await myContract.methods
         .mintingInformation()
@@ -40,5 +40,3 @@ async function check_status() {
     console.log('현재 블록: #' + blockNumber);
     cntBlockNumber();
 }
-
-export { check_status };
