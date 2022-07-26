@@ -1,6 +1,6 @@
 import BigNumber from 'bignumber.js';
 import Caver, { AbiItem } from 'caver-js';
-import { check_status } from './check_status';
+import check_status from './check_status';
 
 import { ABI, CONTRACTADDRESS } from '../../lib/web3/config';
 const config = {
@@ -17,7 +17,7 @@ let mintPrice = 0;
 let mintStartBlockNumber = 0;
 let blockNumber = 0;
 
-export async function publicMint() {
+export default async function publicMint() {
     if (window.klaytn.networkVersion === 8217) {
         console.log('메인넷');
     } else if (window.klaytn.networkVersion === 1001) {
