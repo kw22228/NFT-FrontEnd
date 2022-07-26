@@ -14,7 +14,6 @@ interface IProps {
 }
 const MenuLink = ({ title, link, isScroll = false }: IProps) => {
     const [navState, setNavState] = useRecoilState(navAtom);
-    console.log(navState);
     const matchRoute = useMatch(link);
     const match: boolean = isScroll ? navState === link : !!matchRoute;
     const navigate = useNavigate();

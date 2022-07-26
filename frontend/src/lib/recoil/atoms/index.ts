@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import { IScrollHeight } from './types';
+import { IScrollHeight, IWallet } from './types';
 
 export const navAtom = atom<string | null>({
     key: 'navState',
@@ -11,5 +11,13 @@ export const scrollHeightAtom = atom<IScrollHeight>({
     default: {
         scrollHeight: 0,
         currentY: 0,
+    },
+});
+
+export const walletAtom = atom<IWallet | null>({
+    key: 'wallet',
+    default: {
+        account: '',
+        balance: '',
     },
 });
