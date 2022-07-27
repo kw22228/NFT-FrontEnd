@@ -5,7 +5,7 @@ import Banner from './Banner/Banner';
 import Nft from './Nft/Nft';
 import Story from './Story/Story';
 import Team from './Team/Team';
-import RaodMap from './RoadMap/RaodMap';
+import RaodMap2 from './RoadMap2/RaodMap2';
 
 import glofBall from '../../assets/images/ball.svg';
 import useViewportState from '../../lib/hooks/useViewportState';
@@ -22,7 +22,7 @@ const Main = () => {
 
     return (
         <>
-            <s.MainSection id="home" ref={homeRef} data-scroll-section>
+            <s.MainSection id="home" ref={homeRef}>
                 <Banner />
                 <s.MainContainer>
                     <s.Img //
@@ -63,14 +63,14 @@ const Main = () => {
                         METAVERSE - OFFLINE PLACE 간의 경계를 허물며 새로운 역사를 써갈 HAPPIER
                         TOWN에서 새로운 경험과 특별한 혜택을 누려보세요!
                     </s.TextBox>
-                    <s.Ball bg={glofBall} data-scroll data-scroll-speed="-3"></s.Ball>
+                    <s.Ball bg={glofBall}></s.Ball>
                 </s.MainContainer>
             </s.MainSection>
 
             <Nft />
             <Story />
             <Team />
-            <RaodMap />
+            <RaodMap2 />
         </>
     );
 };

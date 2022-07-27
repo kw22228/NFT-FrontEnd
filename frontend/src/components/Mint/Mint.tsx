@@ -44,10 +44,29 @@ const Mint = () => {
 
     return (
         <s.Section>
-            <s.Mint onClick={handleClick}>Minting</s.Mint>
-            <s.Mint onClick={handleConnectClick}>
-                {wallet?.account ? wallet.account : 'Connect Wallet'}
-            </s.Mint>
+            <s.BoxContainer>
+                <s.Box>
+                    11111111111111111111
+                    <br />
+                    11111111111111111111
+                    <br />
+                    11111111111111111111
+                    <br />
+                    11111111111111111111
+                    <br />
+                    11111111111111111111
+                    <br />
+                    11111111111111111111
+                    <br />
+                </s.Box>
+                <s.Box>블록</s.Box>
+            </s.BoxContainer>
+            <s.MintContainer>
+                <s.Mint onClick={handleClick}>Minting</s.Mint>
+                <s.Mint onClick={handleConnectClick}>
+                    {wallet?.account ? wallet.account : 'Connect Wallet'}
+                </s.Mint>
+            </s.MintContainer>
         </s.Section>
     );
 };
