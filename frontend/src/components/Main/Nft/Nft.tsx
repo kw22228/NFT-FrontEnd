@@ -32,7 +32,7 @@ const Nft = () => {
     const nftRef = useRef<HTMLElement>(null);
     useViewportState(nftRef, 'nft');
     return (
-        <s.Section id="nft" ref={nftRef} data-scroll-section>
+        <s.Section id="nft" ref={nftRef}>
             <s.Title>NFT</s.Title>
             <s.SliderContainer>
                 <Swiper {...SwiperConfig} onInit={onInit}>

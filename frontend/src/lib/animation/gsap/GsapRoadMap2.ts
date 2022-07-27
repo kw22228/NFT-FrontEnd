@@ -1,35 +1,49 @@
 import gsap from 'gsap/all';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import React, { useLayoutEffect } from 'react';
-import { IGsapRefRevealProps } from '../../types/GsapTypes';
+import { IGsapProps, IGsapRefRevealProps } from '../../types/GsapTypes';
 
-const GsapRoadMap2 = ({ ref, revealRef }: IGsapRefRevealProps) => {
+const GsapRoadMap2 = ({ sectionRef, scrollRef }: IGsapProps) => {
     gsap.registerPlugin(ScrollTrigger);
 
     useLayoutEffect(() => {
+        const sectionEl = sectionRef.current as HTMLDivElement;
+        const scrollEl = scrollRef.current as HTMLDivElement;
+
+        const pinWrapWidth = scrollEl.offsetWidth;
+        const scrollWidth = window.innerWidth;
+
         const tl = gsap.timeline();
-        const refs = revealRef.current;
 
-        setTimeout(() => {
-            tl.to(refs, {
-                xPercent: -100 * (refs.length - 1),
-                ease: 'none',
-
-                scrollTrigger: {
-                    start: 'top top',
-                    trigger: ref.current,
-                    pin: true,
-                    scrub: 0.5,
-                    snap: 1 / (refs.length - 1),
-                    scroller: '#App',
-                    end: () => {
-                        return ref.current ? `+=${ref.current.offsetWidth}` : '';
-                    },
-                },
-            });
-
-            ScrollTrigger.refresh();
+        tl.to(sectionEl, {
+            scrollTrigger: {
+                trigger: sectionEl,
+                start: 'top top',
+                end: pinWrapWidth,
+                scrub: true,
+                pin: true,
+                markers: true,
+            },
+            height: `${scrollEl.scrollWidth}px`,
+            ease: 'none',
         });
+
+        tl.to(scrollEl, {
+            scrollTrigger: {
+                trigger: scrollEl,
+                start: 'top top',
+                end: pinWrapWidth,
+                scrub: true,
+            },
+            x: -pinWrapWidth + scrollWidth,
+            ease: 'none',
+        });
+
+        ScrollTrigger.refresh();
+
+        return () => {
+            tl.kill();
+        };
     });
 };
 

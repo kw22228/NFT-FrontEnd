@@ -15,7 +15,7 @@ const Team = () => {
     useViewportState(teamRef, 'team');
 
     return (
-        <s.Section id="team" ref={teamRef} data-scroll-section>
+        <s.Section id="team" ref={teamRef}>
             <s.Title>Team</s.Title>
             <s.Container //
                 variants={staggerVariants}
