@@ -4,6 +4,7 @@ export const config: { rpcURL: string; token: Unit } = {
     rpcURL: 'https://api.baobab.klaytn.net:8651',
     token: 'KLAY',
 };
+
 export const caver = new Caver(config.rpcURL);
 
 export let CONTRACTADDRESS = '0x98fbEAD150c0aa7Fe595227D6fA9D612C969A510';

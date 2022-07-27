@@ -32,12 +32,12 @@ const RaodMap2 = () => {
     //     }
     // };
 
-    // GsapRoadMap2({ sectionRef, scrollRef });
+    GsapRoadMap2({ sectionRef, scrollRef });
 
     return (
         <s.Section ref={sectionRef}>
             <s.Container ref={scrollRef}>
-                {new Array(8).fill(0).map((e, i) => (
+                {new Array(4).fill(0).map((e, i) => (
                     <RoadMapItem
                         title="METAVERSE"
                         content="OFFLINE PLACE 간의 경계를 허물며"

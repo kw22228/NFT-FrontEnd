@@ -11,6 +11,7 @@ import glofBall from '../../assets/images/ball.svg';
 import useViewportState from '../../lib/hooks/useViewportState';
 import GsapMain from '../../lib/animation/gsap/GsapMain';
 import { bottomToTop } from '../../lib/animation/variants/revealVariant';
+import RaodMap from './RoadMap/RaodMap';
 
 const Main = () => {
     const imgRef = useRef<HTMLDivElement>(null);
