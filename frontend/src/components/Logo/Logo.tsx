@@ -13,12 +13,12 @@ const Logo = () => {
         delay(() => {
             const element = document.querySelector('#home') as HTMLElement;
 
-            scroll.scrollTo(element, {
-                offset: '0',
-                duration: '1500',
-                easing: [0.25, 0.0, 0.35, 1.0],
-                // disableLerp: false,
-            });
+            // scroll.scrollTo(element, {
+            //     offset: '0',
+            //     duration: '1500',
+            //     easing: [0.25, 0.0, 0.35, 1.0],
+            //     // disableLerp: false,
+            // });
         }, 150);
     };
     return (

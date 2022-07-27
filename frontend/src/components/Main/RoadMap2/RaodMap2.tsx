@@ -3,6 +3,9 @@ import * as s from './RoadMap.style';
 
 import bg from '../../../assets/images/main.jpg';
 import GsapRoadMap2 from '../../../lib/animation/gsap/GsapRoadMap2';
+import { RoadMapVariants } from '../../../lib/animation/variants/inViewVariant';
+import { useInView } from 'framer-motion';
+import useViewportNavState from '../../../lib/hooks/useViewportNavState';
 
 interface IRoadMapItem {
     title: string;
@@ -12,9 +15,18 @@ interface IRoadMapItem {
 }
 const RoadMapItem = ({ title, content, index }: IRoadMapItem) => {
     return (
-        <s.ItemWrapper className="roadmap-item">
+        <s.ItemWrapper>
             <div></div>
-            <s.Item bg={bg}>
+            <s.Item //
+                bg={bg}
+                variants={RoadMapVariants}
+                initial="initial"
+                whileInView="onViewport"
+                viewport={{
+                    once: false,
+                    amount: 0.6,
+                }}
+            >
                 <s.Title>{title}</s.Title>
                 <s.Content>{content}</s.Content>
             </s.Item>
@@ -25,19 +37,22 @@ const RoadMapItem = ({ title, content, index }: IRoadMapItem) => {
 const RaodMap2 = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
-    // const revealRef = useRef<HTMLDivElement[]>([]);
-    // const addToRefs = (el: HTMLDivElement) => {
-    //     if (el && !revealRef.current.includes(el)) {
-    //         revealRef.current.push(el);
-    //     }
-    // };
 
-    // GsapRoadMap2({ sectionRef, scrollRef });
+    const isInView = useInView(sectionRef, {
+        once: false,
+        amount: 0.7,
+    });
+
+    useViewportNavState(isInView, 'roadmap');
+    GsapRoadMap2({ sectionRef, scrollRef });
 
     return (
-        <s.Section ref={sectionRef}>
-            <s.Container ref={scrollRef}>
-                {new Array(8).fill(0).map((e, i) => (
+        <s.Section ref={sectionRef} className="roadmap" id="roadmap" data-scroll-section>
+            <s.Left>
+                <s.LeftTitle>RoadMap</s.LeftTitle>
+            </s.Left>
+            <s.Right ref={scrollRef}>
+                {new Array(4).fill(0).map((e, i) => (
                     <RoadMapItem
                         title="METAVERSE"
                         content="OFFLINE PLACE 간의 경계를 허물며"
@@ -46,7 +61,7 @@ const RaodMap2 = () => {
                         // addToRefs={addToRefs}
                     />
                 ))}
-            </s.Container>
+            </s.Right>
         </s.Section>
     );
 };

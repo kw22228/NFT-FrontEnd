@@ -3,7 +3,6 @@ import * as s from './RoadMap.style';
 
 import flag from '../../../assets/images/flag.svg';
 import golfBall from '../../../assets/images/ball.svg';
-import useViewportState from '../../../lib/hooks/useViewportState';
 import GsapRoadMap from '../../../lib/animation/gsap/GsapRoadMap';
 
 interface IRoadMapItem {
@@ -31,7 +30,6 @@ const RaodMap = () => {
     // GsapRoadMap({ lineRef, ballRef });
 
     const roadmapRef = useRef<HTMLElement>(null);
-    useViewportState(roadmapRef, 'roadmap');
 
     return (
         <s.Section id="roadmap" ref={roadmapRef} data-scroll-section>

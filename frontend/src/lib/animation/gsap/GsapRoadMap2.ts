@@ -1,48 +1,55 @@
 import gsap from 'gsap/all';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import React, { useLayoutEffect } from 'react';
-import { IGsapProps, IGsapRefRevealProps } from '../../types/GsapTypes';
+import React, { useEffect, useLayoutEffect } from 'react';
+import { IGsapProps } from '../../types/GsapTypes';
 
 const GsapRoadMap2 = ({ sectionRef, scrollRef }: IGsapProps) => {
     gsap.registerPlugin(ScrollTrigger);
 
     useLayoutEffect(() => {
-        const sectionEl = sectionRef.current as HTMLDivElement;
-        const scrollEl = scrollRef.current as HTMLDivElement;
+        let sectionEl = sectionRef.current as HTMLDivElement;
+        let scrollEl = scrollRef.current as HTMLDivElement;
 
-        const pinWrapWidth = scrollEl.offsetWidth;
-        const scrollWidth = window.innerWidth;
+        let pinWrapWidth = scrollEl.offsetWidth;
+        let scrollWidth = window.innerWidth;
 
-        const tl = gsap.timeline();
+        console.log(pinWrapWidth, scrollWidth);
 
-        tl.to(sectionEl, {
-            scrollTrigger: {
-                trigger: sectionEl,
-                start: 'top top',
-                end: pinWrapWidth,
-                scrub: true,
-                pin: true,
-                markers: true,
-            },
-            height: `${scrollEl.scrollWidth}px`,
-            ease: 'none',
-        });
+        let tl = gsap.timeline();
 
-        tl.to(scrollEl, {
-            scrollTrigger: {
-                trigger: scrollEl,
-                start: 'top top',
-                end: pinWrapWidth,
-                scrub: true,
-            },
-            x: -pinWrapWidth + scrollWidth,
-            ease: 'none',
-        });
+        setTimeout(() => {
+            tl.to(sectionEl, {
+                height: `${scrollEl.scrollWidth}px`,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: sectionEl,
+                    start: 'top top',
+                    end: pinWrapWidth,
+                    scrub: true,
+                    pin: true,
+                },
+            });
 
-        ScrollTrigger.refresh();
+            tl.to(scrollEl, {
+                x: -pinWrapWidth + scrollWidth,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: scrollEl,
+                    start: 'top top',
+                    end: pinWrapWidth,
+                    scrub: true,
+                },
+            });
+
+            ScrollTrigger.refresh();
+        }, 1000);
 
         return () => {
-            tl.kill();
+            ScrollTrigger.getAll().forEach(instance => {
+                instance.kill();
+            });
+            // gsap.killTweensOf(window);
+            // tl.kill();
         };
     }, []);
 };

@@ -2,11 +2,8 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { useEffect } from 'react';
 import { useLocomotiveScroll } from 'react-locomotive-scroll';
-import { Scroll } from 'react-locomotive-scroll';
+import { IScroll } from '../../types/GsapTypes';
 
-interface IScroll {
-    scroll: Scroll;
-}
 const ScrollTriggerProxy = () => {
     const { scroll: locoScroll }: IScroll = useLocomotiveScroll();
 
@@ -46,10 +43,7 @@ const ScrollTriggerProxy = () => {
                 scroller: scrollEl,
             });
 
-            const isUpdate = () => {
-                locoScroll.update();
-            };
-            ScrollTrigger.addEventListener('refresh', isUpdate);
+            ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
             ScrollTrigger.refresh();
 
             return () => {

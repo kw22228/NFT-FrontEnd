@@ -8,21 +8,24 @@ import Team from './Team/Team';
 import RaodMap2 from './RoadMap2/RaodMap2';
 
 import glofBall from '../../assets/images/ball.svg';
-import useViewportState from '../../lib/hooks/useViewportState';
-import GsapMain from '../../lib/animation/gsap/GsapMain';
 import { bottomToTop } from '../../lib/animation/variants/revealVariant';
+import { useInView } from 'framer-motion';
+import useViewportNavState from '../../lib/hooks/useViewportNavState';
 
 const Main = () => {
     const imgRef = useRef<HTMLDivElement>(null);
     const textBoxRef = useRef<HTMLDivElement>(null);
-    // GsapMain({ imgRef, textBoxRef });
 
-    const homeRef = useRef<HTMLElement>(null);
-    useViewportState(homeRef, 'home');
+    const homeRef = useRef<HTMLDivElement>(null);
+    const isInView = useInView(homeRef, {
+        once: false,
+        amount: 0.3,
+    });
+    useViewportNavState(isInView, 'home');
 
     return (
         <>
-            <s.MainSection id="home" ref={homeRef}>
+            <s.MainSection id="home" ref={homeRef} data-scroll-section>
                 <Banner />
                 <s.MainContainer>
                     <s.Img //
@@ -31,9 +34,8 @@ const Main = () => {
                         initial="initial"
                         whileInView="onViewport"
                         viewport={{
-                            margin: '300px',
                             once: true,
-                            amount: 'some',
+                            amount: 0.2,
                         }}
                     >
                         image
@@ -44,9 +46,9 @@ const Main = () => {
                         initial="initial"
                         whileInView="onViewport"
                         viewport={{
-                            margin: '300px',
+                            margin: '200px',
                             once: true,
-                            amount: 0.2,
+                            amount: 0.1,
                         }}
                     >
                         10,000명의 못난이가 함께 만들어가는 행복한 메타버스 세계로 홀더분들을

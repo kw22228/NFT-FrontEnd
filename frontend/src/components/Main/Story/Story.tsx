@@ -3,13 +3,14 @@ import { Ball } from '../Main.style';
 import * as s from './Story.style';
 
 import golfBall from '../../../assets/images/ball.svg';
-import useViewportState from '../../../lib/hooks/useViewportState';
 import GsapStory from '../../../lib/animation/gsap/GsapStory';
 import {
     bottomToTop,
     leftToRight,
     rightToLeft,
 } from '../../../lib/animation/variants/revealVariant';
+import { useInView } from 'framer-motion';
+import useViewportNavState from '../../../lib/hooks/useViewportNavState';
 
 interface IStoryBoard {
     img: string;
@@ -44,13 +45,16 @@ const Story = () => {
             revealRef?.current.push(el);
         }
     };
-    // GsapStory({ revealRef });
 
     const storyRef = useRef<HTMLElement>(null);
-    useViewportState(storyRef, 'story');
+    const isInView = useInView(storyRef, {
+        once: false,
+        amount: 0.4,
+    });
+    useViewportNavState(isInView, 'story');
 
     return (
-        <s.Section id="story" ref={storyRef}>
+        <s.Section id="story" ref={storyRef} data-scroll-section>
             <s.Title>STORY</s.Title>
             <StoryBoard
                 img="Image1"

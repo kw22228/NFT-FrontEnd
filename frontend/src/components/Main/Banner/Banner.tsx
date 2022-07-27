@@ -9,8 +9,8 @@ const Banner = () => {
     return (
         <s.Section>
             <s.BannerContainer main={main}>
-                <s.Character src={character} alt={character} />
-                <s.Wave src={waves} alt="waves" />
+                {/* <s.Character src={character} alt={character} /> */}
+                {/* <s.Wave src={waves} alt="waves" /> */}
             </s.BannerContainer>
         </s.Section>
     );
