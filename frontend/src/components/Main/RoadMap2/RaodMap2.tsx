@@ -32,7 +32,7 @@ const RaodMap2 = () => {
     //     }
     // };
 
-    GsapRoadMap2({ sectionRef, scrollRef });
+    // GsapRoadMap2({ sectionRef, scrollRef });
 
     return (
         <s.Section ref={sectionRef}>

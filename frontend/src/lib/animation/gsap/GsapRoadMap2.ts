@@ -44,7 +44,7 @@ const GsapRoadMap2 = ({ sectionRef, scrollRef }: IGsapProps) => {
         return () => {
             tl.kill();
         };
-    });
+    }, []);
 };
 
 export default GsapRoadMap2;
