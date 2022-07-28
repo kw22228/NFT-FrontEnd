@@ -5,8 +5,7 @@ import { useRecoilState, useSetRecoilState } from 'recoil';
 import { navAtom, walletAtom } from '../../lib/recoil/atoms';
 import publicMint from '../../lib/web3/mintScript';
 import connect from '../../lib/web3/connect';
-import check_status from '../../lib/web3/check_status';
-import { cntBlockNumber } from '../../lib/web3/cntBlockNumber';
+import cntBlockNumber from '../../lib/web3/cntBlockNumber';
 
 const Mint = () => {
     const setNavState = useSetRecoilState(navAtom);
@@ -14,6 +13,7 @@ const Mint = () => {
 
     useEffect(() => {
         setNavState('mint');
+        cntBlockNumber();
     });
 
     const handleClick = () => {
@@ -45,7 +45,7 @@ const Mint = () => {
             return;
         }
     };
-
+    console.log();
     //check_status();
     return (
         <s.Section>
@@ -64,9 +64,7 @@ const Mint = () => {
                     11111111111111111111
                     <br />
                 </s.Box>
-                <s.Box>
-                    <script>cntBlockNumber()</script>
-                </s.Box>
+                <s.Box> use effect 사용</s.Box>
             </s.BoxContainer>
             <s.MintContainer>
                 <s.Mint onClick={handleClick}>MINT</s.Mint>

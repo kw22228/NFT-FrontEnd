@@ -1,7 +1,7 @@
 import Caver, { AbiItem } from 'caver-js';
 
 import { ABI, CONTRACTADDRESS } from '../../lib/web3/config';
-import { cntBlockNumber } from './cntBlockNumber';
+import cntBlockNumber from './cntBlockNumber';
 const config = {
     rpcURL: 'https://api.baobab.klaytn.net:8651',
 };

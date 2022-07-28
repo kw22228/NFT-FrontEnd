@@ -3,7 +3,7 @@ import { caver } from './config';
 let blockNumber = 0;
 let blockCnt = false;
 
-async function cntBlockNumber() {
+export default async function cntBlockNumber() {
     blockNumber = await caver.klay.getBlockNumber();
     if (!blockCnt) {
         setInterval(function () {
@@ -14,5 +14,3 @@ async function cntBlockNumber() {
         blockCnt = true;
     }
 }
-
-export { cntBlockNumber };
