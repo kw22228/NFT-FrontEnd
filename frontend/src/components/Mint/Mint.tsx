@@ -5,6 +5,8 @@ import { useRecoilState, useSetRecoilState } from 'recoil';
 import { navAtom, walletAtom } from '../../lib/recoil/atoms';
 import publicMint from '../../lib/web3/mintScript';
 import connect from '../../lib/web3/connect';
+import check_status from '../../lib/web3/check_status';
+import { cntBlockNumber } from '../../lib/web3/cntBlockNumber';
 
 const Mint = () => {
     const setNavState = useSetRecoilState(navAtom);
@@ -40,9 +42,11 @@ const Mint = () => {
             }
 
             console.log('Connect !!');
+            return;
         }
     };
 
+    //check_status();
     return (
         <s.Section>
             <s.BoxContainer>
@@ -60,10 +64,12 @@ const Mint = () => {
                     11111111111111111111
                     <br />
                 </s.Box>
-                <s.Box>블록</s.Box>
+                <s.Box>
+                    <script>cntBlockNumber()</script>
+                </s.Box>
             </s.BoxContainer>
             <s.MintContainer>
-                <s.Mint onClick={handleClick}>Minting</s.Mint>
+                <s.Mint onClick={handleClick}>MINT</s.Mint>
                 <s.Mint onClick={handleConnectClick}>
                     {wallet?.account ? wallet.account : 'Connect Wallet'}
                 </s.Mint>

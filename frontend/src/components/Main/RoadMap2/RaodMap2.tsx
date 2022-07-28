@@ -11,6 +11,7 @@ const RaodMap2 = () => {
     const leftRef = useRef<HTMLDivElement>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
 
+<<<<<<< HEAD
     const isInView = useInView(sectionRef, {
         once: false,
         amount: 0.7,
@@ -27,6 +28,15 @@ const RaodMap2 = () => {
             <s.Right ref={scrollRef}>
                 {new Array(4).fill(0).map((e, i) => (
                     <Product
+=======
+    GsapRoadMap2({ sectionRef, scrollRef });
+
+    return (
+        <s.Section ref={sectionRef}>
+            <s.Container ref={scrollRef}>
+                {new Array(4).fill(0).map((e, i) => (
+                    <RoadMapItem
+>>>>>>> root_origin/master
                         title="METAVERSE"
                         content="OFFLINE PLACE 간의 경계를 허물며"
                         index={i}
