@@ -48,13 +48,6 @@ const RoadMapItem = ({ title, content, index, addToRefs }: IRoadMapItem) => {
         </s.ItemWrapper>
     );
 };
-<<<<<<< HEAD
-=======
-const RaodMap = () => {
-    const lineRef = useRef<HTMLDivElement>(null);
-    const ballRef = useRef<HTMLDivElement>(null);
-    GsapRoadMap({ lineRef, ballRef });
->>>>>>> root_origin/master
 
 const RaodMap = () => {
     const ref = useRef<HTMLDivElement>(null);
