@@ -17,7 +17,9 @@ const Mint = () => {
     });
 
     const handleClick = () => {
-        publicMint();
+        if (wallet?.account) {
+            publicMint(wallet);
+        }
     };
 
     const handleConnectClick = async (): Promise<void> => {
@@ -40,9 +42,11 @@ const Mint = () => {
             }
 
             console.log('Connect !!');
+            return;
         }
     };
-    check_status();
+
+    //check_status();
     return (
         <s.Section>
             <s.BoxContainer>

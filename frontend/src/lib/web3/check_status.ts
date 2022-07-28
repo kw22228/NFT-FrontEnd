@@ -30,13 +30,14 @@ export default async function check_status() {
             mintPrice = parseInt(result[6]);
             console.log(`${mintIndexForSale - 1} / ${maxSaleAmount}`);
             console.log(`트랜잭션당 최대 수량: ${mintLimitPerBlock}개`);
-            console.log(`민팅 시작 블록: #${mintStartBlockNumber}`);
+            console.log(`민팅 시작 블록: ${mintStartBlockNumber}`);
+            console.log(`최대 판매 물량: ${maxSaleAmount}`);
             console.log(`민팅 가격: ${caver.utils.fromPeb(mintPrice, 'KLAY')} KLAY`);
         })
         .catch((error: any) => {
             console.log(error);
         });
     blockNumber = await caver.klay.getBlockNumber();
-    console.log('현재 블록: #' + blockNumber);
-    cntBlockNumber();
+    console.log('현재 블록: ' + blockNumber);
+    // cntBlockNumber();
 }
