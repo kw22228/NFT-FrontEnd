@@ -1,86 +1,81 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as s from './RoadMap.style';
 
-import flag from '../../../assets/images/flag.svg';
-import golfBall from '../../../assets/images/ball.svg';
+import bg from '../../../assets/images/main.jpg';
+import { RoadMapVariants } from '../../../lib/animation/variants/inViewVariant';
 import GsapRoadMap from '../../../lib/animation/gsap/GsapRoadMap';
+import { useInView } from 'framer-motion';
 
 interface IRoadMapItem {
-    // addToRefs: (el: HTMLDivElement) => void;
-    text: string;
+    title: string;
+    content: string;
+    index: number;
+    addToRefs: (el: HTMLDivElement) => void;
 }
-const RoadMapItem = ({ text }: IRoadMapItem) => {
+
+const RoadMapItem = ({ title, content, index, addToRefs }: IRoadMapItem) => {
+    const ref = useRef<HTMLDivElement>(null);
+    const isInView = useInView(ref, {
+        once: false,
+        amount: 'all',
+    });
+    const [page, setPage] = useState(0);
+
+    useEffect(() => {
+        if (isInView) {
+            setPage(index);
+        }
+    }, [isInView, page]);
+
     return (
-        <s.Item>
-            <s.ItemContainer>
-                <s.Box>{text}</s.Box>
-                <s.BallTop>
-                    {/* <s.RowLine />
-                    <s.VerticalLine />
-                    <s.Triangle /> */}
-                    <img src={flag} alt="flag" />
-                </s.BallTop>
-            </s.ItemContainer>
-        </s.Item>
+        <s.ItemWrapper ref={addToRefs}>
+            <div></div>
+            <s.Item //
+                bg={bg}
+                variants={RoadMapVariants}
+                initial="initial"
+                whileInView="onViewport"
+                viewport={{
+                    once: false,
+                    amount: 0.6,
+                }}
+                ref={ref}
+            >
+                <s.Title>{title}</s.Title>
+                <s.Content>{content}</s.Content>
+            </s.Item>
+            <div></div>
+        </s.ItemWrapper>
     );
 };
+
 const RaodMap = () => {
-    const lineRef = useRef<HTMLDivElement>(null);
-    const ballRef = useRef<HTMLDivElement>(null);
-    // GsapRoadMap({ lineRef, ballRef });
+    const ref = useRef<HTMLDivElement>(null);
+    const revealRef = useRef<HTMLDivElement[]>([]);
+    const addToRefs = (el: HTMLDivElement) => {
+        if (el && !revealRef.current.includes(el)) {
+            revealRef?.current.push(el);
+        }
+    };
+    GsapRoadMap({ ref, revealRef });
 
-    const roadmapRef = useRef<HTMLElement>(null);
-
+    const arr = new Array(4).fill(0);
     return (
-        <s.Section id="roadmap" ref={roadmapRef} data-scroll-section>
-            <s.Title>RoadMap</s.Title>
-            <s.Container>
-                <s.Line ref={lineRef}>
-                    <s.LineBall ref={ballRef} />
-                </s.Line>
-
-                <s.Items>
-                    <s.Item>&nbsp;</s.Item>
+        <s.Section ref={ref} className="roadmap" id="roadmap">
+            <s.Left>
+                <s.LeftTitle>RoadMap</s.LeftTitle>
+            </s.Left>
+            <s.Right len={arr.length}>
+                {arr.map((e, i) => (
                     <RoadMapItem
-                        // addToRefs={addToRefs}
-                        text="METAVERSE - OFFLINE PLACE 간의 경계를 허물며 "
+                        title="METAVERSE"
+                        content="OFFLINE PLACE 간의 경계를 허물며"
+                        index={i}
+                        key={i}
+                        addToRefs={addToRefs}
                     />
-                    <RoadMapItem
-                        // addToRefs={addToRefs}
-                        text="METAVERSE - OFFLINE PLACE 간의 경계를 허물며 "
-                    />
-                    <RoadMapItem
-                        // addToRefs={addToRefs}
-                        text="METAVERSE - OFFLINE PLACE 간의 경계를 허물며 "
-                    />
-                    <RoadMapItem
-                        // addToRefs={addToRefs}
-                        text="METAVERSE - OFFLINE PLACE 간의 경계를 허물며 "
-                    />
-                    <RoadMapItem
-                        // addToRefs={addToRefs}
-                        text="METAVERSE - OFFLINE PLACE 간의 경계를 허물며 "
-                    />
-                    <RoadMapItem
-                        // addToRefs={addToRefs}
-                        text="METAVERSE - OFFLINE PLACE 간의 경계를 허물며 "
-                    />
-                    <RoadMapItem
-                        // addToRefs={addToRefs}
-                        text="METAVERSE - OFFLINE PLACE 간의 경계를 허물며 "
-                    />
-                    <RoadMapItem
-                        // addToRefs={addToRefs}
-                        text="METAVERSE - OFFLINE PLACE 간의 경계를 허물며 "
-                    />
-                </s.Items>
-            </s.Container>
-            <s.Ball
-                bg={golfBall}
-                data-scroll
-                data-scroll-speed="-3"
-                data-scroll-direction="horizontal"
-            />
+                ))}
+            </s.Right>
         </s.Section>
     );
 };

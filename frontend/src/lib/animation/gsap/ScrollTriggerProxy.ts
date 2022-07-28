@@ -13,7 +13,7 @@ const ScrollTriggerProxy = () => {
         if (locoScroll) {
             const scrollEl: HTMLElement = locoScroll?.el; // locomotive scrolling element, in out it's app (main)
 
-            locoScroll.on('scroll', () => ScrollTrigger.update()); // On scroll of locomotive, update scrolltrigger
+            locoScroll.on('scroll', ScrollTrigger.update); // On scroll of locomotive, update scrolltrigger
 
             ScrollTrigger.scrollerProxy(scrollEl, {
                 scrollTop(value: number | undefined) {
@@ -21,6 +21,7 @@ const ScrollTriggerProxy = () => {
                         ? locoScroll.scrollTo(value, 0, 0)
                         : locoScroll.scroll.instance.scroll.y;
                 },
+
                 scrollLeft(value: number | undefined) {
                     return arguments.length
                         ? locoScroll.scrollTo(value, 0, 0)

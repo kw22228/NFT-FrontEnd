@@ -3,6 +3,7 @@ import Caver, { AbiItem } from 'caver-js';
 import check_status from './check_status';
 
 import { ABI, CONTRACTADDRESS } from '../../lib/web3/config';
+import { IWallet } from '../recoil/atoms/types';
 const config = {
     rpcURL: 'https://api.baobab.klaytn.net:8651',
 };
@@ -17,7 +18,7 @@ let mintPrice = 0;
 let mintStartBlockNumber = 0;
 let blockNumber = 0;
 
-export default async function publicMint() {
+export default async function publicMint({ account, balance }: IWallet) {
     if (window.klaytn.networkVersion === 8217) {
         console.log('메인넷');
     } else if (window.klaytn.networkVersion === 1001) {

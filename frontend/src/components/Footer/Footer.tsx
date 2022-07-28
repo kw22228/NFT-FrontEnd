@@ -4,7 +4,7 @@ import * as s from './Footer.style';
 
 const Footer = () => {
     return (
-        <s.Footer id="footer" data-scroll-section>
+        <s.Footer id="footer">
             <Logo />
             <s.TextWrap>
                 <s.Copy>COPYRIGHT © OH, LOLLY DAY! all rights reserved.</s.Copy>

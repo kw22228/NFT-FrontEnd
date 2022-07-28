@@ -15,8 +15,9 @@ const Mint = () => {
     });
 
     const handleClick = () => {
-        console.log(wallet);
-        // publicMint();
+        if (wallet?.account) {
+            publicMint(wallet);
+        }
     };
 
     const handleConnectClick = async (): Promise<void> => {

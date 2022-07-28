@@ -54,7 +54,7 @@ const Story = () => {
     useViewportNavState(isInView, 'story');
 
     return (
-        <s.Section id="story" ref={storyRef} data-scroll-section>
+        <s.Section id="story" ref={storyRef}>
             <s.Title>STORY</s.Title>
             <StoryBoard
                 img="Image1"
