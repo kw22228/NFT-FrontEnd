@@ -1,4 +1,4 @@
-import gsap from 'gsap';
+import gsap from 'gsap/all';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { useEffect } from 'react';
 import { useLocomotiveScroll } from 'react-locomotive-scroll';
@@ -22,12 +22,6 @@ const ScrollTriggerProxy = () => {
                         : locoScroll.scroll.instance.scroll.y;
                 },
 
-                scrollLeft(value: number | undefined) {
-                    return arguments.length
-                        ? locoScroll.scrollTo(value, 0, 0)
-                        : locoScroll.scroll.instance.scroll.x;
-                },
-
                 getBoundingClientRect() {
                     return {
                         top: 0,
@@ -44,8 +38,8 @@ const ScrollTriggerProxy = () => {
                 scroller: scrollEl,
             });
 
-            ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
-            ScrollTrigger.refresh();
+            // ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
+            // ScrollTrigger.refresh();
 
             return () => {
                 ScrollTrigger.addEventListener('refresh', () => locoScroll?.update());
