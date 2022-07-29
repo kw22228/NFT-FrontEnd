@@ -3,12 +3,7 @@ import { Ball } from '../Main.style';
 import * as s from './Story.style';
 
 import golfBall from '../../../assets/images/ball.svg';
-import GsapStory from '../../../lib/animation/gsap/GsapStory';
-import {
-    bottomToTop,
-    leftToRight,
-    rightToLeft,
-} from '../../../lib/animation/variants/revealVariant';
+import { bottomToTop } from '../../../lib/animation/variants/revealVariant';
 import { useInView } from 'framer-motion';
 import useViewportNavState from '../../../lib/hooks/useViewportNavState';
 
