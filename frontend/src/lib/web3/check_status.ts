@@ -37,6 +37,10 @@ export default async function check_status() {
             console.log(error);
         });
     return {
-        myContract,
+        mintIndexForSale,
+        mintLimitPerBlock,
+        mintStartBlockNumber,
+        maxSaleAmount,
+        mintPrice,
     };
 }
