@@ -28,10 +28,10 @@ export default async function publicMint({ account, balance }: IWallet) {
     }
 
     const myContract = cABI;
-    // const amount = document.getElementById('amount') as HTMLInputElement;
-    // console.log(amount);
+    const amount = document.getElementById('amount') as HTMLInputElement;
+    console.log(amount);
 
-    // await check_status();
+    await check_status();
     // console.log(blockNumber);
     // console.log(mintStartBlockNumber);
 
