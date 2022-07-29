@@ -11,8 +11,6 @@ const caver = new Caver(config.rpcURL);
 const cABI = new caver.klay.Contract(ABI as AbiItem[], CONTRACTADDRESS);
 
 export default async function publicMint({ account, balance }: IWallet) {
-    console.log(account);
-
     if (window.klaytn.networkVersion === 8217) {
         console.log('메인넷');
     } else if (window.klaytn.networkVersion === 1001) {
@@ -28,12 +26,12 @@ export default async function publicMint({ account, balance }: IWallet) {
     }
 
     const myContract = cABI;
-    const amount = document.getElementById('amount') as HTMLInputElement;
-    console.log(amount);
 
-    await check_status();
-    // console.log(blockNumber);
-    // console.log(mintStartBlockNumber);
+    console.log(check_status);
+    //console.log((await check_status()).myContract);
+    //const amount = document.getElementById('amount') as HTMLInputElement;
+
+    //await check_status();
 
     // if (maxSaleAmount + 1 <= mintIndexForSale) {
     //     alert('모든 물량이 소진되었습니다.');
