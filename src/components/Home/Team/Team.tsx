@@ -1,8 +1,10 @@
+import { useInView } from 'framer-motion';
 import React, { useRef } from 'react';
 import {
     childrenVariants,
     staggerVariants,
 } from '../../../lib/animation/framer-variants/revealVariants';
+import useViewportNavState from '../../../lib/hooks/useViewportNavState';
 import * as s from './Team.style';
 
 interface ICard {
@@ -14,6 +16,11 @@ const Card = ({ text }: ICard) => {
 
 const Team = () => {
     const teamRef = useRef<HTMLElement>(null);
+    const isInView = useInView(teamRef, {
+        once: false,
+        amount: 0.8,
+    });
+    useViewportNavState(isInView, 'team');
 
     return (
         <s.Section id="team" ref={teamRef}>

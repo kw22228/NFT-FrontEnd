@@ -4,12 +4,19 @@ import * as s from './Main.style';
 import glofBall from '../../../assets/images/ball.svg';
 import Banner from '../Banner/Banner';
 import { bottomToTop } from '../../../lib/animation/framer-variants/revealVariants';
+import { useInView } from 'framer-motion';
+import useViewportNavState from '../../../lib/hooks/useViewportNavState';
 
 const Main = () => {
     const imgRef = useRef<HTMLDivElement>(null);
     const textBoxRef = useRef<HTMLDivElement>(null);
     const homeRef = useRef<HTMLDivElement>(null);
 
+    const isInView = useInView(homeRef, {
+        once: false,
+        amount: 0.3,
+    });
+    useViewportNavState(isInView, 'home');
     return (
         <s.MainSection id="home" ref={homeRef}>
             <Banner />

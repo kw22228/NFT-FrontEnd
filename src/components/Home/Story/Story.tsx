@@ -4,9 +4,16 @@ import * as s from './Story.style';
 import StoryBoard from './StoryBoard/StoryBoard';
 
 import golfBall from '../../../assets/images/ball.svg';
+import { useInView } from 'framer-motion';
+import useViewportNavState from '../../../lib/hooks/useViewportNavState';
 
 const Story = () => {
     const storyRef = useRef<HTMLElement>(null);
+    const isInView = useInView(storyRef, {
+        once: false,
+        amount: 0.4,
+    });
+    useViewportNavState(isInView, 'story');
 
     return (
         <s.Section id="story" ref={storyRef}>

@@ -6,6 +6,8 @@ import SwiperCore, { Autoplay } from 'swiper';
 import 'swiper/css';
 
 import openSea from '../../../assets/images/OpenSea-icon.svg';
+import { useInView } from 'framer-motion';
+import useViewportNavState from '../../../lib/hooks/useViewportNavState';
 
 const Nft = () => {
     const SwiperConfig: SwiperProps = {
@@ -29,6 +31,11 @@ const Nft = () => {
     };
 
     const nftRef = useRef<HTMLElement>(null);
+    const isInview = useInView(nftRef, {
+        once: false,
+        amount: 0.8,
+    });
+    useViewportNavState(isInview, 'nft');
     return (
         <s.Section id="nft" ref={nftRef}>
             <s.Title>NFT</s.Title>

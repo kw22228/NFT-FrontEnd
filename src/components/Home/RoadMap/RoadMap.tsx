@@ -1,12 +1,19 @@
+import { useInView } from 'framer-motion';
 import React, { useRef } from 'react';
 import GsapRoadMap from '../../../lib/animation/gsap/GsapRoadMap';
+import useViewportNavState from '../../../lib/hooks/useViewportNavState';
 import Product from './Product/Product';
 import * as s from './RoadMap.style';
 
 const RoadMap = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
+    const isInView = useInView(sectionRef, {
+        once: false,
+        amount: 0.7,
+    });
 
+    useViewportNavState(isInView, 'roadmap');
     GsapRoadMap({ sectionRef, scrollRef });
 
     return (
