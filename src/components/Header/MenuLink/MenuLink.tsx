@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocomotiveScroll } from 'react-locomotive-scroll';
 import { useNavigate, useMatch } from 'react-router';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { navAtom } from '../../../lib/recoil/atoms';
 import delay from '../../../lib/utils/delay';
 import * as s from './MenuLink.style';
@@ -13,7 +13,7 @@ interface IProps {
     matchValue?: string;
 }
 const MenuLink = ({ title, link, isScroll = false }: IProps) => {
-    const [navState, setNavState] = useRecoilState(navAtom);
+    const navState = useRecoilValue(navAtom);
     const matchRoute = useMatch(link);
     const match: boolean = isScroll ? navState === link : !!matchRoute;
     const navigate = useNavigate();
