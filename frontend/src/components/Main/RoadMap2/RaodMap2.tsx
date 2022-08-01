@@ -1,52 +1,39 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import * as s from './RoadMap.style';
 
-import bg from '../../../assets/images/main.jpg';
 import GsapRoadMap2 from '../../../lib/animation/gsap/GsapRoadMap2';
+import { useInView } from 'framer-motion';
+import useViewportNavState from '../../../lib/hooks/useViewportNavState';
+import Product from './Product/Product';
 
-interface IRoadMapItem {
-    title: string;
-    content: string;
-    index: number;
-    // addToRefs: (el: HTMLDivElement) => void;
-}
-const RoadMapItem = ({ title, content, index }: IRoadMapItem) => {
-    return (
-        <s.ItemWrapper className="roadmap-item">
-            <div></div>
-            <s.Item bg={bg}>
-                <s.Title>{title}</s.Title>
-                <s.Content>{content}</s.Content>
-            </s.Item>
-            <div></div>
-        </s.ItemWrapper>
-    );
-};
 const RaodMap2 = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
+    const leftRef = useRef<HTMLDivElement>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
-    // const revealRef = useRef<HTMLDivElement[]>([]);
-    // const addToRefs = (el: HTMLDivElement) => {
-    //     if (el && !revealRef.current.includes(el)) {
-    //         revealRef.current.push(el);
-    //     }
-    // };
 
-    GsapRoadMap2({ sectionRef, scrollRef });
+    const isInView = useInView(sectionRef, {
+        once: false,
+        amount: 0.7,
+    });
+
+    useViewportNavState(isInView, 'roadmap');
+    // GsapRoadMap2({ sectionRef, scrollRef, leftRef });
 
     return (
-        <s.Section ref={sectionRef}>
-            <s.Container ref={scrollRef}>
+        <s.Section ref={sectionRef} className="roadmap" id="roadmap">
+            <s.Left ref={leftRef}>
+                <s.LeftTitle>RoadMap</s.LeftTitle>
+            </s.Left>
+            <s.Right ref={scrollRef}>
                 {new Array(4).fill(0).map((e, i) => (
-                    <RoadMapItem
+                    <Product
                         title="METAVERSE"
                         content="OFFLINE PLACE 간의 경계를 허물며"
                         index={i}
                         key={i}
-                        // addToRefs={addToRefs}
                     />
                 ))}
-            </s.Container>
+            </s.Right>
         </s.Section>
     );
 };

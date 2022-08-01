@@ -3,7 +3,6 @@ import Caver, { AbiItem } from 'caver-js';
 import { IWallet } from '../recoil/atoms/types';
 import check_status from './check_status';
 import { ABI, CONTRACTADDRESS } from '../../lib/web3/config';
-
 const config = {
     rpcURL: 'https://api.baobab.klaytn.net:8651',
 };

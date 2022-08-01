@@ -1,47 +1,56 @@
 import gsap from 'gsap/all';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import React, { useLayoutEffect } from 'react';
-import { IGsapProps, IGsapRefRevealProps } from '../../types/GsapTypes';
+import React, { useEffect, useLayoutEffect } from 'react';
+import { IGsapProps } from '../../types/GsapTypes';
 
-const GsapRoadMap2 = ({ sectionRef, scrollRef }: IGsapProps) => {
+const GsapRoadMap2 = ({ sectionRef, scrollRef, leftRef }: IGsapProps) => {
     gsap.registerPlugin(ScrollTrigger);
 
     useLayoutEffect(() => {
         const sectionEl = sectionRef.current as HTMLDivElement;
+        const leftEl = leftRef.current as HTMLDivElement;
         const scrollEl = scrollRef.current as HTMLDivElement;
 
         const pinWrapWidth = scrollEl.offsetWidth;
-        const scrollWidth = window.innerWidth;
+        const leftWidth = leftEl.offsetWidth;
+        const scrollWidth = window.innerWidth - leftWidth;
+        const x = -pinWrapWidth + scrollWidth;
 
         const tl = gsap.timeline();
 
+        // setTimeout(() => {
         tl.to(sectionEl, {
+            height: `${scrollEl.scrollWidth}px`,
+            ease: 'none',
             scrollTrigger: {
                 trigger: sectionEl,
                 start: 'top top',
                 end: pinWrapWidth,
                 scrub: true,
                 pin: true,
-                markers: true,
             },
-            height: `${scrollEl.scrollWidth}px`,
-            ease: 'none',
         });
 
         tl.to(scrollEl, {
+            x: x,
+            ease: 'power0',
             scrollTrigger: {
                 trigger: scrollEl,
                 start: 'top top',
                 end: pinWrapWidth,
                 scrub: true,
+                // pinType: 'transform',
             },
-            x: -pinWrapWidth + scrollWidth,
-            ease: 'none',
         });
 
         ScrollTrigger.refresh();
+        // }, 1);
 
         return () => {
+            // ScrollTrigger.getAll().forEach(instance => {
+            //     instance.kill();
+            // });
+            // gsap.killTweensOf(window);
             tl.kill();
         };
     }, []);
