@@ -3,7 +3,6 @@ import { useLocomotiveScroll } from 'react-locomotive-scroll';
 import { useNavigate, useMatch } from 'react-router';
 import { useRecoilValue } from 'recoil';
 import { navAtom } from '../../../lib/recoil/atoms';
-import delay from '../../../lib/utils/delay';
 import * as s from './MenuLink.style';
 
 interface IProps {

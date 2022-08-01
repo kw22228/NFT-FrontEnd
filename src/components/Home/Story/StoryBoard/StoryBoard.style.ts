@@ -18,14 +18,18 @@ export const Container = styled(motion.div)<{ direction?: String }>`
     }
 `;
 
-export const ImgBox = styled.div`
-    width: 45%;
+export const ImgBox = styled.div<{ bg: string }>`
+    width: 25%;
     height: 70%;
-    background-color: ${props => props.theme.body};
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background-image: url(${props => props.bg});
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 `;
 
 export const TextBox = styled.div`

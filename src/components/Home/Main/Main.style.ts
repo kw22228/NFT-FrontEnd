@@ -25,15 +25,17 @@ export const MainContainer = styled.div`
     position: relative;
 `;
 
-export const Img = styled(motion.div)`
-    background-color: ${props => props.theme.body};
-
-    width: 55%;
-    height: 50%;
+export const Img = styled(motion.div)<{ bg: string }>`
+    width: 25rem;
+    height: 25rem;
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background-image: url(${props => props.bg});
+    background-repeat: no-repeat;
+    background-size: cover;
 `;
 
 export const TextBox = styled(motion.div)`
@@ -57,9 +59,11 @@ export const Ball = styled.div<{ bg: string }>`
     border-radius: 50%;
 
     position: absolute;
-    left: 90%;
+    left: 80%;
     bottom: 35%;
 
     background-image: url(${props => props.bg});
-    background-image: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 `;

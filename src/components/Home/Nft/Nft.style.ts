@@ -33,13 +33,26 @@ export const SliderContainer = styled.div`
         background-color: ${props => props.theme.body};
         color: black;
 
-        padding: 8rem 0;
+        width: 8rem;
+        height: 18rem;
         border-radius: 50%;
 
         display: flex;
         justify-content: center;
         align-items: center;
+
+        overflow: hidden;
     }
+`;
+
+export const Nft = styled.div<{ bg: string }>`
+    width: 100%;
+    height: 100%;
+
+    background-image: url(${props => props.bg});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: cover;
 `;
 
 export const OpenSea = styled.button`
