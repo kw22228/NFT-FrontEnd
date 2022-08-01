@@ -1,11 +1,13 @@
 import React, { useRef } from 'react';
 import * as s from './Main.style';
 
-import glofBall from '../../../assets/images/ball.svg';
 import Banner from '../Banner/Banner';
 import { bottomToTop } from '../../../lib/animation/framer-variants/revealVariants';
 import { useInView } from 'framer-motion';
 import useViewportNavState from '../../../lib/hooks/useViewportNavState';
+
+import goxoCharacter from '../../../assets/goxo_character.jpg';
+import goxoBanner from '../../../assets/goxo_pink.jpg';
 
 const Main = () => {
     const imgRef = useRef<HTMLDivElement>(null);
@@ -30,9 +32,8 @@ const Main = () => {
                         once: true,
                         amount: 0.2,
                     }}
-                >
-                    image
-                </s.Img>
+                    bg={goxoBanner}
+                />
                 <s.TextBox //
                     ref={textBoxRef}
                     variants={bottomToTop}
@@ -57,7 +58,7 @@ const Main = () => {
                     METAVERSE - OFFLINE PLACE 간의 경계를 허물며 새로운 역사를 써갈 HAPPIER TOWN에서
                     새로운 경험과 특별한 혜택을 누려보세요!
                 </s.TextBox>
-                <s.Ball bg={glofBall}></s.Ball>
+                <s.Ball bg={goxoCharacter} data-scroll data-scroll-speed="-3"></s.Ball>
             </s.MainContainer>
         </s.MainSection>
     );

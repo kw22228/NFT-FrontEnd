@@ -1,5 +1,5 @@
 import React from 'react';
-import { bottomToTop } from '../../../../lib/animation/framer-variants/revealVariants';
+import { leftToRight, rightToLeft } from '../../../../lib/animation/framer-variants/revealVariants';
 import * as s from './StoryBoard.style';
 
 interface IStoryBoard {
@@ -12,16 +12,16 @@ const StoryBoard = ({ img, text, direction = 'row' }: IStoryBoard) => {
     return (
         <s.Container //
             direction={direction}
-            // variants={direction === 'row' ? leftToRight : rightToLeft}
-            variants={bottomToTop}
+            variants={direction === 'row' ? leftToRight : rightToLeft}
+            // variants={bottomToTop}
             initial="initial"
             whileInView="onViewport"
             viewport={{
                 once: true,
-                amount: 'some',
+                amount: 0.5,
             }}
         >
-            <s.ImgBox>{img}</s.ImgBox>
+            <s.ImgBox bg={img} />
             <s.TextBox>{text}</s.TextBox>
         </s.Container>
     );

@@ -21,8 +21,6 @@ export const Title = styled.h1`
 `;
 
 export const Ball = styled.div<{ bg: string }>`
-    /* background-color: #f5f5f5; */
-
     padding: 10rem;
     border-radius: 50%;
 
@@ -35,4 +33,12 @@ export const Ball = styled.div<{ bg: string }>`
     background-image: url(${props => props.bg});
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
+`;
+
+export const Flag = styled.div`
+    position: absolute;
+
+    bottom: 10%;
+    left: 85%;
 `;

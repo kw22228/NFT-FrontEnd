@@ -29,6 +29,31 @@ export const LeftTitle = styled.h1`
     margin-top: 2rem;
 `;
 
+export const Line = styled.div`
+    height: 70%;
+    border-right: 3px solid black;
+    width: 1px;
+
+    margin-top: 5rem;
+    position: relative;
+`;
+
+export const BallImg = styled.div<{ bg: string }>`
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+
+    background-image: url(${props => props.bg});
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translate(-50%);
+`;
+
 export const Right = styled.div`
     position: absolute;
     left: 15%;
@@ -40,6 +65,6 @@ export const Right = styled.div`
     overflow: hidden;
     overflow-x: hidden;
     & > div:not(:last-child) {
-        margin-right: 20rem;
+        margin-right: 10rem;
     }
 `;
