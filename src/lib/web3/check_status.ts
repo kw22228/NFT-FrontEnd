@@ -21,7 +21,7 @@ export default async function check_status() {
         .mintingInformation()
         .call()
         .then(function (result: string[]) {
-            console.log(result); // CONTRACT 내용 (배열)
+            //console.log(result); // CONTRACT 내용 (배열)
             mintIndexForSale = parseInt(result[1]);
             mintLimitPerBlock = parseInt(result[2]);
             mintStartBlockNumber = parseInt(result[4]);
@@ -37,6 +37,10 @@ export default async function check_status() {
             console.log(error);
         });
     return {
-        myContract,
+        mintIndexForSale,
+        mintLimitPerBlock,
+        mintStartBlockNumber,
+        maxSaleAmount,
+        mintPrice,
     };
 }

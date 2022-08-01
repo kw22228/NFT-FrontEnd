@@ -25,8 +25,10 @@ export default async function publicMint({ account, balance }: IWallet) {
     }
 
     const myContract = cABI;
+    await check_status;
 
-    console.log(check_status());
+    console.log((await check_status()).mintPrice);
+
     //console.log((await check_status()).myContract);
     //const amount = document.getElementById('amount') as HTMLInputElement;
 

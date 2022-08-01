@@ -2,8 +2,8 @@ import BigNumber from 'bignumber.js';
 import Caver, { AbiItem } from 'caver-js';
 import { IWallet } from '../recoil/atoms/types';
 import check_status from './check_status';
+import cntBlockNumber from './cntBlockNumber';
 import { ABI, CONTRACTADDRESS } from '../../lib/web3/config';
-
 const config = {
     rpcURL: 'https://api.baobab.klaytn.net:8651',
 };
@@ -27,32 +27,39 @@ export default async function publicMint({ account, balance }: IWallet) {
 
     const myContract = cABI;
 
-    console.log(check_status);
+    // console.log((await check_status()).mintPrice);
+    // console.log((await check_status()).mintIndexForSale);
+
     //console.log((await check_status()).myContract);
     //const amount = document.getElementById('amount') as HTMLInputElement;
 
     //await check_status();
 
-    // if (maxSaleAmount + 1 <= mintIndexForSale) {
-    //     alert('모든 물량이 소진되었습니다.');
-    //     return;
-    // } else if (blockNumber <= mintStartBlockNumber) {
-    //     alert('아직 민팅이 시작되지 않았습니다.');
-    //     return;
-    // }
-    // const total_value = new BigNumber(+amount * mintPrice);
+    if ((await check_status()).maxSaleAmount + 1 <= (await check_status()).mintIndexForSale) {
+        alert('모든 물량이 소진되었습니다.');
+        return;
+    } else if (
+        (await cntBlockNumber()).blockNumber <= (await check_status()).mintStartBlockNumber
+    ) {
+        alert('아직 민팅이 시작되지 않았습니다.');
+        return;
+    }
+
+    //const total_value = new BigNumber(+amount * mintPrice); // 민팅 수량 선택 (amount)
 
     try {
-        const gasAmount = await myContract.methods.publicMint().estimateGas({
+        const gasAmount = await myContract.methods.publicMint(1).estimateGas({
+            //publicmint = 1
             from: account,
             gas: 6000000,
             // value: total_value,
         });
-        const result = await myContract.methods.publicMint().send({
+        const result = await myContract.methods.publicMint(1).send({
             from: account,
             gas: gasAmount,
             // value: total_value,
         });
+        console.log(result);
         if (result != null) {
             console.log(result);
             alert('민팅에 성공하였습니다.');
