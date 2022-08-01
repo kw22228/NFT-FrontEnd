@@ -65,6 +65,6 @@ export const Right = styled.div`
     overflow: hidden;
     overflow-x: hidden;
     & > div:not(:last-child) {
-        margin-right: 20rem;
+        margin-right: 10rem;
     }
 `;
