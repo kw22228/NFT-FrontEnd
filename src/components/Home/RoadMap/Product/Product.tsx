@@ -15,7 +15,7 @@ const Product = ({ title, content, index, setPage }: IProduct) => {
     const ref = useRef<HTMLDivElement>(null);
     const isInView = useInView(ref, {
         once: false,
-        amount: 0.6,
+        amount: 'all',
     });
 
     useEffect(() => {
