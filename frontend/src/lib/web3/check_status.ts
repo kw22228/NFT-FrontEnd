@@ -1,7 +1,7 @@
 import Caver, { AbiItem } from 'caver-js';
 
 import { ABI, CONTRACTADDRESS } from '../../lib/web3/config';
-import { cntBlockNumber } from './cntBlockNumber';
+import cntBlockNumber from './cntBlockNumber';
 const config = {
     rpcURL: 'https://api.baobab.klaytn.net:8651',
 };
@@ -14,7 +14,6 @@ let maxSaleAmount = 0;
 let mintPrice = 0;
 let mintStartBlockNumber = 0;
 let mintLimitPerBlock = 0;
-let blockNumber = 0;
 
 export default async function check_status() {
     const myContract = cABI;
@@ -22,7 +21,7 @@ export default async function check_status() {
         .mintingInformation()
         .call()
         .then(function (result: string[]) {
-            console.log(result);
+            console.log(result); // CONTRACT 내용 (배열)
             mintIndexForSale = parseInt(result[1]);
             mintLimitPerBlock = parseInt(result[2]);
             mintStartBlockNumber = parseInt(result[4]);
@@ -37,7 +36,11 @@ export default async function check_status() {
         .catch((error: any) => {
             console.log(error);
         });
-    blockNumber = await caver.klay.getBlockNumber();
-    console.log('현재 블록: ' + blockNumber);
-    // cntBlockNumber();
+    return {
+        mintIndexForSale,
+        mintLimitPerBlock,
+        mintStartBlockNumber,
+        maxSaleAmount,
+        mintPrice,
+    };
 }

@@ -1,20 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as s from './Mint.style';
 
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { navAtom, walletAtom } from '../../lib/recoil/atoms';
 import publicMint from '../../lib/web3/mintScript';
 import connect from '../../lib/web3/connect';
-import check_status from '../../lib/web3/check_status';
-import { cntBlockNumber } from '../../lib/web3/cntBlockNumber';
+import cntBlockNumber from '../../lib/web3/cntBlockNumber';
 
 const Mint = () => {
+    const [currentBlock, setCurrentBlcok] = useState<number>(0);
     const setNavState = useSetRecoilState(navAtom);
     const [wallet, setWallet] = useRecoilState(walletAtom);
 
     useEffect(() => {
         setNavState('mint');
-    });
+        const interval = setInterval(() => {
+            (async () => {
+                const result = (await cntBlockNumber()).blockNumber;
+                setCurrentBlcok(result);
+            })();
+        }, 1000);
+        return () => clearInterval(interval);
+    }, [currentBlock]);
 
     const handleClick = () => {
         if (wallet?.account) {
@@ -45,7 +52,6 @@ const Mint = () => {
             return;
         }
     };
-
     //check_status();
     return (
         <s.Section>
@@ -64,9 +70,7 @@ const Mint = () => {
                     11111111111111111111
                     <br />
                 </s.Box>
-                <s.Box>
-                    <script>cntBlockNumber()</script>
-                </s.Box>
+                <s.Box>{currentBlock}</s.Box>
             </s.BoxContainer>
             <s.MintContainer>
                 <s.Mint onClick={handleClick}>MINT</s.Mint>
