@@ -3,7 +3,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import React, { useLayoutEffect } from 'react';
 import { IGsapProps } from '../../types/GsapTypes';
 
-const GsapRoadMap = ({ sectionRef, scrollRef }: IGsapProps) => {
+const GsapRoadMap = ({ sectionRef, scrollRef, lineRef, ballRef }: IGsapProps) => {
     gsap.registerPlugin(ScrollTrigger);
 
     useLayoutEffect(() => {
@@ -13,6 +13,12 @@ const GsapRoadMap = ({ sectionRef, scrollRef }: IGsapProps) => {
         const pinWrapWidth = scrollEl.offsetWidth;
         const scrollWidth = window.innerWidth;
         const x = -pinWrapWidth + scrollWidth;
+
+        const lineEl = lineRef.current as HTMLDivElement;
+        const ballEl = ballRef.current as HTMLDivElement;
+
+        const lineHeight = lineEl.clientHeight;
+        const ballProgress = lineHeight / pinWrapWidth;
 
         const tl = gsap.timeline();
 
@@ -37,6 +43,11 @@ const GsapRoadMap = ({ sectionRef, scrollRef }: IGsapProps) => {
                     start: 'top top',
                     end: pinWrapWidth,
                     scrub: true,
+
+                    onUpdate: self => {
+                        const progress = 100 - Math.floor(self.progress * 100);
+                        ballEl.style.bottom = progress + '%';
+                    },
                 },
             });
 
