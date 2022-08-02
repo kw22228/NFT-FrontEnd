@@ -11,6 +11,7 @@ import HomePage from './pages/HomePage';
 import MintPage from './pages/MintPage';
 import GallaryPage from './pages/GallaryPage';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import FixedBtn from './components/FixedBtn/FixedBtn';
 
 function App() {
     const containRef = useRef(null);
@@ -48,6 +49,7 @@ function App() {
                         <Route path="/gallary" element={<GallaryPage />} />
                     </Routes>
                     <Footer />
+                    <FixedBtn />
                 </main>
             </LocomotiveScrollProvider>
         </BrowserRouter>
