@@ -23,7 +23,7 @@ const connect = async (): Promise<IWallet | null> => {
 
     //await check_status(); //옮기기
     return {
-        account,
+        account: accounts[0] as string,
         balance: caver.utils.fromPeb(balance, config.token),
     };
 };
