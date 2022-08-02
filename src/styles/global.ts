@@ -18,6 +18,8 @@ const GlobalStyle = createGlobalStyle`
         overflow-x: hidden;
         overflow: hidden;
         background: linear-gradient(#8bc605, #6CA33D);
+
+        font-family: 'Mochiy Pop One', sans-serif;
     }
     main{
         overflow-x: hidden;
@@ -45,6 +47,8 @@ const GlobalStyle = createGlobalStyle`
         bottom: 0;
         left: 0;
     }
+
+    
 `;
 
 export default GlobalStyle;
