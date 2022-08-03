@@ -7,7 +7,7 @@ const config = {
 };
 
 const caver = new Caver(config.rpcURL);
-const cABI = new caver.klay.Contract(ABI as AbiItem[], CONTRACTADDRESS);
+const myContract = new caver.klay.Contract(ABI as AbiItem[], CONTRACTADDRESS);
 
 let mintIndexForSale = 0;
 let maxSaleAmount = 0;
@@ -16,7 +16,6 @@ let mintStartBlockNumber = 0;
 let mintLimitPerBlock = 0;
 
 export default async function check_status() {
-    const myContract = cABI;
     await myContract.methods
         .mintingInformation()
         .call()

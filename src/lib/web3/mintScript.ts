@@ -49,7 +49,7 @@ export default async function publicMint({ account, balance }: IWallet) {
 
         .publicMint(1)
         .send({
-            from: window.klaytn.selectedAddress,
+            from: account,
             gas: 6000000,
             value: total_value,
         })
