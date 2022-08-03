@@ -6,9 +6,6 @@ import { IScroll } from '../../types/GsapTypes';
 
 const ScrollTriggerProxy = () => {
     const { scroll }: IScroll = useLocomotiveScroll();
-    const header = document.querySelector('#header') as HTMLElement;
-    let hidden: boolean = false;
-    let visible: boolean = true;
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -17,7 +14,9 @@ const ScrollTriggerProxy = () => {
             if (scroll) {
                 const element = scroll.el as HTMLDivElement;
 
-                scroll.on('scroll', () => ScrollTrigger.update());
+                scroll.on('scroll', (position: any) => {
+                    ScrollTrigger.update();
+                });
 
                 ScrollTrigger.scrollerProxy(element, {
                     scrollTop(value: number | undefined) {
@@ -25,7 +24,11 @@ const ScrollTriggerProxy = () => {
                             ? scroll.scrollTo(value, 0, 0)
                             : scroll.scroll.instance.scroll.y;
                     }, // We don't have to define a scrollLeft because we're only scrolling vertically.
-
+                    scrollLeft(value: number | undefined) {
+                        return arguments.length
+                            ? scroll.scrollTo(value, 0, 0)
+                            : scroll.scroll.instance.scroll.x;
+                    },
                     getBoundingClientRect() {
                         return {
                             top: 0,

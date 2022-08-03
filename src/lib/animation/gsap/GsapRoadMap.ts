@@ -37,15 +37,12 @@ const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
             });
 
             tl.to(ballEl, {
-                duration: 5,
                 ease: 'none',
                 scrollTrigger: {
                     trigger: sectionEl,
                     start: 'top top',
                     end: pinWrapWidth,
                     scrub: true,
-
-                    onUpdate: self => {},
                 },
                 motionPath: {
                     path: '#path',
