@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import flag from '../../../assets/images/flag.svg';
 
 export const Section = styled.section`
     height: 100vh;
@@ -12,7 +13,7 @@ export const Section = styled.section`
     position: relative;
 `;
 export const Left = styled.div`
-    width: 15%;
+    width: 20%;
     height: 100%;
 
     z-index: 10;
@@ -27,6 +28,7 @@ export const Left = styled.div`
 
 export const LeftTitle = styled.h1`
     margin-top: 2rem;
+    font-size: 1.5rem;
 `;
 
 export const Line = styled.div`
@@ -36,6 +38,48 @@ export const Line = styled.div`
 
     margin-top: 5rem;
     position: relative;
+`;
+
+export const CurveLine = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+
+    svg {
+        position: absolute;
+        width: 70%;
+        height: 80%;
+
+        text {
+            fill: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+
+            width: 100px;
+            height: 100px;
+            background-color: black;
+        }
+
+        image {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+    }
+`;
+
+export const Flag = styled.div`
+    width: 50px;
+    height: 50px;
+    background-color: black;
+
+    position: absolute;
+    top: 0;
+    left: 0;
 `;
 
 export const BallImg = styled.div<{ bg: string }>`
@@ -48,15 +92,15 @@ export const BallImg = styled.div<{ bg: string }>`
     background-position: center;
     background-repeat: no-repeat;
 
-    position: absolute;
+    /* position: absolute;
     bottom: 100%;
     left: 50%;
-    transform: translate(-50%);
+    transform: translate(-50%); */
 `;
 
 export const Right = styled.div`
     position: absolute;
-    left: 15%;
+    left: 20%;
     height: 70%;
 
     display: flex;
@@ -64,7 +108,7 @@ export const Right = styled.div`
 
     overflow: hidden;
     overflow-x: hidden;
-    & > div:not(:last-child) {
+    /* & > div:not(:last-child) {
         margin-right: 10rem;
-    }
+    } */
 `;

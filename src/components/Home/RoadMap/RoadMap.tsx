@@ -6,11 +6,16 @@ import importAll from '../../../lib/utils/importAll';
 import Product from './Product/Product';
 import * as s from './RoadMap.style';
 
+import Flag from '../../../assets/images/flag.svg';
+import { useLocomotiveScroll } from 'react-locomotive-scroll';
+
 const RoadMap = () => {
+    const { scroll } = useLocomotiveScroll();
+
     const sectionRef = useRef<HTMLDivElement>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
+    // const lineRef = useRef<HTMLDivElement>(null);
 
-    const lineRef = useRef<HTMLDivElement>(null);
     const ballRef = useRef<HTMLDivElement>(null);
 
     const isInView = useInView(sectionRef, {
@@ -19,18 +24,105 @@ const RoadMap = () => {
     });
 
     useViewportNavState(isInView, 'roadmap');
-    GsapRoadMap({ sectionRef, scrollRef, lineRef, ballRef });
+    GsapRoadMap({ sectionRef, scrollRef, ballRef });
 
     const [page, setPage] = useState<number>(0);
     const images = importAll(require.context('../../../assets/nfts/', false, /.[1-4]\d\.png$/));
 
+    const clickPage = (id: number) => {
+        const element = document.querySelector(`#product${id}`) as HTMLDivElement;
+
+        if (element) {
+            scroll.scrollTo(element, {
+                offset: '0',
+                duration: '1500',
+                easing: [0.25, 0.0, 0.35, 1.0],
+                // disableLerp: false,
+            });
+        }
+    };
     return (
         <s.Section ref={sectionRef} className="roadmap" id="roadmap">
             <s.Left>
                 <s.LeftTitle>RoadMap</s.LeftTitle>
-                <s.Line ref={lineRef}>
+                {/* <s.Line ref={lineRef}>
                     <s.BallImg bg={images[page]} ref={ballRef} />
-                </s.Line>
+                </s.Line> */}
+                <s.CurveLine>
+                    <svg
+                        width="536"
+                        height="1191"
+                        viewBox="0 -120 550 1500"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        id="svg"
+                    >
+                        <defs>
+                            <clipPath id="circleView">
+                                <circle r="1500" />
+                            </clipPath>
+                        </defs>
+
+                        <path
+                            d="M315.5 5L43.4532 277.047C-22.6826 343.183 0.565828 455.422 87.5308 489.846L448.16 632.595C532.808 666.101 557.688 773.991 496.263 841.183L181.5 1185.5"
+                            stroke="#57892B"
+                            strokeWidth="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="bevel"
+                            id="path"
+                        />
+                        <image
+                            width="70"
+                            height="100"
+                            x="305"
+                            y="-100"
+                            xlinkHref={Flag}
+                            clipPath="url(#circleView)"
+                            onClick={() => clickPage(0)}
+                        />
+                        <image
+                            width="70"
+                            height="100"
+                            x="105"
+                            y="390"
+                            xlinkHref={Flag}
+                            clipPath="url(#circleView)"
+                            onClick={() => clickPage(1)}
+                        />
+                        <image
+                            width="70"
+                            height="100"
+                            x="530"
+                            y="680"
+                            xlinkHref={Flag}
+                            clipPath="url(#circleView)"
+                            onClick={() => clickPage(2)}
+                        />
+                        <image
+                            width="70"
+                            height="100"
+                            x="165"
+                            y="1090"
+                            xlinkHref={Flag}
+                            clipPath="url(#circleView)"
+                            onClick={() => clickPage(3)}
+                        />
+
+                        <text x="335" y="-65">
+                            1
+                        </text>
+                        <text x="135" y="425">
+                            2
+                        </text>
+                        <text x="558" y="713">
+                            3
+                        </text>
+                        <text x="195" y="1123">
+                            4
+                        </text>
+                    </svg>
+                    <s.BallImg bg={images[page]} ref={ballRef} />
+                </s.CurveLine>
             </s.Left>
             <s.Right ref={scrollRef}>
                 {new Array(4).fill(0).map((e, i) => (

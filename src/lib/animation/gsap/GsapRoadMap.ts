@@ -1,10 +1,11 @@
 import gsap from 'gsap';
+import MotionPathPlugin from 'gsap/MotionPathPlugin';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import React, { useLayoutEffect } from 'react';
 import { IGsapProps } from '../../types/GsapTypes';
 
-const GsapRoadMap = ({ sectionRef, scrollRef, lineRef, ballRef }: IGsapProps) => {
-    gsap.registerPlugin(ScrollTrigger);
+const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
+    gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
     useLayoutEffect(() => {
         const sectionEl = sectionRef.current as HTMLDivElement;
@@ -14,11 +15,11 @@ const GsapRoadMap = ({ sectionRef, scrollRef, lineRef, ballRef }: IGsapProps) =>
         const scrollWidth = window.innerWidth;
         const x = -pinWrapWidth + scrollWidth;
 
-        const lineEl = lineRef.current as HTMLDivElement;
+        // const lineEl = lineRef.current as HTMLDivElement;
         const ballEl = ballRef.current as HTMLDivElement;
 
-        const lineHeight = lineEl.clientHeight;
-        const ballProgress = lineHeight / pinWrapWidth;
+        // const lineHeight = lineEl.clientHeight;
+        // const ballProgress = lineHeight / pinWrapWidth;
 
         const tl = gsap.timeline();
 
@@ -35,6 +36,25 @@ const GsapRoadMap = ({ sectionRef, scrollRef, lineRef, ballRef }: IGsapProps) =>
                 },
             });
 
+            tl.to(ballEl, {
+                duration: 5,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: sectionEl,
+                    start: 'top top',
+                    end: pinWrapWidth,
+                    scrub: true,
+
+                    onUpdate: self => {},
+                },
+                motionPath: {
+                    path: '#path',
+                    align: '#path',
+                    autoRotate: false,
+                    alignOrigin: [0.5, 0.5],
+                },
+            });
+
             tl.to(scrollEl, {
                 x: x,
                 ease: 'none',
@@ -45,8 +65,8 @@ const GsapRoadMap = ({ sectionRef, scrollRef, lineRef, ballRef }: IGsapProps) =>
                     scrub: true,
 
                     onUpdate: self => {
-                        const progress = 100 - Math.floor(self.progress * 100);
-                        ballEl.style.bottom = progress + '%';
+                        // const progress = 100 - Math.floor(self.progress * 100);
+                        // ballEl.style.bottom = progress + '%';
                     },
                 },
             });
