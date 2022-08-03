@@ -11,3 +11,16 @@ export const pulseVariants: Variants = {
         },
     },
 };
+
+export const jumpVariants: Variants = {
+    normal: {
+        opacity: 0,
+    },
+    action: {
+        opacity: [0, 1, 0],
+        y: [0, -20, 0],
+        transition: {
+            repeat: Infinity,
+        },
+    },
+};
