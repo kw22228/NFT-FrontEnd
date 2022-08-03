@@ -49,7 +49,7 @@ function App() {
                         <Route path="/gallary" element={<GallaryPage />} />
                     </Routes>
                     <Footer />
-                    <FixedBtn />
+                    {/* <FixedBtn /> */}
                 </main>
             </LocomotiveScrollProvider>
         </BrowserRouter>
