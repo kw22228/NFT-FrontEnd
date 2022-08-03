@@ -5,11 +5,12 @@ import check_status from './check_status';
 import cntBlockNumber from './cntBlockNumber';
 import { ABI, CONTRACTADDRESS } from '../../lib/web3/config';
 import connect from './connect';
+
 const config = {
     rpcURL: 'https://api.baobab.klaytn.net:8651',
 };
 const caver = new Caver(config.rpcURL);
-const cABI = new caver.klay.Contract(ABI as AbiItem[], CONTRACTADDRESS);
+const myContract = new caver.klay.Contract(ABI as AbiItem[], CONTRACTADDRESS);
 
 export default async function publicMint({ account, balance }: IWallet) {
     if (window.klaytn.networkVersion === 8217) {
@@ -20,16 +21,10 @@ export default async function publicMint({ account, balance }: IWallet) {
         alert('ERROR: 클레이튼 네트워크로 연결되지 않았습니다!');
         return;
     }
-
     if (!account) {
         alert('ERROR: 지갑을 연결해주세요!');
         return;
     }
-
-    const myContract = cABI;
-
-    console.log((await check_status()).mintPrice);
-    console.log((await check_status()).mintIndexForSale);
 
     //console.log((await check_status()).myContract);
     //const amount = document.getElementById('amount') as HTMLInputElement;
@@ -47,21 +42,22 @@ export default async function publicMint({ account, balance }: IWallet) {
     }
 
     const total_value = new BigNumber(1 * (await check_status()).mintPrice); // 민팅 수량 선택 (amount)
+
     try {
-        const gasAmount = await myContract.methods.publicMint(1).estimateGas({
-            //publicmint = 1
+        const gasAmount = myContract.methods.publicMint(1).estimateGas({
             from: account,
             gas: 6000000,
             value: total_value,
         });
-        const result = await myContract.methods.publicMint(1).send({
+
+        const tx_result = myContract.methods.publicMint(1).send({
             from: account,
             gas: gasAmount,
             value: total_value,
         });
-        console.log(result);
-        if (result != null) {
-            console.log(result);
+
+        if (tx_result != null) {
+            console.log(tx_result);
             alert('민팅에 성공하였습니다.');
         }
     } catch (error) {
