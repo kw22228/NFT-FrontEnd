@@ -5,6 +5,7 @@ import check_status from './check_status';
 import cntBlockNumber from './cntBlockNumber';
 import { ABI, CONTRACTADDRESS } from '../../lib/web3/config';
 import connect from './connect';
+
 const config = {
     rpcURL: 'https://api.baobab.klaytn.net:8651',
 };
@@ -54,12 +55,13 @@ export default async function publicMint({ account, balance }: IWallet) {
             gas: 6000000,
             value: total_value,
         });
+
         const result = await myContract.methods.publicMint(1).send({
             from: account,
             gas: gasAmount,
             value: total_value,
         });
-        console.log(result);
+
         if (result != null) {
             console.log(result);
             alert('민팅에 성공하였습니다.');
