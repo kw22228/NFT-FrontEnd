@@ -25,11 +25,7 @@ export default async function publicMint({ account, balance }: IWallet) {
         alert('ERROR: 지갑을 연결해주세요!');
         return;
     }
-
-    //console.log((await check_status()).myContract);
-    //const amount = document.getElementById('amount') as HTMLInputElement;
-
-    //await check_status();
+    const accounts = window.klaytn.selectedAddress;
 
     if ((await check_status()).maxSaleAmount + 1 <= (await check_status()).mintIndexForSale) {
         alert('모든 물량이 소진되었습니다.');
@@ -40,28 +36,35 @@ export default async function publicMint({ account, balance }: IWallet) {
         alert('아직 민팅이 시작되지 않았습니다.');
         return;
     }
+    console.log(publicMint);
 
     const total_value = new BigNumber(1 * (await check_status()).mintPrice); // 민팅 수량 선택 (amount)
+    // try {
+    //     const gasAmount = await myContract.methods.publicMint(1).estimateGas({
+    //         from: account,
+    //         gas: 6000000,
+    //         value: total_value,
+    //     });
+    const tx_result = await myContract.methods
 
-    try {
-        const gasAmount = myContract.methods.publicMint(1).estimateGas({
-            from: account,
+        .publicMint(1)
+        .send({
+            from: window.klaytn.selectedAddress,
             gas: 6000000,
             value: total_value,
+        })
+        .then((receipt: any) => {
+            console.log(receipt);
+        })
+        .catch((error: any) => {
+            console.log(error);
         });
-
-        const tx_result = myContract.methods.publicMint(1).send({
-            from: account,
-            gas: gasAmount,
-            value: total_value,
-        });
-
-        if (tx_result != null) {
-            console.log(tx_result);
-            alert('민팅에 성공하였습니다.');
-        }
-    } catch (error) {
-        console.log(error);
-        alert('민팅에 실패하였습니다.');
-    }
+    // if (tx_result != null) {
+    //     console.log(tx_result);
+    //     alert('민팅에 성공하였습니다.');
+    // }
+    // } catch (error) {
+    //     console.log(error);
+    //     alert('민팅에 실패하였습니다.');
+    // }
 }
