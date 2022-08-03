@@ -4,6 +4,7 @@ import { IWallet } from '../recoil/atoms/types';
 import check_status from './check_status';
 import cntBlockNumber from './cntBlockNumber';
 import { ABI, CONTRACTADDRESS } from '../../lib/web3/config';
+import connect from './connect';
 const config = {
     rpcURL: 'https://api.baobab.klaytn.net:8651',
 };
@@ -27,8 +28,8 @@ export default async function publicMint({ account, balance }: IWallet) {
 
     const myContract = cABI;
 
-    // console.log((await check_status()).mintPrice);
-    // console.log((await check_status()).mintIndexForSale);
+    console.log((await check_status()).mintPrice);
+    console.log((await check_status()).mintIndexForSale);
 
     //console.log((await check_status()).myContract);
     //const amount = document.getElementById('amount') as HTMLInputElement;
@@ -45,19 +46,18 @@ export default async function publicMint({ account, balance }: IWallet) {
         return;
     }
 
-    //const total_value = new BigNumber(+amount * mintPrice); // 민팅 수량 선택 (amount)
-
+    const total_value = new BigNumber(1 * (await check_status()).mintPrice); // 민팅 수량 선택 (amount)
     try {
         const gasAmount = await myContract.methods.publicMint(1).estimateGas({
             //publicmint = 1
             from: account,
             gas: 6000000,
-            // value: total_value,
+            value: total_value,
         });
         const result = await myContract.methods.publicMint(1).send({
             from: account,
             gas: gasAmount,
-            // value: total_value,
+            value: total_value,
         });
         console.log(result);
         if (result != null) {
