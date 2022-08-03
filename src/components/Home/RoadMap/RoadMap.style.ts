@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import flag from '../../../assets/images/flag.svg';
 
@@ -55,19 +56,6 @@ export const CurveLine = styled.div`
         text {
             fill: white;
             font-size: 1.5rem;
-            cursor: pointer;
-
-            width: 100px;
-            height: 100px;
-            background-color: black;
-        }
-
-        image {
-            transition: all 0.3s ease;
-            cursor: pointer;
-            &:hover {
-                opacity: 0.6;
-            }
         }
     }
 `;
@@ -111,4 +99,22 @@ export const Right = styled.div`
     /* & > div:not(:last-child) {
         margin-right: 10rem;
     } */
+`;
+
+export const Bottom = styled(motion.div)`
+    width: 3rem;
+    height: 3rem;
+
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    cursor: pointer;
 `;

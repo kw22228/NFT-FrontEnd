@@ -45,7 +45,23 @@ const Story = () => {
                 // addToRefs={addToRefs}
             />
 
-            <s.Ball bg={goxoCharacter} data-scroll data-scroll-speed="3" />
+            <s.Ball
+                bg={goxoCharacter}
+                top="35%"
+                left="0%"
+                size="10rem"
+                data-scroll
+                data-scroll-speed="3"
+            />
+            <s.Ball //
+                bg={goxoCharacter}
+                top="0%"
+                left="75%"
+                size="8rem"
+                data-scroll
+                data-scroll-speed="-3"
+                data-scroll-direction="horizontal"
+            />
             <s.Flag>
                 <svg
                     width="216"

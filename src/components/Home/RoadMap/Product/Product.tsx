@@ -36,12 +36,11 @@ const Product = ({ title, content, index, setPage }: IProduct) => {
                     amount: 0.6,
                 }}
                 ref={ref}
-                id={`product${index}`}
             >
                 <s.Title>{title}</s.Title>
                 <s.Content>{content}</s.Content>
             </s.Item>
-            <div></div>
+            <div id={`product${index}`}></div>
         </s.ItemWrapper>
     );
 };
