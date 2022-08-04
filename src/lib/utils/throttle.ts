@@ -1,10 +1,11 @@
 const throttle = (callback: any, timeout: number) => {
-    let timerId: any = null;
+    let waiting: any = false;
+
     return (e?: any) => {
-        if (timerId) return;
-        timerId = setTimeout(() => {
+        if (waiting) return;
+        waiting = setTimeout(() => {
             callback.call(this, e);
-            timerId = null;
+            waiting = false;
         }, timeout);
     };
 };
