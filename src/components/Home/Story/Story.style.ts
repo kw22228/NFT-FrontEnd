@@ -20,13 +20,13 @@ export const Title = styled.h1`
     width: fit-content;
 `;
 
-export const Ball = styled.div<{ bg: string }>`
-    padding: 10rem;
+export const Ball = styled.div<{ bg: string; size: string; top: string; left: string }>`
+    padding: ${props => props.size};
     border-radius: 50%;
 
     position: absolute;
-    top: 35%;
-    left: 0%;
+    top: ${props => props.top};
+    left: ${props => props.left};
 
     z-index: -1;
 

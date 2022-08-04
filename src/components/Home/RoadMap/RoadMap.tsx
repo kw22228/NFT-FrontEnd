@@ -7,11 +7,13 @@ import Product from './Product/Product';
 import * as s from './RoadMap.style';
 
 import Flag from '../../../assets/images/flag.svg';
+import DownArrow from '../../../assets/images/down-arrow.png';
+import { jumpVariants } from '../../../lib/animation/framer-variants/actionVarinats';
+import { IScroll } from '../../../lib/types/GsapTypes';
 import { useLocomotiveScroll } from 'react-locomotive-scroll';
 
 const RoadMap = () => {
-    const { scroll } = useLocomotiveScroll();
-
+    const { scroll }: IScroll = useLocomotiveScroll();
     const sectionRef = useRef<HTMLDivElement>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
     // const lineRef = useRef<HTMLDivElement>(null);
@@ -29,17 +31,15 @@ const RoadMap = () => {
     const [page, setPage] = useState<number>(0);
     const images = importAll(require.context('../../../assets/nfts/', false, /.[1-4]\d\.png$/));
 
-    const clickPage = (id: number) => {
-        const element = document.querySelector(`#product${id}`) as HTMLDivElement;
+    const skipClickHanler = () => {
+        const element = document.querySelector('#team') as HTMLDivElement;
 
-        if (element) {
-            scroll.scrollTo(element, {
-                offset: '0',
-                duration: '1500',
-                easing: [0.25, 0.0, 0.35, 1.0],
-                // disableLerp: false,
-            });
-        }
+        scroll.scrollTo(element, {
+            offset: '0',
+            duration: '1500',
+            easing: [0.25, 0.0, 0.35, 1.0],
+            // disableLerp: false,
+        });
     };
     return (
         <s.Section ref={sectionRef} className="roadmap" id="roadmap">
@@ -78,7 +78,6 @@ const RoadMap = () => {
                             y="-100"
                             xlinkHref={Flag}
                             clipPath="url(#circleView)"
-                            onClick={() => clickPage(0)}
                         />
                         <image
                             width="70"
@@ -87,7 +86,6 @@ const RoadMap = () => {
                             y="390"
                             xlinkHref={Flag}
                             clipPath="url(#circleView)"
-                            onClick={() => clickPage(1)}
                         />
                         <image
                             width="70"
@@ -96,7 +94,6 @@ const RoadMap = () => {
                             y="680"
                             xlinkHref={Flag}
                             clipPath="url(#circleView)"
-                            onClick={() => clickPage(2)}
                         />
                         <image
                             width="70"
@@ -105,7 +102,6 @@ const RoadMap = () => {
                             y="1090"
                             xlinkHref={Flag}
                             clipPath="url(#circleView)"
-                            onClick={() => clickPage(3)}
                         />
 
                         <text x="335" y="-65">
@@ -135,6 +131,15 @@ const RoadMap = () => {
                     />
                 ))}
             </s.Right>
+            <s.Bottom //
+                variants={jumpVariants}
+                initial="normal"
+                animate="action"
+                onClick={skipClickHanler}
+            >
+                <span>Skip</span>
+                <img src={DownArrow} alt="Scroll Down" />
+            </s.Bottom>
         </s.Section>
     );
 };

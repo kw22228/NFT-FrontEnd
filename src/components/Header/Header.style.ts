@@ -53,12 +53,17 @@ export const SnsMenu = styled.div`
     display: flex;
     margin: 0 1rem;
     a {
-        background-color: black;
-        width: 1rem;
-        height: 1rem;
+        width: 3rem;
+        height: 3rem;
 
-        &:not(:last-child) {
-            margin-right: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        transition: all 0.3s ease;
+
+        &:hover {
+            opacity: 0.6;
         }
     }
 `;
