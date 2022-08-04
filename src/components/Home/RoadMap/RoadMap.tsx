@@ -1,4 +1,4 @@
-import { useInView } from 'framer-motion';
+import { useInView, useViewportScroll } from 'framer-motion';
 import React, { useRef, useState } from 'react';
 import GsapRoadMap from '../../../lib/animation/gsap/GsapRoadMap';
 import useViewportNavState from '../../../lib/hooks/useViewportNavState';
@@ -11,14 +11,17 @@ import DownArrow from '../../../assets/images/down-arrow.png';
 import { jumpVariants } from '../../../lib/animation/framer-variants/actionVarinats';
 import { IScroll } from '../../../lib/types/GsapTypes';
 import { useLocomotiveScroll } from 'react-locomotive-scroll';
+import { useRecoilValue } from 'recoil';
+import { scrollHeightAtom } from '../../../lib/recoil/atoms';
 
 const RoadMap = () => {
     const { scroll }: IScroll = useLocomotiveScroll();
+    const scrollHeight = useRecoilValue(scrollHeightAtom);
+
     const sectionRef = useRef<HTMLDivElement>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
-    // const lineRef = useRef<HTMLDivElement>(null);
-
     const ballRef = useRef<HTMLDivElement>(null);
+    const leftRef = useRef<HTMLDivElement>(null);
 
     const isInView = useInView(sectionRef, {
         once: false,
@@ -31,10 +34,29 @@ const RoadMap = () => {
     const [page, setPage] = useState<number>(0);
     const images = importAll(require.context('../../../assets/nfts/', false, /.[1-4]\d\.png$/));
 
-    const skipClickHanler = () => {
+    const skipClickHandler = () => {
         const element = document.querySelector('#team') as HTMLDivElement;
-
         scroll.scrollTo(element, {
+            offset: '0',
+            duration: '1500',
+            easing: [0.25, 0.0, 0.35, 1.0],
+            // disableLerp: false,
+        });
+    };
+
+    const pageClickHandler = (id: number) => {
+        const sectionY = 3568;
+        let targetHeight = sectionY;
+
+        if (id > 0) {
+            const element = document.querySelector(`#itemSection${id}`) as HTMLDivElement;
+
+            const width = element.getBoundingClientRect().width / 2.3;
+
+            targetHeight = sectionY + width * id;
+        }
+
+        scroll.scrollTo(targetHeight, {
             offset: '0',
             duration: '1500',
             easing: [0.25, 0.0, 0.35, 1.0],
@@ -43,11 +65,9 @@ const RoadMap = () => {
     };
     return (
         <s.Section ref={sectionRef} className="roadmap" id="roadmap">
-            <s.Left>
+            <s.Left ref={leftRef}>
                 <s.LeftTitle>RoadMap</s.LeftTitle>
-                {/* <s.Line ref={lineRef}>
-                    <s.BallImg bg={images[page]} ref={ballRef} />
-                </s.Line> */}
+
                 <s.CurveLine>
                     <svg
                         width="536"
@@ -78,6 +98,7 @@ const RoadMap = () => {
                             y="-100"
                             xlinkHref={Flag}
                             clipPath="url(#circleView)"
+                            onClick={() => pageClickHandler(0)}
                         />
                         <image
                             width="70"
@@ -86,6 +107,7 @@ const RoadMap = () => {
                             y="390"
                             xlinkHref={Flag}
                             clipPath="url(#circleView)"
+                            onClick={() => pageClickHandler(1)}
                         />
                         <image
                             width="70"
@@ -94,6 +116,7 @@ const RoadMap = () => {
                             y="680"
                             xlinkHref={Flag}
                             clipPath="url(#circleView)"
+                            onClick={() => pageClickHandler(2)}
                         />
                         <image
                             width="70"
@@ -102,6 +125,7 @@ const RoadMap = () => {
                             y="1090"
                             xlinkHref={Flag}
                             clipPath="url(#circleView)"
+                            onClick={() => pageClickHandler(3)}
                         />
 
                         <text x="335" y="-65">
@@ -135,7 +159,7 @@ const RoadMap = () => {
                 variants={jumpVariants}
                 initial="normal"
                 animate="action"
-                onClick={skipClickHanler}
+                onClick={skipClickHandler}
             >
                 <span>Skip</span>
                 <img src={DownArrow} alt="Scroll Down" />

@@ -57,6 +57,10 @@ export const CurveLine = styled.div`
             fill: white;
             font-size: 1.5rem;
         }
+
+        image {
+            cursor: pointer;
+        }
     }
 `;
 

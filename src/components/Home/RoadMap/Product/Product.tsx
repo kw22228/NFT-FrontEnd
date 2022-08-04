@@ -24,8 +24,8 @@ const Product = ({ title, content, index, setPage }: IProduct) => {
         }
     }, [isInView]);
     return (
-        <s.ItemWrapper>
-            <div></div>
+        <s.ItemWrapper id={`itemSection${index}`}>
+            <div id={`aDiv${index}`}></div>
             <s.Item //
                 bg={bg}
                 variants={RoadMapVariants}
@@ -36,11 +36,12 @@ const Product = ({ title, content, index, setPage }: IProduct) => {
                     amount: 0.6,
                 }}
                 ref={ref}
+                id={`product${index}`}
             >
                 <s.Title>{title}</s.Title>
                 <s.Content>{content}</s.Content>
             </s.Item>
-            <div id={`product${index}`}></div>
+            <div style={{ backgroundColor: 'pink' }} id={`bDiv${index}`}></div>
         </s.ItemWrapper>
     );
 };
