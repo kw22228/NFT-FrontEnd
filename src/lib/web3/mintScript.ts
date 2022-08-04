@@ -68,23 +68,6 @@ export default async function publicMint({ account, balance }: IWallet) {
         .catch((error: any) => {
             console.log(error);
         });
-<<<<<<< HEAD
-
-        const result = await myContract.methods.publicMint(1).send({
-            from: account,
-            gas: gasAmount,
-            value: total_value,
-        });
-
-        if (result != null) {
-            console.log(result);
-            alert('민팅에 성공하였습니다.');
-        }
-    } catch (error) {
-        console.log(error);
-        alert('민팅에 실패하였습니다.');
-    }
-=======
     // if (tx_result != null) {
     //     console.log(tx_result);
     //     alert('민팅에 성공하였습니다.');
