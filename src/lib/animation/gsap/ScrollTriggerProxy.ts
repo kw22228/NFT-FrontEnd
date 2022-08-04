@@ -3,10 +3,13 @@ import { useLocomotiveScroll } from 'react-locomotive-scroll';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { IScroll } from '../../types/GsapTypes';
+import throttle from '../../utils/throttle';
+import { useSetRecoilState } from 'recoil';
+import { scrollHeightAtom } from '../../recoil/atoms';
 
 const ScrollTriggerProxy = () => {
     const { scroll }: IScroll = useLocomotiveScroll();
-
+    const setScrollPosition = useSetRecoilState(scrollHeightAtom);
     gsap.registerPlugin(ScrollTrigger);
 
     useEffect(() => {
@@ -14,7 +17,18 @@ const ScrollTriggerProxy = () => {
             if (scroll) {
                 const element = scroll.el as HTMLDivElement;
 
+                const scrollPositionHandler = (position: any) => {
+                    const scrollPosition = {
+                        scrollHeight: position.limit.y,
+                        currentY: position.scroll.y,
+                        progressY: Math.ceil((position.scroll.y / position.limit.y) * 100),
+                    };
+                    setScrollPosition(scrollPosition);
+                };
+                const throttleHanlder = throttle(scrollPositionHandler, 100);
+
                 scroll.on('scroll', (position: any) => {
+                    throttleHanlder(position);
                     ScrollTrigger.update();
                 });
 
