@@ -18,7 +18,7 @@ const connect = async (): Promise<IWallet | null> => {
     const balance = await caver.klay.getBalance(account);
 
     return {
-        account,
+        account: account,
         balance: caver.utils.fromPeb(balance, config.token),
     };
 };

@@ -29,7 +29,7 @@ const Mint = () => {
 
     const handleClick = () => {
         if (wallet?.account) {
-            publicMint(wallet);
+            publicMint();
         }
     };
 
