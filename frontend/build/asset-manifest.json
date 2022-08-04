@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/Goxo/static/css/main.46cef12e.css",
+    "main.js": "/Goxo/static/js/main.9e62e348.js",
+    "static/media/banner_1.png": "/Goxo/static/media/banner_1.df2ed15006a5ad042b9a.png",
+    "static/media/main.jpg": "/Goxo/static/media/main.6af60770623b7fdfbb95.jpg",
+    "static/media/flag.svg": "/Goxo/static/media/flag.dc55564facbda3209d7f5f2d2bd968b0.svg",
+    "static/media/ball.svg": "/Goxo/static/media/ball.52e2c811aa7a7989288a0c56f0aa186d.svg",
+    "static/media/OpenSea-icon.svg": "/Goxo/static/media/OpenSea-icon.9e972b9dedca25adc714f92edcae0b6f.svg",
+    "index.html": "/Goxo/index.html",
+    "static/media/waves.svg": "/Goxo/static/media/waves.848c4658de018f58b412ded8a6f8e8f3.svg",
+    "main.46cef12e.css.map": "/Goxo/static/css/main.46cef12e.css.map",
+    "main.9e62e348.js.map": "/Goxo/static/js/main.9e62e348.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.46cef12e.css",
+    "static/js/main.9e62e348.js"
+  ]
+}
