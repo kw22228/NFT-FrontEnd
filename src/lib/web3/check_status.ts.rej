@@ -1,0 +1,9 @@
+diff a/src/lib/web3/check_status.ts b/src/lib/web3/check_status.ts	(rejected hunks)
+@@ -16,7 +16,6 @@
+ let mintLimitPerBlock = 0;
+ 
+ export default async function check_status() {
+-    const myContract = cABI;
+     await myContract.methods
+         .mintingInformation()
+         .call()

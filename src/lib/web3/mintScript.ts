@@ -5,12 +5,11 @@ import check_status from './check_status';
 import cntBlockNumber from './cntBlockNumber';
 import { ABI, CONTRACTADDRESS } from '../../lib/web3/config';
 import connect from './connect';
-
 const config = {
     rpcURL: 'https://api.baobab.klaytn.net:8651',
 };
 const caver = new Caver(config.rpcURL);
-const myContract = new caver.klay.Contract(ABI as AbiItem[], CONTRACTADDRESS);
+const cABI = new caver.klay.Contract(ABI as AbiItem[], CONTRACTADDRESS);
 
 export default async function publicMint({ account, balance }: IWallet) {
     if (window.klaytn.networkVersion === 8217) {
@@ -21,11 +20,21 @@ export default async function publicMint({ account, balance }: IWallet) {
         alert('ERROR: 클레이튼 네트워크로 연결되지 않았습니다!');
         return;
     }
+
     if (!account) {
         alert('ERROR: 지갑을 연결해주세요!');
         return;
     }
-    const accounts = window.klaytn.selectedAddress;
+
+    const myContract = cABI;
+
+    console.log((await check_status()).mintPrice);
+    console.log((await check_status()).mintIndexForSale);
+
+    //console.log((await check_status()).myContract);
+    //const amount = document.getElementById('amount') as HTMLInputElement;
+
+    //await check_status();
 
     if ((await check_status()).maxSaleAmount + 1 <= (await check_status()).mintIndexForSale) {
         alert('모든 물량이 소진되었습니다.');
@@ -59,6 +68,23 @@ export default async function publicMint({ account, balance }: IWallet) {
         .catch((error: any) => {
             console.log(error);
         });
+<<<<<<< HEAD
+
+        const result = await myContract.methods.publicMint(1).send({
+            from: account,
+            gas: gasAmount,
+            value: total_value,
+        });
+
+        if (result != null) {
+            console.log(result);
+            alert('민팅에 성공하였습니다.');
+        }
+    } catch (error) {
+        console.log(error);
+        alert('민팅에 실패하였습니다.');
+    }
+=======
     // if (tx_result != null) {
     //     console.log(tx_result);
     //     alert('민팅에 성공하였습니다.');
