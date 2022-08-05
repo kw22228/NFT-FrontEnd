@@ -5,7 +5,10 @@ import Mint from '../components/Mint/Mint';
 const MintPage = () => {
     if (ScrollTrigger.getAll()) {
         ScrollTrigger.getAll().forEach((instance, index) => {
-            instance.kill();
+            //header scroll은 냅두기
+            if (index > 1) {
+                instance.kill();
+            }
         });
     }
 

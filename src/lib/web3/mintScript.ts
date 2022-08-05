@@ -22,6 +22,7 @@ export default async function publicMint() {
         alert('ERROR: 클레이튼 네트워크로 연결되지 않았습니다!');
         return;
     }
+
     if (!account) {
         alert('ERROR: 지갑을 연결해주세요!');
         return;

@@ -16,7 +16,12 @@ const connect = async (): Promise<IWallet | null> => {
 
     let account = accounts[0] as string;
     const balance = await caver.klay.getBalance(account);
+    //document.getElementById('myWallet').innerHTML = `지갑주소: ${account}`;
+    // console.log(`지갑 주소: ${account}`);
+    //document.getElementById('myKlay').innerHTML = `잔액: ${caver.utils.fromPeb(balance,'KLAY')} KLAY`;
+    // console.log(`잔액: ${caver.utils.fromPeb(balance, 'KLAY')}`);
 
+    //await check_status(); //옮기기
     return {
         account: account,
         balance: caver.utils.fromPeb(balance, config.token),

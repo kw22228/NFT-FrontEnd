@@ -4,6 +4,11 @@ import Logo from '../Logo/Logo';
 import * as s from './Header.style';
 import MenuLink from './MenuLink/MenuLink';
 
+import facebook from '../../assets/images/icons8-facebook.svg';
+import instagram from '../../assets/images/icons8-instagram.svg';
+import linkedin from '../../assets/images/icons8-linkedin.svg';
+import twitter from '../../assets/images/icons8-twitter.svg';
+
 const Header = () => {
     const ref = useRef<HTMLDivElement>(null);
     const navRef = useRef<HTMLDivElement>(null);
@@ -27,10 +32,18 @@ const Header = () => {
                     <MenuLink title="MINT" link="mint" />
                 </s.Menu>
                 <s.SnsMenu>
-                    <a href="#">d</a>
-                    <a href="#">d</a>
-                    <a href="#">d</a>
-                    <a href="#">d</a>
+                    <a href="#">
+                        <img src={facebook} alt="facebook" />
+                    </a>
+                    <a href="#">
+                        <img src={instagram} alt="instagram" />
+                    </a>
+                    <a href="#">
+                        <img src={linkedin} alt="linkedin" />
+                    </a>
+                    <a href="#">
+                        <img src={twitter} alt="twitter" />
+                    </a>
                 </s.SnsMenu>
             </s.Nav>
         </s.Header>

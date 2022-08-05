@@ -17,15 +17,15 @@ const Mint = () => {
         setNavState('mint');
     }, [navState]);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            (async () => {
-                const result = (await cntBlockNumber()).blockNumber;
-                setCurrentBlcok(result);
-            })();
-        }, 1000);
-        return () => clearInterval(interval);
-    }, [currentBlock]);
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         (async () => {
+    //             const result = (await cntBlockNumber()).blockNumber;
+    //             setCurrentBlcok(result);
+    //         })();
+    //     }, 1000);
+    //     return () => clearInterval(interval);
+    // }, [currentBlock]);
 
     const handleClick = () => {
         if (wallet?.account) {

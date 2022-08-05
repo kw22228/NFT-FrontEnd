@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { LocomotiveScrollProvider, Scroll } from 'react-locomotive-scroll';
@@ -10,10 +10,31 @@ import Footer from './components/Footer/Footer';
 import HomePage from './pages/HomePage';
 import MintPage from './pages/MintPage';
 import GallaryPage from './pages/GallaryPage';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+// import FixedBtn from './components/FixedBtn/FixedBtn';
+
+import debounce from './lib/utils/debounce';
 
 function App() {
     const containRef = useRef(null);
+    // const [dimensions, setDimensions] = useState({
+    //     height: window.innerHeight,
+    //     width: window.innerWidth,
+    // });
+
+    // useEffect(() => {
+    //     const handleResize = () => {
+    //         console.log('re-render on resize');
+    //         setDimensions({
+    //             height: window.innerHeight,
+    //             width: window.innerWidth,
+    //         });
+    //     };
+    //     const debounceHandleResize = debounce(handleResize, 1000);
+
+    //     window.addEventListener('resize', debounceHandleResize);
+
+    //     return () => window.addEventListener('resize', debounceHandleResize);
+    // }, []);
 
     return (
         <BrowserRouter>
@@ -48,6 +69,7 @@ function App() {
                         <Route path="/gallary" element={<GallaryPage />} />
                     </Routes>
                     <Footer />
+                    {/* <FixedBtn /> */}
                 </main>
             </LocomotiveScrollProvider>
         </BrowserRouter>

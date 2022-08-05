@@ -7,10 +7,11 @@ export const navAtom = atom<string | null>({
 });
 
 export const scrollHeightAtom = atom<IScrollHeight>({
-    key: 'yPosition',
+    key: 'scrollPosition',
     default: {
         scrollHeight: 0,
         currentY: 0,
+        progressY: 0,
     },
 });
 
