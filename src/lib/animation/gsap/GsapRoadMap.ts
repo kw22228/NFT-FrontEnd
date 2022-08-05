@@ -1,7 +1,7 @@
 import gsap from 'gsap';
 import MotionPathPlugin from 'gsap/MotionPathPlugin';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import React, { useLayoutEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { IGsapProps } from '../../types/GsapTypes';
 
 const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
@@ -73,6 +73,7 @@ const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
 
         return () => {
             tl.kill();
+            ScrollTrigger.refresh();
         };
     }, []);
 };

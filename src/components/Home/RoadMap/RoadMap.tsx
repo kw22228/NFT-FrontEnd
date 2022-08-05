@@ -1,4 +1,4 @@
-import { useInView, useViewportScroll } from 'framer-motion';
+import { useInView } from 'framer-motion';
 import React, { useRef, useState } from 'react';
 import GsapRoadMap from '../../../lib/animation/gsap/GsapRoadMap';
 import useViewportNavState from '../../../lib/hooks/useViewportNavState';
@@ -31,6 +31,7 @@ const RoadMap = () => {
     useViewportNavState(isInView, 'roadmap');
     GsapRoadMap({ sectionRef, scrollRef, ballRef });
 
+    const items = new Array(4).fill(0);
     const [page, setPage] = useState<number>(0);
     const images = importAll(require.context('../../../assets/nfts/', false, /.[1-4]\d\.png$/));
 
@@ -45,15 +46,36 @@ const RoadMap = () => {
     };
 
     const pageClickHandler = (id: number) => {
-        const sectionY = 3568;
-        let targetHeight = sectionY;
+        // const sectionY = 3568;
+        // let targetHeight = sectionY;
+        // if (id > 0) {
+        //     const element = document.querySelector(`#itemSection${id}`) as HTMLDivElement;
+        //     const width = element.getBoundingClientRect().width / 2.3;
+        //     targetHeight = sectionY + width * id;
+        // }
+        // scroll.scrollTo(targetHeight, {
+        //     offset: '0',
+        //     duration: '1500',
+        //     easing: [0.25, 0.0, 0.35, 1.0],
+        //     // disableLerp: false,
+        // });
 
-        if (id > 0) {
-            const element = document.querySelector(`#itemSection${id}`) as HTMLDivElement;
+        const homeHeight = document.querySelector('#home')?.scrollHeight as number;
+        const nftHeight = document.querySelector('#nft')?.scrollHeight as number;
+        const storyHeight = document.querySelector('#story')?.scrollHeight as number;
+        // const teamHeight = document.querySelector('#team')?.scrollHeight as number;
+        const footerHeight = document.querySelector('#footer')?.scrollHeight as number;
 
-            const width = element.getBoundingClientRect().width / 2.3;
+        const roadmapSection = sectionRef.current as HTMLDivElement;
 
-            targetHeight = sectionY + width * id;
+        const startScroll = homeHeight + nftHeight + storyHeight;
+        const endScroll = scrollHeight.scrollHeight - footerHeight - roadmapSection.scrollHeight;
+        const itemScroll = (endScroll - startScroll) / (items.length - 1);
+
+        let targetHeight = startScroll + itemScroll * id;
+
+        if (id === 1) {
+            targetHeight += 60;
         }
 
         scroll.scrollTo(targetHeight, {
@@ -63,6 +85,7 @@ const RoadMap = () => {
             // disableLerp: false,
         });
     };
+
     return (
         <s.Section ref={sectionRef} className="roadmap" id="roadmap">
             <s.Left ref={leftRef}>
@@ -145,7 +168,7 @@ const RoadMap = () => {
                 </s.CurveLine>
             </s.Left>
             <s.Right ref={scrollRef}>
-                {new Array(4).fill(0).map((e, i) => (
+                {items.map((e, i) => (
                     <Product
                         title="METAVERSE"
                         content="OFFLINE PLACE 간의 경계를 허물며"

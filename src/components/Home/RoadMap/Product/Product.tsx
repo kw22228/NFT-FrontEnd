@@ -23,6 +23,7 @@ const Product = ({ title, content, index, setPage }: IProduct) => {
             setPage(index);
         }
     }, [isInView]);
+
     return (
         <s.ItemWrapper id={`itemSection${index}`}>
             <div id={`aDiv${index}`}></div>
@@ -41,7 +42,10 @@ const Product = ({ title, content, index, setPage }: IProduct) => {
                 <s.Title>{title}</s.Title>
                 <s.Content>{content}</s.Content>
             </s.Item>
-            <div style={{ backgroundColor: 'pink' }} id={`bDiv${index}`}></div>
+            <div //
+                // style={{ backgroundColor: 'pink' }}
+                id={`bDiv${index}`}
+            ></div>
         </s.ItemWrapper>
     );
 };

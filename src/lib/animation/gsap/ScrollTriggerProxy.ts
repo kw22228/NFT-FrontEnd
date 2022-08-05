@@ -23,12 +23,13 @@ const ScrollTriggerProxy = () => {
                         currentY: position.scroll.y,
                         progressY: Math.ceil((position.scroll.y / position.limit.y) * 100),
                     };
+
                     setScrollPosition(scrollPosition);
                 };
-                const throttleHanlder = throttle(scrollPositionHandler, 100);
+                const throttleHandler = throttle(scrollPositionHandler, 300);
 
                 scroll.on('scroll', (position: any) => {
-                    throttleHanlder(position);
+                    throttleHandler(position);
                     ScrollTrigger.update();
                 });
 
@@ -59,9 +60,20 @@ const ScrollTriggerProxy = () => {
                     scroller: element,
                 });
 
+                const scrollRefresh = () => {
+                    if (scroll) {
+                        scroll.update();
+                    }
+                };
+                ScrollTrigger.addEventListener('refreshInit', scrollRefresh);
+                ScrollTrigger.refresh();
+
                 return () => {
-                    ScrollTrigger.addEventListener('refresh', () => scroll?.update());
-                    ScrollTrigger.refresh();
+                    console.log('clean');
+                    if (scroll) {
+                        ScrollTrigger.addEventListener('refreshInit', scrollRefresh);
+                        scroll.destroy();
+                    }
                 };
             }
         }, 0);

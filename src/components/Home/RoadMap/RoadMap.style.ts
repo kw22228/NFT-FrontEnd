@@ -59,7 +59,12 @@ export const CurveLine = styled.div`
         }
 
         image {
+            transition: all 0.2s ease;
             cursor: pointer;
+
+            &:hover {
+                opacity: 0.6;
+            }
         }
     }
 `;
@@ -100,9 +105,9 @@ export const Right = styled.div`
 
     overflow: hidden;
     overflow-x: hidden;
-    /* & > div:not(:last-child) {
+    & > div:not(:last-child) {
         margin-right: 10rem;
-    } */
+    }
 `;
 
 export const Bottom = styled(motion.div)`

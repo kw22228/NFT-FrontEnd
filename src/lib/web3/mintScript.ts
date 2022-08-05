@@ -49,11 +49,23 @@ export default async function publicMint() {
             gas: 6000000,
             value: total_value,
         });
-        const tx_result = await myContract.methods.publicMint(amount).send({
+
+        const sendObj = {
             from: account,
             gas: gasAmount,
             value: total_value,
-        });
+        };
+
+        const tx_result = await myContract.methods.publicMint(amount).send(sendObj);
+        // const tx_result = await caver.klay.sendTransaction({
+        //     type: 'SMART_CONTRACT_EXECUTION',
+        //     from: address,
+        //     to: CONTRACT_ADDRESS,
+        //     data: caver.klay.abi.encodeFunctionCall( myFunction ABI, params ),
+        //     gas: '1000000'
+        // });
+        console.log(tx_result);
+        return;
 
         if (tx_result != null) {
             console.log(tx_result);
