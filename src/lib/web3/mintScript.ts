@@ -49,26 +49,32 @@ export default async function publicMint() {
             gas: 6000000,
             value: total_value,
         });
-
-        const sendObj = {
-            from: account,
-            gas: gasAmount,
-            value: total_value,
-        };
-
-        const tx_result = await myContract.methods.publicMint(amount).send(sendObj);
-        // const tx_result = await caver.klay.sendTransaction({
-        //     type: 'SMART_CONTRACT_EXECUTION',
-        //     from: address,
-        //     to: CONTRACT_ADDRESS,
-        //     data: caver.klay.abi.encodeFunctionCall( myFunction ABI, params ),
-        //     gas: '1000000'
+        // const tx_result = await myContract.methods.publicMint(amount).send({
+        //     from: account,
+        //     gas: gasAmount,
+        //     value: total_value,
         // });
-        console.log(tx_result);
-        return;
 
-        if (tx_result != null) {
-            console.log(tx_result);
+        const result = await caver.klay.sendTransaction({
+            type: 'SMART_CONTRACT_EXECUTION',
+            from: account,
+            to: '0x98fbEAD150c0aa7Fe595227D6fA9D612C969A510',
+            data: caver.klay.abi.encodeFunctionCall(
+                {
+                    name: 'publicMint',
+                    outputs: [],
+                    payable: true,
+                    stateMutability: 'payable',
+                    type: 'function',
+                },
+                account
+            ),
+            gas: gasAmount,
+        });
+        console.log(account);
+
+        if (result != null) {
+            console.log(result);
             alert('민팅에 성공하였습니다.');
         }
     } catch (error) {
