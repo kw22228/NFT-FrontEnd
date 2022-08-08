@@ -13,29 +13,13 @@ import GallaryPage from './pages/GallaryPage';
 // import FixedBtn from './components/FixedBtn/FixedBtn';
 
 import debounce from './lib/utils/debounce';
+import useDebounceResize from './lib/hooks/useDebounceResize';
+import FixedBtn from './components/FixedBtn/FixedBtn';
 
 function App() {
     const containRef = useRef(null);
-    // const [dimensions, setDimensions] = useState({
-    //     height: window.innerHeight,
-    //     width: window.innerWidth,
-    // });
 
-    // useEffect(() => {
-    //     const handleResize = () => {
-    //         console.log('re-render on resize');
-    //         setDimensions({
-    //             height: window.innerHeight,
-    //             width: window.innerWidth,
-    //         });
-    //     };
-    //     const debounceHandleResize = debounce(handleResize, 1000);
-
-    //     window.addEventListener('resize', debounceHandleResize);
-
-    //     return () => window.addEventListener('resize', debounceHandleResize);
-    // }, []);
-
+    useDebounceResize();
     return (
         <BrowserRouter>
             <LocomotiveScrollProvider
@@ -62,6 +46,7 @@ function App() {
             >
                 <ScrollTriggerProxy />
                 <main className="Main" data-scroll-container ref={containRef}>
+                    <FixedBtn />
                     <Header />
                     <Routes>
                         <Route path="/" element={<HomePage />} />
@@ -69,7 +54,6 @@ function App() {
                         <Route path="/gallary" element={<GallaryPage />} />
                     </Routes>
                     <Footer />
-                    {/* <FixedBtn /> */}
                 </main>
             </LocomotiveScrollProvider>
         </BrowserRouter>
