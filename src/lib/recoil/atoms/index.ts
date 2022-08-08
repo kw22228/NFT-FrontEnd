@@ -7,7 +7,7 @@ export const navAtom = atom<string | null>({
 });
 
 export const scrollHeightAtom = atom<IScrollHeight>({
-    key: 'scrollPosition',
+    key: 'scrollHeight',
     default: {
         scrollHeight: 0,
         currentY: 0,
@@ -20,5 +20,12 @@ export const walletAtom = atom<IWallet | null>({
     default: {
         account: '',
         balance: '',
+    },
+});
+
+export const globalWidthAtom = atom({
+    key: 'globalWidth',
+    default: {
+        width: window.innerWidth,
     },
 });

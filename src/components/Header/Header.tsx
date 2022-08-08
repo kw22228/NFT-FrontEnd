@@ -15,38 +15,48 @@ const Header = () => {
 
     GsapHeader({ ref, navRef });
     return (
-        <s.Header ref={ref} id="header" data-scroll data-scroll-sticky data-scroll-target=".Main">
-            <s.Nav ref={navRef}>
-                <Logo />
+        <section>
+            <div id="sticky">
+                <s.Header
+                    ref={ref}
+                    id="header"
+                    data-scroll
+                    data-scroll-sticky
+                    data-scroll-target=".Main"
+                >
+                    <s.Nav ref={navRef}>
+                        <Logo />
 
-                <s.Menu>
-                    <MenuLink title="HOME" link="home" isScroll={true} />
-                    <MenuLink title="NFT" link="nft" isScroll={true} />
-                    <MenuLink title="STORY" link="story" isScroll={true} />
-                    <MenuLink title="ROADMAP" link="roadmap" isScroll={true} />
-                    <MenuLink title="TEAM" link="team" isScroll={true} />
+                        <s.Menu>
+                            <MenuLink title="HOME" link="home" isScroll={true} />
+                            <MenuLink title="NFT" link="nft" isScroll={true} />
+                            <MenuLink title="STORY" link="story" isScroll={true} />
+                            <MenuLink title="ROADMAP" link="roadmap" isScroll={true} />
+                            <MenuLink title="TEAM" link="team" isScroll={true} />
 
-                    <s.MenuSpace />
+                            <s.MenuSpace />
 
-                    <MenuLink title="GALLARY" link="gallary" />
-                    <MenuLink title="MINT" link="mint" />
-                </s.Menu>
-                <s.SnsMenu>
-                    <a href="#">
-                        <img src={facebook} alt="facebook" />
-                    </a>
-                    <a href="#">
-                        <img src={instagram} alt="instagram" />
-                    </a>
-                    <a href="#">
-                        <img src={linkedin} alt="linkedin" />
-                    </a>
-                    <a href="#">
-                        <img src={twitter} alt="twitter" />
-                    </a>
-                </s.SnsMenu>
-            </s.Nav>
-        </s.Header>
+                            <MenuLink title="GALLARY" link="gallary" />
+                            <MenuLink title="MINT" link="mint" />
+                        </s.Menu>
+                        <s.SnsMenu>
+                            <a href="#">
+                                <img src={facebook} alt="facebook" />
+                            </a>
+                            <a href="#">
+                                <img src={instagram} alt="instagram" />
+                            </a>
+                            <a href="#">
+                                <img src={linkedin} alt="linkedin" />
+                            </a>
+                            <a href="#">
+                                <img src={twitter} alt="twitter" />
+                            </a>
+                        </s.SnsMenu>
+                    </s.Nav>
+                </s.Header>
+            </div>
+        </section>
     );
 };
 
