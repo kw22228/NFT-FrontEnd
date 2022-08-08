@@ -2,17 +2,29 @@ import gsap from 'gsap';
 import MotionPathPlugin from 'gsap/MotionPathPlugin';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { useLayoutEffect } from 'react';
+import { useRecoilValue } from 'recoil';
+import { globalWidthAtom } from '../../recoil/atoms';
 import { IGsapProps } from '../../types/GsapTypes';
 
 const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
+    const globalWidth = useRecoilValue(globalWidthAtom);
+
     gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
     useLayoutEffect(() => {
+        if (ScrollTrigger.getAll()) {
+            ScrollTrigger.getAll().forEach((instance, index) => {
+                if (index > 1) {
+                    instance.kill();
+                }
+            });
+        }
+
         const sectionEl = sectionRef.current as HTMLDivElement;
         const scrollEl = scrollRef.current as HTMLDivElement;
 
         const pinWrapWidth = scrollEl.offsetWidth;
-        const scrollWidth = window.innerWidth;
+        const scrollWidth = globalWidth.width;
         const x = -pinWrapWidth + scrollWidth;
 
         // const lineEl = lineRef.current as HTMLDivElement;
@@ -23,7 +35,7 @@ const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
 
         const tl = gsap.timeline();
 
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             tl.to(sectionEl, {
                 height: `${scrollEl.scrollWidth}px`,
                 ease: 'none',
@@ -72,10 +84,11 @@ const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
         }, 100);
 
         return () => {
+            clearTimeout(timeout);
             tl.kill();
             ScrollTrigger.refresh();
         };
-    }, []);
+    }, [globalWidth.width]);
 };
 
 export default GsapRoadMap;
