@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import variouble from '../../styles/variouble';
+import { variouble } from '../../styles/variouble';
 
 export const Section = styled.section`
     width: 100vw;

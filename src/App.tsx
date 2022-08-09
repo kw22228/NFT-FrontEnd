@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { LocomotiveScrollProvider, Scroll } from 'react-locomotive-scroll';
@@ -12,9 +12,9 @@ import MintPage from './pages/MintPage';
 import GallaryPage from './pages/GallaryPage';
 // import FixedBtn from './components/FixedBtn/FixedBtn';
 
-import debounce from './lib/utils/debounce';
 import useDebounceResize from './lib/hooks/useDebounceResize';
 import FixedBtn from './components/FixedBtn/FixedBtn';
+import Overlay from './components/Overlay/Overlay';
 
 function App() {
     const containRef = useRef(null);
@@ -31,6 +31,7 @@ function App() {
                     tablet: {
                         smooth: true,
                     },
+                    getDirection: true,
                 }}
                 watch={
                     [
@@ -46,6 +47,7 @@ function App() {
             >
                 <ScrollTriggerProxy />
                 <main className="Main" data-scroll-container ref={containRef}>
+                    <Overlay />
                     <FixedBtn />
                     <Header />
                     <Routes>
