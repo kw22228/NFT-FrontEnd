@@ -1,6 +1,8 @@
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import React, { useLayoutEffect } from 'react';
+import { useRecoilValue } from 'recoil';
+import { globalWidthAtom } from '../../recoil/atoms';
 import { IGsapProps } from '../../types/GsapTypes';
 
 const GsapHeader = ({ ref, navRef }: IGsapProps) => {
@@ -11,7 +13,7 @@ const GsapHeader = ({ ref, navRef }: IGsapProps) => {
         const navEl = navRef.current as HTMLDivElement;
 
         const tl = gsap.timeline();
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             tl.to(element, {
                 top: '1rem',
                 left: '10%',
@@ -43,6 +45,12 @@ const GsapHeader = ({ ref, navRef }: IGsapProps) => {
                 },
             });
         }, 100);
+
+        return () => {
+            clearTimeout(timeout);
+            tl.kill();
+            ScrollTrigger.refresh();
+        };
     }, []);
 };
 

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { LocomotiveScrollProvider, Scroll } from 'react-locomotive-scroll';
@@ -10,11 +10,16 @@ import Footer from './components/Footer/Footer';
 import HomePage from './pages/HomePage';
 import MintPage from './pages/MintPage';
 import GallaryPage from './pages/GallaryPage';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+// import FixedBtn from './components/FixedBtn/FixedBtn';
+
+import debounce from './lib/utils/debounce';
+import useDebounceResize from './lib/hooks/useDebounceResize';
+import FixedBtn from './components/FixedBtn/FixedBtn';
 
 function App() {
     const containRef = useRef(null);
 
+    useDebounceResize();
     return (
         <BrowserRouter>
             <LocomotiveScrollProvider
@@ -41,6 +46,7 @@ function App() {
             >
                 <ScrollTriggerProxy />
                 <main className="Main" data-scroll-container ref={containRef}>
+                    <FixedBtn />
                     <Header />
                     <Routes>
                         <Route path="/" element={<HomePage />} />

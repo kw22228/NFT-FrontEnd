@@ -22,6 +22,7 @@ export default async function publicMint() {
         alert('ERROR: 클레이튼 네트워크로 연결되지 않았습니다!');
         return;
     }
+
     if (!account) {
         alert('ERROR: 지갑을 연결해주세요!');
         return;
@@ -48,25 +49,27 @@ export default async function publicMint() {
             gas: 6000000,
             value: total_value,
         });
-        // const tx_result = myContract.methods.publicMint(amount).send({
-        //     from: account,
-        //     gas: gasAmount,
-        //     value: total_value,
-        // });
-
-        await caver.klay.sendTransaction({
-            type: 'SMART_CONTRACT_EXECUTION',
+        const tx_result = await myContract.methods.publicMint(amount).send({
             from: account,
             to: '0x98fbEAD150c0aa7Fe595227D6fA9D612C969A510',
-            data: await myContract.methods.publicMint(amount).encodeABI(),
+            data: caver.klay.abi.encodeFunctionCall(
+                {
+                    name: 'publicMint',
+                    outputs: [],
+                    payable: true,
+                    stateMutability: 'payable',
+                    type: 'function',
+                },
+                account
+            ),
             gas: gasAmount,
-            value: total_value.toString(),
         });
+        console.log(account);
 
-        // if (tx_result != null) {
-        //     console.log(tx_result);
-        //     alert('민팅에 성공하였습니다.');
-        // }
+        if (tx_result != null) {
+            console.log(tx_result);
+            alert('민팅에 성공하였습니다.');
+        }
     } catch (error) {
         console.log(error);
         alert('민팅에 실패하였습니다.');

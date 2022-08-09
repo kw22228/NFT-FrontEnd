@@ -1,28 +1,41 @@
 import gsap from 'gsap';
+import MotionPathPlugin from 'gsap/MotionPathPlugin';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import React, { useLayoutEffect } from 'react';
+import { useLayoutEffect } from 'react';
+import { useRecoilValue } from 'recoil';
+import { globalWidthAtom } from '../../recoil/atoms';
 import { IGsapProps } from '../../types/GsapTypes';
 
-const GsapRoadMap = ({ sectionRef, scrollRef, lineRef, ballRef }: IGsapProps) => {
-    gsap.registerPlugin(ScrollTrigger);
+const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
+    const globalWidth = useRecoilValue(globalWidthAtom);
+
+    gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
     useLayoutEffect(() => {
+        if (ScrollTrigger.getAll()) {
+            ScrollTrigger.getAll().forEach((instance, index) => {
+                if (index > 1) {
+                    instance.kill();
+                }
+            });
+        }
+
         const sectionEl = sectionRef.current as HTMLDivElement;
         const scrollEl = scrollRef.current as HTMLDivElement;
 
         const pinWrapWidth = scrollEl.offsetWidth;
-        const scrollWidth = window.innerWidth;
+        const scrollWidth = globalWidth.width;
         const x = -pinWrapWidth + scrollWidth;
 
-        const lineEl = lineRef.current as HTMLDivElement;
+        // const lineEl = lineRef.current as HTMLDivElement;
         const ballEl = ballRef.current as HTMLDivElement;
 
-        const lineHeight = lineEl.clientHeight;
-        const ballProgress = lineHeight / pinWrapWidth;
+        // const lineHeight = lineEl.clientHeight;
+        // const ballProgress = lineHeight / pinWrapWidth;
 
         const tl = gsap.timeline();
 
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             tl.to(sectionEl, {
                 height: `${scrollEl.scrollWidth}px`,
                 ease: 'none',
@@ -32,6 +45,22 @@ const GsapRoadMap = ({ sectionRef, scrollRef, lineRef, ballRef }: IGsapProps) =>
                     end: pinWrapWidth,
                     scrub: true,
                     pin: true,
+                },
+            });
+
+            tl.to(ballEl, {
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: sectionEl,
+                    start: 'top top',
+                    end: pinWrapWidth,
+                    scrub: true,
+                },
+                motionPath: {
+                    path: '#path',
+                    align: '#path',
+                    autoRotate: false,
+                    alignOrigin: [0.5, 0.5],
                 },
             });
 
@@ -45,8 +74,8 @@ const GsapRoadMap = ({ sectionRef, scrollRef, lineRef, ballRef }: IGsapProps) =>
                     scrub: true,
 
                     onUpdate: self => {
-                        const progress = 100 - Math.floor(self.progress * 100);
-                        ballEl.style.bottom = progress + '%';
+                        // const progress = 100 - Math.floor(self.progress * 100);
+                        // ballEl.style.bottom = progress + '%';
                     },
                 },
             });
@@ -55,9 +84,11 @@ const GsapRoadMap = ({ sectionRef, scrollRef, lineRef, ballRef }: IGsapProps) =>
         }, 100);
 
         return () => {
+            clearTimeout(timeout);
             tl.kill();
+            ScrollTrigger.refresh();
         };
-    }, []);
+    }, [globalWidth.width]);
 };
 
 export default GsapRoadMap;

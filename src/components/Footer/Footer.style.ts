@@ -24,15 +24,20 @@ export const Copy = styled.h3``;
 export const Url = styled.h3``;
 
 export const SnsWrap = styled.div`
-    width: 10rem;
-
+    display: flex;
+    margin: 0 1rem;
     a {
-        padding: 0.5rem;
-        color: ${props => props.theme.body};
-        background-color: ${props => props.theme.body};
+        width: 3rem;
+        height: 3rem;
 
-        &:not(:last-child) {
-            margin-right: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        transition: all 0.3s ease;
+
+        &:hover {
+            opacity: 0.6;
         }
     }
 `;

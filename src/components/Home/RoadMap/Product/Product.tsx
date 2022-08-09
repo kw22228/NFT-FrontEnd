@@ -15,7 +15,7 @@ const Product = ({ title, content, index, setPage }: IProduct) => {
     const ref = useRef<HTMLDivElement>(null);
     const isInView = useInView(ref, {
         once: false,
-        amount: 0.6,
+        amount: 'all',
     });
 
     useEffect(() => {
@@ -23,9 +23,10 @@ const Product = ({ title, content, index, setPage }: IProduct) => {
             setPage(index);
         }
     }, [isInView]);
+
     return (
-        <s.ItemWrapper>
-            <div></div>
+        <s.ItemWrapper id={`itemSection${index}`}>
+            <div id={`aDiv${index}`}></div>
             <s.Item //
                 bg={bg}
                 variants={RoadMapVariants}
@@ -36,11 +37,15 @@ const Product = ({ title, content, index, setPage }: IProduct) => {
                     amount: 0.6,
                 }}
                 ref={ref}
+                id={`product${index}`}
             >
                 <s.Title>{title}</s.Title>
                 <s.Content>{content}</s.Content>
             </s.Item>
-            <div></div>
+            <div //
+                // style={{ backgroundColor: 'pink' }}
+                id={`bDiv${index}`}
+            ></div>
         </s.ItemWrapper>
     );
 };
