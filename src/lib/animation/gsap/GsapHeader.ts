@@ -1,8 +1,6 @@
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import React, { useLayoutEffect } from 'react';
-import { useRecoilValue } from 'recoil';
-import { globalWidthAtom } from '../../recoil/atoms';
 import { IGsapProps } from '../../types/GsapTypes';
 
 const GsapHeader = ({ ref, navRef }: IGsapProps) => {
@@ -15,13 +13,13 @@ const GsapHeader = ({ ref, navRef }: IGsapProps) => {
         const tl = gsap.timeline();
         const timeout = setTimeout(() => {
             tl.to(element, {
-                top: '1rem',
-                left: '10%',
-                width: '80%',
+                // top: '1rem',
+                // left: '10%',
+                // width: '80%',
 
-                padding: '',
-                borderRadius: '50px',
-                border: '3px solid white',
+                // padding: '',
+                // borderRadius: '50px',
+                borderBottom: '2px solid white',
                 backgroundColor: 'rgba(255,255,255,0.6)',
 
                 duration: 1,
@@ -35,15 +33,15 @@ const GsapHeader = ({ ref, navRef }: IGsapProps) => {
                 },
             });
 
-            tl.to(navEl, {
-                width: '90%',
-                scrollTrigger: {
-                    trigger: navEl,
-                    start: 'bottom+=200 top',
-                    end: '+=300',
-                    scrub: true,
-                },
-            });
+            // tl.to(navEl, {
+            //     width: '90%',
+            //     scrollTrigger: {
+            //         trigger: navEl,
+            //         start: 'bottom+=200 top',
+            //         end: '+=300',
+            //         scrub: true,
+            //     },
+            // });
         }, 100);
 
         return () => {
