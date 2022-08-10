@@ -38,3 +38,8 @@ export const visibleAtom = atom<IVisible>({
         mobileMenu: false,
     },
 });
+
+export const isDarkAtom = atom({
+    key: 'isDark',
+    default: window.localStorage.getItem('mode') === 'dark' ? true : false,
+});
