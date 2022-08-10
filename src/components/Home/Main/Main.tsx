@@ -29,8 +29,9 @@ const Main = () => {
                     initial="initial"
                     whileInView="onViewport"
                     viewport={{
+                        margin: '200px',
                         once: true,
-                        amount: 0.2,
+                        amount: 0.1,
                     }}
                     bg={goxoBanner}
                 />

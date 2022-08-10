@@ -21,7 +21,7 @@ export const Title = styled.h1`
     width: fit-content;
 `;
 
-export const SliderContainer = styled.div`
+export const SliderContainer = styled.div<{ count: 5 }>`
     height: 70%;
     width: 100%;
 
@@ -30,12 +30,12 @@ export const SliderContainer = styled.div`
     align-items: center;
 
     .swiper-slide {
-        background-color: ${props => props.theme.body};
-        color: black;
+        background-color: transparent;
+        /* color: black; */
 
-        width: 8rem;
-        height: 18rem;
-        border-radius: 50%;
+        width: ${props => `calc(100vw / ${props.count})`};
+        height: ${props => `calc(100vw / ${props.count})`};
+        /* border-radius: 50%; */
 
         display: flex;
         justify-content: center;
@@ -45,9 +45,11 @@ export const SliderContainer = styled.div`
     }
 `;
 
-export const Nft = styled.div<{ bg: string }>`
+export const Nft = styled.div<{ bg: string; count: number }>`
     width: 100%;
     height: 100%;
+
+    border-radius: 50%;
 
     background-image: url(${props => props.bg});
     background-size: cover;

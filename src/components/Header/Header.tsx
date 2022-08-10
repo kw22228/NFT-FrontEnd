@@ -8,7 +8,7 @@ import { scrollHeightAtom, visibleAtom } from '../../lib/recoil/atoms/index';
 
 import facebook from '../../assets/images/icons8-facebook.svg';
 import instagram from '../../assets/images/icons8-instagram.svg';
-import linkedin from '../../assets/images/icons8-linkedin.svg';
+// import linkedin from '../../assets/images/icons8-linkedin.svg';
 import twitter from '../../assets/images/icons8-twitter.svg';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
@@ -101,17 +101,43 @@ const Header = () => {
                     </s.Cancle>
                     <s.MobileMenuWrap>
                         <s.MenuWrap>
-                            <MenuLink title="HOME" link="home" isScroll={true} />
-                            <MenuLink title="NFT" link="nft" isScroll={true} />
-                            <MenuLink title="STORY" link="story" isScroll={true} />
-                            <MenuLink title="ROADMAP" link="roadmap" isScroll={true} />
-                            <MenuLink title="TEAM" link="team" isScroll={true} />
+                            <MenuLink title="HOME" link="home" isScroll={true} isMobile={true} />
+                            <MenuLink title="NFT" link="nft" isScroll={true} isMobile={true} />
+                            <MenuLink title="STORY" link="story" isScroll={true} isMobile={true} />
+                            <MenuLink
+                                title="ROADMAP"
+                                link="roadmap"
+                                isScroll={true}
+                                isMobile={true}
+                            />
+                            <MenuLink title="TEAM" link="team" isScroll={true} isMobile={true} />
 
                             <s.MenuLine />
 
-                            <MenuLink title="GALLARY" link="gallary" />
-                            <MenuLink title="MINT" link="mint" />
+                            <MenuLink title="GALLARY" link="gallary" isMobile={true} />
+                            <MenuLink title="MINT" link="mint" isMobile={true} />
                         </s.MenuWrap>
+                        <s.MenuFooter>
+                            <s.SnsMenu isMobile={true}>
+                                <a href="#">
+                                    <img src={facebook} alt="facebook" />
+                                </a>
+                                <a href="#">
+                                    <img src={instagram} alt="instagram" />
+                                </a>
+                                {/* <a href="#">
+                                <img src={linkedin} alt="linkedin" />
+                            </a> */}
+                                <a href="#">
+                                    <img src={twitter} alt="twitter" />
+                                </a>
+                            </s.SnsMenu>
+                            <s.CopyRight>
+                                COPYRIGHT © OH, LOLLY DAY!all rights reserved.
+                                <br />
+                                hello@oh-lolly-day.com
+                            </s.CopyRight>
+                        </s.MenuFooter>
                     </s.MobileMenuWrap>
                 </s.MobileMenuContainer>
             </div>

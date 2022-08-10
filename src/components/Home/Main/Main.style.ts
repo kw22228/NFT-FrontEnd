@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { device } from '../../../styles/variouble';
 
 export const MainSection = styled.section`
     width: 100vw;
@@ -11,6 +12,10 @@ export const MainSection = styled.section`
     align-items: center;
 
     position: relative;
+
+    /* @media (${device.mobileM}) {
+        height: 220vh;
+    } */
 `;
 
 export const MainContainer = styled.div`
@@ -23,6 +28,10 @@ export const MainContainer = styled.div`
     align-items: center;
 
     position: relative;
+
+    /* @media (${device.mobileM}) {
+        height: 120vh;
+    } */
 `;
 
 export const Img = styled(motion.div)<{ bg: string }>`
@@ -36,6 +45,16 @@ export const Img = styled(motion.div)<{ bg: string }>`
     background-image: url(${props => props.bg});
     background-repeat: no-repeat;
     background-size: cover;
+
+    @media (${device.mobile}) {
+        width: 20rem;
+        height: 20rem;
+    }
+
+    @media (${device.mobileSM}) {
+        width: 18rem;
+        height: 18rem;
+    }
 `;
 
 export const TextBox = styled(motion.div)`
@@ -51,6 +70,28 @@ export const TextBox = styled(motion.div)`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (${device.tabletXL}) {
+        width: 55%;
+    }
+
+    @media (${device.tablet}) {
+        width: 60%;
+    }
+
+    @media (${device.mobile}) {
+        width: 70%;
+        margin-top: 6.5rem;
+    }
+
+    @media (${device.mobileM}) {
+        width: 80%;
+        margin-top: 7.5rem;
+    }
+
+    @media (${device.mobileSM}) {
+        font-size: 0.85rem;
+    }
 `;
 
 export const Ball = styled.div<{ bg: string }>`
@@ -66,4 +107,10 @@ export const Ball = styled.div<{ bg: string }>`
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+
+    z-index: -1;
+
+    @media (${device.mobileM}) {
+        display: none;
+    }
 `;

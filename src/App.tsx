@@ -13,7 +13,6 @@ import GallaryPage from './pages/GallaryPage';
 // import FixedBtn from './components/FixedBtn/FixedBtn';
 
 import useDebounceResize from './lib/hooks/useDebounceResize';
-import FixedBtn from './components/FixedBtn/FixedBtn';
 import Overlay from './components/Overlay/Overlay';
 
 function App() {
@@ -48,7 +47,6 @@ function App() {
                 <ScrollTriggerProxy />
                 <main className="Main" data-scroll-container ref={containRef}>
                     <Overlay />
-                    <FixedBtn />
                     <Header />
                     <Routes>
                         <Route path="/" element={<HomePage />} />

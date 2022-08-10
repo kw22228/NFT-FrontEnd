@@ -5,6 +5,7 @@ import { navAtom, walletAtom } from '../../lib/recoil/atoms';
 import cntBlockNumber from '../../lib/web3/cntBlockNumber';
 import connect from '../../lib/web3/connect';
 import publicMint from '../../lib/web3/mintScript';
+import FixedBtn from '../FixedBtn/FixedBtn';
 
 import * as s from './Mint.style';
 
@@ -59,6 +60,7 @@ const Mint = () => {
 
     return (
         <s.Section>
+            <FixedBtn />
             <s.BoxContainer>
                 <s.Box>
                     11111111111111111111

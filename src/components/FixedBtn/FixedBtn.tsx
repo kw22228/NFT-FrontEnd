@@ -11,21 +11,21 @@ const FixedBtn = () => {
     const scrollHeight = useRecoilValue(scrollHeightAtom);
     const REVEAL_HEIGHT_PERCENT = 5;
     return (
-        <s.Section>
-            <s.Container //
-                data-scroll
-                data-scroll-sticky
-                data-scroll-target=".Main"
-            >
-                <Goxo scrollHeight={scrollHeight} percent={REVEAL_HEIGHT_PERCENT} />
+        // <s.Section>
+        <s.Container //
+            data-scroll
+            data-scroll-sticky
+            data-scroll-target=".Main"
+        >
+            <Goxo scrollHeight={scrollHeight} percent={REVEAL_HEIGHT_PERCENT} />
 
-                <AnimatePresence>
-                    {Math.ceil(scrollHeight.progressY * 100) > REVEAL_HEIGHT_PERCENT && (
-                        <ScrollToUp scrollHeight={scrollHeight} />
-                    )}
-                </AnimatePresence>
-            </s.Container>
-        </s.Section>
+            <AnimatePresence>
+                {Math.ceil(scrollHeight.progressY * 100) > REVEAL_HEIGHT_PERCENT && (
+                    <ScrollToUp scrollHeight={scrollHeight} />
+                )}
+            </AnimatePresence>
+        </s.Container>
+        // </s.Section>
     );
 };
 

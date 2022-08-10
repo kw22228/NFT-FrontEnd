@@ -9,6 +9,8 @@ export const Section = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    position: relative;
 `;
 export const MintContainer = styled.div``;
 export const Mint = styled.button`

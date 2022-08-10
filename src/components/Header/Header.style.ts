@@ -72,7 +72,7 @@ export const Right = styled.div`
     align-items: center;
 `;
 
-export const SnsMenu = styled.div`
+export const SnsMenu = styled.div<{ isMobile?: boolean }>`
     display: flex;
     margin: 0 1rem;
     a {
@@ -88,6 +88,10 @@ export const SnsMenu = styled.div`
         &:hover {
             opacity: 0.6;
         }
+    }
+
+    @media (${device.mobile}) {
+        display: ${props => (props.isMobile ? 'flex' : 'none')};
     }
 `;
 
@@ -176,6 +180,16 @@ export const MobileMenuContainer = styled.div<{ visible: boolean }>`
     z-index: 1001;
 
     transition: left 0.5s ease;
+
+    @media (${device.mobile}) {
+        width: 45%;
+        left: ${props => (props.visible ? 'calc(100% - 45%)' : '100%')};
+    }
+
+    @media (${device.mobileSM}) {
+        width: 85%;
+        left: ${props => (props.visible ? 'calc(100% - 85%)' : '100%')};
+    }
 `;
 
 export const Cancle = styled.div`
@@ -268,4 +282,23 @@ export const MenuLine = styled.div`
     background-color: #729d0e;
     height: 2px;
     width: 100%;
+`;
+
+export const MenuFooter = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    margin-top: 2rem;
+
+    & > div:first-child {
+        margin: 0 0.5rem;
+    }
+`;
+export const CopyRight = styled.div`
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+
+    margin-left: 1rem;
 `;
