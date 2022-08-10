@@ -40,6 +40,7 @@ const Goxo = ({ scrollHeight, percent }: IGoxo) => {
     const customValue = {
         scrollHeight,
         percent,
+        bottom: -80,
     };
     return (
         <s.Wrapper //

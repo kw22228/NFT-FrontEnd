@@ -1,14 +1,16 @@
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import React, { useLayoutEffect } from 'react';
+import { useRecoilValue } from 'recoil';
+import { isDarkAtom } from '../../recoil/atoms';
 import { IGsapProps } from '../../types/GsapTypes';
 
 const GsapHeader = ({ ref, navRef }: IGsapProps) => {
+    const isDark = useRecoilValue(isDarkAtom);
     gsap.registerPlugin(ScrollTrigger);
 
     useLayoutEffect(() => {
         const element = ref.current as HTMLDivElement;
-        const navEl = navRef.current as HTMLDivElement;
 
         const tl = gsap.timeline();
         const timeout = setTimeout(() => {
@@ -19,9 +21,8 @@ const GsapHeader = ({ ref, navRef }: IGsapProps) => {
 
                 // padding: '',
                 // borderRadius: '50px',
-                borderBottom: '2px solid white',
-                backgroundColor: 'rgba(255,255,255,0.6)',
-
+                borderBottom: isDark ? '2px solid black' : '2px solid white',
+                backgroundColor: isDark ? 'rgba(0,0,0,0.6)' : 'rgba(255, 255, 255, 0.6)',
                 duration: 1,
                 ease: 'power1.out',
 
@@ -32,16 +33,6 @@ const GsapHeader = ({ ref, navRef }: IGsapProps) => {
                     scrub: true,
                 },
             });
-
-            // tl.to(navEl, {
-            //     width: '90%',
-            //     scrollTrigger: {
-            //         trigger: navEl,
-            //         start: 'bottom+=200 top',
-            //         end: '+=300',
-            //         scrub: true,
-            //     },
-            // });
         }, 100);
 
         return () => {

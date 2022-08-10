@@ -1,3 +1,4 @@
+import { time } from 'console';
 import gsap from 'gsap';
 import MotionPathPlugin from 'gsap/MotionPathPlugin';
 import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -13,11 +14,7 @@ const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
 
     useLayoutEffect(() => {
         if (ScrollTrigger.getAll()) {
-            ScrollTrigger.getAll().forEach((instance, index) => {
-                if (index > 0) {
-                    instance.kill();
-                }
-            });
+            ScrollTrigger.getAll().forEach((instance, index) => instance.kill());
         }
 
         const sectionEl = sectionRef.current as HTMLDivElement;
@@ -86,6 +83,7 @@ const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
         return () => {
             tl.kill();
             ScrollTrigger.refresh();
+            clearInterval(timeout);
         };
     }, [globalWidth.width]);
 };

@@ -5,7 +5,20 @@ import { device, variouble } from '../../styles/variouble';
 export const Header = styled.header<{ scrollHeight: IScrollHeight }>`
     width: 100vw;
     height: ${variouble.navHeight};
-    background-color: transparent;
+    background-color: ${props =>
+        Math.ceil(props.scrollHeight.progressY * 100) > 3
+            ? props.theme.type === 'dark'
+                ? 'rgba(0,0,0,0.6)'
+                : 'rgba(255,255,255,0.6)'
+            : 'transparent'};
+
+    border: ${props =>
+        Math.ceil(props.scrollHeight.progressY * 100) > 3
+            ? props.theme.type === 'dark'
+                ? '2px solid black'
+                : '2px solid white'
+            : 'none'};
+
     position: fixed;
     top: ${props =>
         props.scrollHeight.progressY !== 0 && props.scrollHeight.direction === 'down'
@@ -14,10 +27,12 @@ export const Header = styled.header<{ scrollHeight: IScrollHeight }>`
     left: 0;
     z-index: 99;
 
-    transition: top 0.3s ease;
+    transition: top 0.3s ease, background-color 0.3s ease;
 
     backdrop-filter: ${props =>
-        Math.ceil(props.scrollHeight.progressY * 100) > 5 ? 'blur(4px)' : 'inherit'};
+        Math.ceil(props.scrollHeight.progressY * 100) > 3 ? 'blur(4px)' : 'inherit'};
+
+    box-sizing: border-box;
 `;
 
 export const Nav = styled.nav`
@@ -45,7 +60,7 @@ export const Menu = styled.ul`
 `;
 
 export const MenuSpace = styled.li`
-    background-color: black;
+    background-color: ${props => props.theme.text};
     margin-top: 5px;
     width: 1px;
     height: 1.2rem;
@@ -70,29 +85,6 @@ export const Right = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-`;
-
-export const SnsMenu = styled.div<{ isMobile?: boolean }>`
-    display: flex;
-    margin: 0 1rem;
-    a {
-        width: 3rem;
-        height: 3rem;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        transition: all 0.3s ease;
-
-        &:hover {
-            opacity: 0.6;
-        }
-    }
-
-    @media (${device.mobile}) {
-        display: ${props => (props.isMobile ? 'flex' : 'none')};
-    }
 `;
 
 export const Hamburgur = styled.div`
@@ -168,7 +160,7 @@ export const ThreeLine = styled.div`
 `;
 
 export const MobileMenuContainer = styled.div<{ visible: boolean }>`
-    background-color: #93cb12;
+    background-color: ${props => props.theme.accentColor};
     height: 100vh;
     width: 35%;
 
@@ -301,4 +293,6 @@ export const CopyRight = styled.div`
     font-size: 0.7rem;
 
     margin-left: 1rem;
+
+    color: ${props => props.theme.text};
 `;

@@ -21,7 +21,7 @@ export const Title = styled.h1`
     width: fit-content;
 `;
 
-export const SliderContainer = styled.div<{ count: 5 }>`
+export const SliderContainer = styled.div<{ count: number }>`
     height: 70%;
     width: 100%;
 
