@@ -10,6 +10,8 @@ import goxoCharacter from '../../../assets/goxo_character.jpg';
 import img1 from '../../../assets/nfts/5.png';
 import img2 from '../../../assets/nfts/8.png';
 import img3 from '../../../assets/nfts/11.png';
+import { useRecoilValue } from 'recoil';
+import { globalWidthAtom } from '../../../lib/recoil/atoms';
 
 const Story = () => {
     const storyRef = useRef<HTMLElement>(null);
@@ -45,19 +47,10 @@ const Story = () => {
                 // addToRefs={addToRefs}
             />
 
-            <s.Ball
-                bg={goxoCharacter}
-                top="35%"
-                left="0%"
-                size="10rem"
-                data-scroll
-                data-scroll-speed="3"
-            />
+            <s.Ball bg={goxoCharacter} direct="vertical" data-scroll data-scroll-speed="3" />
             <s.Ball //
                 bg={goxoCharacter}
-                top="0%"
-                left="75%"
-                size="8rem"
+                direct="horizontal"
                 data-scroll
                 data-scroll-speed="-3"
                 data-scroll-direction="horizontal"

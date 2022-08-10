@@ -16,7 +16,7 @@ export const TextWrap = styled.div`
     justify-content: center;
     align-items: center;
 
-    color: ${props => props.theme.body};
+    color: white;
 `;
 
 export const Copy = styled.h3``;
@@ -26,6 +26,7 @@ export const Url = styled.h3``;
 export const SnsWrap = styled.div`
     display: flex;
     margin: 0 1rem;
+
     a {
         width: 3rem;
         height: 3rem;
@@ -38,6 +39,10 @@ export const SnsWrap = styled.div`
 
         &:hover {
             opacity: 0.6;
+        }
+
+        svg {
+            fill: white;
         }
     }
 `;

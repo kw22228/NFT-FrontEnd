@@ -23,7 +23,7 @@ const DarkMode = ({ scrollHeight, percent }: IGoxo) => {
 
         element.playSegments(segment, true);
 
-        setIsDark(prev => !prev);
+        setIsDark((prev: boolean) => !prev);
     };
 
     useEffect(() => {

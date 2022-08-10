@@ -3,7 +3,6 @@ import Logo from '../Logo/Logo';
 import * as s from './Header.style';
 import MenuLink from './MenuLink/MenuLink';
 
-import GsapHeader from '../../lib/animation/gsap/GsapHeader';
 import { scrollHeightAtom, visibleAtom } from '../../lib/recoil/atoms/index';
 
 import { useRecoilState, useRecoilValue } from 'recoil';
@@ -15,8 +14,6 @@ const Header = () => {
 
     const ref = useRef<HTMLDivElement>(null);
     const navRef = useRef<HTMLDivElement>(null);
-
-    // GsapHeader({ ref, navRef });
 
     const hamburgurClick = () => {
         setVisible(prev => {

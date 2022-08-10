@@ -60,7 +60,6 @@ const Mint = () => {
 
     return (
         <s.Section>
-            <FixedBtn />
             <s.BoxContainer>
                 <s.Box>
                     11111111111111111111

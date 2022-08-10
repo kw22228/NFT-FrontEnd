@@ -14,7 +14,6 @@ import Footer from './components/Footer/Footer';
 import HomePage from './pages/HomePage';
 import MintPage from './pages/MintPage';
 import GallaryPage from './pages/GallaryPage';
-// import FixedBtn from './components/FixedBtn/FixedBtn';
 
 import useDebounceResize from './lib/hooks/useDebounceResize';
 import Overlay from './components/Overlay/Overlay';
@@ -56,8 +55,9 @@ function App() {
                 >
                     <ScrollTriggerProxy />
                     <main className="Main" data-scroll-container ref={containRef}>
-                        <Overlay />
                         <FixedBtn />
+
+                        <Overlay />
                         <Header />
                         <Routes>
                             <Route path="/" element={<HomePage />} />
