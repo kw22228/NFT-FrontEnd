@@ -11,6 +11,7 @@ import useViewportNavState from '../../../lib/hooks/useViewportNavState';
 import importAll from '../../../lib/utils/importAll';
 
 const Nft = () => {
+    const SLIDE_COUNT = 5;
     const SwiperConfig: SwiperProps = {
         speed: 3000,
         autoplay: {
@@ -19,9 +20,9 @@ const Nft = () => {
             pauseOnMouseEnter: true,
         },
         loop: true,
-        slidesPerView: 5,
+        slidesPerView: SLIDE_COUNT,
         watchSlidesProgress: true,
-        spaceBetween: 27,
+        spaceBetween: 10,
         grabCursor: true,
     };
     SwiperCore.use([Autoplay]);
@@ -42,11 +43,11 @@ const Nft = () => {
     return (
         <s.Section id="nft" ref={nftRef}>
             <s.Title>NFT</s.Title>
-            <s.SliderContainer>
+            <s.SliderContainer count={SLIDE_COUNT}>
                 <Swiper {...SwiperConfig} onInit={onInit}>
                     {images.map((image, index) => (
                         <SwiperSlide key={image}>
-                            <s.Nft bg={image} />
+                            <s.Nft bg={image} count={SLIDE_COUNT} />
                         </SwiperSlide>
                     ))}
                 </Swiper>

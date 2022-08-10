@@ -22,6 +22,7 @@ const ScrollTriggerProxy = () => {
                         scrollHeight: position.limit.y,
                         currentY: position.scroll.y,
                         progressY: position.scroll.y / position.limit.y,
+                        direction: position.direction,
                     };
 
                     setScrollPosition(scrollPosition);

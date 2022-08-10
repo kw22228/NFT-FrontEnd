@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import variouble from '../../styles/variouble';
+import { variouble } from '../../styles/variouble';
 
 export const Section = styled.section`
     width: 100vw;
@@ -9,6 +9,8 @@ export const Section = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    position: relative;
 `;
 export const MintContainer = styled.div``;
 export const Mint = styled.button`

@@ -1,18 +1,20 @@
 import React from 'react';
 import { useLocomotiveScroll } from 'react-locomotive-scroll';
 import { useNavigate, useMatch } from 'react-router';
-import { useRecoilValue } from 'recoil';
-import { navAtom } from '../../../lib/recoil/atoms';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { navAtom, visibleAtom } from '../../../lib/recoil/atoms';
 import * as s from './MenuLink.style';
 
 interface IProps {
     title: string;
     link: string;
     isScroll?: boolean;
-    matchValue?: string;
+    isMobile?: boolean;
 }
-const MenuLink = ({ title, link, isScroll = false }: IProps) => {
+const MenuLink = ({ title, link, isScroll = false, isMobile = false }: IProps) => {
     const navState = useRecoilValue(navAtom);
+    const setVisible = useSetRecoilState(visibleAtom);
+
     const matchRoute = useMatch(link);
     const match: boolean = isScroll ? navState === link : !!matchRoute;
     const navigate = useNavigate();
@@ -21,6 +23,15 @@ const MenuLink = ({ title, link, isScroll = false }: IProps) => {
     const handleClick = () => {
         const href = isScroll ? '/' : `/${link}`;
         navigate(href);
+
+        if (isMobile) {
+            setVisible(prev => ({
+                ...prev,
+                overlay: false,
+                mobileMenu: false,
+            }));
+        }
+
         if (isScroll) {
             const element = document.querySelector('#' + link) as HTMLElement;
 

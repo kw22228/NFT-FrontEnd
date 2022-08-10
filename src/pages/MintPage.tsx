@@ -6,7 +6,7 @@ const MintPage = () => {
     if (ScrollTrigger.getAll()) {
         ScrollTrigger.getAll().forEach((instance, index) => {
             //header scroll은 냅두기
-            if (index > 1) {
+            if (index > 0) {
                 instance.kill();
             }
         });

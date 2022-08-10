@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import { IScrollHeight, IWallet } from './types';
+import { IScrollHeight, IVisible, IWallet } from './types';
 
 export const navAtom = atom<string | null>({
     key: 'navState',
@@ -12,6 +12,7 @@ export const scrollHeightAtom = atom<IScrollHeight>({
         scrollHeight: 0,
         currentY: 0,
         progressY: 0,
+        direction: null,
     },
 });
 
@@ -27,5 +28,13 @@ export const globalWidthAtom = atom({
     key: 'globalWidth',
     default: {
         width: window.innerWidth,
+    },
+});
+
+export const visibleAtom = atom<IVisible>({
+    key: 'visibleAtom',
+    default: {
+        overlay: false,
+        mobileMenu: false,
     },
 });

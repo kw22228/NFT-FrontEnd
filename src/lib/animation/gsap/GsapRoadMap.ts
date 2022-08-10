@@ -14,7 +14,7 @@ const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
     useLayoutEffect(() => {
         if (ScrollTrigger.getAll()) {
             ScrollTrigger.getAll().forEach((instance, index) => {
-                if (index > 1) {
+                if (index > 0) {
                     instance.kill();
                 }
             });
@@ -84,7 +84,6 @@ const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
         }, 100);
 
         return () => {
-            clearTimeout(timeout);
             tl.kill();
             ScrollTrigger.refresh();
         };
