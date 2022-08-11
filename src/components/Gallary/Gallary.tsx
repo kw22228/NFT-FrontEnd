@@ -1,5 +1,4 @@
 import React from 'react';
-import FixedBtn from '../FixedBtn/FixedBtn';
 import * as s from './Gallary.style';
 
 const Gallary = () => {

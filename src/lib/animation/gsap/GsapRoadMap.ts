@@ -83,7 +83,11 @@ const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
         return () => {
             tl.kill();
             ScrollTrigger.refresh();
-            // clearInterval(timeout);
+            clearInterval(timeout);
+
+            if (ScrollTrigger.getAll()) {
+                ScrollTrigger.getAll().forEach((instance, index) => instance.kill());
+            }
         };
     }, [globalWidth.width]);
 };

@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { LocomotiveScrollProvider, Scroll } from 'react-locomotive-scroll';
@@ -9,23 +9,38 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './styles/global';
 import { lightTheme, darkTheme } from './styles/theme';
 
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import HomePage from './pages/HomePage';
-import MintPage from './pages/MintPage';
-import GallaryPage from './pages/GallaryPage';
-
 import useDebounceResize from './lib/hooks/useDebounceResize';
-import Overlay from './components/Overlay/Overlay';
-import FixedBtn from './components/FixedBtn/FixedBtn';
+import loadable from '@loadable/component';
+
 import { useRecoilValue } from 'recoil';
 import { isDarkSelector } from './lib/recoil/selector';
 
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Overlay from './components/Overlay/Overlay';
+import FixedBtn from './components/FixedBtn/FixedBtn';
+
+const LoadableHome = loadable(() => import(/* webpackChunkName: "Home" */ './pages/HomePage'));
+const LoadableMint = loadable(() => import(/* webpackChunkName: "Mint" */ './pages/MintPage'));
+const LoadableGallary = loadable(
+    () => import(/* webpackChunkName: "Gallary" */ './pages/GallaryPage')
+);
+
+const preload = (component: any) => {
+    component.preload && component.preload();
+};
+
 function App() {
-    const containRef = useRef(null);
+    const containRef = useRef<HTMLElement>(null);
     const isDark = useRecoilValue(isDarkSelector);
 
     useDebounceResize();
+
+    useEffect(() => {
+        preload(LoadableHome);
+        preload(LoadableMint);
+        preload(LoadableGallary);
+    }, []);
     return (
         <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
             <GlobalStyle />
@@ -56,13 +71,12 @@ function App() {
                     <ScrollTriggerProxy />
                     <main className="Main" data-scroll-container ref={containRef}>
                         <FixedBtn />
-
                         <Overlay />
                         <Header />
                         <Routes>
-                            <Route path="/" element={<HomePage />} />
-                            <Route path="/mint" element={<MintPage />} />
-                            <Route path="/gallary" element={<GallaryPage />} />
+                            <Route path="/" element={<LoadableHome />} />
+                            <Route path="/mint" element={<LoadableMint />} />
+                            <Route path="/gallary" element={<LoadableGallary />} />
                         </Routes>
                         <Footer />
                     </main>
