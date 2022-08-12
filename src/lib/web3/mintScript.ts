@@ -50,7 +50,7 @@ export default async function publicMint() {
             value: total_value,
         });
 
-        // const tx_result = myContract.methods.publicMint(amount).send({
+        // /const tx_result = myContract.methods.publicMint(amount).send({
 
         // const tx_result = await myContract.methods.publicMint(amount).send({
 
