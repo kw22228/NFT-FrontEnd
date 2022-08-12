@@ -20,6 +20,11 @@ import Footer from './components/Footer/Footer';
 import Overlay from './components/Overlay/Overlay';
 import FixedBtn from './components/FixedBtn/FixedBtn';
 
+import Loader from './components/Loader/Loader';
+
+// import pMinDelay from 'p-min-delay';
+// const LOADING_TIMEOUT: number = 1000;
+
 const LoadableHome = loadable(() => import(/* webpackChunkName: "Home" */ './pages/HomePage'));
 const LoadableMint = loadable(() => import(/* webpackChunkName: "Mint" */ './pages/MintPage'));
 const LoadableGallary = loadable(
@@ -74,9 +79,12 @@ function App() {
                         <Overlay />
                         <Header />
                         <Routes>
-                            <Route path="/" element={<LoadableHome />} />
-                            <Route path="/mint" element={<LoadableMint />} />
-                            <Route path="/gallary" element={<LoadableGallary />} />
+                            <Route path="/" element={<LoadableHome fallback={<Loader />} />} />
+                            <Route path="/mint" element={<LoadableMint fallback={<Loader />} />} />
+                            <Route
+                                path="/gallary"
+                                element={<LoadableGallary fallback={<Loader />} />}
+                            />
                         </Routes>
                         <Footer />
                     </main>
