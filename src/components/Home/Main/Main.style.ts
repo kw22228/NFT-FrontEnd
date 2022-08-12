@@ -59,7 +59,7 @@ export const Img = styled(motion.div)<{ bg: string }>`
 
 export const TextBox = styled(motion.div)`
     /* background-color: ${props => props.theme.body}; */
-    color: ${props => props.theme.body};
+    color: ${props => props.theme.text};
     font-weight: 600;
     width: 45%;
     height: 20%;
@@ -70,6 +70,8 @@ export const TextBox = styled(motion.div)`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    transition: color 0.3s ease;
 
     @media (${device.tabletXL}) {
         width: 55%;

@@ -4,11 +4,7 @@ import Gallary from '../components/Gallary/Gallary';
 
 const GallaryPage = () => {
     if (ScrollTrigger.getAll()) {
-        ScrollTrigger.getAll().forEach((instance, index) => {
-            if (index > 0) {
-                instance.kill();
-            }
-        });
+        ScrollTrigger.getAll().forEach((instance, index) => instance.kill());
     }
 
     return (

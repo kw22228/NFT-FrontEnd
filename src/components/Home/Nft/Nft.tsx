@@ -9,9 +9,21 @@ import openSea from '../../../assets/images/OpenSea-icon.svg';
 import { useInView } from 'framer-motion';
 import useViewportNavState from '../../../lib/hooks/useViewportNavState';
 import importAll from '../../../lib/utils/importAll';
+import { useRecoilValue } from 'recoil';
+import { globalWidthAtom } from '../../../lib/recoil/atoms';
 
 const Nft = () => {
-    const SLIDE_COUNT = 5;
+    const globalWidth = useRecoilValue(globalWidthAtom);
+    let SLIDE_COUNT = 5;
+
+    if (globalWidth.width < 550) {
+        SLIDE_COUNT = 2;
+    } else if (globalWidth.width < 768) {
+        SLIDE_COUNT = 3;
+    } else if (globalWidth.width < 1024) {
+        SLIDE_COUNT = 4;
+    }
+
     const SwiperConfig: SwiperProps = {
         speed: 3000,
         autoplay: {

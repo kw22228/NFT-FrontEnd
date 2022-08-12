@@ -12,7 +12,7 @@ const useDebounceResize = () => {
                 width: window.innerWidth,
             });
         };
-        const debounceHandleResize = debounce(handleResize, 50);
+        const debounceHandleResize = debounce(handleResize, 100);
 
         window.addEventListener('resize', debounceHandleResize);
 

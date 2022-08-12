@@ -3,14 +3,10 @@ import Logo from '../Logo/Logo';
 import * as s from './Header.style';
 import MenuLink from './MenuLink/MenuLink';
 
-import GsapHeader from '../../lib/animation/gsap/GsapHeader';
 import { scrollHeightAtom, visibleAtom } from '../../lib/recoil/atoms/index';
 
-import facebook from '../../assets/images/icons8-facebook.svg';
-import instagram from '../../assets/images/icons8-instagram.svg';
-// import linkedin from '../../assets/images/icons8-linkedin.svg';
-import twitter from '../../assets/images/icons8-twitter.svg';
 import { useRecoilState, useRecoilValue } from 'recoil';
+import SnsMenu from './MenuLink/SnsMenu/SnsMenu';
 
 const Header = () => {
     const scrollHeight = useRecoilValue(scrollHeightAtom);
@@ -18,8 +14,6 @@ const Header = () => {
 
     const ref = useRef<HTMLDivElement>(null);
     const navRef = useRef<HTMLDivElement>(null);
-
-    GsapHeader({ ref, navRef });
 
     const hamburgurClick = () => {
         setVisible(prev => {
@@ -68,20 +62,7 @@ const Header = () => {
                         </s.Menu>
 
                         <s.Right>
-                            <s.SnsMenu>
-                                <a href="#">
-                                    <img src={facebook} alt="facebook" />
-                                </a>
-                                <a href="#">
-                                    <img src={instagram} alt="instagram" />
-                                </a>
-                                {/* <a href="#">
-                                <img src={linkedin} alt="linkedin" />
-                            </a> */}
-                                <a href="#">
-                                    <img src={twitter} alt="twitter" />
-                                </a>
-                            </s.SnsMenu>
+                            <SnsMenu />
 
                             <s.Hamburgur onClick={hamburgurClick}>
                                 <s.ThreeLine />
@@ -118,20 +99,7 @@ const Header = () => {
                             <MenuLink title="MINT" link="mint" isMobile={true} />
                         </s.MenuWrap>
                         <s.MenuFooter>
-                            <s.SnsMenu isMobile={true}>
-                                <a href="#">
-                                    <img src={facebook} alt="facebook" />
-                                </a>
-                                <a href="#">
-                                    <img src={instagram} alt="instagram" />
-                                </a>
-                                {/* <a href="#">
-                                <img src={linkedin} alt="linkedin" />
-                            </a> */}
-                                <a href="#">
-                                    <img src={twitter} alt="twitter" />
-                                </a>
-                            </s.SnsMenu>
+                            <SnsMenu />
                             <s.CopyRight>
                                 COPYRIGHT © OH, LOLLY DAY!all rights reserved.
                                 <br />

@@ -21,6 +21,8 @@ export const BannerContainer = styled.div<{ main: string }>`
     background-size: cover;
 
     position: relative;
+
+    transition: background-image 1s ease;
 `;
 
 export const Character = styled.img`

@@ -13,15 +13,15 @@ export const Section = styled.section`
 `;
 
 export const Title = styled.h1`
-    color: ${props => props.theme.body};
+    color: ${props => props.theme.text};
     font-weight: bold;
     text-transform: uppercase;
     margin: 0 auto;
-    border-bottom: 2px solid ${props => props.theme.body};
+    border-bottom: 2px solid ${props => props.theme.text};
     width: fit-content;
 `;
 
-export const SliderContainer = styled.div<{ count: 5 }>`
+export const SliderContainer = styled.div<{ count: number }>`
     height: 70%;
     width: 100%;
 
@@ -64,16 +64,24 @@ export const OpenSea = styled.button`
     outline: 0;
     font-weight: 800;
 
+    background-color: ${props => props.theme.body};
+    color: ${props => props.theme.text};
+
     cursor: pointer;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
+    transition: color 0.3s ease, transform 0.3s ease;
     img {
         width: 1.5rem;
         height: 1.5rem;
 
         margin-right: 0.5rem;
+    }
+
+    &:hover {
+        transform: scale(1.1);
     }
 `;
