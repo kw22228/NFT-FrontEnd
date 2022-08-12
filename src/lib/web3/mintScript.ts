@@ -70,7 +70,8 @@ export default async function publicMint() {
 
         // if (tx_result != null) {
         //     console.log(tx_result);
-        //     alert('민팅에 성공하였습니다.');
+        //   alert('민팅에 성공하였습니다.');
+        //
         // }
 
         const result = await caver.klay.sendTransaction({
