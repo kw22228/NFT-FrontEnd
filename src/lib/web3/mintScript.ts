@@ -8,7 +8,6 @@ import { ABI, CONTRACTADDRESS } from '../../lib/web3/config';
 const config = {
     rpcURL: 'https://api.baobab.klaytn.net:8651',
 };
-const caver = new Caver(config.rpcURL);
 
 // async function testFunction() {
 //     const version = await caver.rpc.klay.getClientVersion();
@@ -16,11 +15,9 @@ const caver = new Caver(config.rpcURL);
 // }
 
 export default async function publicMint() {
-    //testFunction();
-    // Klaytn/v1.9.0/linux-amd64/go1.18
+    const caver = new Caver(config.rpcURL);
 
-    const accounts = await window.klaytn.enable();
-    const account = accounts[0];
+    const account = window.klaytn.selectedAddress;
 
     if (window.klaytn.networkVersion === 8217) {
         console.log('메인넷');
@@ -50,6 +47,13 @@ export default async function publicMint() {
     }
 
     const total_value = new BigNumber(1 * (await check_status()).mintPrice); // 민팅 수량 선택 (amount)
+
+    // const key = await caver.wallet.generate(1);
+    // caver.wallet.newKeyring(account, key);
+
+    console.log(caver.wallet.isExisted(account));
+
+    console.log(window.klaytn);
 
     try {
         const gasAmount = await myContract.methods.publicMint(amount).estimateGas({
