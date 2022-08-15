@@ -17,7 +17,7 @@ const Nft = () => {
     let SLIDE_COUNT = 5;
 
     if (globalWidth.width < 550) {
-        SLIDE_COUNT = 2;
+        SLIDE_COUNT = 1.5;
     } else if (globalWidth.width < 768) {
         SLIDE_COUNT = 3;
     } else if (globalWidth.width < 1024) {
@@ -33,7 +33,8 @@ const Nft = () => {
         },
         loop: true,
         slidesPerView: SLIDE_COUNT,
-        watchSlidesProgress: true,
+        centeredSlides: true,
+        // watchSlidesProgress: true,
         spaceBetween: 10,
         grabCursor: true,
     };

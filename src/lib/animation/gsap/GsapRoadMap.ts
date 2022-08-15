@@ -8,27 +8,19 @@ import { globalWidthAtom } from '../../recoil/atoms';
 import { IGsapProps } from '../../types/GsapTypes';
 
 const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
-    const globalWidth = useRecoilValue(globalWidthAtom);
+    const { width } = useRecoilValue(globalWidthAtom);
 
     gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
     useLayoutEffect(() => {
-        if (ScrollTrigger.getAll()) {
-            ScrollTrigger.getAll().forEach((instance, index) => instance.kill());
-        }
-
         const sectionEl = sectionRef.current as HTMLDivElement;
         const scrollEl = scrollRef.current as HTMLDivElement;
 
         const pinWrapWidth = scrollEl.offsetWidth;
-        const scrollWidth = globalWidth.width;
+        const scrollWidth = width;
         const x = -pinWrapWidth + scrollWidth;
 
-        // const lineEl = lineRef.current as HTMLDivElement;
         const ballEl = ballRef.current as HTMLDivElement;
-
-        // const lineHeight = lineEl.clientHeight;
-        // const ballProgress = lineHeight / pinWrapWidth;
 
         const tl = gsap.timeline();
 
@@ -69,11 +61,6 @@ const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
                     start: 'top top',
                     end: pinWrapWidth,
                     scrub: true,
-
-                    onUpdate: self => {
-                        // const progress = 100 - Math.floor(self.progress * 100);
-                        // ballEl.style.bottom = progress + '%';
-                    },
                 },
             });
 
@@ -81,15 +68,13 @@ const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
         }, 100);
 
         return () => {
-            tl.kill();
-            ScrollTrigger.refresh();
-            clearInterval(timeout);
+            clearTimeout(timeout);
 
             if (ScrollTrigger.getAll()) {
                 ScrollTrigger.getAll().forEach((instance, index) => instance.kill());
             }
         };
-    }, [globalWidth.width]);
+    }, [width]);
 };
 
 export default GsapRoadMap;
