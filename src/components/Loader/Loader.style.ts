@@ -9,6 +9,12 @@ export const Section = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background-color: black;
 `;
 
 export const Card = styled.div`
