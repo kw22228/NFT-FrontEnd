@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import flag from '../../../assets/images/flag.svg';
+import { device } from '../../../styles/variouble';
 
 export const Section = styled.section`
     height: 100vh;
@@ -25,6 +25,10 @@ export const Left = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
+    @media (${device.tabletXL}) {
+        width: 25%;
+    }
 `;
 
 export const LeftTitle = styled.h1`
@@ -107,6 +111,10 @@ export const Right = styled.div`
     overflow-x: hidden;
     & > div:not(:last-child) {
         margin-right: 10rem;
+
+        @media (${device.tabletXL}) {
+            margin-right: 40rem;
+        }
     }
 `;
 

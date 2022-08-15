@@ -46,20 +46,6 @@ const RoadMap = () => {
     };
 
     const pageClickHandler = (id: number) => {
-        // const sectionY = 3568;
-        // let targetHeight = sectionY;
-        // if (id > 0) {
-        //     const element = document.querySelector(`#itemSection${id}`) as HTMLDivElement;
-        //     const width = element.getBoundingClientRect().width / 2.3;
-        //     targetHeight = sectionY + width * id;
-        // }
-        // scroll.scrollTo(targetHeight, {
-        //     offset: '0',
-        //     duration: '1500',
-        //     easing: [0.25, 0.0, 0.35, 1.0],
-        //     // disableLerp: false,
-        // });
-
         const homeHeight = document.querySelector('#home')?.scrollHeight as number;
         const nftHeight = document.querySelector('#nft')?.scrollHeight as number;
         const storyHeight = document.querySelector('#story')?.scrollHeight as number;
