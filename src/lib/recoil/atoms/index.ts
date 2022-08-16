@@ -43,3 +43,11 @@ export const isDarkAtom = atom({
     key: 'isDark',
     default: window.localStorage.getItem('mode') === 'dark' ? true : false,
 });
+
+export const toastAtom = atom({
+    key: 'toast',
+    default: {
+        msg: '',
+        visible: false,
+    },
+});

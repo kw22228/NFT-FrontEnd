@@ -1,4 +1,3 @@
-import check_status from '../../lib/web3/check_status';
 import { IWallet } from '../recoil/atoms/types';
 import { config, caver } from './config';
 

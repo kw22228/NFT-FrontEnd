@@ -12,11 +12,11 @@ const useDebounceResize = () => {
                 width: window.innerWidth,
             });
         };
-        const debounceHandleResize = debounce(handleResize, 100);
+        const debounceHandleResize = debounce(handleResize, 500);
 
         window.addEventListener('resize', debounceHandleResize);
 
-        return () => window.addEventListener('resize', debounceHandleResize);
+        return () => window.removeEventListener('resize', debounceHandleResize);
     }, []);
 };
 
