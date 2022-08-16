@@ -2,11 +2,13 @@ import Caver, { AbiItem } from 'caver-js';
 
 import { ABI, CONTRACTADDRESS } from '../../lib/web3/config';
 import cntBlockNumber from './cntBlockNumber';
-const config = {
-    rpcURL: 'https://api.baobab.klaytn.net:8651',
+
+export const config: { rpcURL: string } = {
+    rpcURL: window.klaytn,
 };
 
-const caver = new Caver(config.rpcURL);
+export const caver = new Caver(config.rpcURL);
+
 const cABI = new caver.klay.Contract(ABI as AbiItem[], CONTRACTADDRESS);
 
 let mintIndexForSale = 0;

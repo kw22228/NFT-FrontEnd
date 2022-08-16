@@ -1,7 +1,7 @@
 import Caver, { Unit } from 'caver-js';
 
 export const config: { rpcURL: string; token: Unit } = {
-    rpcURL: 'https://api.baobab.klaytn.net:8651',
+    rpcURL: window.klaytn,
     token: 'KLAY',
 };
 

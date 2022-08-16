@@ -1,18 +1,17 @@
 import BigNumber from 'bignumber.js';
 import Caver, { AbiItem } from 'caver-js';
-import { IWallet } from '../recoil/atoms/types';
 import check_status from './check_status';
 import cntBlockNumber from './cntBlockNumber';
 import { ABI, CONTRACTADDRESS } from '../../lib/web3/config';
 
-export default async function publicMint() {
-    const config = {
-        rpcURL: 'https://api.baobab.klaytn.net:8651',
-    };
-    const caver = new Caver(config.rpcURL);
+export const config: { rpcURL: string } = {
+    rpcURL: window.klaytn,
+};
 
-    const accounts = await window.klaytn.enable();
-    const account = accounts[0];
+export const caver = new Caver(config.rpcURL);
+
+export default async function publicMint() {
+    const account = window.klaytn.selectedAddress;
 
     if (window.klaytn.networkVersion === 8217) {
         console.log('메인넷');
@@ -27,8 +26,9 @@ export default async function publicMint() {
         alert('ERROR: 지갑을 연결해주세요!');
         return;
     }
-    const amount = 1;
+
     const myContract = new caver.klay.Contract(ABI as AbiItem[], CONTRACTADDRESS);
+    const amount = 1;
     await check_status();
 
     if ((await check_status()).maxSaleAmount + 1 <= (await check_status()).mintIndexForSale) {
@@ -50,49 +50,14 @@ export default async function publicMint() {
             value: total_value,
         });
 
-        // const tx_result = myContract.methods.publicMint(amount).send({
-
-        // const tx_result = await myContract.methods.publicMint(amount).send({
-
-        //     from: account,
-        //     gas: gasAmount,
-        //     value: total_value,
-        // });D
-
-        await caver.klay.sendTransaction({
-            type: 'SMART_CONTRACT_EXECUTION',
+        const tx_result = await myContract.methods.publicMint(amount).send({
             from: account,
-            to: '0x98fbEAD150c0aa7Fe595227D6fA9D612C969A510',
-            data: await myContract.methods.publicMint(amount).encodeABI(),
             gas: gasAmount,
-            value: total_value.toString(),
+            value: total_value,
         });
 
-        // if (tx_result != null) {
-        //     console.log(tx_result);
-        //     alert('민팅에 성공하였습니다.');
-        // }
-
-        const result = await caver.klay.sendTransaction({
-            type: 'SMART_CONTRACT_EXECUTION',
-            from: account,
-            to: '0x98fbEAD150c0aa7Fe595227D6fA9D612C969A510',
-            data: caver.klay.abi.encodeFunctionCall(
-                {
-                    name: 'publicMint',
-                    outputs: [],
-                    payable: true,
-                    stateMutability: 'payable',
-                    type: 'function',
-                },
-                account
-            ),
-            gas: gasAmount,
-        });
-        console.log(account);
-
-        if (result != null) {
-            console.log(result);
+        if (tx_result != null) {
+            console.log(tx_result);
             alert('민팅에 성공하였습니다.');
         }
     } catch (error) {
