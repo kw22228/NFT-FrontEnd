@@ -20,7 +20,6 @@ const DarkMode = ({ scrollHeight, percent }: IGoxo) => {
     const handleClick = () => {
         const element = ref.current;
         const segment = isDark ? [160, 209] : [55, 160];
-
         element.playSegments(segment, true);
 
         setIsDark((prev: boolean) => !prev);

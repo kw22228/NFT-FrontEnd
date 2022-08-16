@@ -1,11 +1,12 @@
 import { AnimatePresence } from 'framer-motion';
 import { useRecoilValue } from 'recoil';
-import { scrollHeightAtom } from '../../lib/recoil/atoms';
+import { scrollHeightAtom, toastAtom } from '../../lib/recoil/atoms';
 import DarkMode from './DarkMode/DarkMode';
 import * as s from './FixedBtn.style';
 import Goxo from './Goxo/Goxo';
 
 import ScrollToUp from './ScrollToUp/ScrollToUp';
+import Toast from './Toast/Toast';
 
 const FixedBtn = () => {
     const scrollHeight = useRecoilValue(scrollHeightAtom);
@@ -27,6 +28,8 @@ const FixedBtn = () => {
                     )}
                 </AnimatePresence>
             </s.Container>
+
+            <Toast />
         </s.Section>
     );
 };

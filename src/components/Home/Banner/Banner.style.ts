@@ -9,8 +9,9 @@ export const Section = styled.section`
     justify-content: center;
     align-items: center;
 
-    background-color: ${props => props.theme.body};
+    /* background-color: ${props => props.theme.body}; */
     /* background-color: black; */
+    background-color: transparent;
 
     position: relative;
 `;
@@ -19,6 +20,9 @@ export const BannerContainer = styled.div<{ main: string }>`
     height: 100vh;
     background-image: url(${props => props.main});
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
 
     position: relative;
 

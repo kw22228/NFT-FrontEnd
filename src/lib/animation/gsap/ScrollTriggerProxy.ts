@@ -27,7 +27,7 @@ const ScrollTriggerProxy = () => {
 
                     setScrollPosition(scrollPosition);
                 };
-                const throttleHandler = throttle(scrollPositionHandler, 50);
+                const throttleHandler = throttle(scrollPositionHandler, 10);
 
                 scroll.on('scroll', (position: any) => {
                     throttleHandler(position);

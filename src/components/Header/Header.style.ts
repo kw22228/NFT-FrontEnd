@@ -173,9 +173,14 @@ export const MobileMenuContainer = styled.div<{ visible: boolean }>`
 
     transition: left 0.5s ease;
 
-    @media (${device.mobile}) {
+    @media (${device.tablet}) {
         width: 45%;
         left: ${props => (props.visible ? 'calc(100% - 45%)' : '100%')};
+    }
+
+    @media (${device.mobile}) {
+        width: 55%;
+        left: ${props => (props.visible ? 'calc(100% - 55%)' : '100%')};
     }
 
     @media (${device.mobileSM}) {

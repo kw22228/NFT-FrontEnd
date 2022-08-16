@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { device } from '../../../../styles/variouble';
 
 export const ItemWrapper = styled.div`
     aspect-ratio: 16/9;
@@ -9,6 +10,10 @@ export const ItemWrapper = styled.div`
     width: 100vw;
 
     box-sizing: border-box;
+
+    @media (${device.tabletXL}) {
+        grid-template-columns: 15vw 1fr 30vw;
+    }
 `;
 
 export const Item = styled(motion.div)<{ bg: string }>`

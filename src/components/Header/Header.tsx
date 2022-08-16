@@ -35,81 +35,74 @@ const Header = () => {
         });
     };
     return (
-        <section>
-            <div id="sticky">
-                <s.Header
-                    ref={ref}
-                    id="header"
-                    data-scroll
-                    data-scroll-sticky
-                    data-scroll-target=".Main"
-                    scrollHeight={scrollHeight}
-                >
-                    <s.Nav ref={navRef}>
-                        <Logo />
+        <>
+            <s.Header
+                ref={ref}
+                id="header"
+                data-scroll
+                data-scroll-sticky
+                data-scroll-target=".Main"
+                scrollHeight={scrollHeight}
+            >
+                <s.Nav ref={navRef}>
+                    <Logo />
 
-                        <s.Menu>
-                            <MenuLink title="HOME" link="home" isScroll={true} />
-                            <MenuLink title="NFT" link="nft" isScroll={true} />
-                            <MenuLink title="STORY" link="story" isScroll={true} />
-                            <MenuLink title="ROADMAP" link="roadmap" isScroll={true} />
-                            <MenuLink title="TEAM" link="team" isScroll={true} />
+                    <s.Menu>
+                        <MenuLink title="HOME" link="home" isScroll={true} />
+                        <MenuLink title="NFT" link="nft" isScroll={true} />
+                        <MenuLink title="STORY" link="story" isScroll={true} />
+                        <MenuLink title="ROADMAP" link="roadmap" isScroll={true} />
+                        <MenuLink title="TEAM" link="team" isScroll={true} />
 
-                            <s.MenuSpace />
+                        <s.MenuSpace />
 
-                            <MenuLink title="GALLARY" link="gallary" />
-                            <MenuLink title="MINT" link="mint" />
-                        </s.Menu>
+                        <MenuLink title="GALLARY" link="gallary" />
+                        <MenuLink title="MINT" link="mint" />
+                    </s.Menu>
 
-                        <s.Right>
-                            <SnsMenu />
+                    <s.Right>
+                        <SnsMenu />
 
-                            <s.Hamburgur onClick={hamburgurClick}>
-                                <s.ThreeLine />
-                            </s.Hamburgur>
-                        </s.Right>
-                    </s.Nav>
-                </s.Header>
+                        <s.Hamburgur onClick={hamburgurClick}>
+                            <s.ThreeLine />
+                        </s.Hamburgur>
+                    </s.Right>
+                </s.Nav>
+            </s.Header>
 
-                <s.MobileMenuContainer
-                    visible={visible.mobileMenu}
-                    data-scroll
-                    data-scroll-sticky
-                    data-scroll-target=".Main"
-                >
-                    <s.Cancle onClick={cancleClick}>
-                        <s.CrossLine />
-                    </s.Cancle>
-                    <s.MobileMenuWrap>
-                        <s.MenuWrap>
-                            <MenuLink title="HOME" link="home" isScroll={true} isMobile={true} />
-                            <MenuLink title="NFT" link="nft" isScroll={true} isMobile={true} />
-                            <MenuLink title="STORY" link="story" isScroll={true} isMobile={true} />
-                            <MenuLink
-                                title="ROADMAP"
-                                link="roadmap"
-                                isScroll={true}
-                                isMobile={true}
-                            />
-                            <MenuLink title="TEAM" link="team" isScroll={true} isMobile={true} />
+            <s.MobileMenuContainer
+                visible={visible.mobileMenu}
+                data-scroll
+                data-scroll-sticky
+                data-scroll-target=".Main"
+            >
+                <s.Cancle onClick={cancleClick}>
+                    <s.CrossLine />
+                </s.Cancle>
+                <s.MobileMenuWrap>
+                    <s.MenuWrap>
+                        <MenuLink title="HOME" link="home" isScroll={true} isMobile={true} />
+                        <MenuLink title="NFT" link="nft" isScroll={true} isMobile={true} />
+                        <MenuLink title="STORY" link="story" isScroll={true} isMobile={true} />
+                        <MenuLink title="ROADMAP" link="roadmap" isScroll={true} isMobile={true} />
+                        <MenuLink title="TEAM" link="team" isScroll={true} isMobile={true} />
 
-                            <s.MenuLine />
+                        <s.MenuLine />
 
-                            <MenuLink title="GALLARY" link="gallary" isMobile={true} />
-                            <MenuLink title="MINT" link="mint" isMobile={true} />
-                        </s.MenuWrap>
-                        <s.MenuFooter>
-                            <SnsMenu />
-                            <s.CopyRight>
-                                COPYRIGHT © OH, LOLLY DAY!all rights reserved.
-                                <br />
-                                hello@oh-lolly-day.com
-                            </s.CopyRight>
-                        </s.MenuFooter>
-                    </s.MobileMenuWrap>
-                </s.MobileMenuContainer>
-            </div>
-        </section>
+                        <MenuLink title="GALLARY" link="gallary" isMobile={true} />
+                        <MenuLink title="MINT" link="mint" isMobile={true} />
+                    </s.MenuWrap>
+                    <s.MenuFooter>
+                        <SnsMenu />
+                        <s.CopyRight>
+                            COPYRIGHT © OH, LOLLY DAY!all rights reserved.
+                            <br />
+                            hello@oh-lolly-day.com
+                        </s.CopyRight>
+                    </s.MenuFooter>
+                </s.MobileMenuWrap>
+            </s.MobileMenuContainer>
+        </>
     );
 };
 
