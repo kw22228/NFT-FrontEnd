@@ -9,6 +9,10 @@ on:
 jobs: 
   build: 
     runs-on: ubuntu-latest
+    
+    uses: actions/setup-node@v2
+        with:
+        node-version: '16.14.0'
 
     steps: 
       - uses: actions/checkout@v2 
