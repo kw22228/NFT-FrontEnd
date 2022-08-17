@@ -21,6 +21,7 @@ import Overlay from './components/Overlay/Overlay';
 import FixedBtn from './components/FixedBtn/FixedBtn';
 
 import Loader from './components/Loader/Loader';
+import preload from './lib/utils/preload';
 
 // import pMinDelay from 'p-min-delay';
 
@@ -30,17 +31,13 @@ const LoadableGallary = loadable(
     () => import(/* webpackChunkName: "Gallary" */ './pages/GallaryPage')
 );
 
-const preload = (component: any) => {
-    component.preload && component.preload();
-};
-
 function App() {
     const containRef = useRef<HTMLElement>(null);
     const isDark = useRecoilValue(isDarkSelector);
     const [loaded, setLoaded] = useState(false);
-    const LOADING_TIMEOUT: number = 100;
+    const LOADING_TIMEOUT: number = 1000;
 
-    useDebounceResize();
+    // useDebounceResize();
 
     useEffect(() => {
         preload(LoadableHome);

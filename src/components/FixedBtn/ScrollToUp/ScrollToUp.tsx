@@ -10,16 +10,12 @@ const ScrollToUp = ({ scrollHeight }: { scrollHeight: IScrollHeight }) => {
     const { scroll } = useLocomotiveScroll();
 
     const clickHandler = () => {
-        const element = document.querySelector('#home');
-
-        if (element) {
-            scroll.scrollTo(element, {
-                offset: '0',
-                duration: '1500',
-                easing: [0.25, 0.0, 0.35, 1.0],
-                // disableLerp: false,
-            });
-        }
+        scroll.scrollTo(0, {
+            offset: '0',
+            duration: '1500',
+            easing: [0.25, 0.0, 0.35, 1.0],
+            // disableLerp: false,
+        });
     };
 
     useEffect(() => {

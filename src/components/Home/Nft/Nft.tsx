@@ -10,17 +10,17 @@ import { useInView } from 'framer-motion';
 import useViewportNavState from '../../../lib/hooks/useViewportNavState';
 import importAll from '../../../lib/utils/importAll';
 import { useRecoilValue } from 'recoil';
-import { globalWidthAtom } from '../../../lib/recoil/atoms';
+import { scrollHeightAtom } from '../../../lib/recoil/atoms';
 
 const Nft = () => {
-    const globalWidth = useRecoilValue(globalWidthAtom);
+    const { windowWidth } = useRecoilValue(scrollHeightAtom);
     let SLIDE_COUNT = 5;
 
-    if (globalWidth.width < 550) {
+    if (windowWidth < 550) {
         SLIDE_COUNT = 1.5;
-    } else if (globalWidth.width < 768) {
+    } else if (windowWidth < 768) {
         SLIDE_COUNT = 3;
-    } else if (globalWidth.width < 1024) {
+    } else if (windowWidth < 1024) {
         SLIDE_COUNT = 4;
     }
 
