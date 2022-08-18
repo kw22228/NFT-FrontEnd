@@ -24,3 +24,35 @@ export const jumpVariants: Variants = {
         },
     },
 };
+
+export const introVariants: Variants = {
+    initial: {
+        y: 0,
+        opacity: 1,
+    },
+    animate: {
+        y: 0,
+        opacity: 1,
+    },
+    exit: {
+        y: '100%',
+        opacity: 0,
+
+        transition: {
+            duration: 2,
+        },
+    },
+};
+export const carVariants: Variants = {
+    initial: {
+        x: -300,
+    },
+    animate: {
+        x: window.innerWidth / 2,
+
+        transition: {
+            duration: 3,
+            delay: 3,
+        },
+    },
+};

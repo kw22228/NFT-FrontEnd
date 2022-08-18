@@ -52,3 +52,8 @@ export const toastAtom = atom({
         visible: false,
     },
 });
+
+export const introLoadingAtom = atom({
+    key: 'introLoading',
+    default: false,
+});

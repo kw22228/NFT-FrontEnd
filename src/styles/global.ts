@@ -30,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
         background: ${props =>
             props.theme.type === 'dark'
                 ? 'linear-gradient(#016737, #002514)'
-                : 'linear-gradient(#82BB00, #6CA33D)'};
+                : 'linear-gradient(#8ed054, #a1d820)'};
 
     }
     h1, h2, h3, h4, h5, h6{

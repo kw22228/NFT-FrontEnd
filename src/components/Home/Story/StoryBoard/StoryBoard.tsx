@@ -18,7 +18,7 @@ const StoryBoard = ({ img, text, direction = 'row' }: IStoryBoard) => {
             whileInView="onViewport"
             viewport={{
                 once: true,
-                amount: 0.1,
+                amount: 'some',
             }}
         >
             <s.ImgBox bg={img} />
