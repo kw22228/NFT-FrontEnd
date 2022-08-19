@@ -32,6 +32,7 @@ const ScrollTriggerProxy = () => {
 
                 scroll.on('scroll', (position: any) => {
                     throttleHandler(position);
+
                     ScrollTrigger.update();
                 });
 
@@ -62,17 +63,17 @@ const ScrollTriggerProxy = () => {
                     scroller: element,
                 });
 
-                const scrollRefresh = () => {
-                    if (scroll) {
-                        scroll.update();
-                    }
-                };
-                ScrollTrigger.addEventListener('refreshInit', scrollRefresh);
+                // const scrollRefresh = () => {
+                //     if (scroll) {
+                //         scroll.update();
+                //     }
+                // };
+                // ScrollTrigger.addEventListener('refreshInit', scrollRefresh);
                 ScrollTrigger.refresh();
 
                 return () => {
                     if (scroll) {
-                        ScrollTrigger.addEventListener('refreshInit', scrollRefresh);
+                        // ScrollTrigger.addEventListener('refreshInit', scrollRefresh);
                         scroll.destroy();
                     }
                 };

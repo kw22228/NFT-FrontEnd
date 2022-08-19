@@ -9,13 +9,13 @@ import { useRecoilValue } from 'recoil';
 import { scrollHeightAtom } from '../../lib/recoil/atoms';
 
 const Home = () => {
-    const { windowWidth } = useRecoilValue(scrollHeightAtom);
+    const scrollHeight = useRecoilValue(scrollHeightAtom);
     return (
         <>
             <Main />
             <Nft />
             <Story />
-            {windowWidth > 642 && <RoadMap />}
+            {scrollHeight.windowWidth > 642 && <RoadMap />}
             <Team />
         </>
     );
