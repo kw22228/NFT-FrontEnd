@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { globalWidthAtom } from '../recoil/atoms';
+import { scrollHeightAtom } from '../recoil/atoms';
 import debounce from '../utils/debounce';
 
 const useDebounceResize = () => {
-    const [globalWidth, setGlobalWidth] = useRecoilState(globalWidthAtom);
+    const [scrollHeight, setScrollHeight] = useRecoilState(scrollHeightAtom);
 
     useEffect(() => {
         const handleResize = () => {
-            setGlobalWidth({
-                width: window.innerWidth,
-            });
+            setScrollHeight(prev => ({
+                ...prev,
+                windowWidth: window.innerWidth,
+            }));
         };
         const debounceHandleResize = debounce(handleResize, 500);
 

@@ -4,11 +4,11 @@ import MotionPathPlugin from 'gsap/MotionPathPlugin';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { useLayoutEffect } from 'react';
 import { useRecoilValue } from 'recoil';
-import { globalWidthAtom } from '../../recoil/atoms';
+import { scrollHeightAtom } from '../../recoil/atoms';
 import { IGsapProps } from '../../types/GsapTypes';
 
 const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
-    const { width } = useRecoilValue(globalWidthAtom);
+    const { windowWidth } = useRecoilValue(scrollHeightAtom);
 
     gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
@@ -17,7 +17,7 @@ const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
         const scrollEl = scrollRef.current as HTMLDivElement;
 
         const pinWrapWidth = scrollEl.offsetWidth;
-        const scrollWidth = width;
+        const scrollWidth = windowWidth;
         const x = -pinWrapWidth + scrollWidth;
 
         const ballEl = ballRef.current as HTMLDivElement;
@@ -74,7 +74,7 @@ const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
                 ScrollTrigger.getAll().forEach((instance, index) => instance.kill());
             }
         };
-    }, [width]);
+    }, [windowWidth]);
 };
 
 export default GsapRoadMap;

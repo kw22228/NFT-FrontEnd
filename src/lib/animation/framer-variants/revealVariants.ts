@@ -65,7 +65,7 @@ export const staggerVariants: Variants = {
 
 export const childrenVariants: Variants = {
     initial: {
-        y: 300,
+        y: -200,
         opacity: 0,
     },
     onViewport: {

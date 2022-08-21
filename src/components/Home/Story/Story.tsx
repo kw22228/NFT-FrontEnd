@@ -10,8 +10,6 @@ import goxoCharacter from '../../../assets/goxo_character.jpg';
 import img1 from '../../../assets/nfts/5.png';
 import img2 from '../../../assets/nfts/8.png';
 import img3 from '../../../assets/nfts/11.png';
-import { useRecoilValue } from 'recoil';
-import { globalWidthAtom } from '../../../lib/recoil/atoms';
 
 const Story = () => {
     const storyRef = useRef<HTMLElement>(null);

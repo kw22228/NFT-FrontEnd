@@ -51,19 +51,14 @@ const RoadMap = () => {
         const storyHeight = document.querySelector('#story')?.scrollHeight as number;
         // const teamHeight = document.querySelector('#team')?.scrollHeight as number;
         const footerHeight = document.querySelector('#footer')?.scrollHeight as number;
-
         const roadmapSection = sectionRef.current as HTMLDivElement;
-
         const startScroll = homeHeight + nftHeight + storyHeight;
         const endScroll = scrollHeight.scrollHeight - footerHeight - roadmapSection.scrollHeight;
         const itemScroll = (endScroll - startScroll) / (items.length - 1);
-
         let targetHeight = startScroll + itemScroll * id;
-
         if (id === 1) {
             targetHeight += 60;
         }
-
         scroll.scrollTo(targetHeight, {
             offset: '0',
             duration: '1500',
