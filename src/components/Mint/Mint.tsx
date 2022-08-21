@@ -155,6 +155,7 @@ const Mint = () => {
                             {wallet?.account ? 'minting' : 'connect wallet'}
                             <s.MintFlag src={SmallFlag} />
                         </s.MintButton>
+                        <s.MintButton onClick={handleClick}>MINTING 이거사용</s.MintButton>
                     </s.MintWrapper>
                 </s.Right>
             </s.Container>

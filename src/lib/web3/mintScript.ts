@@ -40,7 +40,7 @@ export default async function publicMint() {
         alert('아직 민팅이 시작되지 않았습니다.');
         return;
     }
-
+    //
     const total_value = new BigNumber(1 * (await check_status()).mintPrice); // 민팅 수량 선택 (amount)
 
     try {
