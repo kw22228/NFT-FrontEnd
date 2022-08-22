@@ -6,6 +6,7 @@ import { IScroll } from '../../types/GsapTypes';
 import throttle from '../../utils/throttle';
 import { useSetRecoilState } from 'recoil';
 import { scrollHeightAtom } from '../../recoil/atoms';
+import toFit from '../../utils/toFit';
 
 const ScrollTriggerProxy = () => {
     const { scroll }: IScroll = useLocomotiveScroll();
@@ -28,13 +29,19 @@ const ScrollTriggerProxy = () => {
 
                     setScrollPosition(scrollPosition);
                 };
-                const throttleHandler = throttle(scrollPositionHandler, 30);
+                // const throttleHandler = throttle(scrollPositionHandler, 30);
 
-                scroll.on('scroll', (position: any) => {
-                    // throttleHandler(position);
-
-                    ScrollTrigger.update();
-                });
+                scroll.on(
+                    'scroll',
+                    (position: any) => {
+                        // throttleHandler(position);
+                        toFit(scrollPositionHandler(position));
+                        ScrollTrigger.update();
+                    },
+                    {
+                        passive: true,
+                    }
+                );
 
                 ScrollTrigger.scrollerProxy(element, {
                     scrollTop(value: number | undefined) {
