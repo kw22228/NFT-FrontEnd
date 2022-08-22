@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function tooFit(callback: any) {
     let tick = false;
 
