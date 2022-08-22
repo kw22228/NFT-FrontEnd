@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { variouble } from '../../../styles/variouble';
 
 export const Container = styled.div<{ visible: boolean }>`
-    position: absolute;
+    position: fixed;
     left: calc(50% - (5rem * 2));
     top: ${props => (props.visible ? '90%' : '100%')};
 

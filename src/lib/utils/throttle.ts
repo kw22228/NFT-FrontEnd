@@ -1,7 +1,7 @@
 const throttle = (callback: any, timeout: number) => {
     let waiting: any = false;
 
-    return (e?: any) => {
+    return (e: any) => {
         if (waiting) return;
         waiting = setTimeout(() => {
             callback.call(this, e);

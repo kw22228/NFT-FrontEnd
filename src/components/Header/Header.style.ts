@@ -164,7 +164,7 @@ export const MobileMenuContainer = styled.div<{ visible: boolean }>`
     height: 100vh;
     width: 35%;
 
-    position: absolute;
+    position: fixed;
     top: 0;
 
     left: ${props => (props.visible ? 'calc(100% - 35%)' : '100%')};
