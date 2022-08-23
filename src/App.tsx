@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { LocomotiveScrollProvider, Scroll } from 'react-locomotive-scroll';
