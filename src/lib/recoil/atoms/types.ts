@@ -7,7 +7,6 @@ export interface IScrollHeight {
     currentY: number;
     progressY: number;
     direction: 'down' | 'up' | null;
-    windowWidth: number;
 }
 
 export interface IWallet {

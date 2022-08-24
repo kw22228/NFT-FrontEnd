@@ -6,16 +6,16 @@ import Story from './Story/Story';
 import Team from './Team/Team';
 import RoadMap from './RoadMap/RoadMap';
 import { useRecoilValue } from 'recoil';
-import { scrollHeightAtom } from '../../lib/recoil/atoms';
+import { windowWidthAtom } from '../../lib/recoil/atoms';
 
 const Home = () => {
-    const scrollHeight = useRecoilValue(scrollHeightAtom);
+    const windowWidth = useRecoilValue(windowWidthAtom);
     return (
         <>
             <Main />
             <Nft />
             <Story />
-            {scrollHeight.windowWidth > 642 && <RoadMap />}
+            {windowWidth > 642 && <RoadMap />}
             <Team />
         </>
     );

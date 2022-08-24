@@ -23,6 +23,7 @@ import { AnimatePresence } from 'framer-motion';
 import Home from './components/Home/Home';
 import Mint from './components/Mint/Mint';
 import Gallary from './components/Gallary/Gallary';
+import useDebounceResize from './lib/hooks/useDebounceResize';
 
 // import pMinDelay from 'p-min-delay';
 
@@ -42,6 +43,8 @@ function App() {
     //     preload(LoadableMint);
     //     preload(LoadableGallary);
     // }, []);
+
+    useDebounceResize();
 
     return (
         <ThemeProvider theme={isDark ? darkTheme : lightTheme}>

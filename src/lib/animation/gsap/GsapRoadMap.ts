@@ -1,14 +1,13 @@
-import { time } from 'console';
 import gsap from 'gsap';
 import MotionPathPlugin from 'gsap/MotionPathPlugin';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { useLayoutEffect } from 'react';
 import { useRecoilValue } from 'recoil';
-import { scrollHeightAtom } from '../../recoil/atoms';
+import { windowWidthAtom } from '../../recoil/atoms';
 import { IGsapProps } from '../../types/GsapTypes';
 
 const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
-    const { windowWidth } = useRecoilValue(scrollHeightAtom);
+    const windowWidth = useRecoilValue(windowWidthAtom);
 
     gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 

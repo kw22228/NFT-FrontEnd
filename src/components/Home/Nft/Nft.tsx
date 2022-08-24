@@ -10,10 +10,10 @@ import { useInView } from 'framer-motion';
 import useViewportNavState from '../../../lib/hooks/useViewportNavState';
 import importAll from '../../../lib/utils/importAll';
 import { useRecoilValue } from 'recoil';
-import { scrollHeightAtom } from '../../../lib/recoil/atoms';
+import { windowWidthAtom } from '../../../lib/recoil/atoms';
 
 const Nft = () => {
-    const { windowWidth } = useRecoilValue(scrollHeightAtom);
+    const windowWidth = useRecoilValue(windowWidthAtom);
     let SLIDE_COUNT = 5;
 
     if (windowWidth < 550) {
