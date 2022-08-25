@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
-import { windowWidthAtom } from '../recoil/atoms';
+import { windowInfoAtom } from '../recoil/atoms';
 import debounce from '../utils/debounce';
 
 const useDebounceResize = () => {
-    const setWindowWidth = useSetRecoilState(windowWidthAtom);
+    const setWindowInfo = useSetRecoilState(windowInfoAtom);
 
     useEffect(() => {
         const handleResize = () => {
-            setWindowWidth(window.innerWidth);
+            setWindowInfo({
+                width: window.innerWidth,
+                zoomLevel: window.devicePixelRatio,
+            });
         };
         const debounceHandleResize = debounce(handleResize, 100);
 
