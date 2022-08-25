@@ -24,9 +24,12 @@ export const walletAtom = atom<IWallet | null>({
     },
 });
 
-export const windowWidthAtom = atom({
-    key: 'windowWidth',
-    default: window.innerWidth,
+export const windowInfoAtom = atom({
+    key: 'windowInfo',
+    default: {
+        width: window.innerWidth,
+        zoomLevel: window.devicePixelRatio,
+    },
 });
 
 export const visibleAtom = atom<IVisible>({
