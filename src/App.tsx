@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { LocomotiveScrollProvider, Scroll } from 'react-locomotive-scroll';
@@ -23,6 +23,7 @@ import { AnimatePresence } from 'framer-motion';
 import Home from './components/Home/Home';
 import Mint from './components/Mint/Mint';
 import Gallary from './components/Gallary/Gallary';
+import useDebounceResize from './lib/hooks/useDebounceResize';
 
 // import pMinDelay from 'p-min-delay';
 
@@ -43,11 +44,13 @@ function App() {
     //     preload(LoadableGallary);
     // }, []);
 
+    useDebounceResize();
+
     return (
         <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
             <GlobalStyle />
             <BrowserRouter>
-                <AnimatePresence>{!introLoading && <Intro />}</AnimatePresence>
+                {/* <AnimatePresence>{!introLoading && <Intro />}</AnimatePresence> */}
                 <LocomotiveScrollProvider
                     options={{
                         smooth: true,

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { device } from '../../../../styles/variouble';
+import { device, variouble } from '../../../../styles/variouble';
 
 export const ItemWrapper = styled.div`
     aspect-ratio: 16/9;
@@ -22,7 +22,7 @@ export const Item = styled(motion.div)<{ bg: string }>`
     position: relative;
     will-change: transform;
 
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8);
 
     display: flex;
     flex-direction: column;
@@ -32,12 +32,42 @@ export const Item = styled(motion.div)<{ bg: string }>`
     box-sizing: border-box;
     padding: 0 5rem;
 
-    background-image: url(${props => props.bg});
-    background-size: cover;
-    background-repeat: no-repeat;
+    border-radius: 30px;
+    overflow: hidden;
+`;
+
+export const Img = styled.img`
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    opacity: 0.5;
+
+    z-index: -1;
 `;
 
 export const Title = styled.h1`
     margin-bottom: 1rem;
 `;
-export const Content = styled.h3``;
+export const Contents = styled.ul``;
+export const List = styled.li`
+    padding: 1rem 0;
+    list-style: none;
+
+    font-weight: 550;
+    font-size: ${variouble.fontmd};
+    letter-spacing: 0.1rem;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    position: relative;
+`;
+export const Flag = styled.img`
+    width: 15px;
+    margin-right: 0.5rem;
+`;

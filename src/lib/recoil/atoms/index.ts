@@ -13,7 +13,6 @@ export const scrollHeightAtom = atom<IScrollHeight>({
         currentY: 0,
         progressY: 0,
         direction: null,
-        windowWidth: window.innerWidth,
     },
 });
 
@@ -25,12 +24,13 @@ export const walletAtom = atom<IWallet | null>({
     },
 });
 
-// export const globalWidthAtom = atom({
-//     key: 'globalWidth',
-//     default: {
-//         width: window.innerWidth,
-//     },
-// });
+export const windowInfoAtom = atom({
+    key: 'windowInfo',
+    default: {
+        width: window.innerWidth,
+        zoomLevel: window.devicePixelRatio,
+    },
+});
 
 export const visibleAtom = atom<IVisible>({
     key: 'visibleAtom',

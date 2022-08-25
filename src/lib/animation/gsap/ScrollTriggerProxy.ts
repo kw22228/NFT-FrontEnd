@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useLocomotiveScroll } from 'react-locomotive-scroll';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -6,7 +6,6 @@ import { IScroll } from '../../types/GsapTypes';
 import throttle from '../../utils/throttle';
 import { useSetRecoilState } from 'recoil';
 import { scrollHeightAtom } from '../../recoil/atoms';
-import toFit from '../../utils/toFit';
 
 const ScrollTriggerProxy = () => {
     const { scroll }: IScroll = useLocomotiveScroll();
@@ -14,7 +13,7 @@ const ScrollTriggerProxy = () => {
     gsap.registerPlugin(ScrollTrigger);
 
     useEffect(() => {
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             if (scroll) {
                 const element = scroll.el as HTMLDivElement;
 
@@ -24,24 +23,18 @@ const ScrollTriggerProxy = () => {
                         currentY: position.scroll.y,
                         progressY: position.scroll.y / position.limit.y,
                         direction: position.direction,
-                        windowWidth: window.innerWidth,
                     };
 
                     setScrollPosition(scrollPosition);
                 };
-                // const throttleHandler = throttle(scrollPositionHandler, 30);
+                const throttleHandler = throttle(scrollPositionHandler, 100);
 
-                scroll.on(
-                    'scroll',
-                    (position: any) => {
-                        // throttleHandler(position);
-                        toFit(scrollPositionHandler(position));
-                        ScrollTrigger.update();
-                    },
-                    {
-                        passive: true,
-                    }
-                );
+                scroll.on('scroll', (position: any) => {
+                    throttleHandler(position);
+                    // toFit(scrollPositionHandler(position));
+                    // scrollPositionHandler(position);
+                    ScrollTrigger.update();
+                });
 
                 ScrollTrigger.scrollerProxy(element, {
                     scrollTop(value: number | undefined) {
@@ -70,21 +63,22 @@ const ScrollTriggerProxy = () => {
                     scroller: element,
                 });
 
-                // const scrollRefresh = () => {
-                //     if (scroll) {
-                //         scroll.update();
-                //     }
-                // };
-                // ScrollTrigger.addEventListener('refreshInit', scrollRefresh);
-                ScrollTrigger.refresh();
-
-                return () => {
+                const scrollRefresh = () => {
                     if (scroll) {
-                        scroll.destroy();
+                        scroll.update();
                     }
                 };
+                ScrollTrigger.addEventListener('refreshInit', scrollRefresh);
+                ScrollTrigger.refresh();
             }
-        }, 0);
+        });
+
+        return () => {
+            clearTimeout(timeout);
+            if (scroll) {
+                scroll.destroy();
+            }
+        };
     }, [scroll]);
     return null;
 };

@@ -12,11 +12,13 @@ import { jumpVariants } from '../../../lib/animation/framer-variants/actionVarin
 import { IScroll } from '../../../lib/types/GsapTypes';
 import { useLocomotiveScroll } from 'react-locomotive-scroll';
 import { useRecoilValue } from 'recoil';
-import { scrollHeightAtom } from '../../../lib/recoil/atoms';
+import { scrollHeightAtom, windowInfoAtom } from '../../../lib/recoil/atoms';
+import items from './item';
 
 const RoadMap = () => {
     const { scroll }: IScroll = useLocomotiveScroll();
     const scrollHeight = useRecoilValue(scrollHeightAtom);
+    const windowInfo = useRecoilValue(windowInfoAtom);
 
     const sectionRef = useRef<HTMLDivElement>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -31,7 +33,6 @@ const RoadMap = () => {
     useViewportNavState(isInView, 'roadmap');
     GsapRoadMap({ sectionRef, scrollRef, ballRef });
 
-    const items = new Array(4).fill(0);
     const [page, setPage] = useState<number>(0);
     const images = importAll(require.context('../../../assets/nfts/', false, /.[1-4]\d\.png$/));
 
@@ -57,7 +58,7 @@ const RoadMap = () => {
         const itemScroll = (endScroll - startScroll) / (items.length - 1);
         let targetHeight = startScroll + itemScroll * id;
         if (id === 1) {
-            targetHeight += 60;
+            targetHeight += 60 / windowInfo.zoomLevel;
         }
         scroll.scrollTo(targetHeight, {
             offset: '0',
@@ -148,15 +149,9 @@ const RoadMap = () => {
                     <s.BallImg bg={images[page]} ref={ballRef} />
                 </s.CurveLine>
             </s.Left>
-            <s.Right ref={scrollRef}>
-                {items.map((e, i) => (
-                    <Product
-                        title="METAVERSE"
-                        content="OFFLINE PLACE 간의 경계를 허물며"
-                        index={i}
-                        key={i}
-                        setPage={setPage}
-                    />
+            <s.Right ref={scrollRef} {...windowInfo}>
+                {items.map((item, i) => (
+                    <Product {...item} index={i} key={i} setPage={setPage} />
                 ))}
             </s.Right>
             <s.Bottom //

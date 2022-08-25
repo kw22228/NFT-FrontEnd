@@ -10,6 +10,7 @@ import * as s from './Team.style';
 import img1 from '../../../assets/nfts/10.png';
 import img2 from '../../../assets/nfts/11.png';
 import img3 from '../../../assets/nfts/12.png';
+import img4 from '../../../assets/nfts/13.png';
 
 import Confetti from 'react-confetti';
 
@@ -63,6 +64,7 @@ const Team = () => {
                 <Card name="Team1" job="Job1" img={img1} />
                 <Card name="Team2" job="Job2" img={img2} />
                 <Card name="Team3" job="Job3" img={img3} />
+                <Card name="Team4" job="Job4" img={img4} />
             </s.Container>
         </s.Section>
     );

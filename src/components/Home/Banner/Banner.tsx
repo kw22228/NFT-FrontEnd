@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as s from './Banner.style';
 
 import { useRecoilValue } from 'recoil';
-import { isDarkAtom, scrollHeightAtom } from '../../../lib/recoil/atoms';
+import { isDarkAtom, windowInfoAtom } from '../../../lib/recoil/atoms';
 
 // import waves from '../../../assets/images/waves.svg';
 // import character from '../../../assets/images/banner_1.png';
@@ -16,7 +16,7 @@ import main_dark_mobile from '../../../assets/images/main_dark_mobile.jpg';
 import CarWheel from '../../../assets/images/carwheel.svg';
 import { carVariants } from '../../../lib/animation/framer-variants/actionVarinats';
 const Banner = () => {
-    const { windowWidth } = useRecoilValue(scrollHeightAtom);
+    const { width: windowWidth } = useRecoilValue(windowInfoAtom);
     const isDark = useRecoilValue(isDarkAtom);
     const [isRotate, setIsRotate] = useState(true);
 

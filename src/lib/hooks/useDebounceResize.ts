@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
-import { scrollHeightAtom } from '../recoil/atoms';
+import { useSetRecoilState } from 'recoil';
+import { windowInfoAtom } from '../recoil/atoms';
 import debounce from '../utils/debounce';
 
 const useDebounceResize = () => {
-    const [scrollHeight, setScrollHeight] = useRecoilState(scrollHeightAtom);
+    const setWindowInfo = useSetRecoilState(windowInfoAtom);
 
     useEffect(() => {
         const handleResize = () => {
-            setScrollHeight(prev => ({
-                ...prev,
-                windowWidth: window.innerWidth,
-            }));
+            setWindowInfo({
+                width: window.innerWidth,
+                zoomLevel: window.devicePixelRatio,
+            });
         };
-        const debounceHandleResize = debounce(handleResize, 500);
+        const debounceHandleResize = debounce(handleResize, 100);
 
         window.addEventListener('resize', debounceHandleResize);
 

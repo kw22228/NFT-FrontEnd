@@ -34,6 +34,7 @@ export const Wrapper = styled(motion.div)`
         path {
             stroke-width: 4;
             stroke: #f74628;
+            transition: stroke-dashoffset 0.2s ease;
         }
     }
 
