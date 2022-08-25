@@ -50,7 +50,7 @@ function App() {
         <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
             <GlobalStyle />
             <BrowserRouter>
-                <AnimatePresence>{!introLoading && <Intro />}</AnimatePresence>
+                {/* <AnimatePresence>{!introLoading && <Intro />}</AnimatePresence> */}
                 <LocomotiveScrollProvider
                     options={{
                         smooth: true,

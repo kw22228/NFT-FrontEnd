@@ -3,12 +3,11 @@ import MotionPathPlugin from 'gsap/MotionPathPlugin';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { useLayoutEffect } from 'react';
 import { useRecoilValue } from 'recoil';
-import { windowWidthAtom } from '../../recoil/atoms';
+import { windowInfoAtom } from '../../recoil/atoms';
 import { IGsapProps } from '../../types/GsapTypes';
 
 const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
-    const windowWidth = useRecoilValue(windowWidthAtom);
-
+    const { width: windowWidth } = useRecoilValue(windowInfoAtom);
     gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
     useLayoutEffect(() => {
@@ -23,9 +22,11 @@ const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
 
         const tl = gsap.timeline();
 
+        console.log(sectionEl.offsetWidth, pinWrapWidth);
+
         const timeout = setTimeout(() => {
             tl.to(sectionEl, {
-                height: `${scrollEl.scrollWidth}px`,
+                height: `${pinWrapWidth}px`,
                 ease: 'none',
                 scrollTrigger: {
                     trigger: sectionEl,
@@ -33,6 +34,17 @@ const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
                     end: pinWrapWidth,
                     scrub: true,
                     pin: true,
+                },
+            });
+
+            tl.to(scrollEl, {
+                x: x,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: scrollEl,
+                    start: 'top top',
+                    end: pinWrapWidth,
+                    scrub: true,
                 },
             });
 
@@ -52,19 +64,8 @@ const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
                 },
             });
 
-            tl.to(scrollEl, {
-                x: x,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: scrollEl,
-                    start: 'top top',
-                    end: pinWrapWidth,
-                    scrub: true,
-                },
-            });
-
             ScrollTrigger.refresh();
-        }, 100);
+        }, 500);
 
         return () => {
             clearTimeout(timeout);

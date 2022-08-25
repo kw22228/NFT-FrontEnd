@@ -99,7 +99,7 @@ export const BallImg = styled.div<{ bg: string }>`
     transform: translate(-50%); */
 `;
 
-export const Right = styled.div`
+export const Right = styled.div<{ width: number; zoomLevel: number }>`
     position: absolute;
     left: 20%;
     height: 70%;
@@ -112,9 +112,9 @@ export const Right = styled.div`
     & > div:not(:last-child) {
         margin-right: 10rem;
 
-        @media (${device.tabletXL}) {
+        /* @media (${device.tabletXL}) {
             margin-right: 40rem;
-        }
+        } */
     }
 `;
 

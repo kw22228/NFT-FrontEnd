@@ -71,7 +71,7 @@ const ScrollTriggerProxy = () => {
                 ScrollTrigger.addEventListener('refreshInit', scrollRefresh);
                 ScrollTrigger.refresh();
             }
-        }, 10);
+        });
 
         return () => {
             clearTimeout(timeout);

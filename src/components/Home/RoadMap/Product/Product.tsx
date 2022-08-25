@@ -1,17 +1,18 @@
 import React, { Dispatch, SetStateAction, useEffect, useRef } from 'react';
 import * as s from './Product.style';
 
+import Flag from '../../../../assets/images/flag.svg';
 import bg from '../../../../assets/images/main.jpg';
 import { RoadMapVariants } from '../../../../lib/animation/framer-variants/inViewVariants';
 import { useInView } from 'framer-motion';
 
 interface IProduct {
     title: string;
-    content: string;
+    lists: string[];
     index: number;
     setPage: Dispatch<SetStateAction<number>>;
 }
-const Product = ({ title, content, index, setPage }: IProduct) => {
+const Product = ({ title, lists, index, setPage }: IProduct) => {
     const ref = useRef<HTMLDivElement>(null);
     const isInView = useInView(ref, {
         once: false,
@@ -39,8 +40,16 @@ const Product = ({ title, content, index, setPage }: IProduct) => {
                 ref={ref}
                 id={`product${index}`}
             >
+                <s.Img src={bg} />
                 <s.Title>{title}</s.Title>
-                <s.Content>{content}</s.Content>
+                <s.Contents>
+                    {lists.map((list, i) => (
+                        <s.List key={list}>
+                            <s.Flag src={Flag} />
+                            {list}
+                        </s.List>
+                    ))}
+                </s.Contents>
             </s.Item>
             <div //
                 // style={{ backgroundColor: 'pink' }}
