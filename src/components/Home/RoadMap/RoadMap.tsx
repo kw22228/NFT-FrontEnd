@@ -58,7 +58,7 @@ const RoadMap = () => {
         const itemScroll = (endScroll - startScroll) / (items.length - 1);
         let targetHeight = startScroll + itemScroll * id;
         if (id === 1) {
-            targetHeight += 60;
+            targetHeight += 60 / windowInfo.zoomLevel;
         }
         scroll.scrollTo(targetHeight, {
             offset: '0',

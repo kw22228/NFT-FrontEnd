@@ -110,7 +110,7 @@ export const Right = styled.div<{ width: number; zoomLevel: number }>`
     overflow: hidden;
     overflow-x: hidden;
     & > div:not(:last-child) {
-        margin-right: 10rem;
+        margin-right: ${props => 5 * props.zoomLevel}rem;
 
         /* @media (${device.tabletXL}) {
             margin-right: 40rem;
