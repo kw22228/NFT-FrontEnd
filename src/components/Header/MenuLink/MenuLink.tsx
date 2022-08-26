@@ -8,15 +8,15 @@ import * as s from './MenuLink.style';
 interface IProps {
     title: string;
     link: string;
+    line: string;
     isScroll?: boolean;
     isMobile?: boolean;
 }
-const MenuLink = ({ title, link, isScroll = false, isMobile = false }: IProps) => {
+const MenuLink = ({ title, link, line, isScroll = false, isMobile = false }: IProps) => {
     const navState = useRecoilValue(navAtom);
     const setVisible = useSetRecoilState(visibleAtom);
 
-    const matchRoute = useMatch(link);
-    const match: boolean = isScroll ? navState === link : !!matchRoute;
+    const match: boolean = line === navState;
     const navigate = useNavigate();
     const { scroll } = useLocomotiveScroll();
 
@@ -36,7 +36,7 @@ const MenuLink = ({ title, link, isScroll = false, isMobile = false }: IProps) =
             const element = document.querySelector('#' + link) as HTMLElement;
 
             if (element) {
-                scroll.scrollTo(element, {
+                scroll?.scrollTo(element, {
                     offset: '0',
                     duration: '1500',
                     easing: [0.25, 0.0, 0.35, 1.0],

@@ -12,6 +12,8 @@ export const Section = styled.section`
     align-items: center;
 
     position: relative;
+
+    background-color: #091755;
 `;
 export const Left = styled.div`
     width: 20%;
@@ -19,7 +21,7 @@ export const Left = styled.div`
 
     z-index: 10;
 
-    background-color: beige;
+    background-color: #4788f4;
 
     display: flex;
     flex-direction: column;

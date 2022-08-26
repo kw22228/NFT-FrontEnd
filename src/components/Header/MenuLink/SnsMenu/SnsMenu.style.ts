@@ -19,7 +19,7 @@ export const SnsMenu = styled.div<{ isMobile?: boolean }>`
         }
 
         svg {
-            fill: ${props => props.theme.text};
+            fill: ${props => props.theme.body};
         }
     }
 

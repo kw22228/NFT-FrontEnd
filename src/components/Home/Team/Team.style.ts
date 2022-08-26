@@ -8,13 +8,16 @@ export const Section = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+
+    background-color: #192c7d;
 `;
 
 export const Title = styled.h1`
     color: ${props => props.theme.text};
     text-transform: uppercase;
-    margin: 2rem auto;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
     border-bottom: 2px solid ${props => props.theme.text};
     width: fit-content;
 `;

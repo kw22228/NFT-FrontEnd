@@ -22,8 +22,6 @@ const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
 
         const tl = gsap.timeline();
 
-        console.log(sectionEl.offsetWidth, pinWrapWidth);
-
         const timeout = setTimeout(() => {
             tl.to(sectionEl, {
                 height: `${pinWrapWidth}px`,
@@ -65,7 +63,7 @@ const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
             });
 
             ScrollTrigger.refresh();
-        }, 500);
+        }, 200);
 
         return () => {
             clearTimeout(timeout);

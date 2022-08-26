@@ -48,16 +48,16 @@ const Header = () => {
                     <Logo />
 
                     <s.Menu>
-                        <MenuLink title="HOME" link="home" isScroll={true} />
-                        <MenuLink title="NFT" link="nft" isScroll={true} />
-                        <MenuLink title="STORY" link="story" isScroll={true} />
-                        <MenuLink title="ROADMAP" link="roadmap" isScroll={true} />
-                        <MenuLink title="TEAM" link="team" isScroll={true} />
+                        <MenuLink title="HOME" link="home" line="home" isScroll={true} />
+                        <MenuLink title="NFT" link="nft" line="nft" isScroll={true} />
+                        <MenuLink title="STORY" link="story" line="story" isScroll={true} />
+                        <MenuLink title="ROADMAP" link="roadmap" line="roadmap" isScroll={true} />
+                        <MenuLink title="TEAM" link="team" line="team" isScroll={true} />
 
                         <s.MenuSpace />
 
-                        <MenuLink title="GALLARY" link="gallary" />
-                        <MenuLink title="MINT" link="mint" />
+                        <MenuLink title="GALLARY" link="gallary/all" line="gallary" />
+                        <MenuLink title="MINT" link="mint" line="mint" />
                     </s.Menu>
 
                     <s.Right>
@@ -81,16 +81,46 @@ const Header = () => {
                 </s.Cancle>
                 <s.MobileMenuWrap>
                     <s.MenuWrap>
-                        <MenuLink title="HOME" link="home" isScroll={true} isMobile={true} />
-                        <MenuLink title="NFT" link="nft" isScroll={true} isMobile={true} />
-                        <MenuLink title="STORY" link="story" isScroll={true} isMobile={true} />
-                        <MenuLink title="ROADMAP" link="roadmap" isScroll={true} isMobile={true} />
-                        <MenuLink title="TEAM" link="team" isScroll={true} isMobile={true} />
+                        <MenuLink
+                            title="HOME"
+                            link="home"
+                            line="home"
+                            isScroll={true}
+                            isMobile={true}
+                        />
+                        <MenuLink
+                            title="NFT"
+                            link="nft"
+                            line="nft"
+                            isScroll={true}
+                            isMobile={true}
+                        />
+                        <MenuLink
+                            title="STORY"
+                            link="story"
+                            line="story"
+                            isScroll={true}
+                            isMobile={true}
+                        />
+                        <MenuLink
+                            title="ROADMAP"
+                            link="roadmap"
+                            line="roadmap"
+                            isScroll={true}
+                            isMobile={true}
+                        />
+                        <MenuLink
+                            title="TEAM"
+                            link="team"
+                            line="team"
+                            isScroll={true}
+                            isMobile={true}
+                        />
 
                         <s.MenuLine />
 
-                        <MenuLink title="GALLARY" link="gallary" isMobile={true} />
-                        <MenuLink title="MINT" link="mint" isMobile={true} />
+                        <MenuLink title="GALLARY" link="gallary" line="gallary" isMobile={true} />
+                        <MenuLink title="MINT" link="mint" line="mint" isMobile={true} />
                     </s.MenuWrap>
                     <s.MenuFooter>
                         <SnsMenu />

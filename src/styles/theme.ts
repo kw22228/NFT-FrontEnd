@@ -2,8 +2,8 @@ import { DefaultTheme } from 'styled-components';
 
 export const lightTheme: DefaultTheme = {
     type: 'light',
-    body: '#fff',
-    text: '#202020',
+    body: '#202020',
+    text: '#fff',
     accentColor: '#93CB12',
     bodyRgba: '32,32,32',
     textRgba: '255,255,255',

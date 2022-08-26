@@ -6,7 +6,7 @@ import StoryBoard from './StoryBoard/StoryBoard';
 import { useInView } from 'framer-motion';
 import useViewportNavState from '../../../lib/hooks/useViewportNavState';
 
-import goxoCharacter from '../../../assets/goxo_character.jpg';
+import goxoFrame from '../../../assets/images/frame.png';
 import img1 from '../../../assets/nfts/5.png';
 import img2 from '../../../assets/nfts/8.png';
 import img3 from '../../../assets/nfts/11.png';
@@ -53,14 +53,15 @@ const Story = () => {
                 // addToRefs={addToRefs}
             />
 
-            <s.Ball bg={goxoCharacter} direct="vertical" data-scroll data-scroll-speed="3" />
-            <s.Ball //
+            {/* <s.Ball bg={goxoFrame} direct="vertical" data-scroll data-scroll-speed="3" /> */}
+            {/* <s.Ball //
                 bg={goxoCharacter}
                 direct="horizontal"
                 data-scroll
                 data-scroll-speed="-3"
                 data-scroll-direction="horizontal"
-            />
+            /> */}
+            <s.MoveImg src={goxoFrame} data-scroll data-scroll-speed="4" />
             <s.Flag>
                 <svg
                     width="216"

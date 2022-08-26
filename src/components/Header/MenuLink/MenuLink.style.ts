@@ -6,7 +6,7 @@ export const MenuItem = styled.li<{ match?: boolean }>`
     margin: 0 1.2rem;
     cursor: pointer;
 
-    color: ${props => props.theme.text};
+    color: ${props => props.theme.body};
 
     position: relative;
 
@@ -14,8 +14,8 @@ export const MenuItem = styled.li<{ match?: boolean }>`
 
     &::before {
         content: ' ';
-        border-bottom: 2px solid ${props => props.theme.text};
-        background-color: ${props => props.theme.text};
+        border-bottom: 2px solid ${props => props.theme.body};
+        background-color: ${props => props.theme.body};
         height: 0.05rem;
         width: ${props => (props.match ? '100%' : '0')};
 
