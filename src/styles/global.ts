@@ -1,13 +1,23 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
+import VITRO_CORE from '../assets/fonts/vitroCore.woff2';
 
 const GlobalStyle = createGlobalStyle`
+    @font-face {
+        font-family: 'VITRO CORE OTF';
+        src: url(${VITRO_CORE}) format('woff2');
+        unicode-range: U+AC00-D7A3;
+    }
+
     ${normalize};
-    
+
     *, *::before, *::after{
         margin:0;
         padding:0;
         
+    }
+    *:focus{
+        outline:0;
     }
     html{
         overflow-x: hidden;
@@ -19,18 +29,19 @@ const GlobalStyle = createGlobalStyle`
         overflow: hidden;
         
         /* background: linear-gradient(#016737, #002514); */
-
-        font-family: 'Mochiy Pop One', sans-serif;
+        font-family: 'Mochiy Pop One', 'VITRO CORE OTF', sans-serif;
+        font-weight: 600;
+        /* font-family: 'VITRO CORE OTF'; */
 
     }
     main{
         overflow-x: hidden;
         overflow: hidden;
 
-        background: ${props =>
+        /* background: ${props =>
             props.theme.type === 'dark'
                 ? 'linear-gradient(#016737, #002514)'
-                : 'linear-gradient(#8ed054, #a1d820)'};
+                : 'linear-gradient(#8ed054, #a1d820)'}; */
 
     }
     h1, h2, h3, h4, h5, h6{

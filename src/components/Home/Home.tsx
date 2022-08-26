@@ -7,11 +7,13 @@ import Team from './Team/Team';
 import RoadMap from './RoadMap/RoadMap';
 import { useRecoilValue } from 'recoil';
 import { windowInfoAtom } from '../../lib/recoil/atoms';
+import Banner from './Banner/Banner';
 
 const Home = () => {
     const { width: windowWidth, zoomLevel } = useRecoilValue(windowInfoAtom);
     return (
         <>
+            <Banner />
             <Main />
             <Nft />
             <Story />

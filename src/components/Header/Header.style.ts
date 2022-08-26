@@ -60,9 +60,9 @@ export const Menu = styled.ul`
 `;
 
 export const MenuSpace = styled.li`
-    background-color: ${props => props.theme.text};
+    background-color: ${props => props.theme.body};
     margin-top: 5px;
-    width: 1px;
+    width: 2px;
     height: 1.2rem;
 `;
 

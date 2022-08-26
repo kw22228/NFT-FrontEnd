@@ -4,7 +4,7 @@ import { device } from '../../../styles/variouble';
 
 export const MainSection = styled.section`
     width: 100vw;
-    height: 200vh;
+    height: 100vh;
 
     display: flex;
     flex-direction: column;
@@ -16,22 +16,7 @@ export const MainSection = styled.section`
     /* @media (${device.mobileM}) {
         height: 220vh;
     } */
-`;
-
-export const MainContainer = styled.div`
-    width: 100vw;
-    height: 100vh;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    position: relative;
-
-    /* @media (${device.mobileM}) {
-        height: 120vh;
-    } */
+    background-color: #90baff;
 `;
 
 export const Img = styled(motion.div)<{ bg: string }>`

@@ -6,18 +6,20 @@ export const Section = styled.section`
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
     margin: 0 auto;
+
+    background-color: #000000;
 `;
 
 export const Title = styled.h1`
-    color: ${props => props.theme.text};
+    color: white;
     font-weight: bold;
     text-transform: uppercase;
-    margin: 0 auto;
-    border-bottom: 2px solid ${props => props.theme.text};
+    margin-top: 5rem;
+    border-bottom: 2px solid white;
     width: fit-content;
 `;
 
@@ -64,8 +66,8 @@ export const OpenSea = styled.button`
     outline: 0;
     font-weight: 800;
 
-    background-color: ${props => props.theme.body};
-    color: ${props => props.theme.text};
+    background-color: ${props => props.theme.text};
+    color: ${props => props.theme.body};
 
     cursor: pointer;
 

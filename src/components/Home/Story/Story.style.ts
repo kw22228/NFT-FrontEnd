@@ -10,13 +10,15 @@ export const Section = styled.section`
     align-items: center;
 
     position: relative;
+
+    background-color: #4788f4;
 `;
 
 export const Title = styled.h1`
     color: ${props => props.theme.text};
     font-weight: 800;
     text-transform: uppercase;
-    margin: 2rem auto;
+    margin-top: 5rem;
     border-bottom: 2px solid ${props => props.theme.text};
     width: fit-content;
 `;
@@ -29,7 +31,7 @@ export const Ball = styled.div<{ bg: string; direct: string }>`
     top: ${props => (props.direct === 'horizontal' ? '0%' : '35%')};
     left: ${props => (props.direct === 'horizontal' ? '75%' : '0%')};
 
-    z-index: -1;
+    z-index: 10;
 
     background-image: url(${props => props.bg});
     background-repeat: no-repeat;
@@ -47,6 +49,15 @@ export const Ball = styled.div<{ bg: string; direct: string }>`
     @media (${device.mobile}) {
         padding: 7rem;
     }
+`;
+
+export const MoveImg = styled.img`
+    width: 17%;
+    height: auto;
+
+    position: absolute;
+    top: 35%;
+    left: 2%;
 `;
 
 export const Flag = styled.div`

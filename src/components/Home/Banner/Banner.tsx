@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as s from './Banner.style';
 
 import { useRecoilValue } from 'recoil';
@@ -15,10 +15,19 @@ import main_dark_mobile from '../../../assets/images/main_dark_mobile.jpg';
 
 import CarWheel from '../../../assets/images/carwheel.svg';
 import { carVariants } from '../../../lib/animation/framer-variants/actionVarinats';
+import { useInView } from 'framer-motion';
+import useViewportNavState from '../../../lib/hooks/useViewportNavState';
 const Banner = () => {
     const { width: windowWidth } = useRecoilValue(windowInfoAtom);
     const isDark = useRecoilValue(isDarkAtom);
     const [isRotate, setIsRotate] = useState(true);
+    const bannerRef = useRef<HTMLDivElement>(null);
+
+    const isInView = useInView(bannerRef, {
+        once: false,
+        amount: 0.3,
+    });
+    useViewportNavState(isInView, 'home');
 
     const bgImage = isDark
         ? windowWidth > 552
@@ -36,7 +45,7 @@ const Banner = () => {
         return () => clearTimeout(timeout);
     }, []);
     return (
-        <s.Section>
+        <s.Section ref={bannerRef}>
             <s.BannerContainer main={bgImage}>
                 <s.Car //
                     variants={carVariants}
