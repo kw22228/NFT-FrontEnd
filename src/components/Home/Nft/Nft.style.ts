@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 export const Section = styled.section`
@@ -12,6 +13,8 @@ export const Section = styled.section`
     margin: 0 auto;
 
     background-color: #000000;
+    outline: 3px solid black;
+    box-sizing: border-box;
 `;
 
 export const Title = styled.h1`
@@ -23,7 +26,8 @@ export const Title = styled.h1`
     width: fit-content;
 `;
 
-export const SliderContainer = styled.div<{ count: number }>`
+export const SliderContainer = styled(motion.div)<{ count: number }>`
+    margin-top: 3rem;
     height: 70%;
     width: 100%;
 
@@ -59,7 +63,9 @@ export const Nft = styled.div<{ bg: string; count: number }>`
     background-position: cover;
 `;
 
-export const OpenSea = styled.button`
+export const OpenSea = styled(motion.div)`
+    margin-top: 7rem;
+
     padding: 0.6rem 2rem;
     border-radius: 20px;
     border: 0;
@@ -75,7 +81,7 @@ export const OpenSea = styled.button`
     justify-content: center;
     align-items: center;
 
-    transition: color 0.3s ease, transform 0.3s ease;
+    /* transition: color 0.3s ease, transform 0.3s ease; */
     img {
         width: 1.5rem;
         height: 1.5rem;

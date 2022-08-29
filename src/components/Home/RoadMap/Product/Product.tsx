@@ -10,20 +10,13 @@ interface IProduct {
     title: string;
     lists: string[];
     index: number;
-    setPage: Dispatch<SetStateAction<number>>;
 }
-const Product = ({ title, lists, index, setPage }: IProduct) => {
+const Product = ({ title, lists, index }: IProduct) => {
     const ref = useRef<HTMLDivElement>(null);
     const isInView = useInView(ref, {
         once: false,
         amount: 'all',
     });
-
-    useEffect(() => {
-        if (isInView) {
-            setPage(index);
-        }
-    }, [isInView]);
 
     return (
         <s.ItemWrapper id={`itemSection${index}`}>

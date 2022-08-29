@@ -38,14 +38,15 @@ const Banner = () => {
         : main_mobile;
 
     useEffect(() => {
-        const timeout = setTimeout(() => {
-            setIsRotate(false);
-        }, 6000);
+        console.log(isInView);
+        // const timeout = setTimeout(() => {
+        //     setIsRotate(false);
+        // }, 6000);
 
-        return () => clearTimeout(timeout);
-    }, []);
+        // return () => clearTimeout(timeout);
+    }, [isInView]);
     return (
-        <s.Section ref={bannerRef}>
+        <s.Section ref={bannerRef} id="banner">
             <s.BannerContainer main={bgImage}>
                 <s.Car //
                     variants={carVariants}

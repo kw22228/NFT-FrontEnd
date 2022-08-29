@@ -1,11 +1,12 @@
 import { useInView } from 'framer-motion';
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import GsapRoadMap from '../../../lib/animation/gsap/GsapRoadMap';
 import useViewportNavState from '../../../lib/hooks/useViewportNavState';
 import importAll from '../../../lib/utils/importAll';
 import Product from './Product/Product';
 import * as s from './RoadMap.style';
 
+import PerfactCar from '../../../assets/images/perfectCar.svg';
 import Flag from '../../../assets/images/flag.svg';
 import DownArrow from '../../../assets/images/down-arrow.png';
 import { jumpVariants } from '../../../lib/animation/framer-variants/actionVarinats';
@@ -33,7 +34,6 @@ const RoadMap = () => {
     useViewportNavState(isInView, 'roadmap');
     GsapRoadMap({ sectionRef, scrollRef, ballRef });
 
-    const [page, setPage] = useState<number>(0);
     const images = importAll(require.context('../../../assets/nfts/', false, /.[1-4]\d\.png$/));
 
     const skipClickHandler = () => {
@@ -47,13 +47,15 @@ const RoadMap = () => {
     };
 
     const pageClickHandler = (id: number) => {
+        const bannerHeight = document.querySelector('#banner')?.scrollHeight as number;
+        const aboutHeight = document.querySelector('#about')?.scrollHeight as number;
         const homeHeight = document.querySelector('#home')?.scrollHeight as number;
-        const nftHeight = document.querySelector('#nft')?.scrollHeight as number;
         const storyHeight = document.querySelector('#story')?.scrollHeight as number;
-        // const teamHeight = document.querySelector('#team')?.scrollHeight as number;
+
         const footerHeight = document.querySelector('#footer')?.scrollHeight as number;
         const roadmapSection = sectionRef.current as HTMLDivElement;
-        const startScroll = homeHeight + nftHeight + storyHeight;
+
+        const startScroll = bannerHeight + homeHeight + aboutHeight + storyHeight;
         const endScroll = scrollHeight.scrollHeight - footerHeight - roadmapSection.scrollHeight;
         const itemScroll = (endScroll - startScroll) / (items.length - 1);
         let targetHeight = startScroll + itemScroll * id;
@@ -90,7 +92,7 @@ const RoadMap = () => {
 
                         <path
                             d="M315.5 5L43.4532 277.047C-22.6826 343.183 0.565828 455.422 87.5308 489.846L448.16 632.595C532.808 666.101 557.688 773.991 496.263 841.183L181.5 1185.5"
-                            stroke="#57892B"
+                            stroke="#fff"
                             strokeWidth="10"
                             strokeLinecap="round"
                             strokeLinejoin="bevel"
@@ -146,12 +148,14 @@ const RoadMap = () => {
                             4
                         </text>
                     </svg>
-                    <s.BallImg bg={images[page]} ref={ballRef} />
+                    <s.CarImg ref={ballRef}>
+                        <s.Car src={PerfactCar} bg={PerfactCar} />
+                    </s.CarImg>
                 </s.CurveLine>
             </s.Left>
             <s.Right ref={scrollRef} {...windowInfo}>
                 {items.map((item, i) => (
-                    <Product {...item} index={i} key={i} setPage={setPage} />
+                    <Product {...item} index={i} key={i} />
                 ))}
             </s.Right>
             <s.Bottom //

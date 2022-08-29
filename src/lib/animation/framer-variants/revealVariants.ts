@@ -2,7 +2,7 @@ import { Variants } from 'framer-motion';
 
 export const bottomToTop: Variants = {
     initial: {
-        y: 300,
+        y: 200,
         opacity: 0,
     },
     onViewport: {
@@ -10,16 +10,16 @@ export const bottomToTop: Variants = {
         opacity: 1,
 
         transition: {
-            duration: 1.5,
-            type: 'spring',
-            bounce: 0.2,
+            duration: 1,
+            type: 'tween',
+            // bounce: 0.2,
         },
     },
 };
 
 export const leftToRight: Variants = {
     initial: {
-        x: -300,
+        x: -200,
         opacity: 0,
     },
     onViewport: {
@@ -35,7 +35,7 @@ export const leftToRight: Variants = {
 
 export const rightToLeft: Variants = {
     initial: {
-        x: 300,
+        x: 200,
         opacity: 0,
     },
     onViewport: {
@@ -65,11 +65,11 @@ export const staggerVariants: Variants = {
 
 export const childrenVariants: Variants = {
     initial: {
-        y: -200,
+        // y: -200,
         opacity: 0,
     },
     onViewport: {
-        y: 0,
+        // y: 0,
         opacity: 1,
 
         transition: {

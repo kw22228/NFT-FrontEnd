@@ -33,16 +33,15 @@ const MenuLink = ({ title, link, line, isScroll = false, isMobile = false }: IPr
         }
 
         if (isScroll) {
-            const element = document.querySelector('#' + link) as HTMLElement;
+            const element =
+                link === 'home' ? Number(0) : (document.querySelector('#' + link) as HTMLElement);
 
-            if (element) {
-                scroll?.scrollTo(element, {
-                    offset: '0',
-                    duration: '1500',
-                    easing: [0.25, 0.0, 0.35, 1.0],
-                    // disableLerp: false,
-                });
-            }
+            scroll?.scrollTo(element, {
+                offset: '0',
+                duration: '1500',
+                easing: [0.25, 0.0, 0.35, 1.0],
+                // disableLerp: false,
+            });
         }
     };
 

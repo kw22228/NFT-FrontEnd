@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { device } from '../../../styles/variouble';
+import { device, variouble } from '../../../styles/variouble';
 
 export const Section = styled.section`
     height: 250vh;
@@ -11,16 +11,18 @@ export const Section = styled.section`
 
     position: relative;
 
-    background-color: #4788f4;
+    background-color: #90baff;
 `;
 
 export const Title = styled.h1`
     color: ${props => props.theme.text};
+    font-size: ${variouble.fontxxl};
     font-weight: 800;
     text-transform: uppercase;
-    margin-top: 5rem;
-    border-bottom: 2px solid ${props => props.theme.text};
+    margin-top: 10rem;
+    /* border-bottom: 2px solid ${props => props.theme.text}; */
     width: fit-content;
+    margin-bottom: 3rem;
 `;
 
 export const Ball = styled.div<{ bg: string; direct: string }>`

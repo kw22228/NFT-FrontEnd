@@ -60,7 +60,7 @@ export const Menu = styled.ul`
 `;
 
 export const MenuSpace = styled.li`
-    background-color: ${props => props.theme.body};
+    background-color: ${props => props.theme.headerText};
     margin-top: 5px;
     width: 2px;
     height: 1.2rem;
