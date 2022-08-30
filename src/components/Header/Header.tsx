@@ -89,9 +89,9 @@ const Header = () => {
                             isMobile={true}
                         />
                         <MenuLink
-                            title="NFT"
-                            link="nft"
-                            line="nft"
+                            title="ABOUT"
+                            link="about"
+                            line="about"
                             isScroll={true}
                             isMobile={true}
                         />

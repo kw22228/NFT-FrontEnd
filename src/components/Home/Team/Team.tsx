@@ -12,8 +12,6 @@ import img2 from '../../../assets/nfts/11.png';
 import img3 from '../../../assets/nfts/12.png';
 import img4 from '../../../assets/nfts/13.png';
 
-import Confetti from 'react-confetti';
-
 interface ICard {
     img: string;
     name: string;
@@ -31,12 +29,6 @@ const Card = ({ img, name, job }: ICard) => {
                     <s.Job>{job}</s.Job>
                 </s.CardContents>
             </s.CardWrap>
-            <Confetti //
-                numberOfPieces={80}
-                gravity={0.03}
-                width={300}
-                height={400}
-            />
         </s.Card>
     );
 };

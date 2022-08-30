@@ -31,6 +31,7 @@ const GlobalStyle = createGlobalStyle`
         /* background: linear-gradient(#016737, #002514); */
         font-family: 'Mochiy Pop One', 'VITRO CORE OTF', sans-serif;
         font-weight: 600;
+        background-color: #63BFA6;
         /* font-family: 'VITRO CORE OTF'; */
 
     }

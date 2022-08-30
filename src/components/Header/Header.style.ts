@@ -12,11 +12,11 @@ export const Header = styled.header<{ scrollHeight: IScrollHeight }>`
                 : 'rgba(255,255,255,0.6)'
             : 'transparent'};
 
-    border: ${props =>
+    border-bottom: ${props =>
         Math.ceil(props.scrollHeight.progressY * 100) > 3
             ? props.theme.type === 'dark'
-                ? '2px solid black'
-                : '2px solid white'
+                ? '1px solid black'
+                : '1px solid white'
             : 'none'};
 
     position: fixed;

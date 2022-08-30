@@ -16,18 +16,22 @@ export const Section = styled.section`
 
     position: relative;
 `;
-export const BannerContainer = styled.div<{ main: string }>`
+export const BannerContainer = styled.div`
     width: 100%;
     height: 100vh;
-    background-image: url(${props => props.main});
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
 
     position: relative;
 
-    transition: background-image 1s ease;
+    /* transition: background-image 1s ease; */
+`;
+
+export const LogoTitle = styled(motion.img)`
+    top: 20%;
+    left: 47%;
+    position: absolute;
+
+    width: 18rem;
+    height: auto;
 `;
 
 export const Car = styled(motion.div)`
@@ -37,7 +41,7 @@ export const Car = styled(motion.div)`
     }
 
     position: absolute;
-    top: 50%;
+    top: 70%;
 `;
 export const move = keyframes`
     from{

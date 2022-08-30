@@ -16,7 +16,7 @@ const Story = () => {
     const storyRef = useRef<HTMLElement>(null);
     const isInView = useInView(storyRef, {
         once: false,
-        amount: 0.4,
+        amount: 0.3,
     });
     useViewportNavState(isInView, 'story');
 

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { device, variouble } from '../../../styles/variouble';
 
 export const Section = styled.section`
-    height: 250vh;
+    height: 300vh;
     width: 100vw;
 
     display: flex;

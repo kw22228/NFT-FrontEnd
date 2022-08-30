@@ -27,19 +27,19 @@ export const jumpVariants: Variants = {
 
 export const introVariants: Variants = {
     initial: {
-        y: 0,
+        x: 0,
         opacity: 1,
     },
     animate: {
-        y: 0,
+        x: 0,
         opacity: 1,
     },
     exit: {
-        y: '100%',
+        x: '100%',
         opacity: 0,
 
         transition: {
-            duration: 2,
+            duration: 1.5,
         },
     },
 };
@@ -48,11 +48,26 @@ export const carVariants: Variants = {
         x: -300,
     },
     animate: {
-        x: window.innerWidth / 2,
+        x: window.innerWidth / 3,
 
         transition: {
             duration: 3,
-            delay: 3,
+            // delay: 3,
+        },
+    },
+};
+
+export const scaleReveal: Variants = {
+    initial: {
+        scale: 0,
+    },
+    animate: {
+        scale: 1,
+        transition: {
+            delay: 0.5,
+            duration: 1.5,
+            type: 'spring',
+            bounce: 0.6,
         },
     },
 };

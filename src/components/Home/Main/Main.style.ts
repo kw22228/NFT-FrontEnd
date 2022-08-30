@@ -4,7 +4,7 @@ import { device } from '../../../styles/variouble';
 
 export const MainSection = styled.section`
     width: 100vw;
-    height: 100vh;
+    height: 110vh;
 
     display: flex;
     flex-direction: column;

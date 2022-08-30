@@ -4,54 +4,65 @@ import * as s from './Banner.style';
 import { useRecoilValue } from 'recoil';
 import { isDarkAtom, windowInfoAtom } from '../../../lib/recoil/atoms';
 
-// import waves from '../../../assets/images/waves.svg';
-// import character from '../../../assets/images/banner_1.png';
-
-import main from '../../../assets/images/main.jpg';
-import main_dark from '../../../assets/images/main_dark.jpg';
-
-import main_mobile from '../../../assets/images/main_mobile.jpg';
-import main_dark_mobile from '../../../assets/images/main_dark_mobile.jpg';
+import { carVariants, scaleReveal } from '../../../lib/animation/framer-variants/actionVarinats';
+import { useAnimation, useInView } from 'framer-motion';
+import useViewportNavState from '../../../lib/hooks/useViewportNavState';
+import LazyImg from '../../LazyImg/LazyImg';
 
 import CarWheel from '../../../assets/images/carwheel.svg';
-import { carVariants } from '../../../lib/animation/framer-variants/actionVarinats';
-import { useInView } from 'framer-motion';
-import useViewportNavState from '../../../lib/hooks/useViewportNavState';
+import Main from '../../../assets/images/main_banner.jpg';
+import LogoImage from '../../../assets/images/Logo.png';
+
 const Banner = () => {
     const { width: windowWidth } = useRecoilValue(windowInfoAtom);
     const isDark = useRecoilValue(isDarkAtom);
     const [isRotate, setIsRotate] = useState(true);
     const bannerRef = useRef<HTMLDivElement>(null);
 
+    const carControls = useAnimation();
+    const logoControls = useAnimation();
     const isInView = useInView(bannerRef, {
         once: false,
         amount: 0.3,
     });
     useViewportNavState(isInView, 'home');
 
-    const bgImage = isDark
-        ? windowWidth > 552
-            ? main_dark
-            : main_dark_mobile
-        : windowWidth > 552
-        ? main
-        : main_mobile;
+    // const bgImage = isDark
+    //     ? windowWidth > 552
+    //         ? main_dark
+    //         : main_dark_mobile
+    //     : windowWidth > 552
+    //     ? main
+    //     : main_mobile;
 
+    let timeout = null as ReturnType<typeof setTimeout> | null;
     useEffect(() => {
-        console.log(isInView);
-        // const timeout = setTimeout(() => {
-        //     setIsRotate(false);
-        // }, 6000);
+        carControls.start('animate');
+        logoControls.start('animate');
+        timeout = setTimeout(() => setIsRotate(false), 3000);
 
-        // return () => clearTimeout(timeout);
-    }, [isInView]);
+        return () => {
+            if (timeout) {
+                clearTimeout(timeout);
+                timeout = null;
+            }
+        };
+    }, []);
+
     return (
         <s.Section ref={bannerRef} id="banner">
-            <s.BannerContainer main={bgImage}>
+            <s.BannerContainer>
+                <LazyImg src={Main} lazy={false} elementRef={bannerRef} alt="Main Banner" />
+                <s.LogoTitle //
+                    src={LogoImage}
+                    variants={scaleReveal}
+                    initial="initial"
+                    animate={logoControls}
+                />
                 <s.Car //
                     variants={carVariants}
                     initial="initial"
-                    animate="animate"
+                    animate={carControls}
                 >
                     <svg viewBox="0 0 823 637" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0_148_104)">
