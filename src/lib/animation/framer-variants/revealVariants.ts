@@ -1,8 +1,21 @@
 import { Variants } from 'framer-motion';
 
+export const revealVariants: Variants = {
+    initial: {
+        opacity: 1,
+    },
+    animate: {
+        opacity: 1,
+        transition: {
+            duration: 0.5,
+            type: 'tween',
+        },
+    },
+};
+
 export const bottomToTop: Variants = {
     initial: {
-        y: 300,
+        y: 200,
         opacity: 0,
     },
     onViewport: {
@@ -10,16 +23,16 @@ export const bottomToTop: Variants = {
         opacity: 1,
 
         transition: {
-            duration: 1.5,
-            type: 'spring',
-            bounce: 0.2,
+            duration: 1,
+            type: 'tween',
+            // bounce: 0.2,
         },
     },
 };
 
 export const leftToRight: Variants = {
     initial: {
-        x: -300,
+        x: -200,
         opacity: 0,
     },
     onViewport: {
@@ -35,7 +48,7 @@ export const leftToRight: Variants = {
 
 export const rightToLeft: Variants = {
     initial: {
-        x: 300,
+        x: 200,
         opacity: 0,
     },
     onViewport: {
@@ -65,17 +78,60 @@ export const staggerVariants: Variants = {
 
 export const childrenVariants: Variants = {
     initial: {
-        y: -200,
+        // y: -200,
         opacity: 0,
     },
     onViewport: {
-        y: 0,
+        // y: 0,
         opacity: 1,
 
         transition: {
             duration: 1.5,
             type: 'spring',
             bounce: 0.2,
+        },
+    },
+};
+
+export const logoStagger: Variants = {
+    initial: {
+        opacity: 0,
+    },
+    animate: {
+        opacity: 1,
+
+        transition: {
+            delayChildren: 0.5,
+            staggerChildren: 0.5,
+        },
+    },
+};
+export const logoChildren: Variants = {
+    initial: {
+        y: -200,
+        opacity: 0,
+    },
+    animate: {
+        y: 0,
+        opacity: 1,
+
+        transition: {
+            duration: 1.5,
+            type: 'spring',
+        },
+    },
+};
+
+export const titleLogo: Variants = {
+    initial: {
+        scale: 0,
+    },
+    animate: {
+        scale: 1,
+        transition: {
+            delay: 3,
+            duration: 0.5,
+            type: 'spring',
         },
     },
 };

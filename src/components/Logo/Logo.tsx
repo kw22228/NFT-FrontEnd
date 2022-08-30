@@ -1,12 +1,30 @@
 import React from 'react';
-import { useLocomotiveScroll } from 'react-locomotive-scroll';
-import { useNavigate } from 'react-router';
-import { useRecoilValue } from 'recoil';
-import { windowInfoAtom } from '../../lib/recoil/atoms';
 import * as s from './Logo.style';
 
-const Logo = () => {
-    const { width: windowWidth, zoomLevel } = useRecoilValue(windowInfoAtom);
+import { useLocomotiveScroll } from 'react-locomotive-scroll';
+import { useNavigate } from 'react-router';
+
+import LogoImage from '../../assets/images/Logo.svg';
+import {
+    logoChildren,
+    logoStagger,
+    titleLogo,
+} from '../../lib/animation/framer-variants/revealVariants';
+
+interface IProps {
+    place?: string;
+}
+
+const TitleItem = ({ char }: { char: string }) => {
+    return (
+        <s.Char //
+            variants={logoChildren}
+        >
+            {char}
+        </s.Char>
+    );
+};
+const Logo = ({ place = 'header' }: IProps) => {
     const navigate = useNavigate();
     const { scroll } = useLocomotiveScroll();
 
@@ -23,9 +41,19 @@ const Logo = () => {
 
     return (
         <s.LogoLink onClick={handleClick}>
-            <s.Logo>
-                {windowWidth} {zoomLevel}
-            </s.Logo>
+            <s.Title place={place} variants={logoStagger} initial="initial" animate="animate">
+                <TitleItem char="W" />
+                <TitleItem char="I" />
+                <TitleItem char="M" />
+                <TitleItem char="B" />
+            </s.Title>
+            <s.Logo
+                src={LogoImage}
+                alt="Logo"
+                variants={titleLogo}
+                initial="initial"
+                animate="animate"
+            />
         </s.LogoLink>
     );
 };

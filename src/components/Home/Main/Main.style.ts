@@ -4,11 +4,11 @@ import { device } from '../../../styles/variouble';
 
 export const MainSection = styled.section`
     width: 100vw;
-    height: 100vh;
+    height: 110vh;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
     position: relative;
@@ -16,7 +16,10 @@ export const MainSection = styled.section`
     /* @media (${device.mobileM}) {
         height: 220vh;
     } */
-    background-color: #90baff;
+    /* background-color: #90baff; */
+    background-color: #000000;
+    outline: 3px solid black;
+    box-sizing: border-box;
 `;
 
 export const Img = styled(motion.div)<{ bg: string }>`
@@ -42,19 +45,40 @@ export const Img = styled(motion.div)<{ bg: string }>`
     }
 `;
 
+export const BigTitle = styled(motion.h1)`
+    margin-top: 3rem;
+
+    text-transform: uppercase;
+    color: ${props => props.theme.text};
+
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+`;
+
+export const SubTitle = styled(motion.h3)`
+    margin-top: 3rem;
+    text-transform: uppercase;
+    color: ${props => props.theme.text};
+
+    font-size: 2rem;
+    letter-spacing: 1px;
+`;
+
 export const TextBox = styled(motion.div)`
     /* background-color: ${props => props.theme.body}; */
     color: ${props => props.theme.text};
-    font-weight: 600;
-    width: 45%;
-    height: 20%;
+    font-size: 1.2rem;
+    width: 55%;
+    height: 100%;
     text-align: center;
-    margin-top: 5rem;
-    line-height: 1.5;
+    line-height: 1.8;
+    letter-spacing: 1px;
 
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+
+    margin-top: 3rem;
 
     transition: color 0.3s ease;
 

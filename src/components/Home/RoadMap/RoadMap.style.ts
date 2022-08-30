@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { device } from '../../../styles/variouble';
 
 export const Section = styled.section`
@@ -21,7 +21,7 @@ export const Left = styled.div`
 
     z-index: 10;
 
-    background-color: #4788f4;
+    background-color: #091755;
 
     display: flex;
     flex-direction: column;
@@ -34,8 +34,10 @@ export const Left = styled.div`
 `;
 
 export const LeftTitle = styled.h1`
-    margin-top: 2rem;
+    margin-top: 3rem;
     font-size: 1.5rem;
+
+    color: ${props => props.theme.text};
 `;
 
 export const Line = styled.div`
@@ -85,20 +87,34 @@ export const Flag = styled.div`
     left: 0;
 `;
 
-export const BallImg = styled.div<{ bg: string }>`
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
+export const CarImg = styled.div`
+    width: 4rem;
+    height: 4rem;
+    position: relative;
+`;
 
-    background-image: url(${props => props.bg});
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+const Swing = keyframes`
+    0%{
+        transform: rotate(0deg);
+    }
+    25%{
+        transform: rotate(5deg);
+    }
+    50%{
+        transform: rotate(0deg);
+    }
+    75%{
+        transform: rotate(-5deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+`;
+export const Car = styled.img<{ bg: string }>`
+    width: 100%;
+    height: 100%;
 
-    /* position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translate(-50%); */
+    animation: ${Swing} 0.7s linear infinite;
 `;
 
 export const Right = styled.div<{ width: number; zoomLevel: number }>`

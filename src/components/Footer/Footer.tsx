@@ -10,7 +10,7 @@ import twitter from '../../assets/images/icons8-twitter.svg';
 const Footer = () => {
     return (
         <s.Footer id="footer">
-            <Logo />
+            <Logo place="footer" />
             <s.TextWrap>
                 <s.Copy>COPYRIGHT © OH, LOLLY DAY! all rights reserved.</s.Copy>
                 <s.Url>hello@oh-lolly-day.com</s.Url>

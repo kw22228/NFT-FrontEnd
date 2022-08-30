@@ -14,8 +14,8 @@ const Home = () => {
     return (
         <>
             <Banner />
-            <Main />
             <Nft />
+            <Main />
             <Story />
             {windowWidth > 950 / zoomLevel && <RoadMap />}
             <Team />

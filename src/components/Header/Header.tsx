@@ -49,7 +49,7 @@ const Header = () => {
 
                     <s.Menu>
                         <MenuLink title="HOME" link="home" line="home" isScroll={true} />
-                        <MenuLink title="NFT" link="nft" line="nft" isScroll={true} />
+                        <MenuLink title="ABOUT" link="about" line="about" isScroll={true} />
                         <MenuLink title="STORY" link="story" line="story" isScroll={true} />
                         <MenuLink title="ROADMAP" link="roadmap" line="roadmap" isScroll={true} />
                         <MenuLink title="TEAM" link="team" line="team" isScroll={true} />
@@ -89,9 +89,9 @@ const Header = () => {
                             isMobile={true}
                         />
                         <MenuLink
-                            title="NFT"
-                            link="nft"
-                            line="nft"
+                            title="ABOUT"
+                            link="about"
+                            line="about"
                             isScroll={true}
                             isMobile={true}
                         />

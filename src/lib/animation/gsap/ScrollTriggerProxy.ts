@@ -6,6 +6,7 @@ import { IScroll } from '../../types/GsapTypes';
 import throttle from '../../utils/throttle';
 import { useSetRecoilState } from 'recoil';
 import { scrollHeightAtom } from '../../recoil/atoms';
+import { THROTTLE_DEBOUNCE_TIMEOUT } from '../../utils/constant';
 
 const ScrollTriggerProxy = () => {
     const { scroll }: IScroll = useLocomotiveScroll();
@@ -27,7 +28,7 @@ const ScrollTriggerProxy = () => {
 
                     setScrollPosition(scrollPosition);
                 };
-                const throttleHandler = throttle(scrollPositionHandler, 100);
+                const throttleHandler = throttle(scrollPositionHandler, THROTTLE_DEBOUNCE_TIMEOUT);
 
                 scroll.on('scroll', (position: any) => {
                     throttleHandler(position);

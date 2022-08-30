@@ -11,6 +11,7 @@ import useViewportNavState from '../../../lib/hooks/useViewportNavState';
 import importAll from '../../../lib/utils/importAll';
 import { useRecoilValue } from 'recoil';
 import { windowInfoAtom } from '../../../lib/recoil/atoms';
+import { bottomToTop } from '../../../lib/animation/framer-variants/revealVariants';
 
 const Nft = () => {
     const { width: windowWidth } = useRecoilValue(windowInfoAtom);
@@ -50,13 +51,38 @@ const Nft = () => {
         once: false,
         amount: 0.8,
     });
-    useViewportNavState(isInview, 'nft');
+    useViewportNavState(isInview, 'about');
 
     const images = importAll(require.context('../../../assets/nfts/', false, /.*\.png$/));
     return (
-        <s.Section id="nft" ref={nftRef}>
-            <s.Title>NFT</s.Title>
-            <s.SliderContainer count={SLIDE_COUNT}>
+        <s.Section id="about" ref={nftRef}>
+            {/* <s.Title>NFT</s.Title> */}
+
+            <s.OpenSea //
+                variants={bottomToTop}
+                initial="initial"
+                whileInView="onViewport"
+                viewport={{
+                    margin: '100px',
+                    once: true,
+                    amount: 0.3,
+                }}
+            >
+                <img src={openSea} alt="openSea" />
+                <span>Buy on OpenSea</span>
+            </s.OpenSea>
+
+            <s.SliderContainer
+                count={SLIDE_COUNT} //
+                variants={bottomToTop}
+                initial="initial"
+                whileInView="onViewport"
+                viewport={{
+                    margin: '100px',
+                    once: true,
+                    amount: 0.3,
+                }}
+            >
                 <Swiper {...SwiperConfig} onInit={onInit}>
                     {images.map((image, index) => (
                         <SwiperSlide key={image}>
@@ -65,10 +91,6 @@ const Nft = () => {
                     ))}
                 </Swiper>
             </s.SliderContainer>
-            <s.OpenSea>
-                <img src={openSea} alt="openSea" />
-                <span>Buy on OpenSea</span>
-            </s.OpenSea>
         </s.Section>
     );
 };

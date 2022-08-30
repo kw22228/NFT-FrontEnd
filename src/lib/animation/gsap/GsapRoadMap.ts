@@ -63,7 +63,7 @@ const GsapRoadMap = ({ sectionRef, scrollRef, ballRef }: IGsapProps) => {
             });
 
             ScrollTrigger.refresh();
-        }, 200);
+        }, 250);
 
         return () => {
             clearTimeout(timeout);

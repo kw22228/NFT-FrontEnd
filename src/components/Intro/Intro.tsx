@@ -7,6 +7,7 @@ import { useSetRecoilState } from 'recoil';
 import { introLoadingAtom } from '../../lib/recoil/atoms';
 import { useAnimationControls } from 'framer-motion';
 import { introVariants } from '../../lib/animation/framer-variants/actionVarinats';
+import promise from '../../lib/utils/promise';
 
 const Intro = () => {
     const spread = ['.', '..', '...'];
@@ -44,20 +45,30 @@ const Intro = () => {
 
         if (percentage === 100) {
             clearInterval(interval);
-            carAnimateControl.start({
-                x: [0, -50, window.innerWidth],
-                transition: {
-                    duration: 1,
-                    type: 'spring',
-                },
-            });
+            // carAnimateControl.start({
+            //     x: [0, -50, window.innerWidth],
+            //     transition: {
+            //         duration: 1,
+            //         type: 'spring',
+            //     },
+            // });
 
-            setTimeout(() => {
-                setIntroLoading(true);
-            }, 1000);
+            // timeout = setTimeout(() => setIntroLoading(true), 1000);
+
+            promise(() => {
+                carAnimateControl.start({
+                    x: [0, -50, window.innerWidth],
+                    transition: {
+                        duration: 1,
+                        type: 'spring',
+                    },
+                });
+            }, 800).then(flag => flag && setIntroLoading(true));
         }
 
-        return () => interval && clearInterval(interval);
+        return () => {
+            interval && clearInterval(interval);
+        };
     }, [percentage]);
 
     return (
