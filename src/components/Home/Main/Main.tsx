@@ -5,11 +5,7 @@ import { bottomToTop } from '../../../lib/animation/framer-variants/revealVarian
 import { useInView } from 'framer-motion';
 import useViewportNavState from '../../../lib/hooks/useViewportNavState';
 
-import goxoCharacter from '../../../assets/goxo_character.jpg';
-import goxoBanner from '../../../assets/goxo_pink.jpg';
-
 const Main = () => {
-    const imgRef = useRef<HTMLDivElement>(null);
     const textBoxRef = useRef<HTMLDivElement>(null);
     const homeRef = useRef<HTMLDivElement>(null);
 

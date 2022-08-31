@@ -34,8 +34,6 @@ const RoadMap = () => {
     useViewportNavState(isInView, 'roadmap');
     GsapRoadMap({ sectionRef, scrollRef, ballRef });
 
-    const images = importAll(require.context('../../../assets/nfts/', false, /.[1-4]\d\.png$/));
-
     const skipClickHandler = () => {
         const element = document.querySelector('#team') as HTMLDivElement;
         scroll.scrollTo(element, {
