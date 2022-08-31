@@ -15,7 +15,6 @@ interface IStoryBoard {
 const StoryBoard = ({ img, title, text, direction = 'row' }: IStoryBoard) => {
     return (
         <s.Container //
-            direction={direction}
             variants={direction === 'row' ? leftToRight : rightToLeft}
             // variants={bottomToTop}
             initial="initial"

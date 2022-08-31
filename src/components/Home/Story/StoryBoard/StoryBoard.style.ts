@@ -2,16 +2,15 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { device, variouble } from '../../../../styles/variouble';
 
-export const Container = styled(motion.div)<{ direction?: String }>`
+export const Container = styled(motion.div)`
     display: flex;
-    /* flex-direction: ${props => (props.direction === 'reverse' ? 'row-reverse' : 'row')}; */
     justify-content: center;
     align-items: center;
 
-    width: 40%;
+    width: 45%;
     height: calc(100% / 4);
 
-    margin: 3rem auto;
+    margin: 2rem auto;
 
     background-color: #000000;
 
@@ -24,19 +23,29 @@ export const Container = styled(motion.div)<{ direction?: String }>`
         rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
         rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 
-    /* & > div:first-child {
-        margin-right: ${props => (props.direction === 'reverse' ? '0' : '2rem')};
-        margin-left: ${props => (props.direction === 'reverse' ? '2rem' : '0')};
-
-        @media (${device.tablet}) {
-            margin: 0;
-            margin-top: 2rem;
-        }
+    @media (${device.tabletXL}) {
+        width: 55%;
     }
 
     @media (${device.tablet}) {
-        flex-direction: column;
-    } */
+        width: 60%;
+    }
+
+    @media (${device.mobileXL}) {
+        width: 70%;
+    }
+
+    @media (${device.mobile}) {
+        width: 80%;
+    }
+
+    @media (${device.mobileM}) {
+        width: 85%;
+    }
+
+    @media (${device.mobileM}) {
+        width: 90%;
+    }
 `;
 
 export const ImgBox = styled.img`
@@ -93,7 +102,21 @@ export const TextBox = styled.div`
     } */
 `;
 
-export const Title = styled.h1``;
+export const Title = styled.h1`
+    font-size: ${variouble.fontxl};
+
+    @media (${device.mobile}) {
+        font-size: ${variouble.fontlgxx};
+    }
+
+    @media (${device.mobileM}) {
+        font-size: ${variouble.fontlgx};
+    }
+
+    @media (${device.mobileMx}) {
+        font-size: ${variouble.fontlg};
+    }
+`;
 
 export const Text = styled.span`
     margin-top: 2rem;
@@ -101,6 +124,14 @@ export const Text = styled.span`
     font-size: ${variouble.fontlg};
     line-height: 1.6;
     letter-spacing: 1px;
+
+    @media (${device.mobileM}) {
+        font-size: ${variouble.fontmd};
+    }
+
+    @media (${device.mobileMx}) {
+        font-size: ${variouble.fontsm};
+    }
 `;
 
 export const Pin = styled.img``;

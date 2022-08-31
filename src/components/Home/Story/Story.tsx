@@ -22,17 +22,17 @@ const Story = () => {
 
     return (
         <s.Section id="story" ref={storyRef}>
-            <s.Title>GOXO, 당신의 일상과 취미를 함께하세요</s.Title>
+            <s.Title>GOXO, 당신의 일상과 취미를 함께하세요!</s.Title>
             <StoryBoard
                 img={img1}
                 title="혜택 1."
-                text="Saki EveryWhere  방방곡곡에 퍼져서 활동하는 우리 Saki 들과 소통 할 수 있는 커뮤니티를 제공합니다.<br />
+                text="Saki EveryWhere  방방곡곡에 퍼져서 활동하는 우리 Saki 들과 소통 할 수 있는 커뮤니티를 제공합니다.<br /><br />
                 SNS Follow를 하시고 홀더인증을 하신분에 한하여, KAKAO TALK, Discord등 자유롭게 소통할 수 있는 공간으로 초대합니다."
             />
             <StoryBoard
                 img={img2}
                 title="혜택 2."
-                text="Where is My Ball?<br />Saki를 소유하고있는 홀더들과 함께 할 수 있는 오프라인 행사를 진행합니다.<br />
+                text="Where is My Ball?<br />Saki를 소유하고있는 홀더들과 함께 할 수 있는 오프라인 행사를 진행합니다.<br /><br />
                 다양한 이벤트와 함께 일상을 벗어나 우리 Saki들만의 특별한 하루가 진행됩니다! "
                 direction="reverse"
             />

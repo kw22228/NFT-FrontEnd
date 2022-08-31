@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import { device } from '../../../styles/variouble';
 
 export const Section = styled.section`
     width: 100vw;
@@ -15,6 +16,14 @@ export const Section = styled.section`
     background-color: #000000;
     outline: 3px solid black;
     box-sizing: border-box;
+
+    @media (${device.mobile}) {
+        height: 90vh;
+    }
+
+    @media (${device.mobileSM}) {
+        height: 80vh;
+    }
 `;
 
 export const Title = styled.h1`
