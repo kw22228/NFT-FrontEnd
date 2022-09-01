@@ -56,7 +56,7 @@ export const ImgBox = styled.img`
     top: 0;
     left: 0;
 
-    opacity: 0.4;
+    /* opacity: 0.4; */
 
     /* @media (${device.tablet}) {
         width: 35%;

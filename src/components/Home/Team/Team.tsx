@@ -12,6 +12,7 @@ import img2 from '../../../assets/nfts/11.png';
 import img3 from '../../../assets/nfts/12.png';
 import img4 from '../../../assets/nfts/13.png';
 
+import team_bg from '../../../assets/images/team_bg.gif';
 interface ICard {
     img: string;
     name: string;
@@ -43,6 +44,7 @@ const Team = () => {
 
     return (
         <s.Section id="team" ref={teamRef}>
+            <s.Background src={team_bg} alt="Team Background" />
             <s.Title>Team</s.Title>
             <s.Container //
                 variants={staggerVariants}
