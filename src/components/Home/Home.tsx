@@ -17,7 +17,7 @@ const Home = () => {
             <Nft />
             <Main />
             <Story />
-            {/* {windowWidth > 950 / zoomLevel && <RoadMap />} */}
+            {windowWidth > 950 / zoomLevel && <RoadMap />}
             <Team />
         </>
     );
