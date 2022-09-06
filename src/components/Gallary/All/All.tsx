@@ -39,7 +39,7 @@ const All = () => {
             <s.Right>
                 <s.Options>
                     <s.Count>0 items</s.Count>
-                    <s.Search />
+                    <s.Search type="onkeyup" />
                 </s.Options>
                 <s.Gallary>
                     <Item img={Ex} hash="#7476" />
