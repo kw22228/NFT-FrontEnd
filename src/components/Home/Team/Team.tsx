@@ -52,7 +52,7 @@ const Team = () => {
                 whileInView="onViewport"
                 viewport={{
                     once: true,
-                    amount: 0.2,
+                    amount: 'all',
                 }}
             >
                 <Card name="Team1" job="Job1" img={img1} />
