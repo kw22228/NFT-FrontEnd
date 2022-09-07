@@ -10,7 +10,7 @@ export const config: { rpcURL: string } = {
 export const caver = new Caver(config.rpcURL);
 let IndexForSearch = 0;
 
-function search() {
+function search(value: any) {
     const myContract = new caver.klay.Contract(ABI as AbiItem[], CONTRACTADDRESS);
     myContract.methods.mintingInformation().call.then(function (result: string[]) {
         IndexForSearch = parseInt(result[1]);
