@@ -12,6 +12,12 @@ export const Section = styled.section`
     position: relative;
 
     background-color: #90baff;
+
+    padding-bottom: 3rem;
+
+    @media (${device.mobileSM}) {
+        height: 250vh;
+    }
 `;
 
 export const Title = styled.h1`
@@ -19,10 +25,26 @@ export const Title = styled.h1`
     font-size: ${variouble.fontxxl};
     font-weight: 800;
     text-transform: uppercase;
-    margin-top: 10rem;
+    margin-top: 5rem;
     /* border-bottom: 2px solid ${props => props.theme.text}; */
     width: fit-content;
     margin-bottom: 3rem;
+
+    @media (${device.tablet}) {
+        font-size: ${variouble.fontxlx};
+    }
+
+    @media (${device.mobile}) {
+        font-size: ${variouble.fontxl};
+    }
+
+    @media (${device.mobileM}) {
+        font-size: ${variouble.fontlgxx};
+    }
+
+    @media (${device.mobileMx}) {
+        font-size: ${variouble.fontlgx};
+    }
 `;
 
 export const Ball = styled.div<{ bg: string; direct: string }>`

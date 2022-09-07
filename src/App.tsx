@@ -51,7 +51,7 @@ function App() {
             <GlobalStyle />
             <BrowserRouter>
                 <AnimatePresence>
-                    {!introLoading ? (
+                    {introLoading ? (
                         <Intro key="intro" />
                     ) : (
                         <LocomotiveScrollProvider

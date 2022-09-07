@@ -3,7 +3,7 @@ import * as s from './StoryBoard.style';
 import { leftToRight, rightToLeft } from '../../../../lib/animation/framer-variants/revealVariants';
 import replaceJsx from '../../../../lib/utils/replaceJsx';
 
-import Pin from '../../../../assets/images/pin.svg';
+// import Pin from '../../../../assets/images/pin.svg';
 
 interface IStoryBoard {
     img: string;
@@ -15,7 +15,6 @@ interface IStoryBoard {
 const StoryBoard = ({ img, title, text, direction = 'row' }: IStoryBoard) => {
     return (
         <s.Container //
-            direction={direction}
             variants={direction === 'row' ? leftToRight : rightToLeft}
             // variants={bottomToTop}
             initial="initial"

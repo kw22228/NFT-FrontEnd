@@ -10,7 +10,19 @@ export const Section = styled.section`
     align-items: center;
     justify-content: flex-start;
 
-    background-color: #192c7d;
+    /* background-color: #192c7d; */
+
+    position: relative;
+`;
+
+export const Background = styled.img`
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
 `;
 
 export const Title = styled.h1`
@@ -30,6 +42,8 @@ export const Container = styled(motion.div)`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    /* margin-top: -3rem; */
 `;
 
 export const Card = styled(motion.div)`
@@ -45,6 +59,9 @@ export const Card = styled(motion.div)`
     position: relative;
 
     overflow: hidden;
+
+    opacity: 0.6;
+
     &:not(:last-child) {
         margin-right: 1rem;
     }

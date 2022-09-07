@@ -54,6 +54,7 @@ const Nft = () => {
     useViewportNavState(isInview, 'about');
 
     const images = importAll(require.context('../../../assets/nfts/', false, /.*\.png$/));
+
     return (
         <s.Section id="about" ref={nftRef}>
             {/* <s.Title>NFT</s.Title> */}

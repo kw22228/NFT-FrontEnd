@@ -4,7 +4,6 @@ import * as s from './Product.style';
 import Flag from '../../../../assets/images/flag.svg';
 import bg from '../../../../assets/images/main.jpg';
 import { RoadMapVariants } from '../../../../lib/animation/framer-variants/inViewVariants';
-import { useInView } from 'framer-motion';
 
 interface IProduct {
     title: string;
@@ -13,10 +12,6 @@ interface IProduct {
 }
 const Product = ({ title, lists, index }: IProduct) => {
     const ref = useRef<HTMLDivElement>(null);
-    const isInView = useInView(ref, {
-        once: false,
-        amount: 'all',
-    });
 
     return (
         <s.ItemWrapper id={`itemSection${index}`}>

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { device } from '../../../styles/variouble';
+import { device, variouble } from '../../../styles/variouble';
 
 export const MainSection = styled.section`
     width: 100vw;
@@ -46,13 +46,32 @@ export const Img = styled(motion.div)<{ bg: string }>`
 `;
 
 export const BigTitle = styled(motion.h1)`
-    margin-top: 3rem;
-
+    margin-top: 2rem;
     text-transform: uppercase;
     color: ${props => props.theme.text};
 
     font-size: 3.5rem;
     letter-spacing: 2px;
+
+    @media (${device.tabletXL}) {
+        /* margin-top: 0; */
+    }
+
+    @media (${device.mobile}) {
+        font-size: ${variouble.fontxxl};
+    }
+
+    @media (${device.mobileM}) {
+        font-size: ${variouble.fontxlx};
+    }
+
+    @media (${device.mobileMx}) {
+        font-size: ${variouble.fontxl};
+    }
+
+    @media (${device.mobileSM}) {
+        font-size: ${variouble.fontlgx};
+    }
 `;
 
 export const SubTitle = styled(motion.h3)`
@@ -60,8 +79,20 @@ export const SubTitle = styled(motion.h3)`
     text-transform: uppercase;
     color: ${props => props.theme.text};
 
-    font-size: 2rem;
+    font-size: ${variouble.fontxl};
     letter-spacing: 1px;
+
+    @media (${device.mobile}) {
+        font-size: ${variouble.fontlgxx};
+    }
+
+    @media (${device.mobileM}) {
+        font-size: ${variouble.fontlgx};
+    }
+
+    @media (${device.mobileSM}) {
+        font-size: ${variouble.fontlg};
+    }
 `;
 
 export const TextBox = styled(motion.div)`
@@ -83,25 +114,24 @@ export const TextBox = styled(motion.div)`
     transition: color 0.3s ease;
 
     @media (${device.tabletXL}) {
-        width: 55%;
+        width: 65%;
     }
 
     @media (${device.tablet}) {
-        width: 60%;
+        width: 70%;
+    }
+
+    @media (${device.mobileXL}) {
+        width: 80%;
     }
 
     @media (${device.mobile}) {
-        width: 70%;
-        margin-top: 6.5rem;
+        width: 85%;
+        font-size: 1rem;
     }
 
     @media (${device.mobileM}) {
-        width: 80%;
-        margin-top: 7.5rem;
-    }
-
-    @media (${device.mobileSM}) {
-        font-size: 0.85rem;
+        width: 90%;
     }
 `;
 
