@@ -4,15 +4,15 @@ import { leftToRight, rightToLeft } from '../../../../lib/animation/framer-varia
 import replaceJsx from '../../../../lib/utils/replaceJsx';
 
 // import Pin from '../../../../assets/images/pin.svg';
+import yellowDot from '../../../../assets/videos/yellowDot.mp4';
 
 interface IStoryBoard {
-    img: string;
     title: string;
     text: string;
     direction?: string;
     addToRefs?: (el: HTMLDivElement) => void;
 }
-const StoryBoard = ({ img, title, text, direction = 'row' }: IStoryBoard) => {
+const StoryBoard = ({ title, text, direction = 'row' }: IStoryBoard) => {
     return (
         <s.Container //
             variants={direction === 'row' ? leftToRight : rightToLeft}
@@ -25,7 +25,7 @@ const StoryBoard = ({ img, title, text, direction = 'row' }: IStoryBoard) => {
                 amount: 0.4,
             }}
         >
-            <s.ImgBox src={img} />
+            <s.Background src={yellowDot} autoPlay muted loop />
             <s.TextBox>
                 <s.Title>{title}</s.Title>
                 <s.Text>{replaceJsx('<br />', <br />, text)}</s.Text>

@@ -48,13 +48,15 @@ export const Container = styled(motion.div)`
     }
 `;
 
-export const ImgBox = styled.img`
+export const Background = styled.video`
     width: 100%;
     height: 100%;
 
     position: absolute;
     top: 0;
     left: 0;
+
+    object-fit: cover;
 
     /* opacity: 0.4; */
 
