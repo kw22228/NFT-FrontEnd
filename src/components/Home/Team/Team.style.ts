@@ -15,7 +15,7 @@ export const Section = styled.section`
     position: relative;
 `;
 
-export const Background = styled.img`
+export const Background = styled.video`
     width: 100%;
     height: 100%;
 
@@ -23,6 +23,8 @@ export const Background = styled.img`
     left: 0;
     top: 0;
     z-index: -1;
+
+    object-fit: cover;
 `;
 
 export const Title = styled.h1`
