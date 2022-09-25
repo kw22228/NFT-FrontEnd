@@ -22,7 +22,8 @@ export const Item = styled(motion.div)<{ bg: string }>`
     position: relative;
     will-change: transform;
 
-    background-color: rgba(255, 255, 255, 0.8);
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    background-color: black;
 
     display: flex;
     flex-direction: column;
@@ -32,7 +33,10 @@ export const Item = styled(motion.div)<{ bg: string }>`
     box-sizing: border-box;
     padding: 0 5rem;
 
-    border-radius: 30px;
+    border: 1px solid #55d1b3;
+    box-shadow: 0px 4px 27px 0px #55d1b3;
+
+    border-radius: 10px;
     overflow: hidden;
 `;
 
@@ -51,9 +55,11 @@ export const Img = styled.img`
 
 export const Title = styled.h1`
     margin-bottom: 1rem;
+    color: white;
 `;
 export const Contents = styled.ul``;
 export const List = styled.li`
+    color: white;
     padding: 1rem 0;
     list-style: none;
 

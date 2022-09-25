@@ -28,12 +28,12 @@ const Product = ({ title, lists, index }: IProduct) => {
                 ref={ref}
                 id={`product${index}`}
             >
-                <s.Img src={bg} />
+                {/* <s.Img src={bg} /> */}
                 <s.Title>{title}</s.Title>
                 <s.Contents>
                     {lists.map((list, i) => (
                         <s.List key={list}>
-                            <s.Flag src={Flag} />
+                            {/* <s.Flag src={Flag} /> */}
                             {list}
                         </s.List>
                     ))}

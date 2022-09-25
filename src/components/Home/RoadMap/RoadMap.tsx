@@ -8,8 +8,9 @@ import * as s from './RoadMap.style';
 
 import PerfactCar from '../../../assets/images/perfectCar.svg';
 import Flag from '../../../assets/images/flag.svg';
-import DownArrow from '../../../assets/images/down-arrow.png';
-import { jumpVariants } from '../../../lib/animation/framer-variants/actionVarinats';
+import Grid from '../../../assets/images/roadmap_grid.png';
+// import DownArrow from '../../../assets/images/down-arrow.png';
+// import { jumpVariants } from '../../../lib/animation/framer-variants/actionVarinats';
 import { IScroll } from '../../../lib/types/GsapTypes';
 import { useLocomotiveScroll } from 'react-locomotive-scroll';
 import { useRecoilValue } from 'recoil';
@@ -71,7 +72,7 @@ const RoadMap = () => {
     return (
         <s.Section ref={sectionRef} className="roadmap" id="roadmap">
             <s.Left ref={leftRef}>
-                <s.LeftTitle>RoadMap</s.LeftTitle>
+                {/* <s.LeftTitle>RoadMap</s.LeftTitle> */}
 
                 <s.CurveLine>
                     <svg
@@ -80,6 +81,7 @@ const RoadMap = () => {
                         viewBox="0 -120 550 1500"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
+                        stroke="#05D3E5"
                         id="svg"
                     >
                         <defs>
@@ -90,10 +92,10 @@ const RoadMap = () => {
 
                         <path
                             d="M315.5 5L43.4532 277.047C-22.6826 343.183 0.565828 455.422 87.5308 489.846L448.16 632.595C532.808 666.101 557.688 773.991 496.263 841.183L181.5 1185.5"
-                            stroke="#fff"
                             strokeWidth="10"
                             strokeLinecap="round"
                             strokeLinejoin="bevel"
+                            strokeDasharray="5,5"
                             id="path"
                         />
                         <image
@@ -156,7 +158,7 @@ const RoadMap = () => {
                     <Product {...item} index={i} key={i} />
                 ))}
             </s.Right>
-            <s.Bottom //
+            {/* <s.Bottom //
                 variants={jumpVariants}
                 initial="normal"
                 animate="action"
@@ -164,7 +166,10 @@ const RoadMap = () => {
             >
                 <span>Skip</span>
                 <img src={DownArrow} alt="Scroll Down" />
-            </s.Bottom>
+            </s.Bottom> */}
+            <s.Grid>
+                <img src={Grid} alt="grid" />
+            </s.Grid>
         </s.Section>
     );
 };
