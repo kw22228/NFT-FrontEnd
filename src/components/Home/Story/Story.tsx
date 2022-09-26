@@ -6,9 +6,10 @@ import StoryBoard from './StoryBoard/StoryBoard';
 import { useInView } from 'framer-motion';
 import useViewportNavState from '../../../lib/hooks/useViewportNavState';
 
-import goxoFrame from '../../../assets/images/frame.png';
 import BackgroundStar from '../../../assets/images/background_star.png';
-
+import Galaxy1 from '../../../assets/images/galaxy1.png';
+import Galaxy2 from '../../../assets/images/galaxy2.png';
+import Galaxy3 from '../../../assets/images/galaxy3.png';
 const Story = () => {
     const storyRef = useRef<HTMLElement>(null);
     const isInView = useInView(storyRef, {
@@ -44,15 +45,9 @@ const Story = () => {
                 direction="reverse"
             />
 
-            {/* <s.Ball bg={goxoFrame} direct="vertical" data-scroll data-scroll-speed="3" /> */}
-            {/* <s.Ball //
-                bg={goxoCharacter}
-                direct="horizontal"
-                data-scroll
-                data-scroll-speed="-3"
-                data-scroll-direction="horizontal"
-            /> */}
-            <s.MoveImg src={goxoFrame} data-scroll data-scroll-speed="4" />
+            <s.Galaxy1 src={Galaxy1} alt="Galaxy1" data-scroll data-scroll-speed="-3" />
+            <s.Galaxy2 src={Galaxy2} alt="Galaxy2" data-scroll data-scroll-speed="2" />
+            <s.Galaxy3 src={Galaxy3} alt="Galaxy3" data-scroll data-scroll-speed="0" />
         </s.Section>
     );
 };

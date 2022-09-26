@@ -14,6 +14,7 @@ export const Section = styled.section`
     position: relative;
 
     background-color: black;
+    border-top: 1px solid black;
 `;
 export const Left = styled.div`
     width: 20%;
@@ -166,4 +167,19 @@ export const Grid = styled.div`
         width: 100%;
         height: 25%;
     }
+`;
+
+export const Gallaxy = styled.img`
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 12%;
+    height: auto;
+`;
+
+export const SmallGallaxy = styled.img`
+    position: absolute;
+    right: 5%;
+    top: 2%;
 `;

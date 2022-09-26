@@ -2,12 +2,10 @@ import { useInView } from 'framer-motion';
 import React, { useRef } from 'react';
 import GsapRoadMap from '../../../lib/animation/gsap/GsapRoadMap';
 import useViewportNavState from '../../../lib/hooks/useViewportNavState';
-import importAll from '../../../lib/utils/importAll';
 import Product from './Product/Product';
 import * as s from './RoadMap.style';
 
 import PerfactCar from '../../../assets/images/perfectCar.svg';
-// import Flag from '../../../assets/images/flag.svg';
 import RoadmapPin from '../../../assets/images/roadmap_pin.png';
 import Grid from '../../../assets/images/roadmap_grid.png';
 // import DownArrow from '../../../assets/images/down-arrow.png';
@@ -16,6 +14,10 @@ import { IScroll } from '../../../lib/types/GsapTypes';
 import { useLocomotiveScroll } from 'react-locomotive-scroll';
 import { useRecoilValue } from 'recoil';
 import { scrollHeightAtom, windowInfoAtom } from '../../../lib/recoil/atoms';
+
+import Gallaxy4 from '../../../assets/images/galaxy4.png';
+import Gallaxy5 from '../../../assets/images/galaxy5.png';
+
 import items from './item';
 
 const RoadMap = () => {
@@ -135,19 +137,6 @@ const RoadMap = () => {
                             clipPath="url(#circleView)"
                             onClick={() => pageClickHandler(3)}
                         />
-
-                        {/* <text x="335" y="-65">
-                            1
-                        </text>
-                        <text x="135" y="425">
-                            2
-                        </text>
-                        <text x="558" y="713">
-                            3
-                        </text>
-                        <text x="195" y="1123">
-                            4
-                        </text> */}
                     </svg>
                     <s.CarImg ref={ballRef}>
                         <s.Car src={PerfactCar} bg={PerfactCar} />
@@ -171,6 +160,7 @@ const RoadMap = () => {
             <s.Grid>
                 <img src={Grid} alt="grid" />
             </s.Grid>
+            <s.Gallaxy src={Gallaxy4} alt="Gallaxy4" />
         </s.Section>
     );
 };

@@ -73,7 +73,3 @@ export const List = styled.li`
 
     position: relative;
 `;
-export const Flag = styled.img`
-    width: 15px;
-    margin-right: 0.5rem;
-`;
