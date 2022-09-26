@@ -11,13 +11,24 @@ export const Section = styled.section`
 
     position: relative;
 
-    background-color: #90baff;
+    /* background-color: #90baff; */
+    background-color: black;
 
     padding-bottom: 3rem;
 
     @media (${device.mobileSM}) {
         height: 250vh;
     }
+`;
+
+export const Background = styled.img`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    z-index: 0;
 `;
 
 export const Title = styled.h1`
