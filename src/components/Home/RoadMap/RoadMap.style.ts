@@ -13,7 +13,8 @@ export const Section = styled.section`
 
     position: relative;
 
-    background-color: #091755;
+    background-color: black;
+    border-top: 1px solid black;
 `;
 export const Left = styled.div`
     width: 20%;
@@ -21,7 +22,7 @@ export const Left = styled.div`
 
     z-index: 10;
 
-    background-color: #091755;
+    background-color: transparent;
 
     display: flex;
     flex-direction: column;
@@ -152,4 +153,33 @@ export const Bottom = styled(motion.div)`
 
     color: white;
     cursor: pointer;
+`;
+
+export const Grid = styled.div`
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    z-index: -1;
+
+    img {
+        width: 100%;
+        height: 25%;
+    }
+`;
+
+export const Gallaxy = styled.img`
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 12%;
+    height: auto;
+`;
+
+export const SmallGallaxy = styled.img`
+    position: absolute;
+    right: 5%;
+    top: 2%;
 `;

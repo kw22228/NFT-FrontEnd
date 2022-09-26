@@ -2,18 +2,22 @@ import { useInView } from 'framer-motion';
 import React, { useRef } from 'react';
 import GsapRoadMap from '../../../lib/animation/gsap/GsapRoadMap';
 import useViewportNavState from '../../../lib/hooks/useViewportNavState';
-import importAll from '../../../lib/utils/importAll';
 import Product from './Product/Product';
 import * as s from './RoadMap.style';
 
 import PerfactCar from '../../../assets/images/perfectCar.svg';
-import Flag from '../../../assets/images/flag.svg';
-import DownArrow from '../../../assets/images/down-arrow.png';
-import { jumpVariants } from '../../../lib/animation/framer-variants/actionVarinats';
+import RoadmapPin from '../../../assets/images/roadmap_pin.png';
+import Grid from '../../../assets/images/roadmap_grid.png';
+// import DownArrow from '../../../assets/images/down-arrow.png';
+// import { jumpVariants } from '../../../lib/animation/framer-variants/actionVarinats';
 import { IScroll } from '../../../lib/types/GsapTypes';
 import { useLocomotiveScroll } from 'react-locomotive-scroll';
 import { useRecoilValue } from 'recoil';
 import { scrollHeightAtom, windowInfoAtom } from '../../../lib/recoil/atoms';
+
+import Gallaxy4 from '../../../assets/images/galaxy4.png';
+import Gallaxy5 from '../../../assets/images/galaxy5.png';
+
 import items from './item';
 
 const RoadMap = () => {
@@ -71,7 +75,7 @@ const RoadMap = () => {
     return (
         <s.Section ref={sectionRef} className="roadmap" id="roadmap">
             <s.Left ref={leftRef}>
-                <s.LeftTitle>RoadMap</s.LeftTitle>
+                {/* <s.LeftTitle>RoadMap</s.LeftTitle> */}
 
                 <s.CurveLine>
                     <svg
@@ -80,6 +84,7 @@ const RoadMap = () => {
                         viewBox="0 -120 550 1500"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
+                        stroke="#05D3E5"
                         id="svg"
                     >
                         <defs>
@@ -90,18 +95,18 @@ const RoadMap = () => {
 
                         <path
                             d="M315.5 5L43.4532 277.047C-22.6826 343.183 0.565828 455.422 87.5308 489.846L448.16 632.595C532.808 666.101 557.688 773.991 496.263 841.183L181.5 1185.5"
-                            stroke="#fff"
                             strokeWidth="10"
-                            strokeLinecap="round"
+                            strokeLinecap="butt"
                             strokeLinejoin="bevel"
+                            strokeDasharray="20,20"
                             id="path"
                         />
                         <image
                             width="70"
                             height="100"
-                            x="305"
+                            x="288"
                             y="-100"
-                            xlinkHref={Flag}
+                            xlinkHref={RoadmapPin}
                             clipPath="url(#circleView)"
                             onClick={() => pageClickHandler(0)}
                         />
@@ -109,8 +114,8 @@ const RoadMap = () => {
                             width="70"
                             height="100"
                             x="105"
-                            y="390"
-                            xlinkHref={Flag}
+                            y="415"
+                            xlinkHref={RoadmapPin}
                             clipPath="url(#circleView)"
                             onClick={() => pageClickHandler(1)}
                         />
@@ -119,32 +124,19 @@ const RoadMap = () => {
                             height="100"
                             x="530"
                             y="680"
-                            xlinkHref={Flag}
+                            xlinkHref={RoadmapPin}
                             clipPath="url(#circleView)"
                             onClick={() => pageClickHandler(2)}
                         />
                         <image
                             width="70"
                             height="100"
-                            x="165"
-                            y="1090"
-                            xlinkHref={Flag}
+                            x="140"
+                            y="1100"
+                            xlinkHref={RoadmapPin}
                             clipPath="url(#circleView)"
                             onClick={() => pageClickHandler(3)}
                         />
-
-                        <text x="335" y="-65">
-                            1
-                        </text>
-                        <text x="135" y="425">
-                            2
-                        </text>
-                        <text x="558" y="713">
-                            3
-                        </text>
-                        <text x="195" y="1123">
-                            4
-                        </text>
                     </svg>
                     <s.CarImg ref={ballRef}>
                         <s.Car src={PerfactCar} bg={PerfactCar} />
@@ -156,7 +148,7 @@ const RoadMap = () => {
                     <Product {...item} index={i} key={i} />
                 ))}
             </s.Right>
-            <s.Bottom //
+            {/* <s.Bottom //
                 variants={jumpVariants}
                 initial="normal"
                 animate="action"
@@ -164,7 +156,11 @@ const RoadMap = () => {
             >
                 <span>Skip</span>
                 <img src={DownArrow} alt="Scroll Down" />
-            </s.Bottom>
+            </s.Bottom> */}
+            <s.Grid>
+                <img src={Grid} alt="grid" />
+            </s.Grid>
+            <s.Gallaxy src={Gallaxy4} alt="Gallaxy4" />
         </s.Section>
     );
 };

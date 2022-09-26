@@ -11,13 +11,25 @@ export const Section = styled.section`
 
     position: relative;
 
-    background-color: #90baff;
+    /* background-color: #90baff; */
+    background-color: black;
+    border: 1px solid black;
 
     padding-bottom: 3rem;
 
     @media (${device.mobileSM}) {
         height: 250vh;
     }
+`;
+
+export const Background = styled.img`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    z-index: 0;
 `;
 
 export const Title = styled.h1`
@@ -30,6 +42,7 @@ export const Title = styled.h1`
     width: fit-content;
     margin-bottom: 3rem;
 
+    z-index: 1;
     @media (${device.tablet}) {
         font-size: ${variouble.fontxlx};
     }
@@ -47,54 +60,23 @@ export const Title = styled.h1`
     }
 `;
 
-export const Ball = styled.div<{ bg: string; direct: string }>`
-    padding: ${props => (props.direct === 'horizontal' ? '8rem' : '9rem')};
-    border-radius: 50%;
-
+export const Galaxy1 = styled.img`
     position: absolute;
-    top: ${props => (props.direct === 'horizontal' ? '0%' : '35%')};
-    left: ${props => (props.direct === 'horizontal' ? '75%' : '0%')};
+    bottom: 80%;
+    right: 0;
 
-    z-index: 10;
-
-    background-image: url(${props => props.bg});
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-
-    @media (${device.tabletXL}) {
-        padding: ${props => (props.direct === 'horizontal' ? '8rem' : '8rem')};
-    }
-
-    @media (${device.tablet}) {
-        display: ${props => (props.direct === 'horizontal' ? 'block' : 'none')};
-    }
-
-    @media (${device.mobile}) {
-        padding: 7rem;
-    }
-`;
-
-export const MoveImg = styled.img`
-    width: 17%;
+    width: 30%;
     height: auto;
-
-    position: absolute;
-    top: 35%;
-    left: 2%;
 `;
 
-export const Flag = styled.div`
+export const Galaxy2 = styled.img`
     position: absolute;
+    top: 50%;
+    right: 70%;
+`;
 
-    bottom: 10%;
-    left: 85%;
-
-    @media (${device.tablet}) {
-        left: 80%;
-    }
-
-    @media (${device.mobileM}) {
-        display: none;
-    }
+export const Galaxy3 = styled.img`
+    position: absolute;
+    top: 70%;
+    left: 67%;
 `;
