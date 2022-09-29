@@ -71,7 +71,7 @@ export const Galaxy1 = styled.img`
 
 export const Galaxy2 = styled.img`
     position: absolute;
-    top: 30%;
+    top: 20%;
     right: 0;
 
     width: 75%;
@@ -80,13 +80,20 @@ export const Galaxy2 = styled.img`
 
 export const Galaxy3 = styled.img`
     position: absolute;
-    top: 50%;
+    top: 40%;
     right: 5%;
 
     width: 100%;
     height: auto;
+`;
 
-    /* z-index: 9; */
+export const Galaxy4 = styled.img`
+    position: absolute;
+    top: 25%;
+    right: 45%;
+
+    width: 70%;
+    height: auto;
 `;
 
 export const BlackHole = styled.img`

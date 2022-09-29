@@ -15,6 +15,8 @@ import { useLocomotiveScroll } from 'react-locomotive-scroll';
 import { useRecoilValue } from 'recoil';
 import { scrollHeightAtom, windowInfoAtom } from '../../../lib/recoil/atoms';
 
+import Gallaxy5 from '../../../assets/images/gallaxy5.png';
+
 import items from './item';
 
 const RoadMap = () => {
@@ -35,15 +37,15 @@ const RoadMap = () => {
     useViewportNavState(isInView, 'roadmap');
     GsapRoadMap({ sectionRef, scrollRef, ballRef });
 
-    const skipClickHandler = () => {
-        const element = document.querySelector('#team') as HTMLDivElement;
-        scroll.scrollTo(element, {
-            offset: '0',
-            duration: '1500',
-            easing: [0.25, 0.0, 0.35, 1.0],
-            // disableLerp: false,
-        });
-    };
+    // const skipClickHandler = () => {
+    //     const element = document.querySelector('#team') as HTMLDivElement;
+    //     scroll.scrollTo(element, {
+    //         offset: '0',
+    //         duration: '1500',
+    //         easing: [0.25, 0.0, 0.35, 1.0],
+    //         // disableLerp: false,
+    //     });
+    // };
 
     const pageClickHandler = (id: number) => {
         const bannerHeight = document.querySelector('#banner')?.scrollHeight as number;
@@ -71,6 +73,10 @@ const RoadMap = () => {
 
     return (
         <s.Section ref={sectionRef} className="roadmap" id="roadmap">
+            <s.Background>
+                <s.Gallaxy src={Gallaxy5} alt="Gallaxy5" />
+                <s.Grid src={Grid} alt="grid" />
+            </s.Background>
             <s.Left ref={leftRef}>
                 {/* <s.LeftTitle>RoadMap</s.LeftTitle> */}
 
@@ -154,10 +160,6 @@ const RoadMap = () => {
                 <span>Skip</span>
                 <img src={DownArrow} alt="Scroll Down" />
             </s.Bottom> */}
-            <s.Grid>
-                <img src={Grid} alt="grid" />
-            </s.Grid>
-            {/* <s.Gallaxy src={Gallaxy4} alt="Gallaxy4" /> */}
         </s.Section>
     );
 };
