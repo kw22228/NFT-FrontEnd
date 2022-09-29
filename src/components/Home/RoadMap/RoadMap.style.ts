@@ -155,31 +155,24 @@ export const Bottom = styled(motion.div)`
     cursor: pointer;
 `;
 
-export const Grid = styled.div`
+export const Background = styled.div`
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
 
-    z-index: -1;
+    display: flex;
+    flex-direction: column;
 
-    img {
-        width: 100%;
-        height: 25%;
-    }
+    z-index: -1;
+`;
+
+export const Grid = styled.img`
+    width: 100%;
+    height: 25%;
 `;
 
 export const Gallaxy = styled.img`
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 12%;
+    width: 100%;
     height: auto;
-`;
-
-export const SmallGallaxy = styled.img`
-    position: absolute;
-    right: 5%;
-    top: 2%;
 `;
