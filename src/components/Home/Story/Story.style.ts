@@ -62,21 +62,40 @@ export const Title = styled.h1`
 
 export const Galaxy1 = styled.img`
     position: absolute;
-    bottom: 80%;
-    right: 0;
+    top: 10%;
+    right: 50%;
 
-    width: 30%;
+    width: 70%;
     height: auto;
 `;
 
 export const Galaxy2 = styled.img`
     position: absolute;
-    top: 50%;
-    right: 70%;
+    top: 30%;
+    right: 0;
+
+    width: 75%;
+    height: auto;
 `;
 
 export const Galaxy3 = styled.img`
     position: absolute;
-    top: 70%;
-    left: 67%;
+    top: 50%;
+    right: 5%;
+
+    width: 100%;
+    height: auto;
+
+    /* z-index: 9; */
+`;
+
+export const BlackHole = styled.img`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    height: 100%;
 `;

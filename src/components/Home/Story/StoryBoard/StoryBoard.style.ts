@@ -19,8 +19,8 @@ export const Container = styled(motion.div)`
 
     position: relative;
 
-    border: 1px solid #ffca9b;
-    box-shadow: 0px 4px 27px 0px #ffca9b;
+    border: 1px solid #55d1b3;
+    box-shadow: 0px 4px 27px 0px #55d1b3;
 
     z-index: 1;
 

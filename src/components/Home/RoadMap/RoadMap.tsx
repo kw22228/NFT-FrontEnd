@@ -15,9 +15,6 @@ import { useLocomotiveScroll } from 'react-locomotive-scroll';
 import { useRecoilValue } from 'recoil';
 import { scrollHeightAtom, windowInfoAtom } from '../../../lib/recoil/atoms';
 
-import Gallaxy4 from '../../../assets/images/galaxy4.png';
-import Gallaxy5 from '../../../assets/images/galaxy5.png';
-
 import items from './item';
 
 const RoadMap = () => {
@@ -160,7 +157,7 @@ const RoadMap = () => {
             <s.Grid>
                 <img src={Grid} alt="grid" />
             </s.Grid>
-            <s.Gallaxy src={Gallaxy4} alt="Gallaxy4" />
+            {/* <s.Gallaxy src={Gallaxy4} alt="Gallaxy4" /> */}
         </s.Section>
     );
 };
