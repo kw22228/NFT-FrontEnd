@@ -32,7 +32,7 @@ const Nft = () => {
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
         },
-        // autoplay: false,
+        // autopay: false,
         loop: true,
         slidesPerView: SLIDE_COUNT,
         centeredSlides: true,
