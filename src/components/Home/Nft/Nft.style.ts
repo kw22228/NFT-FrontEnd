@@ -57,6 +57,9 @@ export const SliderContainer = styled(motion.div)<{ count: number }>`
         align-items: center;
 
         overflow: hidden;
+
+        border: 1px solid #55d1b3;
+        box-shadow: 0px 4px 4px 0px #55d1b3;
     }
 `;
 
@@ -64,7 +67,7 @@ export const Nft = styled.div<{ bg: string; count: number }>`
     width: 100%;
     height: 100%;
 
-    border-radius: 50%;
+    /* border-radius: 50%; */
 
     background-image: url(${props => props.bg});
     background-size: cover;
