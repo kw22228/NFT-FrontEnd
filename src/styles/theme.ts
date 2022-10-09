@@ -4,7 +4,7 @@ export const lightTheme: DefaultTheme = {
     type: 'light',
     body: '#202020',
     text: '#fff',
-    headerText: '#202020',
+    headerText: 'white',
     accentColor: '#93CB12',
     bodyRgba: '32,32,32',
     textRgba: '255,255,255',

@@ -6,13 +6,8 @@ import StoryBoard from './StoryBoard/StoryBoard';
 import { useInView } from 'framer-motion';
 import useViewportNavState from '../../../lib/hooks/useViewportNavState';
 
-import BlackHole from '../../../assets/images/blackhole.jpg';
-import BackgroundStar from '../../../assets/images/background_star.png';
+import Background from '../../../assets/images/story_bg.png';
 
-import Galaxy1 from '../../../assets/images/gallaxy1.png';
-import Galaxy2 from '../../../assets/images/gallaxy2.png';
-import Galaxy3 from '../../../assets/images/gallaxy3.png';
-import Galaxy4 from '../../../assets/images/gallaxy4.png';
 const Story = () => {
     const storyRef = useRef<HTMLElement>(null);
     const isInView = useInView(storyRef, {
@@ -23,8 +18,8 @@ const Story = () => {
 
     return (
         <s.Section id="story" ref={storyRef}>
-            <s.BlackHole src={BlackHole} alt="BlackHole" />
-            <s.Background src={BackgroundStar} alt="Star" />
+            {/* <s.BlackHole src={BlackHole} alt="BlackHole" /> */}
+            <s.Background src={Background} alt="Star" />
 
             <s.Title>GOXO, 당신의 일상과 취미를 함께하세요!</s.Title>
             <StoryBoard
@@ -50,10 +45,10 @@ const Story = () => {
                 direction="reverse"
             />
 
-            <s.Galaxy1 src={Galaxy1} alt="Galaxy1" data-scroll data-scroll-speed="3" />
+            {/* <s.Galaxy1 src={Galaxy1} alt="Galaxy1" data-scroll data-scroll-speed="3" />
             <s.Galaxy2 src={Galaxy2} alt="Galaxy2" />
             <s.Galaxy3 src={Galaxy3} alt="Galaxy3" data-scroll data-scroll-speed="-2" />
-            <s.Galaxy4 src={Galaxy4} alt="Galaxy4" />
+            <s.Galaxy4 src={Galaxy4} alt="Galaxy4" /> */}
         </s.Section>
     );
 };

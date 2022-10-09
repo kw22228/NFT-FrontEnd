@@ -10,7 +10,7 @@ import useViewportNavState from '../../../lib/hooks/useViewportNavState';
 import LazyImg from '../../LazyImg/LazyImg';
 
 import CarWheel from '../../../assets/images/carwheel.svg';
-import Main from '../../../assets/images/main_banner.jpg';
+import Main from '../../../assets/images/main_banner.png';
 import LogoImage from '../../../assets/images/Logo.png';
 
 const Banner = () => {
@@ -53,13 +53,14 @@ const Banner = () => {
         <s.Section ref={bannerRef} id="banner">
             <s.BannerContainer>
                 <LazyImg src={Main} lazy={false} elementRef={bannerRef} alt="Main Banner" />
-                <s.LogoTitle //
+                <s.Title>where is my ball?</s.Title>
+                {/* <s.LogoTitle //
                     src={LogoImage}
                     variants={scaleReveal}
                     initial="initial"
                     animate={logoControls}
-                />
-                <s.Car //
+                /> */}
+                {/* <s.Car //
                     variants={carVariants}
                     initial="initial"
                     animate={carControls}
@@ -550,7 +551,7 @@ const Banner = () => {
 
                     <s.CarWheel src={CarWheel} locate="back" isRotate={isRotate} />
                     <s.CarWheel src={CarWheel} locate="front" isRotate={isRotate} />
-                </s.Car>
+                </s.Car> */}
                 {/* <s.Character src={character} alt={character} /> */}
                 {/* <s.Wave src={waves} alt="waves" /> */}
             </s.BannerContainer>

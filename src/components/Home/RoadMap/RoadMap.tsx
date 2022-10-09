@@ -74,8 +74,8 @@ const RoadMap = () => {
     return (
         <s.Section ref={sectionRef} className="roadmap" id="roadmap">
             <s.Background>
-                <s.Gallaxy src={Gallaxy5} alt="Gallaxy5" />
-                <s.Grid src={Grid} alt="grid" />
+                {/* <s.Gallaxy src={Gallaxy5} alt="Gallaxy5" /> */}
+                {/* <s.Grid src={Grid} alt="grid" /> */}
             </s.Background>
             <s.Left ref={leftRef}>
                 {/* <s.LeftTitle>RoadMap</s.LeftTitle> */}

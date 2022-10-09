@@ -9,14 +9,14 @@ export const Header = styled.header<{ scrollHeight: IScrollHeight }>`
         Math.ceil(props.scrollHeight.progressY * 100) > 3
             ? props.theme.type === 'dark'
                 ? 'rgba(0,0,0,0.6)'
-                : 'rgba(255,255,255,0.6)'
+                : 'rgba(0,0,0,0.6)'
             : 'transparent'};
 
     border-bottom: ${props =>
         Math.ceil(props.scrollHeight.progressY * 100) > 3
             ? props.theme.type === 'dark'
                 ? '1px solid black'
-                : '1px solid white'
+                : '1px solid black'
             : 'none'};
 
     position: fixed;

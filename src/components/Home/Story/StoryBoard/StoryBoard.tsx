@@ -4,7 +4,6 @@ import { leftToRight, rightToLeft } from '../../../../lib/animation/framer-varia
 import replaceJsx from '../../../../lib/utils/replaceJsx';
 
 // import Pin from '../../../../assets/images/pin.svg';
-import yellowDot from '../../../../assets/videos/yellowDot.mp4';
 
 interface IStoryBoard {
     title: string;
@@ -25,7 +24,7 @@ const StoryBoard = ({ title, text, direction = 'row' }: IStoryBoard) => {
                 amount: 0.4,
             }}
         >
-            <s.Background src={yellowDot} autoPlay muted loop />
+            {/* <s.Background src={yellowDot} autoPlay muted loop /> */}
             <s.TextBox>
                 <s.Title>{title}</s.Title>
                 <s.Text>{replaceJsx('<br />', <br />, text)}</s.Text>
